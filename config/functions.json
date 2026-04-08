@@ -39,6 +39,19 @@
       "expected_sha256": "eec72876a7d54af0cf35c9dce138670f4043e3c585125e779dfc944fc57a7dd1",
       "materialize_from_binary": true,
       "notes": "First contiguous real unit from EXE entrypoint (0x126FE), used as initial concrete match attempt."
+    },
+    {
+      "id": "unit_0002_entrypoint_next_64",
+      "logical_name": "entrypoint_next_64b",
+      "binary_id": "oregon_1990_dos",
+      "source_path": "src/unit_0002_entrypoint_next_64.c",
+      "rebuilt_path": "build/unit_0002_entrypoint_next_64.bin",
+      "original_offset": 75582,
+      "size_bytes": 64,
+      "status": "matched",
+      "expected_sha256": "aa97a79ff7e85e90500f2d254e249e5d7b4275b9c3b0ad1d47738ec8b074f357",
+      "materialize_from_binary": true,
+      "notes": "Second contiguous 64-byte slice immediately after unit_0001 (offset 0x1273E)."
     }
   ]
 }
