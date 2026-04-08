@@ -1,0 +1,36 @@
+# macOS
+.DS_Store
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+
+# Build and generated artifacts
+build/*
+!build/.gitkeep
+*.o
+*.obj
+*.a
+*.lib
+*.so
+*.dylib
+*.dll
+*.exe
+*.bin
+*.map
+*.lst
+
+# Logs and temp files
+*.log
+*.tmp
+*.swp
+*.swo
+
+# IDE/editor
+.idea/
+.vscode/
+
+# The Actual Game Files
+Oregon_The_1990/

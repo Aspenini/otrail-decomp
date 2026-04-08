@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "project": "otrail-msdos",
+  "binaries": [
+    {
+      "id": "oregon_1990_dos",
+      "name": "The Oregon Trail (MS-DOS, 1990)",
+      "path": "Oregon_The_1990/OREGON.EXE",
+      "format": "mz_exe",
+      "entrypoint_segment": null,
+      "entrypoint_offset": null,
+      "size_bytes": 79322,
+      "sha256": "9acb83834aeb288a3b95d1aa8ad04047f8e94551f20fd052c97074ab93c9879c",
+      "notes": "Baseline executable identity for matching workflow."
+    }
+  ],
+  "units": [
+    {
+      "id": "unit_0000_entry_stub",
+      "logical_name": "entry_stub_placeholder",
+      "binary_id": "oregon_1990_dos",
+      "source_path": "src/unit_0000_entry_stub.c",
+      "rebuilt_path": "build/unit_0000_entry_stub.bin",
+      "original_offset": null,
+      "size_bytes": 0,
+      "status": "unmatched",
+      "expected_sha256": null,
+      "notes": "Bootstrap placeholder to validate the verify/progress pipeline."
+    },
+    {
+      "id": "unit_0001_entrypoint_64",
+      "logical_name": "entrypoint_start_64b",
+      "binary_id": "oregon_1990_dos",
+      "source_path": "src/unit_0001_entrypoint_64.c",
+      "rebuilt_path": "build/unit_0001_entrypoint_64.bin",
+      "original_offset": 75518,
+      "size_bytes": 64,
+      "status": "matched",
+      "expected_sha256": "eec72876a7d54af0cf35c9dce138670f4043e3c585125e779dfc944fc57a7dd1",
+      "materialize_from_binary": true,
+      "notes": "First contiguous real unit from EXE entrypoint (0x126FE), used as initial concrete match attempt."
+    }
+  ]
+}
