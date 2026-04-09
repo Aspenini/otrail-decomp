@@ -1,0 +1,83 @@
+{
+  "name": "entry_unpacker_blocks_1274f_12845",
+  "notes": "Provisional block hypotheses for unpacker region. Ranges are inclusive file offsets.",
+  "blocks": [
+    {
+      "id": "B00_init_and_seed",
+      "start": "0x1274F",
+      "end": "0x12756",
+      "label": "Initialize SI/DI and seed first bit-buffer word",
+      "anchors": ["xor si,si", "xor di,di", "mov dx,0x10", "lodsw"]
+    },
+    {
+      "id": "B01_bit_gate_top",
+      "start": "0x12757",
+      "end": "0x12764",
+      "label": "Top-level bit gate and literal/second-stage branch",
+      "anchors": ["shr bp,1", "dec dx", "refill via lodsw", "jnc 0x12768"]
+    },
+    {
+      "id": "B02_literal_emit",
+      "start": "0x12765",
+      "end": "0x12767",
+      "label": "Literal path (movsb) then loop to gate",
+      "anchors": ["movsb", "jmp 0x12759"]
+    },
+    {
+      "id": "B03_second_gate_setup",
+      "start": "0x12768",
+      "end": "0x12775",
+      "label": "Second-stage token gate setup and long/short split",
+      "anchors": ["xor cx,cx", "shr bp,1", "jc 0x12798"]
+    },
+    {
+      "id": "B04_short_len_build",
+      "start": "0x12776",
+      "end": "0x1278F",
+      "label": "Short-token length synthesis via carry chain",
+      "anchors": ["rcl cx,1", "inc cx", "inc cx"]
+    },
+    {
+      "id": "B05_short_backref_setup",
+      "start": "0x12790",
+      "end": "0x12797",
+      "label": "Short backref displacement setup",
+      "anchors": ["lodsb", "mov bh,0xff", "mov bl,al", "jmp 0x127AB"]
+    },
+    {
+      "id": "B06_long_token_decode",
+      "start": "0x12798",
+      "end": "0x127AA",
+      "label": "Long-token decode (disp high bits, inline length)",
+      "anchors": ["lodsw", "shr bh,3", "or bh,0xe0", "and ah,0x7"]
+    },
+    {
+      "id": "B07_copy_loop",
+      "start": "0x127AB",
+      "end": "0x127B1",
+      "label": "Shared copy loop from history window",
+      "anchors": ["mov al,[es:bx+di]", "stosb", "loop 0x127AB"]
+    },
+    {
+      "id": "B08_long_ext_control",
+      "start": "0x127B3",
+      "end": "0x127C0",
+      "label": "Long-token extension bytes and control markers",
+      "anchors": ["lodsb", "or al,al", "cmp al,0x1", "inc cx"]
+    },
+    {
+      "id": "B09_window_slide",
+      "start": "0x127C1",
+      "end": "0x127E4",
+      "label": "Segment/window slide after special control token",
+      "anchors": ["and di,0xf", "add di,0x2000", "mov es,ax", "mov ds,ax"]
+    },
+    {
+      "id": "B10_tail_uncertain",
+      "start": "0x127E5",
+      "end": "0x12845",
+      "label": "Tail uncertain in linear disasm (mixed code/data likelihood)",
+      "anchors": ["Low confidence in linear pass; keep as placeholder"]
+    }
+  ]
+}

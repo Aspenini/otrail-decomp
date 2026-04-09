@@ -20,6 +20,41 @@ def pct(numerator: int, denominator: int) -> float:
     return (numerator / denominator) * 100.0
 
 
+def print_progress_status(path: Path) -> None:
+    if not path.is_file():
+        return
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+    except (json.JSONDecodeError, OSError):
+        print("Active focus (status file unreadable)")
+        print(f"- See: {path}")
+        print("")
+        return
+
+    phase = data.get("phase")
+    focus = data.get("current_focus")
+    updated = data.get("last_updated")
+    recent = data.get("recent_done")
+    next_up = data.get("next_up")
+
+    print("Active focus")
+    if updated:
+        print(f"- Last updated: {updated}")
+    if phase:
+        print(f"- Phase: {phase}")
+    if focus:
+        print(f"- Now: {focus}")
+    if isinstance(recent, list) and recent:
+        print("- Recently done:")
+        for item in recent[:8]:
+            print(f"  - {item}")
+    if isinstance(next_up, list) and next_up:
+        print("- Next up:")
+        for item in next_up[:8]:
+            print(f"  - {item}")
+    print("")
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
@@ -27,7 +62,15 @@ def main() -> int:
         default="config/functions.json",
         help="Path to functions metadata JSON file",
     )
+    parser.add_argument(
+        "--status",
+        default="config/progress_status.json",
+        help="Optional JSON with current_focus / phase for human-readable progress",
+    )
     args = parser.parse_args()
+
+    status_path = Path(args.status).resolve()
+    print_progress_status(status_path)
 
     cfg = load_config(Path(args.config).resolve())
     binaries = cfg.get("binaries", [])

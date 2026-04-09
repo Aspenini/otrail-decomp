@@ -48,6 +48,90 @@ Show configured and whole-binary progress:
 make progress
 ```
 
+Human-readable “what we’re doing now” lives in `config/progress_status.json` and is printed at the top of `make progress` when that file exists. Edit it anytime to reflect current work; optional flag: `python3 tools/match_progress.py --status /path/to/status.json`.
+
+Run inferred unpacker candidate scan:
+
+```bash
+make unpacker-scan
+```
+
+Replay inferred unpacker from a single offset:
+
+```bash
+make unpacker-replay
+```
+
+Replay from a specific candidate offset:
+
+```bash
+make unpacker-replay REPLAY_OFFSET=0x12778
+```
+
+Rank replay offsets by output fingerprint:
+
+```bash
+make unpacker-fingerprint
+```
+
+Probe a confidence band around a center offset:
+
+```bash
+make unpacker-band CENTER_OFFSET=0x12778 BAND_RADIUS=64 REPLAY_MODE=1
+```
+
+Mode values:
+
+- `REPLAY_MODE=0` strict (preseeded history window, fail on unknown backref)
+- `REPLAY_MODE=1` heuristic (more permissive exploratory behavior)
+
+Run deterministic unpacker regression fixtures:
+
+```bash
+make unpacker-fixtures
+```
+
+Current fixture coverage:
+
+- 20 deterministic replay fixtures across top confidence-band offsets
+- both strict (`mode=0`) and heuristic (`mode=1`) paths
+
+Check strict/heuristic fixture parity:
+
+```bash
+make unpacker-parity
+```
+
+Check readable-model equivalence against the reference engine:
+
+```bash
+make unpacker-readable-equivalence
+```
+
+Generate readable-vs-reference operation stats report:
+
+```bash
+make unpacker-readable-stats
+```
+
+Emit unpacker token trace (CSV) for event-level correlation:
+
+```bash
+make unpacker-trace TRACE_OFFSET=0x1274F TRACE_MAX_EVENTS=100 TRACE_MODE=1
+```
+
+Summarize trace events by source-offset windows:
+
+```bash
+make unpacker-trace-windows TRACE_WINDOW_START=0x1274F TRACE_WINDOW_END=0x12845 TRACE_WINDOW_SIZE=0x10
+```
+
+Map trace events into provisional semantic blocks:
+
+```bash
+make unpacker-trace-blocks TRACE_BLOCKS_JSON=config/entry_unpacker_blocks_1274f_12845.json
+```
+
 Clean generated artifacts:
 
 ```bash
@@ -68,8 +152,10 @@ make clean
 
 ## Current Status
 
-- Bootstrap scaffold is complete.
-- One placeholder unit (`unit_0000_entry_stub`) is configured as `unmatched`.
-- First real unit (`unit_0001_entrypoint_64`) is configured from the EXE entrypoint
-  slice at offset `0x126FE` with `64` bytes.
-- `make verify` now materializes baseline unit candidates before matching checks.
+- Phase 1 byte-coverage baseline is complete (`79322/79322`, `100.00%`).
+- Match verification is green with `total=356 pass=355 fail=0 skip=1`.
+- Entrypoint unpacker and pre-unpack loader have inferred C lift scaffolding.
+- Token-level unpacker tracing is available via `make unpacker-trace` and
+  `make unpacker-trace-windows`.
+- A block-aligned readable unpacker model is available and checked for fixture
+  equivalence via `make unpacker-readable-equivalence`.

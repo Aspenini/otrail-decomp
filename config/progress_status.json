@@ -1,0 +1,15 @@
+{
+  "last_updated": "2026-04-08",
+  "phase": "Phase 2 semantic lift (entry unpacker + loader)",
+  "current_focus": "Readable unpacker parity verified; next: loader model hardening (segment math) and post-unpack entry chain.",
+  "recent_done": [
+    "Phase 1 byte coverage 100% + verify green",
+    "Token trace + block correlation tooling",
+    "Readable unpacker model + fixture equivalence + stats report"
+  ],
+  "next_up": [
+    "Trace-driven loader validation (0x126FE-0x1274D)",
+    "Expand unpacker fixtures / tighten strict semantics",
+    "SDL bootstrap stub when entry path is stable"
+  ]
+}
