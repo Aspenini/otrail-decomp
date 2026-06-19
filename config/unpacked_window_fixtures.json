@@ -1,0 +1,61 @@
+{
+  "fixtures": [
+    {
+      "id": "window_2000_candidate",
+      "start": "0x2000",
+      "size": "0x40",
+      "expected_nonzero": 42,
+      "expected_zero": 22,
+      "expected_printable": 12,
+      "expected_ctrl": 6,
+      "expected_events": 30,
+      "expected_literal_events": 19,
+      "expected_short_events": 6,
+      "expected_long_events": 5,
+      "expected_literal_bytes": 19,
+      "expected_short_bytes": 21,
+      "expected_long_bytes": 24,
+      "expected_wrapped_copy_events": 0,
+      "expected_wrapped_copy_bytes": 0,
+      "expected_score": 106
+    },
+    {
+      "id": "window_2f00_candidate",
+      "start": "0x2F00",
+      "size": "0x40",
+      "expected_nonzero": 34,
+      "expected_zero": 30,
+      "expected_printable": 9,
+      "expected_ctrl": 9,
+      "expected_events": 24,
+      "expected_literal_events": 13,
+      "expected_short_events": 3,
+      "expected_long_events": 8,
+      "expected_literal_bytes": 13,
+      "expected_short_bytes": 10,
+      "expected_long_bytes": 41,
+      "expected_wrapped_copy_events": 0,
+      "expected_wrapped_copy_bytes": 0,
+      "expected_score": 93
+    },
+    {
+      "id": "window_0818_padding_cluster",
+      "start": "0x0818",
+      "size": "0x38",
+      "expected_nonzero": 9,
+      "expected_zero": 47,
+      "expected_printable": 0,
+      "expected_ctrl": 3,
+      "expected_events": 16,
+      "expected_literal_events": 5,
+      "expected_short_events": 5,
+      "expected_long_events": 6,
+      "expected_literal_bytes": 5,
+      "expected_short_bytes": 16,
+      "expected_long_bytes": 35,
+      "expected_wrapped_copy_events": 1,
+      "expected_wrapped_copy_bytes": 7,
+      "expected_score": -16
+    }
+  ]
+}

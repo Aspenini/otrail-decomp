@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import fnmatch
 import hashlib
 import json
 from dataclasses import dataclass
@@ -33,6 +34,23 @@ def resolve_path(project_root: Path, raw: str | None) -> Path | None:
     if candidate.is_absolute():
         return candidate
     return project_root / candidate
+
+
+def matches_filters(unit: dict[str, Any], patterns: list[str]) -> bool:
+    if not patterns:
+        return True
+
+    fields = [
+        str(unit.get("id") or ""),
+        str(unit.get("logical_name") or ""),
+        str(unit.get("source_path") or ""),
+        str(unit.get("rebuilt_path") or ""),
+    ]
+    return any(
+        fnmatch.fnmatchcase(field, pattern)
+        for pattern in patterns
+        for field in fields
+    )
 
 
 def verify_unit(project_root: Path, unit: dict[str, Any]) -> UnitResult:
@@ -80,6 +98,22 @@ def main() -> int:
         default="config/functions.json",
         help="Path to functions metadata JSON file",
     )
+    parser.add_argument(
+        "--match",
+        action="append",
+        default=[],
+        help="Shell-style glob against id, logical_name, source_path, or rebuilt_path",
+    )
+    parser.add_argument(
+        "--quiet-pass",
+        action="store_true",
+        help="Suppress PASS lines and only print FAIL/SKIP results plus summary",
+    )
+    parser.add_argument(
+        "--summary-only",
+        action="store_true",
+        help="Print only the final summary line",
+    )
     args = parser.parse_args()
 
     config_path = Path(args.config).resolve()
@@ -90,13 +124,21 @@ def main() -> int:
     if not isinstance(units, list):
         raise SystemExit("Invalid config: 'units' must be a list")
 
-    results = [verify_unit(project_root, unit) for unit in units]
+    selected_units = [unit for unit in units if matches_filters(unit, args.match)]
+    if args.match and not selected_units:
+        raise SystemExit("No configured units matched the requested filters")
+
+    results = [verify_unit(project_root, unit) for unit in selected_units]
 
     pass_count = 0
     fail_count = 0
     skip_count = 0
     for result in results:
-        print(f"[{result.status}] {result.name}: {result.detail}")
+        if not args.summary_only:
+            if result.status == "PASS" and args.quiet_pass:
+                pass
+            else:
+                print(f"[{result.status}] {result.name}: {result.detail}")
         if result.status == "PASS":
             pass_count += 1
         elif result.status == "FAIL":
@@ -104,7 +146,8 @@ def main() -> int:
         else:
             skip_count += 1
 
-    print("")
+    if not args.summary_only:
+        print("")
     print(
         f"Summary: total={len(results)} pass={pass_count} fail={fail_count} skip={skip_count}"
     )

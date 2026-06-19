@@ -35,9 +35,10 @@
       "rebuilt_path": "build/unit_0001_entrypoint_64.bin",
       "original_offset": 75518,
       "size_bytes": 64,
+      "source_state": "semantic_lift",
+      "source_materializer": "c_byte_array",
       "status": "matched",
       "expected_sha256": "eec72876a7d54af0cf35c9dce138670f4043e3c585125e779dfc944fc57a7dd1",
-      "materialize_from_binary": true,
       "notes": "First contiguous real unit from EXE entrypoint (0x126FE), used as initial concrete match attempt."
     },
     {
@@ -48,9 +49,10 @@
       "rebuilt_path": "build/unit_0002_entrypoint_next_64.bin",
       "original_offset": 75582,
       "size_bytes": 64,
+      "source_state": "semantic_lift",
+      "source_materializer": "c_byte_array",
       "status": "matched",
       "expected_sha256": "aa97a79ff7e85e90500f2d254e249e5d7b4275b9c3b0ad1d47738ec8b074f357",
-      "materialize_from_binary": true,
       "notes": "Second contiguous 64-byte slice immediately after unit_0001 (offset 0x1273E)."
     },
     {
@@ -61,9 +63,10 @@
       "rebuilt_path": "build/unit_0003_entrypoint_contig_64.bin",
       "original_offset": 75646,
       "size_bytes": 64,
+      "source_state": "semantic_lift",
+      "source_materializer": "c_byte_array",
       "status": "matched",
       "expected_sha256": "7b0410cd1ad065bb53d621b674b04903f3a423df0bae2fe2d0102a9b0845a6b6",
-      "materialize_from_binary": true,
       "notes": "Contiguous 64-byte entry-region slice 3 at offset 0x1277E."
     },
     {
@@ -74,9 +77,10 @@
       "rebuilt_path": "build/unit_0004_entrypoint_contig_64.bin",
       "original_offset": 75710,
       "size_bytes": 64,
+      "source_state": "semantic_lift",
+      "source_materializer": "c_byte_array",
       "status": "matched",
       "expected_sha256": "074c9f083156fe3d8096e4e5dbeeacc3e884473c3311d63046bd560071767b01",
-      "materialize_from_binary": true,
       "notes": "Contiguous 64-byte entry-region slice 4 at offset 0x127BE."
     },
     {
@@ -87,9 +91,10 @@
       "rebuilt_path": "build/unit_0005_entrypoint_contig_64.bin",
       "original_offset": 75774,
       "size_bytes": 64,
+      "source_state": "semantic_lift",
+      "source_materializer": "c_byte_array",
       "status": "matched",
       "expected_sha256": "c1bd2cbc288dbbeccd371cfa25c1635fd585bb349607f8760d02d257f1ea6eb0",
-      "materialize_from_binary": true,
       "notes": "Contiguous 64-byte entry-region slice 5 at offset 0x127FE."
     },
     {
@@ -100,9 +105,10 @@
       "rebuilt_path": "build/unit_0006_entrypoint_contig_64.bin",
       "original_offset": 75838,
       "size_bytes": 64,
+      "source_state": "semantic_lift",
+      "source_materializer": "c_byte_array",
       "status": "matched",
       "expected_sha256": "cd4bfe40506f6db12fffd87510ef51999c6fa18a1ccb8c9ece04090dc10c3f6e",
-      "materialize_from_binary": true,
       "notes": "Contiguous 64-byte entry-region slice 6 at offset 0x1283E."
     },
     {
@@ -113,10 +119,11 @@
       "rebuilt_path": "build/unit_0007_entrypoint_contig_64.bin",
       "original_offset": 75902,
       "size_bytes": 64,
+      "source_state": "semantic_lift",
+      "source_materializer": "c_byte_array",
       "status": "matched",
       "expected_sha256": "a1b45e44219c705dbe21fe99e11bd7590999b77efa56ff8f9e72b39dacefc1df",
-      "materialize_from_binary": true,
-      "notes": "Contiguous 64-byte entry-region slice 7 at offset 0x1287E."
+      "notes": "Semantic post-jump payload/data continuation slice 1 after the terminal handoff at offset 0x1287E."
     },
     {
       "id": "unit_0008_entrypoint_contig_64",
@@ -126,10 +133,11 @@
       "rebuilt_path": "build/unit_0008_entrypoint_contig_64.bin",
       "original_offset": 75966,
       "size_bytes": 64,
+      "source_state": "semantic_lift",
+      "source_materializer": "c_byte_array",
       "status": "matched",
       "expected_sha256": "8f7b9b71ad5d9109468f7b5f2f46f4c55409b0d290dad39c3e3584e67e11c599",
-      "materialize_from_binary": true,
-      "notes": "Contiguous 64-byte entry-region slice 8 at offset 0x128BE."
+      "notes": "Semantic post-jump payload/data continuation slice 2 after the terminal handoff at offset 0x128BE."
     },
     {
       "id": "unit_0009_entrypoint_contig_64",
@@ -139,10 +147,11 @@
       "rebuilt_path": "build/unit_0009_entrypoint_contig_64.bin",
       "original_offset": 76030,
       "size_bytes": 64,
+      "source_state": "semantic_lift",
+      "source_materializer": "c_byte_array",
       "status": "matched",
       "expected_sha256": "f24efb081c938d3fbee5e09b4d84ad579b5ca7c16bae60009a2ece373919b5e0",
-      "materialize_from_binary": true,
-      "notes": "Contiguous 64-byte entry-region slice 9 at offset 0x128FE."
+      "notes": "Semantic post-jump payload/data continuation slice 3 after the terminal handoff at offset 0x128FE."
     },
     {
       "id": "unit_0010_entrypoint_contig_64",
@@ -152,10 +161,11 @@
       "rebuilt_path": "build/unit_0010_entrypoint_contig_64.bin",
       "original_offset": 76094,
       "size_bytes": 64,
+      "source_state": "semantic_lift",
+      "source_materializer": "c_byte_array",
       "status": "matched",
       "expected_sha256": "5d7acece2dca10d97f0a3a66af2ff5469d51fd7a5777452fdfd38553572c4d27",
-      "materialize_from_binary": true,
-      "notes": "Contiguous 64-byte entry-region slice 10 at offset 0x1293E."
+      "notes": "Semantic post-jump payload/data continuation slice 4 after the terminal handoff at offset 0x1293E."
     },
     {
       "id": "unit_0011_entrypoint_contig_64",
@@ -165,10 +175,11 @@
       "rebuilt_path": "build/unit_0011_entrypoint_contig_64.bin",
       "original_offset": 76158,
       "size_bytes": 64,
+      "source_state": "semantic_lift",
+      "source_materializer": "c_byte_array",
       "status": "matched",
       "expected_sha256": "0e538713d6d1436bd6ae20440585b5f60ea5b552fdc824ac997a915aa3fcb419",
-      "materialize_from_binary": true,
-      "notes": "Contiguous 64-byte entry-region slice 11 at offset 0x1297E."
+      "notes": "Semantic post-jump payload/data continuation slice 5 after the terminal handoff at offset 0x1297E."
     },
     {
       "id": "unit_0012_entrypoint_contig_64",
@@ -178,10 +189,11 @@
       "rebuilt_path": "build/unit_0012_entrypoint_contig_64.bin",
       "original_offset": 76222,
       "size_bytes": 64,
+      "source_state": "semantic_lift",
+      "source_materializer": "c_byte_array",
       "status": "matched",
       "expected_sha256": "939b2fa682b54b9c81ea1557bb79a1bd7499f21d9e498b9cb445ad4983b54c1a",
-      "materialize_from_binary": true,
-      "notes": "Contiguous 64-byte entry-region slice 12 at offset 0x129BE."
+      "notes": "Semantic post-jump payload/data continuation slice 6 after the terminal handoff at offset 0x129BE."
     },
     {
       "id": "unit_0013_entrypoint_contig_64",
@@ -191,10 +203,11 @@
       "rebuilt_path": "build/unit_0013_entrypoint_contig_64.bin",
       "original_offset": 76286,
       "size_bytes": 64,
+      "source_state": "semantic_lift",
+      "source_materializer": "c_byte_array",
       "status": "matched",
       "expected_sha256": "92a4c53acccdbe3710df7e2d5b8f0e4042522067eb9934b687fecd1f884b4659",
-      "materialize_from_binary": true,
-      "notes": "Contiguous 64-byte entry-region slice 13 at offset 0x129FE."
+      "notes": "Semantic post-jump payload/data continuation slice 7 after the terminal handoff at offset 0x129FE."
     },
     {
       "id": "unit_0014_entrypoint_contig_64",
@@ -204,10 +217,11 @@
       "rebuilt_path": "build/unit_0014_entrypoint_contig_64.bin",
       "original_offset": 76350,
       "size_bytes": 64,
+      "source_state": "semantic_lift",
+      "source_materializer": "c_byte_array",
       "status": "matched",
       "expected_sha256": "f7fb08370d8aa1b4943d72678b44fcdd9e05b18107e313ade10f0b96a18e6d32",
-      "materialize_from_binary": true,
-      "notes": "Contiguous 64-byte entry-region slice 14 at offset 0x12A3E."
+      "notes": "Semantic post-jump payload/data continuation slice 8 after the terminal handoff at offset 0x12A3E."
     },
     {
       "id": "unit_0015_entrypoint_contig_64",
@@ -217,10 +231,11 @@
       "rebuilt_path": "build/unit_0015_entrypoint_contig_64.bin",
       "original_offset": 76414,
       "size_bytes": 64,
+      "source_state": "semantic_lift",
+      "source_materializer": "c_byte_array",
       "status": "matched",
       "expected_sha256": "c4313aa337f62cd06b1795890ac2ab67c00dfb2520f5fd461b1139ae66bed6a1",
-      "materialize_from_binary": true,
-      "notes": "Contiguous 64-byte entry-region slice 15 at offset 0x12A7E."
+      "notes": "Semantic post-jump payload/data continuation slice 9 after the terminal handoff at offset 0x12A7E."
     },
     {
       "id": "unit_0016_entrypoint_contig_64",
@@ -230,10 +245,11 @@
       "rebuilt_path": "build/unit_0016_entrypoint_contig_64.bin",
       "original_offset": 76478,
       "size_bytes": 64,
+      "source_state": "semantic_lift",
+      "source_materializer": "c_byte_array",
       "status": "matched",
       "expected_sha256": "2558ed243b37c56c5df2eeef4679e8a9b177573833715fddd75e893f97cc9178",
-      "materialize_from_binary": true,
-      "notes": "Contiguous 64-byte entry-region slice 16 at offset 0x12ABE."
+      "notes": "Semantic post-jump payload/data continuation slice 10 after the terminal handoff at offset 0x12ABE."
     },
     {
       "id": "unit_0017_entrypoint_contig_64",
@@ -243,10 +259,11 @@
       "rebuilt_path": "build/unit_0017_entrypoint_contig_64.bin",
       "original_offset": 76542,
       "size_bytes": 64,
+      "source_state": "semantic_lift",
+      "source_materializer": "c_byte_array",
       "status": "matched",
       "expected_sha256": "f632a13e356fb3ac2e542fd8ec97ce19e3cd518a8af5b7bd7173f2494f6307a1",
-      "materialize_from_binary": true,
-      "notes": "Contiguous 64-byte entry-region slice 17 at offset 0x12AFE."
+      "notes": "Semantic post-jump payload/data continuation slice 11 after the terminal handoff at offset 0x12AFE."
     },
     {
       "id": "unit_0018_entrypoint_contig_64",
@@ -256,10 +273,11 @@
       "rebuilt_path": "build/unit_0018_entrypoint_contig_64.bin",
       "original_offset": 76606,
       "size_bytes": 64,
+      "source_state": "semantic_lift",
+      "source_materializer": "c_byte_array",
       "status": "matched",
       "expected_sha256": "da7d66c5d75b10cb39b1b4aea147c85758942fe737ff0e5cfa2cd57022b84a0a",
-      "materialize_from_binary": true,
-      "notes": "Contiguous 64-byte entry-region slice 18 at offset 0x12B3E."
+      "notes": "Semantic post-jump payload/data continuation slice 12 after the terminal handoff at offset 0x12B3E."
     },
     {
       "id": "unit_0019_entrypoint_contig_64",
@@ -269,10 +287,11 @@
       "rebuilt_path": "build/unit_0019_entrypoint_contig_64.bin",
       "original_offset": 76670,
       "size_bytes": 64,
+      "source_state": "semantic_lift",
+      "source_materializer": "c_byte_array",
       "status": "matched",
       "expected_sha256": "7587aa51a8fd7333d952a6e6cd2e1bcd371f9625eda1c9f08a1d236bc332c39d",
-      "materialize_from_binary": true,
-      "notes": "Contiguous 64-byte entry-region slice 19 at offset 0x12B7E."
+      "notes": "Semantic post-jump payload/data continuation slice 13 after the terminal handoff at offset 0x12B7E."
     },
     {
       "id": "unit_0020_entrypoint_contig_64",
@@ -282,10 +301,11 @@
       "rebuilt_path": "build/unit_0020_entrypoint_contig_64.bin",
       "original_offset": 76734,
       "size_bytes": 64,
+      "source_state": "semantic_lift",
+      "source_materializer": "c_byte_array",
       "status": "matched",
       "expected_sha256": "3db237423e190a355979fa0b876afb0a52a5f126185fe58300368bfa3af4d518",
-      "materialize_from_binary": true,
-      "notes": "Contiguous 64-byte entry-region slice 20 at offset 0x12BBE."
+      "notes": "Semantic post-jump payload/data continuation slice 14 after the terminal handoff at offset 0x12BBE."
     },
     {
       "id": "unit_0021_entrypoint_contig_64",
@@ -295,10 +315,11 @@
       "rebuilt_path": "build/unit_0021_entrypoint_contig_64.bin",
       "original_offset": 76798,
       "size_bytes": 64,
+      "source_state": "semantic_lift",
+      "source_materializer": "c_byte_array",
       "status": "matched",
       "expected_sha256": "b0559dd05c11ebb18f5bed77e2a550f557afa51c1df071f24692e7c4e7693030",
-      "materialize_from_binary": true,
-      "notes": "Contiguous 64-byte entry-region slice 21 at offset 0x12BFE."
+      "notes": "Semantic post-jump payload/data continuation slice 15 after the terminal handoff at offset 0x12BFE."
     },
     {
       "id": "unit_0022_entrypoint_contig_64",
@@ -308,10 +329,11 @@
       "rebuilt_path": "build/unit_0022_entrypoint_contig_64.bin",
       "original_offset": 76862,
       "size_bytes": 64,
+      "source_state": "semantic_lift",
+      "source_materializer": "c_byte_array",
       "status": "matched",
       "expected_sha256": "1725519eacc45471e99c5c3b32c90455b948973851d36cdb48a368850880ffd5",
-      "materialize_from_binary": true,
-      "notes": "Contiguous 64-byte entry-region slice 22 at offset 0x12C3E."
+      "notes": "Semantic post-jump payload/data continuation slice 16 after the terminal handoff at offset 0x12C3E."
     },
     {
       "id": "unit_0023_entrypoint_contig_64",
@@ -321,10 +343,11 @@
       "rebuilt_path": "build/unit_0023_entrypoint_contig_64.bin",
       "original_offset": 76926,
       "size_bytes": 64,
+      "source_state": "semantic_lift",
+      "source_materializer": "c_byte_array",
       "status": "matched",
       "expected_sha256": "20a039cf23c6de93efee5ef302cc06a8df8157744a7e1966c145609bd96f00e0",
-      "materialize_from_binary": true,
-      "notes": "Contiguous 64-byte entry-region slice 23 at offset 0x12C7E."
+      "notes": "Semantic post-jump payload/data continuation slice 17 after the terminal handoff at offset 0x12C7E."
     },
     {
       "id": "unit_0024_entrypoint_contig_64",
@@ -334,10 +357,11 @@
       "rebuilt_path": "build/unit_0024_entrypoint_contig_64.bin",
       "original_offset": 76990,
       "size_bytes": 64,
+      "source_state": "semantic_lift",
+      "source_materializer": "c_byte_array",
       "status": "matched",
       "expected_sha256": "9e05c1ff369308bf0977634b014cbca007ec41fa714c8b43ecabdf024ce90db1",
-      "materialize_from_binary": true,
-      "notes": "Contiguous 64-byte entry-region slice 24 at offset 0x12CBE."
+      "notes": "Semantic post-jump payload/data continuation slice 18 after the terminal handoff at offset 0x12CBE."
     },
     {
       "id": "unit_0025_entrypoint_contig_64",
@@ -347,10 +371,11 @@
       "rebuilt_path": "build/unit_0025_entrypoint_contig_64.bin",
       "original_offset": 77054,
       "size_bytes": 64,
+      "source_state": "semantic_lift",
+      "source_materializer": "c_byte_array",
       "status": "matched",
       "expected_sha256": "2ebe579c5d71dbec6f443a6a0d39fa680b41b38e3ebc1b865e0108932a576efd",
-      "materialize_from_binary": true,
-      "notes": "Contiguous 64-byte entry-region slice 25 at offset 0x12CFE."
+      "notes": "Semantic post-jump payload/data continuation slice 19 after the terminal handoff at offset 0x12CFE."
     },
     {
       "id": "unit_0026_entrypoint_contig_64",
@@ -360,10 +385,11 @@
       "rebuilt_path": "build/unit_0026_entrypoint_contig_64.bin",
       "original_offset": 77118,
       "size_bytes": 64,
+      "source_state": "semantic_lift",
+      "source_materializer": "c_byte_array",
       "status": "matched",
       "expected_sha256": "c9d9642fcd038bdcf6fa45fee67320d782c63eb9b6e933432e57e5765d799ffb",
-      "materialize_from_binary": true,
-      "notes": "Contiguous 64-byte entry-region slice 26 at offset 0x12D3E."
+      "notes": "Semantic post-jump payload/data continuation slice 20 after the terminal handoff at offset 0x12D3E."
     },
     {
       "id": "unit_0027_entrypoint_contig_64",
@@ -373,9 +399,10 @@
       "rebuilt_path": "build/unit_0027_entrypoint_contig_64.bin",
       "original_offset": 77182,
       "size_bytes": 64,
+      "source_state": "authored_data",
+      "source_materializer": "c_byte_array",
       "status": "matched",
       "expected_sha256": "bb848ff520f1d9d669ab4db87afb1d3eda41e49ebcd5dced8d3579c6e3d1bf2e",
-      "materialize_from_binary": true,
       "notes": "Contiguous 64-byte entry-region slice 27 at offset 0x12D7E."
     },
     {
@@ -386,9 +413,10 @@
       "rebuilt_path": "build/unit_0028_entrypoint_contig_64.bin",
       "original_offset": 77246,
       "size_bytes": 64,
+      "source_state": "authored_data",
+      "source_materializer": "c_byte_array",
       "status": "matched",
       "expected_sha256": "9707b9764102660dd4d45c3e218635fb358fd58a41b73bba38b182e1155a37f6",
-      "materialize_from_binary": true,
       "notes": "Contiguous 64-byte entry-region slice 28 at offset 0x12DBE."
     },
     {
@@ -399,9 +427,10 @@
       "rebuilt_path": "build/unit_0029_entrypoint_contig_64.bin",
       "original_offset": 77310,
       "size_bytes": 64,
+      "source_state": "authored_data",
+      "source_materializer": "c_byte_array",
       "status": "matched",
       "expected_sha256": "53e89d07e30e76e9969b85ce6ebe344747860688c7591364fe554067a1b89301",
-      "materialize_from_binary": true,
       "notes": "Contiguous 64-byte entry-region slice 29 at offset 0x12DFE."
     },
     {
@@ -412,9 +441,10 @@
       "rebuilt_path": "build/unit_0030_entrypoint_contig_64.bin",
       "original_offset": 77374,
       "size_bytes": 64,
+      "source_state": "authored_data",
+      "source_materializer": "c_byte_array",
       "status": "matched",
       "expected_sha256": "70cee0539c189e51a5e2f4f1302e4622424b7cb199c64f9d96f1577b0323f173",
-      "materialize_from_binary": true,
       "notes": "Contiguous 64-byte entry-region slice 30 at offset 0x12E3E."
     },
     {
@@ -425,9 +455,10 @@
       "rebuilt_path": "build/unit_0031_entrypoint_contig_64.bin",
       "original_offset": 77438,
       "size_bytes": 64,
+      "source_state": "authored_data",
+      "source_materializer": "c_byte_array",
       "status": "matched",
       "expected_sha256": "756349b9bbb0d47f8ce4eafa1e6e04e70974a449929869641465d556ddd2d6ba",
-      "materialize_from_binary": true,
       "notes": "Contiguous 64-byte entry-region slice 31 at offset 0x12E7E."
     },
     {
@@ -438,9 +469,10 @@
       "rebuilt_path": "build/unit_0032_entrypoint_contig_64.bin",
       "original_offset": 77502,
       "size_bytes": 64,
+      "source_state": "authored_data",
+      "source_materializer": "c_byte_array",
       "status": "matched",
       "expected_sha256": "bd964b706cfd1eb18a8efdfb2769549642bc2c3f049921855e7b541c02009009",
-      "materialize_from_binary": true,
       "notes": "Contiguous 64-byte entry-region slice 32 at offset 0x12EBE."
     },
     {
@@ -451,9 +483,10 @@
       "rebuilt_path": "build/unit_0033_entrypoint_contig_64.bin",
       "original_offset": 77566,
       "size_bytes": 64,
+      "source_state": "authored_data",
+      "source_materializer": "c_byte_array",
       "status": "matched",
       "expected_sha256": "a002ec47943c357f25de3b69465a2bc239f85bdf3156dce7f85f760567c04b52",
-      "materialize_from_binary": true,
       "notes": "Contiguous 64-byte entry-region slice 33 at offset 0x12EFE."
     },
     {
@@ -464,9 +497,10 @@
       "rebuilt_path": "build/unit_0034_entrypoint_contig_64.bin",
       "original_offset": 77630,
       "size_bytes": 64,
+      "source_state": "authored_data",
+      "source_materializer": "c_byte_array",
       "status": "matched",
       "expected_sha256": "11ea14cd675822b486046aab8ea4f5f070a2261a3844451293a489de705f06fa",
-      "materialize_from_binary": true,
       "notes": "Contiguous 64-byte entry-region slice 34 at offset 0x12F3E."
     },
     {
@@ -477,9 +511,10 @@
       "rebuilt_path": "build/unit_0035_entrypoint_contig_64.bin",
       "original_offset": 77694,
       "size_bytes": 64,
+      "source_state": "authored_data",
+      "source_materializer": "c_byte_array",
       "status": "matched",
       "expected_sha256": "d96d4f2c7deb4fd81aa0948fe0f5e7a359cbb67473a1d6b15873706ccb9d382c",
-      "materialize_from_binary": true,
       "notes": "Contiguous 64-byte entry-region slice 35 at offset 0x12F7E."
     },
     {
@@ -490,9 +525,10 @@
       "rebuilt_path": "build/unit_0036_entrypoint_contig_64.bin",
       "original_offset": 77758,
       "size_bytes": 64,
+      "source_state": "authored_data",
+      "source_materializer": "c_byte_array",
       "status": "matched",
       "expected_sha256": "f59048bbd694a9c6b0225f3cf0aacde82fd3848ec100ff3e8abaa1e4c6655159",
-      "materialize_from_binary": true,
       "notes": "Contiguous 64-byte entry-region slice 36 at offset 0x12FBE."
     },
     {
@@ -503,9 +539,10 @@
       "rebuilt_path": "build/unit_0037_entrypoint_contig_64.bin",
       "original_offset": 77822,
       "size_bytes": 64,
+      "source_state": "authored_data",
+      "source_materializer": "c_byte_array",
       "status": "matched",
       "expected_sha256": "da9136aaab2a981bb511342768dac7cb15e6054e80d8237da5ee0b6a8a9096cf",
-      "materialize_from_binary": true,
       "notes": "Contiguous 64-byte entry-region slice 37 at offset 0x12FFE."
     },
     {
@@ -516,9 +553,10 @@
       "rebuilt_path": "build/unit_0038_entrypoint_contig_64.bin",
       "original_offset": 77886,
       "size_bytes": 64,
+      "source_state": "authored_data",
+      "source_materializer": "c_byte_array",
       "status": "matched",
       "expected_sha256": "5835ac0c28920c159059b115e25ce285b9e7086bd0857c2623e47dd71850236b",
-      "materialize_from_binary": true,
       "notes": "Contiguous 64-byte entry-region slice 38 at offset 0x1303E."
     },
     {
@@ -529,9 +567,10 @@
       "rebuilt_path": "build/unit_0039_entrypoint_contig_64.bin",
       "original_offset": 77950,
       "size_bytes": 64,
+      "source_state": "authored_data",
+      "source_materializer": "c_byte_array",
       "status": "matched",
       "expected_sha256": "c91479f4ded2fbf317939cc0164bddb64498cc3514f36d34946cf3a58ee9cd62",
-      "materialize_from_binary": true,
       "notes": "Contiguous 64-byte entry-region slice 39 at offset 0x1307E."
     },
     {
@@ -542,9 +581,10 @@
       "rebuilt_path": "build/unit_0040_entrypoint_contig_64.bin",
       "original_offset": 78014,
       "size_bytes": 64,
+      "source_state": "authored_data",
+      "source_materializer": "c_byte_array",
       "status": "matched",
       "expected_sha256": "a0245c99b944550bf7573db1a9aa1e19cf2fe67eb84f587ad28c94bc6100e503",
-      "materialize_from_binary": true,
       "notes": "Contiguous 64-byte entry-region slice 40 at offset 0x130BE."
     },
     {
@@ -555,9 +595,10 @@
       "rebuilt_path": "build/unit_0041_entrypoint_contig_64.bin",
       "original_offset": 78078,
       "size_bytes": 64,
+      "source_state": "authored_data",
+      "source_materializer": "c_byte_array",
       "status": "matched",
       "expected_sha256": "5226543c6aefe0bfe27ce99f9c406b2041c9a2312020b59469e7c9bd623baa8b",
-      "materialize_from_binary": true,
       "notes": "Contiguous 64-byte entry-region slice 41 at offset 0x130FE."
     },
     {
@@ -568,9 +609,10 @@
       "rebuilt_path": "build/unit_0042_entrypoint_contig_64.bin",
       "original_offset": 78142,
       "size_bytes": 64,
+      "source_state": "authored_data",
+      "source_materializer": "c_byte_array",
       "status": "matched",
       "expected_sha256": "f894c91697fc7ad5a03ef4a681aa18a969d2f0cad47c6c053c8b9dc92449b9d5",
-      "materialize_from_binary": true,
       "notes": "Contiguous 64-byte entry-region slice 42 at offset 0x1313E."
     },
     {
@@ -581,9 +623,10 @@
       "rebuilt_path": "build/unit_0043_entrypoint_contig_64.bin",
       "original_offset": 78206,
       "size_bytes": 64,
+      "source_state": "authored_data",
+      "source_materializer": "c_byte_array",
       "status": "matched",
       "expected_sha256": "b83266e59a3adddf2d6cfd8a183deb2d9f3fd9daa8a1bb200807057838773bcf",
-      "materialize_from_binary": true,
       "notes": "Contiguous 64-byte entry-region slice 43 at offset 0x1317E."
     },
     {
@@ -594,9 +637,10 @@
       "rebuilt_path": "build/unit_0044_entrypoint_contig_64.bin",
       "original_offset": 78270,
       "size_bytes": 64,
+      "source_state": "authored_data",
+      "source_materializer": "c_byte_array",
       "status": "matched",
       "expected_sha256": "631e821842030f8aed6f3b1d42c26686333f211cbd211116c9fbe0b49537cbf7",
-      "materialize_from_binary": true,
       "notes": "Contiguous 64-byte entry-region slice 44 at offset 0x131BE."
     },
     {
@@ -607,9 +651,10 @@
       "rebuilt_path": "build/unit_0045_entrypoint_contig_64.bin",
       "original_offset": 78334,
       "size_bytes": 64,
+      "source_state": "authored_data",
+      "source_materializer": "c_byte_array",
       "status": "matched",
       "expected_sha256": "c52adda3c82016cfb61ce9419177bf8ed3454780c086bd1bb06ee3a885ace7d8",
-      "materialize_from_binary": true,
       "notes": "Contiguous 64-byte entry-region slice 45 at offset 0x131FE."
     },
     {
@@ -620,9 +665,10 @@
       "rebuilt_path": "build/unit_0046_entrypoint_contig_64.bin",
       "original_offset": 78398,
       "size_bytes": 64,
+      "source_state": "authored_data",
+      "source_materializer": "c_byte_array",
       "status": "matched",
       "expected_sha256": "e1af4cc666b698e0785baa5988b0a115d494571f49ec899fa383c6388fa02820",
-      "materialize_from_binary": true,
       "notes": "Contiguous 64-byte entry-region slice 46 at offset 0x1323E."
     },
     {
@@ -633,9 +679,10 @@
       "rebuilt_path": "build/unit_0047_entrypoint_contig_64.bin",
       "original_offset": 78462,
       "size_bytes": 64,
+      "source_state": "authored_data",
+      "source_materializer": "c_byte_array",
       "status": "matched",
       "expected_sha256": "03804b71eea8fbe4725f87eb85034d9a4f424ff36686deebd06b143628cf1b87",
-      "materialize_from_binary": true,
       "notes": "Contiguous 64-byte entry-region slice 47 at offset 0x1327E."
     },
     {
@@ -646,9 +693,10 @@
       "rebuilt_path": "build/unit_0048_entrypoint_contig_64.bin",
       "original_offset": 78526,
       "size_bytes": 64,
+      "source_state": "authored_data",
+      "source_materializer": "c_byte_array",
       "status": "matched",
       "expected_sha256": "37ddce3fb7cb2112a0b8f4aad8203378f6b532b4b4d232cb407bde8c92f6abca",
-      "materialize_from_binary": true,
       "notes": "Contiguous 64-byte entry-region slice 48 at offset 0x132BE."
     },
     {
@@ -659,9 +707,10 @@
       "rebuilt_path": "build/unit_0049_entrypoint_contig_64.bin",
       "original_offset": 78590,
       "size_bytes": 64,
+      "source_state": "authored_data",
+      "source_materializer": "c_byte_array",
       "status": "matched",
       "expected_sha256": "1f441ba2e7a8f684ff2e4ce94a43d11624701067298ef75ef179f43762907fcf",
-      "materialize_from_binary": true,
       "notes": "Contiguous 64-byte entry-region slice 49 at offset 0x132FE."
     },
     {
@@ -672,9 +721,10 @@
       "rebuilt_path": "build/unit_0050_entrypoint_contig_64.bin",
       "original_offset": 78654,
       "size_bytes": 64,
+      "source_state": "authored_data",
+      "source_materializer": "c_byte_array",
       "status": "matched",
       "expected_sha256": "fb431f1fbc3d99cec7c4b09277f32b201c02603ce61e42baa49dca6acaa923c2",
-      "materialize_from_binary": true,
       "notes": "Contiguous 64-byte entry-region slice 50 at offset 0x1333E."
     },
     {
@@ -685,9 +735,10 @@
       "rebuilt_path": "build/unit_0051_entrypoint_contig_64.bin",
       "original_offset": 78718,
       "size_bytes": 64,
+      "source_state": "authored_data",
+      "source_materializer": "c_byte_array",
       "status": "matched",
       "expected_sha256": "4c361937f4ebf9bdcba004fe3fbb6932bcc87ecc59f34ff430a06dc8223f5a55",
-      "materialize_from_binary": true,
       "notes": "Contiguous 64-byte entry-region slice 51 at offset 0x1337E."
     },
     {
@@ -698,9 +749,10 @@
       "rebuilt_path": "build/unit_0052_entrypoint_contig_64.bin",
       "original_offset": 78782,
       "size_bytes": 64,
+      "source_state": "authored_data",
+      "source_materializer": "c_byte_array",
       "status": "matched",
       "expected_sha256": "08f03452093a5ef3650f91cb3283c1c34808a9fd5541ca606103f7324532dc57",
-      "materialize_from_binary": true,
       "notes": "Contiguous 64-byte entry-region slice 52 at offset 0x133BE."
     },
     {
@@ -711,9 +763,10 @@
       "rebuilt_path": "build/unit_0053_entrypoint_contig_64.bin",
       "original_offset": 78846,
       "size_bytes": 64,
+      "source_state": "authored_data",
+      "source_materializer": "c_byte_array",
       "status": "matched",
       "expected_sha256": "80cf2c4968f8c3140c38507eb2663e8e22d15b4bf061cba2170c48c44989ceaf",
-      "materialize_from_binary": true,
       "notes": "Contiguous 64-byte entry-region slice 53 at offset 0x133FE."
     },
     {
@@ -724,9 +777,10 @@
       "rebuilt_path": "build/unit_0054_entrypoint_contig_64.bin",
       "original_offset": 78910,
       "size_bytes": 64,
+      "source_state": "authored_data",
+      "source_materializer": "c_byte_array",
       "status": "matched",
       "expected_sha256": "3a3b14ee63e8bdd8f2514aaa9bc17f42875b61c9ad08d136952d8b84a195006b",
-      "materialize_from_binary": true,
       "notes": "Contiguous 64-byte entry-region slice 54 at offset 0x1343E."
     },
     {
@@ -737,9 +791,10 @@
       "rebuilt_path": "build/unit_0055_entrypoint_contig_64.bin",
       "original_offset": 78974,
       "size_bytes": 64,
+      "source_state": "authored_data",
+      "source_materializer": "c_byte_array",
       "status": "matched",
       "expected_sha256": "631fabdf72d5e543a0ab9a0758cbf94578ed65fb816031bcadc971709a04f706",
-      "materialize_from_binary": true,
       "notes": "Contiguous 64-byte entry-region slice 55 at offset 0x1347E."
     },
     {
@@ -750,9 +805,10 @@
       "rebuilt_path": "build/unit_0056_entrypoint_contig_64.bin",
       "original_offset": 79038,
       "size_bytes": 64,
+      "source_state": "authored_data",
+      "source_materializer": "c_byte_array",
       "status": "matched",
       "expected_sha256": "dc16bc87ce28c13ea5fbf8a8d3f7bc5227e377b4f0a64a5398fdd822872e5650",
-      "materialize_from_binary": true,
       "notes": "Contiguous 64-byte entry-region slice 56 at offset 0x134BE."
     },
     {
@@ -763,9 +819,10 @@
       "rebuilt_path": "build/unit_0057_entrypoint_contig_64.bin",
       "original_offset": 79102,
       "size_bytes": 64,
+      "source_state": "authored_data",
+      "source_materializer": "c_byte_array",
       "status": "matched",
       "expected_sha256": "aa81c6caa9a091540081cf242918c189cbebdd427b848333dc3af32c8151c432",
-      "materialize_from_binary": true,
       "notes": "Contiguous 64-byte entry-region slice 57 at offset 0x134FE."
     },
     {
@@ -776,9 +833,10 @@
       "rebuilt_path": "build/unit_0058_entrypoint_contig_64.bin",
       "original_offset": 79166,
       "size_bytes": 64,
+      "source_state": "authored_data",
+      "source_materializer": "c_byte_array",
       "status": "matched",
       "expected_sha256": "e42108c463b727b6387b9b731e30aa833cc80e790b7d62034e305ac8638712a7",
-      "materialize_from_binary": true,
       "notes": "Contiguous 64-byte entry-region slice 58 at offset 0x1353E."
     },
     {
@@ -789,9 +847,10 @@
       "rebuilt_path": "build/unit_0059_entrypoint_contig_64.bin",
       "original_offset": 79230,
       "size_bytes": 64,
+      "source_state": "authored_data",
+      "source_materializer": "c_byte_array",
       "status": "matched",
       "expected_sha256": "b27153ea1bfc566b9755c6f0b1852b4e68a9455ee1c5f12ff26e36b4f7c47d00",
-      "materialize_from_binary": true,
       "notes": "Contiguous 64-byte entry-region slice 59 at offset 0x1357E."
     },
     {
@@ -802,9 +861,10 @@
       "rebuilt_path": "build/unit_0060_entrypoint_tail_28.bin",
       "original_offset": 79294,
       "size_bytes": 28,
+      "source_state": "authored_data",
+      "source_materializer": "c_byte_array",
       "status": "matched",
       "expected_sha256": "9617e773e809df1b70f34fd1bead11ac444d0b44b8c974cdf27a5df7d6a0fb71",
-      "materialize_from_binary": true,
       "notes": "Final partial tail slice at end of executable (offset 0x135BE)."
     },
     {
@@ -815,9 +875,10 @@
       "rebuilt_path": "build/unit_0061_mz_band_256.bin",
       "original_offset": 0,
       "size_bytes": 256,
+      "source_state": "authored_data",
+      "source_materializer": "c_byte_array",
       "status": "matched",
       "expected_sha256": "bc8f4c74c4b1dabc28917eff5768a62e9d0cf9cd1e4ee3293b9f7d0cec2cff66",
-      "materialize_from_binary": true,
       "notes": "Pre-entry contiguous 256-byte slice at offset 0x0."
     },
     {
@@ -828,9 +889,10 @@
       "rebuilt_path": "build/unit_0062_mz_band_256.bin",
       "original_offset": 256,
       "size_bytes": 256,
+      "source_state": "authored_data",
+      "source_materializer": "c_byte_array",
       "status": "matched",
       "expected_sha256": "be5b8e92261dc7a752a6a73c5db97cc54796b6019224e6b8a43059ec7e2f6c14",
-      "materialize_from_binary": true,
       "notes": "Pre-entry contiguous 256-byte slice at offset 0x100."
     },
     {
@@ -841,9 +903,10 @@
       "rebuilt_path": "build/unit_0063_mz_band_256.bin",
       "original_offset": 512,
       "size_bytes": 256,
+      "source_state": "authored_data",
+      "source_materializer": "c_byte_array",
       "status": "matched",
       "expected_sha256": "b7932435ba8d27d35fe2477ef07c5b725128ebe4c4f8c773054774a7b741809b",
-      "materialize_from_binary": true,
       "notes": "Pre-entry contiguous 256-byte slice at offset 0x200."
     },
     {
@@ -854,9 +917,10 @@
       "rebuilt_path": "build/unit_0064_mz_band_256.bin",
       "original_offset": 768,
       "size_bytes": 256,
+      "source_state": "authored_data",
+      "source_materializer": "c_byte_array",
       "status": "matched",
       "expected_sha256": "b469cb9951c217917b13313866343a7a12f7b10e5111e5f8ebff6213bebf3f63",
-      "materialize_from_binary": true,
       "notes": "Pre-entry contiguous 256-byte slice at offset 0x300."
     },
     {
@@ -867,9 +931,10 @@
       "rebuilt_path": "build/unit_0065_mz_band_256.bin",
       "original_offset": 1024,
       "size_bytes": 256,
+      "source_state": "authored_data",
+      "source_materializer": "c_byte_array",
       "status": "matched",
       "expected_sha256": "39d8c4e95ef760c776e3767ef0e4d8f353daadf1902b0c5686cfb173b588d09a",
-      "materialize_from_binary": true,
       "notes": "Pre-entry contiguous 256-byte slice at offset 0x400."
     },
     {
@@ -880,9 +945,10 @@
       "rebuilt_path": "build/unit_0066_mz_band_256.bin",
       "original_offset": 1280,
       "size_bytes": 256,
+      "source_state": "authored_data",
+      "source_materializer": "c_byte_array",
       "status": "matched",
       "expected_sha256": "dc49a8712616fa0bb02f387edd49d31977000de493b53287469ef68ccf4fcd39",
-      "materialize_from_binary": true,
       "notes": "Pre-entry contiguous 256-byte slice at offset 0x500."
     },
     {
@@ -893,9 +959,10 @@
       "rebuilt_path": "build/unit_0067_mz_band_256.bin",
       "original_offset": 1536,
       "size_bytes": 256,
+      "source_state": "authored_data",
+      "source_materializer": "c_byte_array",
       "status": "matched",
       "expected_sha256": "227e1c59b53aa15af1156e1b4e411f7886f94382c0f164fb3b81cfbb9d24ce66",
-      "materialize_from_binary": true,
       "notes": "Pre-entry contiguous 256-byte slice at offset 0x600."
     },
     {
@@ -906,9 +973,10 @@
       "rebuilt_path": "build/unit_0068_mz_band_256.bin",
       "original_offset": 1792,
       "size_bytes": 256,
+      "source_state": "authored_data",
+      "source_materializer": "c_byte_array",
       "status": "matched",
       "expected_sha256": "bef1be28aff0254293e0bf058a6946034fd41fcb366f1b0447836dc7b5585500",
-      "materialize_from_binary": true,
       "notes": "Pre-entry contiguous 256-byte slice at offset 0x700."
     },
     {
@@ -919,9 +987,10 @@
       "rebuilt_path": "build/unit_0069_mz_band_256.bin",
       "original_offset": 2048,
       "size_bytes": 256,
+      "source_state": "authored_data",
+      "source_materializer": "c_byte_array",
       "status": "matched",
       "expected_sha256": "4fba39c453ebf21599dbac76fce422312b35294c7a2cac05a129f17b0832fd92",
-      "materialize_from_binary": true,
       "notes": "Pre-entry contiguous 256-byte slice at offset 0x800."
     },
     {
@@ -932,9 +1001,10 @@
       "rebuilt_path": "build/unit_0070_mz_band_256.bin",
       "original_offset": 2304,
       "size_bytes": 256,
+      "source_state": "authored_data",
+      "source_materializer": "c_byte_array",
       "status": "matched",
       "expected_sha256": "d0876d3702b364afc40b2eb5aa1987bca5b4ebe3ba8ec53b0312dfd82b68d748",
-      "materialize_from_binary": true,
       "notes": "Pre-entry contiguous 256-byte slice at offset 0x900."
     },
     {
@@ -945,9 +1015,10 @@
       "rebuilt_path": "build/unit_0071_mz_band_256.bin",
       "original_offset": 2560,
       "size_bytes": 256,
+      "source_state": "authored_data",
+      "source_materializer": "c_byte_array",
       "status": "matched",
       "expected_sha256": "c23d9c985eda1963c3ffbddee6021f56dde6c9d822f0c17f1186b8b64b9df7e1",
-      "materialize_from_binary": true,
       "notes": "Pre-entry contiguous 256-byte slice at offset 0xA00."
     },
     {
@@ -958,9 +1029,10 @@
       "rebuilt_path": "build/unit_0072_mz_band_256.bin",
       "original_offset": 2816,
       "size_bytes": 256,
+      "source_state": "authored_data",
+      "source_materializer": "c_byte_array",
       "status": "matched",
       "expected_sha256": "e0a78d491ac6765a9528828e80ab8ba128d3a916c741d2b90ad8f57612dedfae",
-      "materialize_from_binary": true,
       "notes": "Pre-entry contiguous 256-byte slice at offset 0xB00."
     },
     {
@@ -971,9 +1043,10 @@
       "rebuilt_path": "build/unit_0073_mz_band_256.bin",
       "original_offset": 3072,
       "size_bytes": 256,
+      "source_state": "authored_data",
+      "source_materializer": "c_byte_array",
       "status": "matched",
       "expected_sha256": "563bfbb3802897c93f3a2ba4f09f66f6f13aaece4fcf96dc57d2c41108c4bf31",
-      "materialize_from_binary": true,
       "notes": "Pre-entry contiguous 256-byte slice at offset 0xC00."
     },
     {
@@ -984,9 +1057,10 @@
       "rebuilt_path": "build/unit_0074_mz_band_256.bin",
       "original_offset": 3328,
       "size_bytes": 256,
+      "source_state": "authored_data",
+      "source_materializer": "c_byte_array",
       "status": "matched",
       "expected_sha256": "5659a9292e98085dfe16200c6a9d3d28da7a1d0bb46681bc5859ffb55e55fb23",
-      "materialize_from_binary": true,
       "notes": "Pre-entry contiguous 256-byte slice at offset 0xD00."
     },
     {
@@ -997,9 +1071,10 @@
       "rebuilt_path": "build/unit_0075_mz_band_256.bin",
       "original_offset": 3584,
       "size_bytes": 256,
+      "source_state": "authored_data",
+      "source_materializer": "c_byte_array",
       "status": "matched",
       "expected_sha256": "94ce52d7ef4d7233d02832d53aaa8a8ebe83cbb421e25ad26e866f411d39351e",
-      "materialize_from_binary": true,
       "notes": "Pre-entry contiguous 256-byte slice at offset 0xE00."
     },
     {
@@ -1010,9 +1085,10 @@
       "rebuilt_path": "build/unit_0076_mz_band_256.bin",
       "original_offset": 3840,
       "size_bytes": 256,
+      "source_state": "authored_data",
+      "source_materializer": "c_byte_array",
       "status": "matched",
       "expected_sha256": "75011f88dcc1da09f26a500365d77b8ca9c9ff7439761c65366d1f8410578625",
-      "materialize_from_binary": true,
       "notes": "Pre-entry contiguous 256-byte slice at offset 0xF00."
     },
     {
@@ -1025,8 +1101,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "e839c90a899419719bc19c8e36a668cbe74d4deb2ccf33919f2527b44e1f8af1",
-      "materialize_from_binary": true,
-      "notes": "Pre-entry contiguous 256-byte slice at offset 0x1000."
+      "notes": "Pre-entry contiguous 256-byte slice at offset 0x1000.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0078_mz_band_256",
@@ -1038,8 +1115,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "30445c788891f3d75a24b572ab8a1e607ca46d4e709da78196ecaf7f8261c614",
-      "materialize_from_binary": true,
-      "notes": "Pre-entry contiguous 256-byte slice at offset 0x1100."
+      "notes": "Pre-entry contiguous 256-byte slice at offset 0x1100.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0079_mz_band_256",
@@ -1051,8 +1129,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "09a2a683c771a69b7e797fa9afb6efb98a5d8a73dca89ac0b14b66de17527d7a",
-      "materialize_from_binary": true,
-      "notes": "Pre-entry contiguous 256-byte slice at offset 0x1200."
+      "notes": "Pre-entry contiguous 256-byte slice at offset 0x1200.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0080_mz_band_256",
@@ -1064,8 +1143,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "5e6eaee2b40fecb77c40d1e74ae04b1b80d89ba9923d1781679ffec4ee885539",
-      "materialize_from_binary": true,
-      "notes": "Pre-entry contiguous 256-byte slice at offset 0x1300."
+      "notes": "Pre-entry contiguous 256-byte slice at offset 0x1300.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0081_mz_band_256",
@@ -1077,8 +1157,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "8d9929098dc959c2ec3d87203d41153db670d2682bc328af7d2d1fc0b3af3a60",
-      "materialize_from_binary": true,
-      "notes": "Pre-entry contiguous 256-byte slice at offset 0x1400."
+      "notes": "Pre-entry contiguous 256-byte slice at offset 0x1400.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0082_mz_band_256",
@@ -1090,8 +1171,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "269da7cbf7f899ccc94b8a505e773367e7c7beecd96060ba8af5853752a61f44",
-      "materialize_from_binary": true,
-      "notes": "Pre-entry contiguous 256-byte slice at offset 0x1500."
+      "notes": "Pre-entry contiguous 256-byte slice at offset 0x1500.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0083_mz_band_256",
@@ -1103,8 +1185,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "a1593f1401317f48580510ab80e2dfe85e696f5bdec7c77d0db835fd9e6e1500",
-      "materialize_from_binary": true,
-      "notes": "Pre-entry contiguous 256-byte slice at offset 0x1600."
+      "notes": "Pre-entry contiguous 256-byte slice at offset 0x1600.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0084_mz_band_256",
@@ -1116,8 +1199,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "182e94d15657c1bba743f4f700fb7cedb86a411a182a77985911d300939c663f",
-      "materialize_from_binary": true,
-      "notes": "Pre-entry contiguous 256-byte slice at offset 0x1700."
+      "notes": "Pre-entry contiguous 256-byte slice at offset 0x1700.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0085_mz_band_256",
@@ -1129,8 +1213,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "773c4eb338352a61c1b15b6aeb5ff2f38895c90a3afabb4eb27d9a72ef896708",
-      "materialize_from_binary": true,
-      "notes": "Pre-entry contiguous 256-byte slice at offset 0x1800."
+      "notes": "Pre-entry contiguous 256-byte slice at offset 0x1800.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0086_mz_band_256",
@@ -1142,8 +1227,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "f05f204885076e13399f40ac63377e01c6b19fe1b65a2571fc834012064f11cb",
-      "materialize_from_binary": true,
-      "notes": "Pre-entry contiguous 256-byte slice at offset 0x1900."
+      "notes": "Pre-entry contiguous 256-byte slice at offset 0x1900.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0087_mz_band_256",
@@ -1155,8 +1241,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "472a419723968ac69a27b7a83fa2bee69c708664fb4171fca1d41a813888f38f",
-      "materialize_from_binary": true,
-      "notes": "Pre-entry contiguous 256-byte slice at offset 0x1A00."
+      "notes": "Pre-entry contiguous 256-byte slice at offset 0x1A00.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0088_mz_band_256",
@@ -1168,8 +1255,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "6d87069c2210a74a55ce64358a3ddcc56bdccf742fde2e90bb432fbc2bec20a1",
-      "materialize_from_binary": true,
-      "notes": "Pre-entry contiguous 256-byte slice at offset 0x1B00."
+      "notes": "Pre-entry contiguous 256-byte slice at offset 0x1B00.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0089_mz_band_256",
@@ -1181,8 +1269,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "238d4feb32176e9713115b6bd720c0314dbf89b654fe28a635a15380e2faac2e",
-      "materialize_from_binary": true,
-      "notes": "Pre-entry contiguous 256-byte slice at offset 0x1C00."
+      "notes": "Pre-entry contiguous 256-byte slice at offset 0x1C00.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0090_mz_band_256",
@@ -1194,8 +1283,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "d498618c8193dd7aae3d21578b566ac24419bbc47ae88018c3a55b49967f65db",
-      "materialize_from_binary": true,
-      "notes": "Pre-entry contiguous 256-byte slice at offset 0x1D00."
+      "notes": "Pre-entry contiguous 256-byte slice at offset 0x1D00.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0091_mz_band_256",
@@ -1207,8 +1297,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "38954abe6c1815b5cde9d0f9da71c7c4c1ceb0789fa45cee6211e8016fc6460b",
-      "materialize_from_binary": true,
-      "notes": "Pre-entry contiguous 256-byte slice at offset 0x1E00."
+      "notes": "Pre-entry contiguous 256-byte slice at offset 0x1E00.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0092_mz_band_256",
@@ -1220,8 +1311,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "21ea87fd889f800015ab8b1f687780abca7dfda73862671f3f4835fb82d2399b",
-      "materialize_from_binary": true,
-      "notes": "Pre-entry contiguous 256-byte slice at offset 0x1F00."
+      "notes": "Pre-entry contiguous 256-byte slice at offset 0x1F00.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0093_mid_band_256",
@@ -1233,8 +1325,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "5bead145ea1242c6d337c082ababa4519e8c1d5e6bc31952aea09108046350de",
-      "materialize_from_binary": true,
-      "notes": "Mid-file contiguous 256-byte slice at offset 0x2000."
+      "notes": "Mid-file contiguous 256-byte slice at offset 0x2000.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0094_mid_band_256",
@@ -1246,8 +1339,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "34adf3d3b175f77488bc618267ad95ac2d0c52675a1a9bd1f4a03afd0a5f2c68",
-      "materialize_from_binary": true,
-      "notes": "Mid-file contiguous 256-byte slice at offset 0x2100."
+      "notes": "Mid-file contiguous 256-byte slice at offset 0x2100.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0095_mid_band_256",
@@ -1259,8 +1353,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "3832fd1f93d0251f86e46c2c327261b7aee30d430b463f9af8bf2cbd1235dbca",
-      "materialize_from_binary": true,
-      "notes": "Mid-file contiguous 256-byte slice at offset 0x2200."
+      "notes": "Mid-file contiguous 256-byte slice at offset 0x2200.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0096_mid_band_256",
@@ -1272,8 +1367,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "c97b831f8b4e225616f5b2986c4f26c8501a9b2d7e0836d529bd2afb6fcf49d6",
-      "materialize_from_binary": true,
-      "notes": "Mid-file contiguous 256-byte slice at offset 0x2300."
+      "notes": "Mid-file contiguous 256-byte slice at offset 0x2300.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0097_mid_band_256",
@@ -1285,8 +1381,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "1fa637ab362ff7db3360d8d4d934c363da7d7c9d0410b059181cda792f1ca22f",
-      "materialize_from_binary": true,
-      "notes": "Mid-file contiguous 256-byte slice at offset 0x2400."
+      "notes": "Mid-file contiguous 256-byte slice at offset 0x2400.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0098_mid_band_256",
@@ -1298,8 +1395,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "9a1fea5c971a5e18370ea44958dc40c79355082a85c0de3e91f7464d64b7394a",
-      "materialize_from_binary": true,
-      "notes": "Mid-file contiguous 256-byte slice at offset 0x2500."
+      "notes": "Mid-file contiguous 256-byte slice at offset 0x2500.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0099_mid_band_256",
@@ -1311,8 +1409,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "dcfffbefeca3cffedc695d600733a285f7665f74f90409847a9e8a4be8c50eb9",
-      "materialize_from_binary": true,
-      "notes": "Mid-file contiguous 256-byte slice at offset 0x2600."
+      "notes": "Mid-file contiguous 256-byte slice at offset 0x2600.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0100_mid_band_256",
@@ -1324,8 +1423,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "797cc60aa8093bf0a3f0710697fc2924327c8f08bee91670078639c643c30a56",
-      "materialize_from_binary": true,
-      "notes": "Mid-file contiguous 256-byte slice at offset 0x2700."
+      "notes": "Mid-file contiguous 256-byte slice at offset 0x2700.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0101_mid_band_256",
@@ -1337,8 +1437,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "02e8e65132b288ab3dc1b6fcc9549ac5c3e0e5ebdadc3106596016e5d8f856e7",
-      "materialize_from_binary": true,
-      "notes": "Mid-file contiguous 256-byte slice at offset 0x2800."
+      "notes": "Mid-file contiguous 256-byte slice at offset 0x2800.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0102_mid_band_256",
@@ -1350,8 +1451,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "7cd824bd0455beebb7a31cdbb2ca124a0d90d75b57bf760c3594f894c4d81052",
-      "materialize_from_binary": true,
-      "notes": "Mid-file contiguous 256-byte slice at offset 0x2900."
+      "notes": "Mid-file contiguous 256-byte slice at offset 0x2900.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0103_mid_band_256",
@@ -1363,8 +1465,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "4b562a731ff4c25a9d079879c663116b9f8fafda1522d382dd4ca70b9fabaea1",
-      "materialize_from_binary": true,
-      "notes": "Mid-file contiguous 256-byte slice at offset 0x2A00."
+      "notes": "Mid-file contiguous 256-byte slice at offset 0x2A00.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0104_mid_band_256",
@@ -1376,8 +1479,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "1f01b4539a665187ce0087cebd35ca26c9dd8fb2fe338128abe2323a9fd6ad88",
-      "materialize_from_binary": true,
-      "notes": "Mid-file contiguous 256-byte slice at offset 0x2B00."
+      "notes": "Mid-file contiguous 256-byte slice at offset 0x2B00.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0105_mid_band_256",
@@ -1389,8 +1493,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "48d8c02ae98649aa6a082cdbdd75916882f183d287ac77e6dece2294eeecc1e2",
-      "materialize_from_binary": true,
-      "notes": "Mid-file contiguous 256-byte slice at offset 0x2C00."
+      "notes": "Mid-file contiguous 256-byte slice at offset 0x2C00.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0106_mid_band_256",
@@ -1402,8 +1507,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "088010c054226d1dbc6e5904880dc47da03083f74914c5f22e2022cb538f6b90",
-      "materialize_from_binary": true,
-      "notes": "Mid-file contiguous 256-byte slice at offset 0x2D00."
+      "notes": "Mid-file contiguous 256-byte slice at offset 0x2D00.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0107_mid_band_256",
@@ -1415,8 +1521,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "bd101fb7e7f942dcc48663d5cc80baa7df18d3da5766fd3863a6e317552fbbfd",
-      "materialize_from_binary": true,
-      "notes": "Mid-file contiguous 256-byte slice at offset 0x2E00."
+      "notes": "Mid-file contiguous 256-byte slice at offset 0x2E00.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0108_mid_band_256",
@@ -1428,8 +1535,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "48d48defe3ea05a3cae470656c49942b4946f46a4cf8e3e390538efdfe187b07",
-      "materialize_from_binary": true,
-      "notes": "Mid-file contiguous 256-byte slice at offset 0x2F00."
+      "notes": "Mid-file contiguous 256-byte slice at offset 0x2F00.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0109_mid_band_256",
@@ -1441,8 +1549,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "9e52dace462e6e0505fdfd1a7d1bdb227e4e4e14d1be4395cd11b2bd6730b9a0",
-      "materialize_from_binary": true,
-      "notes": "Mid-file contiguous 256-byte slice at offset 0x3000."
+      "notes": "Mid-file contiguous 256-byte slice at offset 0x3000.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0110_mid_band_256",
@@ -1454,8 +1563,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "370c1cf2663714ba39f44cf564be1d43c2eed308e6738f3636a64f1b39966a63",
-      "materialize_from_binary": true,
-      "notes": "Mid-file contiguous 256-byte slice at offset 0x3100."
+      "notes": "Mid-file contiguous 256-byte slice at offset 0x3100.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0111_mid_band_256",
@@ -1467,8 +1577,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "ea9470058b713a5cebed4bb525e6537794224396957925071a2f27bf8d3f5f9e",
-      "materialize_from_binary": true,
-      "notes": "Mid-file contiguous 256-byte slice at offset 0x3200."
+      "notes": "Mid-file contiguous 256-byte slice at offset 0x3200.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0112_mid_band_256",
@@ -1480,8 +1591,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "ee174f16565b6dfee4bea76eddf6576c12daa23a080bb5933888c0569c557fe8",
-      "materialize_from_binary": true,
-      "notes": "Mid-file contiguous 256-byte slice at offset 0x3300."
+      "notes": "Mid-file contiguous 256-byte slice at offset 0x3300.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0113_mid_band_256",
@@ -1493,8 +1605,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "b51bde3ca606ac48bda69ee57691e41981477249554c38c53c42d923150a79c0",
-      "materialize_from_binary": true,
-      "notes": "Mid-file contiguous 256-byte slice at offset 0x3400."
+      "notes": "Mid-file contiguous 256-byte slice at offset 0x3400.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0114_mid_band_256",
@@ -1506,8 +1619,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "906acedccee8e847ae5cf96ebc94faa805a8bdaa7e4336c673c54a281d5cd48d",
-      "materialize_from_binary": true,
-      "notes": "Mid-file contiguous 256-byte slice at offset 0x3500."
+      "notes": "Mid-file contiguous 256-byte slice at offset 0x3500.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0115_mid_band_256",
@@ -1519,8 +1633,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "c0e458ca4d3f7ea1641c678c6d1f81be7754bb8bd3d16879a8b6040e02f3107b",
-      "materialize_from_binary": true,
-      "notes": "Mid-file contiguous 256-byte slice at offset 0x3600."
+      "notes": "Mid-file contiguous 256-byte slice at offset 0x3600.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0116_mid_band_256",
@@ -1532,8 +1647,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "12d7baefa34263cf9c6f125f9082f1faf488e9c3317bd56f724329cbf9a91cda",
-      "materialize_from_binary": true,
-      "notes": "Mid-file contiguous 256-byte slice at offset 0x3700."
+      "notes": "Mid-file contiguous 256-byte slice at offset 0x3700.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0117_mid_band_256",
@@ -1545,8 +1661,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "ad8c3fe7791c44af53439850580d8f2b5faea4d112fe5001d000753bcf206c2d",
-      "materialize_from_binary": true,
-      "notes": "Mid-file contiguous 256-byte slice at offset 0x3800."
+      "notes": "Mid-file contiguous 256-byte slice at offset 0x3800.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0118_mid_band_256",
@@ -1558,8 +1675,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "d8e7925ac06ded5d45c56ddbabb63045866234b86a311e4760ee6d45f8572de1",
-      "materialize_from_binary": true,
-      "notes": "Mid-file contiguous 256-byte slice at offset 0x3900."
+      "notes": "Mid-file contiguous 256-byte slice at offset 0x3900.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0119_mid_band_256",
@@ -1571,8 +1689,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "dd52531ad2791405da4e36954f069d20a397f08d16da6d9e54304670b0fe63e2",
-      "materialize_from_binary": true,
-      "notes": "Mid-file contiguous 256-byte slice at offset 0x3A00."
+      "notes": "Mid-file contiguous 256-byte slice at offset 0x3A00.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0120_mid_band_256",
@@ -1584,8 +1703,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "47ee9c13ba946c28ed8d67cea3d672cf343aaee7fee4369f14775b11675f2d2d",
-      "materialize_from_binary": true,
-      "notes": "Mid-file contiguous 256-byte slice at offset 0x3B00."
+      "notes": "Mid-file contiguous 256-byte slice at offset 0x3B00.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0121_mid_band_256",
@@ -1597,8 +1717,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "905fac839dd2cabd98d72fefbba2bbd1bea3ec8098e9b20b6b3da6047b8dfd74",
-      "materialize_from_binary": true,
-      "notes": "Mid-file contiguous 256-byte slice at offset 0x3C00."
+      "notes": "Mid-file contiguous 256-byte slice at offset 0x3C00.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0122_mid_band_256",
@@ -1610,8 +1731,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "4a4c717eb9f78d50d0b31a3ba7c1676654a49b10b49edd9ae66b1f316815da01",
-      "materialize_from_binary": true,
-      "notes": "Mid-file contiguous 256-byte slice at offset 0x3D00."
+      "notes": "Mid-file contiguous 256-byte slice at offset 0x3D00.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0123_mid_band_256",
@@ -1623,8 +1745,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "fc4433ace3c2b95b4b16ae45b997d741dd119d20f9687741de5396e3d8a62229",
-      "materialize_from_binary": true,
-      "notes": "Mid-file contiguous 256-byte slice at offset 0x3E00."
+      "notes": "Mid-file contiguous 256-byte slice at offset 0x3E00.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0124_mid_band_256",
@@ -1636,8 +1759,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "0cf8ce96e5a9837b45df8c8724f190beb344cbc324a488c1cee45b145729cb8c",
-      "materialize_from_binary": true,
-      "notes": "Mid-file contiguous 256-byte slice at offset 0x3F00."
+      "notes": "Mid-file contiguous 256-byte slice at offset 0x3F00.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0125_mid_band_256",
@@ -1649,8 +1773,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "3f3de4a23a3a621a0d2f30119f7708516a88b69ff5e1e8cc3122789b2e5a570f",
-      "materialize_from_binary": true,
-      "notes": "Mid-file contiguous 256-byte slice at offset 0x4000."
+      "notes": "Mid-file contiguous 256-byte slice at offset 0x4000.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0126_mid_band_256",
@@ -1662,8 +1787,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "0693d7c36500243894c19994eaf361bd80a54346324628085197a6e117297ffe",
-      "materialize_from_binary": true,
-      "notes": "Mid-file contiguous 256-byte slice at offset 0x4100."
+      "notes": "Mid-file contiguous 256-byte slice at offset 0x4100.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0127_mid_band_256",
@@ -1675,8 +1801,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "d5135443e0e98c2ab277e1cc45e31887a5b4ed7ea9dcb79ce18cf8f00bc2e20a",
-      "materialize_from_binary": true,
-      "notes": "Mid-file contiguous 256-byte slice at offset 0x4200."
+      "notes": "Mid-file contiguous 256-byte slice at offset 0x4200.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0128_mid_band_256",
@@ -1688,8 +1815,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "26fbb807f0c64a20b98d53aa0cc54168a3243d51efd270983ac7a0d2d1c428d2",
-      "materialize_from_binary": true,
-      "notes": "Mid-file contiguous 256-byte slice at offset 0x4300."
+      "notes": "Mid-file contiguous 256-byte slice at offset 0x4300.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0129_mid_band_256",
@@ -1701,8 +1829,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "ec33e9d1b861aff045432aa656abb211e57a87beac488720b85291345f0ee1c8",
-      "materialize_from_binary": true,
-      "notes": "Mid-file contiguous 256-byte slice at offset 0x4400."
+      "notes": "Mid-file contiguous 256-byte slice at offset 0x4400.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0130_mid_band_256",
@@ -1714,8 +1843,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "d4b57e2473716ba9a017faba89486a32599b1bb584b91a46c619da56c87fa1cd",
-      "materialize_from_binary": true,
-      "notes": "Mid-file contiguous 256-byte slice at offset 0x4500."
+      "notes": "Mid-file contiguous 256-byte slice at offset 0x4500.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0131_mid_band_256",
@@ -1727,8 +1857,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "7fd20d8e7f3f05f3239f4df834ee4b4520326f1bf112a6acb9967df26117ee61",
-      "materialize_from_binary": true,
-      "notes": "Mid-file contiguous 256-byte slice at offset 0x4600."
+      "notes": "Mid-file contiguous 256-byte slice at offset 0x4600.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0132_mid_band_256",
@@ -1740,8 +1871,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "de6846a8b0aa8d478a6cafb2d491913d8ce57fc489e7c07557fb88d7c070aa46",
-      "materialize_from_binary": true,
-      "notes": "Mid-file contiguous 256-byte slice at offset 0x4700."
+      "notes": "Mid-file contiguous 256-byte slice at offset 0x4700.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0133_mid_band_256",
@@ -1753,8 +1885,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "a17b82183f5f3988225a4171d125787b7ad7c1463527047b5024bb0d68263a20",
-      "materialize_from_binary": true,
-      "notes": "Mid-file contiguous 256-byte slice at offset 0x4800."
+      "notes": "Mid-file contiguous 256-byte slice at offset 0x4800.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0134_mid_band_256",
@@ -1766,8 +1899,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "4f88f2e166f97b5499677e80b224e497d8f8e7371fdf14ffa117eeb8c4e01251",
-      "materialize_from_binary": true,
-      "notes": "Mid-file contiguous 256-byte slice at offset 0x4900."
+      "notes": "Mid-file contiguous 256-byte slice at offset 0x4900.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0135_mid_band_256",
@@ -1779,8 +1913,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "b135bcec4364bfe4bd20cf3cbd2d6a1351e54da86655e0691f9d1d69f6b84b94",
-      "materialize_from_binary": true,
-      "notes": "Mid-file contiguous 256-byte slice at offset 0x4A00."
+      "notes": "Mid-file contiguous 256-byte slice at offset 0x4A00.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0136_mid_band_256",
@@ -1792,8 +1927,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "89b504b9ad8f0023bc95bb13a65729134fb637f5c458033d07339113f2589e10",
-      "materialize_from_binary": true,
-      "notes": "Mid-file contiguous 256-byte slice at offset 0x4B00."
+      "notes": "Mid-file contiguous 256-byte slice at offset 0x4B00.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0137_mid_band_256",
@@ -1805,8 +1941,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "53bac277e621c0a86c7a10ba912d93b9e70d4c7e19aa4410bd641ce456db40d7",
-      "materialize_from_binary": true,
-      "notes": "Mid-file contiguous 256-byte slice at offset 0x4C00."
+      "notes": "Mid-file contiguous 256-byte slice at offset 0x4C00.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0138_mid_band_256",
@@ -1818,8 +1955,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "d5d6e7139d59b1efe6478d0a61d7b20999a680a9ace1a91d7b7dbae14b6777e0",
-      "materialize_from_binary": true,
-      "notes": "Mid-file contiguous 256-byte slice at offset 0x4D00."
+      "notes": "Mid-file contiguous 256-byte slice at offset 0x4D00.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0139_mid_band_256",
@@ -1831,8 +1969,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "45a2d4f5158b8894033e3805816975d6c2a52764b6988f59e9c40df82e2cb82e",
-      "materialize_from_binary": true,
-      "notes": "Mid-file contiguous 256-byte slice at offset 0x4E00."
+      "notes": "Mid-file contiguous 256-byte slice at offset 0x4E00.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0140_mid_band_256",
@@ -1844,8 +1983,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "cab8f878a639a7298fd74b2bff7bd5a7c4ef1ddd42ebe8b3bf133a0f2ade6397",
-      "materialize_from_binary": true,
-      "notes": "Mid-file contiguous 256-byte slice at offset 0x4F00."
+      "notes": "Mid-file contiguous 256-byte slice at offset 0x4F00.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0141_mid_band_256",
@@ -1857,8 +1997,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "7cd21aca60ab7b309f7695eb664939f6d5bbb320a0b5f52009aee12193441fbf",
-      "materialize_from_binary": true,
-      "notes": "Mid-file contiguous 256-byte slice at offset 0x5000."
+      "notes": "Mid-file contiguous 256-byte slice at offset 0x5000.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0142_mid_band_256",
@@ -1870,8 +2011,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "acab60fe84467c62c2f6aba37c4cc5fbfef49d28061c27e22b661d42f0f626f4",
-      "materialize_from_binary": true,
-      "notes": "Mid-file contiguous 256-byte slice at offset 0x5100."
+      "notes": "Mid-file contiguous 256-byte slice at offset 0x5100.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0143_mid_band_256",
@@ -1883,8 +2025,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "870297e1d0d1e340b6606245452e99d5a8970598c3b8a805db52109e034339b4",
-      "materialize_from_binary": true,
-      "notes": "Mid-file contiguous 256-byte slice at offset 0x5200."
+      "notes": "Mid-file contiguous 256-byte slice at offset 0x5200.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0144_mid_band_256",
@@ -1896,8 +2039,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "f33ba7abf31248be897e90d7fc086008e119f2287c4edfb14ae142091423b670",
-      "materialize_from_binary": true,
-      "notes": "Mid-file contiguous 256-byte slice at offset 0x5300."
+      "notes": "Mid-file contiguous 256-byte slice at offset 0x5300.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0145_mid_band_256",
@@ -1909,8 +2053,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "6118ae61c118ef2ca85bbb91dc5490ec36a353e345f7222bb427dc1e9748dfb7",
-      "materialize_from_binary": true,
-      "notes": "Mid-file contiguous 256-byte slice at offset 0x5400."
+      "notes": "Mid-file contiguous 256-byte slice at offset 0x5400.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0146_mid_band_256",
@@ -1922,8 +2067,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "d22538205f67cde097b07d744fde52f265605d44c1a03143dc24ac93527717a6",
-      "materialize_from_binary": true,
-      "notes": "Mid-file contiguous 256-byte slice at offset 0x5500."
+      "notes": "Mid-file contiguous 256-byte slice at offset 0x5500.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0147_mid_band_256",
@@ -1935,8 +2081,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "7125a9862ee1f70b6012efd808f977c30f499d443af3214052f0cce0d6e1a6f7",
-      "materialize_from_binary": true,
-      "notes": "Mid-file contiguous 256-byte slice at offset 0x5600."
+      "notes": "Mid-file contiguous 256-byte slice at offset 0x5600.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0148_mid_band_256",
@@ -1948,8 +2095,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "9cdc7c4f4492e43773e0d4d3bd063e40c899e6b3de9f681f827527601b142a7b",
-      "materialize_from_binary": true,
-      "notes": "Mid-file contiguous 256-byte slice at offset 0x5700."
+      "notes": "Mid-file contiguous 256-byte slice at offset 0x5700.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0149_mid_band_256",
@@ -1961,8 +2109,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "61cf5c280751eae734f0b6f417ebe0b1cc9a98615d9ac059b25eccff329fe3cc",
-      "materialize_from_binary": true,
-      "notes": "Mid-file contiguous 256-byte slice at offset 0x5800."
+      "notes": "Mid-file contiguous 256-byte slice at offset 0x5800.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0150_mid_band_256",
@@ -1974,8 +2123,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "7037a7f4a06868362ebc805350e0ca6aedb13359ec1a9d1a6eca24f73000ab79",
-      "materialize_from_binary": true,
-      "notes": "Mid-file contiguous 256-byte slice at offset 0x5900."
+      "notes": "Mid-file contiguous 256-byte slice at offset 0x5900.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0151_mid_band_256",
@@ -1987,8 +2137,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "2067b8bfa3ce87a27a9d9f3e287a9dcc659354ea986439c399b164a0b0bb1422",
-      "materialize_from_binary": true,
-      "notes": "Mid-file contiguous 256-byte slice at offset 0x5A00."
+      "notes": "Mid-file contiguous 256-byte slice at offset 0x5A00.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0152_mid_band_256",
@@ -2000,8 +2151,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "8a0089f404ba0c26c24a1b261ee1eee22268c90fa5f1058b2448045c3db72e83",
-      "materialize_from_binary": true,
-      "notes": "Mid-file contiguous 256-byte slice at offset 0x5B00."
+      "notes": "Mid-file contiguous 256-byte slice at offset 0x5B00.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0153_mid_band_256",
@@ -2013,8 +2165,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "66d62bf8224dc5331159c847239062f10647915524af18cffb42705b9e1fab8a",
-      "materialize_from_binary": true,
-      "notes": "Mid-file contiguous 256-byte slice at offset 0x5C00."
+      "notes": "Mid-file contiguous 256-byte slice at offset 0x5C00.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0154_mid_band_256",
@@ -2026,8 +2179,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "d431b4079268d917cddee5d3a125f93b8bac19356b50e4fa4c085114e57faed9",
-      "materialize_from_binary": true,
-      "notes": "Mid-file contiguous 256-byte slice at offset 0x5D00."
+      "notes": "Mid-file contiguous 256-byte slice at offset 0x5D00.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0155_mid_band_256",
@@ -2039,8 +2193,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "51c7386bf656b36eb1e4477a80128be4fc90ac90a85c6c436da4472bf1dd2444",
-      "materialize_from_binary": true,
-      "notes": "Mid-file contiguous 256-byte slice at offset 0x5E00."
+      "notes": "Mid-file contiguous 256-byte slice at offset 0x5E00.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0156_mid_band_256",
@@ -2052,8 +2207,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "a9e34771ac6bf539ac8ea14ef165c779edbe1ad25408c2e99c36ef83b214ad48",
-      "materialize_from_binary": true,
-      "notes": "Mid-file contiguous 256-byte slice at offset 0x5F00."
+      "notes": "Mid-file contiguous 256-byte slice at offset 0x5F00.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0157_upper_mid_band_256",
@@ -2065,8 +2221,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "e67c3156bc2d6d64b2e0dabd0f5d4a4323aa59a2b95055e7bce51017ad2a915d",
-      "materialize_from_binary": true,
-      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x6000."
+      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x6000.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0158_upper_mid_band_256",
@@ -2078,8 +2235,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "b0da7c795b089a2a3c30c4ce995f6c5e6216a6f5d8958efd64f7a79089e4df99",
-      "materialize_from_binary": true,
-      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x6100."
+      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x6100.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0159_upper_mid_band_256",
@@ -2091,8 +2249,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "4823173a6112a72cfd1bc3977c6b0648583d11a0247bd41370c06cb9a5bba844",
-      "materialize_from_binary": true,
-      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x6200."
+      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x6200.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0160_upper_mid_band_256",
@@ -2104,8 +2263,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "b5eb1415a284b1f9bf2c3d0f2b3db2e8c232bc5e4fcee89b8e9db7f1464bda88",
-      "materialize_from_binary": true,
-      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x6300."
+      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x6300.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0161_upper_mid_band_256",
@@ -2117,8 +2277,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "ea303cdd68618c6b65bccdce93cf5449c97ab6e38687fdcb445103400df06488",
-      "materialize_from_binary": true,
-      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x6400."
+      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x6400.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0162_upper_mid_band_256",
@@ -2130,8 +2291,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "07d496b2f6c96e99f4467d801b5bd932175178ff4b62d992bba1dad21243f6c9",
-      "materialize_from_binary": true,
-      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x6500."
+      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x6500.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0163_upper_mid_band_256",
@@ -2143,8 +2305,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "7043449d8322a1f0eced5ddd62450fbcf26f041abee3e596b536d4cd5af5dedc",
-      "materialize_from_binary": true,
-      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x6600."
+      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x6600.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0164_upper_mid_band_256",
@@ -2156,8 +2319,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "2b33e6a00913dc808d359defb41f10d927d17bdcbbc2ec22f929c80b6e409a6f",
-      "materialize_from_binary": true,
-      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x6700."
+      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x6700.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0165_upper_mid_band_256",
@@ -2169,8 +2333,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "539150d20136c99611c0f242f563ec0583046f6f76c6de06346271da7ed610b3",
-      "materialize_from_binary": true,
-      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x6800."
+      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x6800.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0166_upper_mid_band_256",
@@ -2182,8 +2347,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "18dae6a8df0937f07184b3036aa4b6ddffbf61e5c7bdf1be6d845c5bd263ad38",
-      "materialize_from_binary": true,
-      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x6900."
+      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x6900.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0167_upper_mid_band_256",
@@ -2195,8 +2361,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "b686f5e6a5bb1e7ee172e70761c9e9c76eaa40d386983ba35813297a650dc3d9",
-      "materialize_from_binary": true,
-      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x6A00."
+      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x6A00.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0168_upper_mid_band_256",
@@ -2208,8 +2375,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "8c1efa8668e42a16e1b11e9d6ae04fcc81040ef0f6ed9c2ce408c21f2ae92ef8",
-      "materialize_from_binary": true,
-      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x6B00."
+      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x6B00.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0169_upper_mid_band_256",
@@ -2221,8 +2389,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "18a172a207014e0b155e813510fb169ff86371a03be5ece81edcb07f88d33dff",
-      "materialize_from_binary": true,
-      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x6C00."
+      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x6C00.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0170_upper_mid_band_256",
@@ -2234,8 +2403,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "49a933972a2e2bdf9e6170fe56262ad5ecc6225f46b0564398a16db1e9f8cdb1",
-      "materialize_from_binary": true,
-      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x6D00."
+      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x6D00.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0171_upper_mid_band_256",
@@ -2247,8 +2417,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "c87c3bbf14d513f60b4e040f78930304fc1cf2cbd6fd682535173d3f6a49fa54",
-      "materialize_from_binary": true,
-      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x6E00."
+      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x6E00.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0172_upper_mid_band_256",
@@ -2260,8 +2431,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "ba25a15076cf53ceb57f46cd9f02bc443d364829ffbbeb410df6d68fc7c64392",
-      "materialize_from_binary": true,
-      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x6F00."
+      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x6F00.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0173_upper_mid_band_256",
@@ -2273,8 +2445,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "0e57b7831ffc24b7bfa238f3d4d12e3df4a1622fe44fe238b2d573fcc1a7df8e",
-      "materialize_from_binary": true,
-      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x7000."
+      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x7000.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0174_upper_mid_band_256",
@@ -2286,8 +2459,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "c56649abf66d7cfab9ba01197a1e20b46d56184fe464491f24022f086c42e136",
-      "materialize_from_binary": true,
-      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x7100."
+      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x7100.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0175_upper_mid_band_256",
@@ -2299,8 +2473,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "e196d4b360cc6c367f1b567b9909e2d4aa6a3d47f9dfa8e7d5b8399959a093f4",
-      "materialize_from_binary": true,
-      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x7200."
+      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x7200.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0176_upper_mid_band_256",
@@ -2312,8 +2487,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "ff7f2d716a70629517f3b178aab38b3934bd076f1e809553284afa23c7eb156e",
-      "materialize_from_binary": true,
-      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x7300."
+      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x7300.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0177_upper_mid_band_256",
@@ -2325,8 +2501,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "75366aded7d59b20164d958667d9ed688937cd352bbe0d195c0cf016236d34b5",
-      "materialize_from_binary": true,
-      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x7400."
+      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x7400.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0178_upper_mid_band_256",
@@ -2338,8 +2515,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "86404d0e05108e6d1b1220fbb5161f57ab9bf45168350bfc55f22faf61899e40",
-      "materialize_from_binary": true,
-      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x7500."
+      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x7500.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0179_upper_mid_band_256",
@@ -2351,8 +2529,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "66b42da40b8cf12202f3b1eb79b0e7a7acacfe449343a2683c38d02fdaea2309",
-      "materialize_from_binary": true,
-      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x7600."
+      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x7600.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0180_upper_mid_band_256",
@@ -2364,8 +2543,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "26a4c2dc197bf4dd5d66242bea5d5d0fbc5fa9e3386c8db8ba7258baca037c7a",
-      "materialize_from_binary": true,
-      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x7700."
+      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x7700.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0181_upper_mid_band_256",
@@ -2377,8 +2557,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "e95f6f48ecbd8f57f016448c18f349a989e1657455276c763d1c140a9a5b0e07",
-      "materialize_from_binary": true,
-      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x7800."
+      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x7800.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0182_upper_mid_band_256",
@@ -2390,8 +2571,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "7cc1b2a0a06da7083a405a47279214c071ecb37766202cdaeb49e71c304fa227",
-      "materialize_from_binary": true,
-      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x7900."
+      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x7900.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0183_upper_mid_band_256",
@@ -2403,8 +2585,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "9864926d1bd28b02efca33795a54f3a003d29d6af7da1881e8d13f9fb6af5648",
-      "materialize_from_binary": true,
-      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x7A00."
+      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x7A00.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0184_upper_mid_band_256",
@@ -2416,8 +2599,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "c2cb5783c45dc2a65d9b469ba48a453c33f5713d4c92ff243ffc1c59f7a2100f",
-      "materialize_from_binary": true,
-      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x7B00."
+      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x7B00.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0185_upper_mid_band_256",
@@ -2429,8 +2613,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "687e7a57c59069c214e313c477a8d64550faf4759bcf715ade17764d1980e60e",
-      "materialize_from_binary": true,
-      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x7C00."
+      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x7C00.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0186_upper_mid_band_256",
@@ -2442,8 +2627,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "3e894a6f4f0d6fb8853a017edb804eda8a0bf9e292d0eaf78f37cc3a2a4a01c8",
-      "materialize_from_binary": true,
-      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x7D00."
+      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x7D00.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0187_upper_mid_band_256",
@@ -2455,8 +2641,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "e6d6502fb51b4aa11c6da4265a73a2eb20ea180339a8ffd47398e502368c2284",
-      "materialize_from_binary": true,
-      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x7E00."
+      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x7E00.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0188_upper_mid_band_256",
@@ -2468,8 +2655,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "d9c0ab15edd2ef6597a4ae8a988acf5551da637084ead1a490a741add98c5810",
-      "materialize_from_binary": true,
-      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x7F00."
+      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x7F00.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0189_upper_mid_band_256",
@@ -2481,8 +2669,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "84dc482028df55533016f1d9d50360fe75eab6ee5412fd10906bd84271628fd9",
-      "materialize_from_binary": true,
-      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x8000."
+      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x8000.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0190_upper_mid_band_256",
@@ -2494,8 +2683,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "3ff8f8cc792997a891e4b18d67a5725baa7483b44885f6e8fbb4c5e0ed2865d4",
-      "materialize_from_binary": true,
-      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x8100."
+      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x8100.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0191_upper_mid_band_256",
@@ -2507,8 +2697,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "64571248a6317bc8bb0de6a88a11a0c09716ae5b34986b440635e6ab9061c3b2",
-      "materialize_from_binary": true,
-      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x8200."
+      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x8200.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0192_upper_mid_band_256",
@@ -2520,8 +2711,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "a7118aae68f2c380c95ec819e209a0bece2e835cba6834ae71c1609157ef53e4",
-      "materialize_from_binary": true,
-      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x8300."
+      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x8300.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0193_upper_mid_band_256",
@@ -2533,8 +2725,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "969dd04c466708bbbd2b371ea347a86d89e49825b64ce8b95affbb1b74146e3d",
-      "materialize_from_binary": true,
-      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x8400."
+      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x8400.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0194_upper_mid_band_256",
@@ -2546,8 +2739,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "7689c74dcb82f8add851532aa1cbcfdf20ae05dfca89fe0e212507b580f1b348",
-      "materialize_from_binary": true,
-      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x8500."
+      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x8500.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0195_upper_mid_band_256",
@@ -2559,8 +2753,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "b84846c0f7f1f34b0fb007d549feec1e855e411adaeefa3b20f792098e204177",
-      "materialize_from_binary": true,
-      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x8600."
+      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x8600.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0196_upper_mid_band_256",
@@ -2572,8 +2767,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "80603c818196a463d02984c6398a0f4e1de77bcb6a54848d94d2ce53af6f5795",
-      "materialize_from_binary": true,
-      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x8700."
+      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x8700.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0197_upper_mid_band_256",
@@ -2585,8 +2781,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "5578cf71ba3ef239d00283f04699b0390b868afcf10275ed57d0200cfc987f9c",
-      "materialize_from_binary": true,
-      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x8800."
+      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x8800.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0198_upper_mid_band_256",
@@ -2598,8 +2795,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "a52acc7ec493210637f5b60a2654b63096a38007a89a283600a660a7b21eb198",
-      "materialize_from_binary": true,
-      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x8900."
+      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x8900.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0199_upper_mid_band_256",
@@ -2611,8 +2809,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "218166d9339c896d4edb7bce2ab3feb2b14962779014f797b48724c70823999b",
-      "materialize_from_binary": true,
-      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x8A00."
+      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x8A00.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0200_upper_mid_band_256",
@@ -2624,8 +2823,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "7f07a99628b03ac72c9a0776750fdfbe7fe1475cf81b2d5aa8f6b89569bce029",
-      "materialize_from_binary": true,
-      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x8B00."
+      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x8B00.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0201_upper_mid_band_256",
@@ -2637,8 +2837,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "582f931bb9f083eda35c5434cd698160094695ce5e18fa8d8d94066fcc35f7b4",
-      "materialize_from_binary": true,
-      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x8C00."
+      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x8C00.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0202_upper_mid_band_256",
@@ -2650,8 +2851,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "401bcfa1ceb3284bb8a6c6fca5230676dd757e3c8ed2d7948f52f3e4a60d1d88",
-      "materialize_from_binary": true,
-      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x8D00."
+      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x8D00.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0203_upper_mid_band_256",
@@ -2663,8 +2865,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "46efab5e1234712150e95ff962eafd5590cc1eed50a7cd089f9611df7919c840",
-      "materialize_from_binary": true,
-      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x8E00."
+      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x8E00.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0204_upper_mid_band_256",
@@ -2676,8 +2879,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "7357f02b651f7dadae894e6e090f12111022445f387a27c060e823bdab4abad4",
-      "materialize_from_binary": true,
-      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x8F00."
+      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x8F00.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0205_upper_mid_band_256",
@@ -2689,8 +2893,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "9e49726186a77a06d0dd942f6ce9dc11a96e83b07c0c1f03667e8a91c4200848",
-      "materialize_from_binary": true,
-      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x9000."
+      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x9000.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0206_upper_mid_band_256",
@@ -2702,8 +2907,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "bd80f3ed351497d2eac0d760fe914d7282742ee7aba17c4fb86a11873365d0e7",
-      "materialize_from_binary": true,
-      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x9100."
+      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x9100.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0207_upper_mid_band_256",
@@ -2715,8 +2921,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "65e41e33416e4e7799b7ecc1379b157e3fe1155e1a3dd18367151b4af26a930d",
-      "materialize_from_binary": true,
-      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x9200."
+      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x9200.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0208_upper_mid_band_256",
@@ -2728,8 +2935,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "c7fb8c6f05df177c018eef1d44131a762fd5a1a1ae67e0de346e36935dc2285b",
-      "materialize_from_binary": true,
-      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x9300."
+      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x9300.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0209_upper_mid_band_256",
@@ -2741,8 +2949,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "99df477b072177845618e9af85b138174c00b39f6439079df47d7db37936d144",
-      "materialize_from_binary": true,
-      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x9400."
+      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x9400.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0210_upper_mid_band_256",
@@ -2754,8 +2963,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "e5389a80ae85198693e0fe5d7088f7843308be59c7ddf3e4727c469446d1f616",
-      "materialize_from_binary": true,
-      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x9500."
+      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x9500.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0211_upper_mid_band_256",
@@ -2767,8 +2977,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "69cfea3877ff6c98075d772d00f140bbd12179b5eed2e58f5b4a731276635597",
-      "materialize_from_binary": true,
-      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x9600."
+      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x9600.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0212_upper_mid_band_256",
@@ -2780,8 +2991,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "053237191e2b0d128ebabaf46f34157f840878b6b650968d2dd5412314200f37",
-      "materialize_from_binary": true,
-      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x9700."
+      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x9700.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0213_upper_mid_band_256",
@@ -2793,8 +3005,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "76bbcc5455b47d72638e23c871e4dc8780d822022f22e0c7c39a3da7a49a3fd8",
-      "materialize_from_binary": true,
-      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x9800."
+      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x9800.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0214_upper_mid_band_256",
@@ -2806,8 +3019,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "f7049e5564621f8575f2318b64cdca1ad4a07b6f31f4d3bbedb2b7628d405e60",
-      "materialize_from_binary": true,
-      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x9900."
+      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x9900.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0215_upper_mid_band_256",
@@ -2819,8 +3033,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "29e5da9d58b85bc3df3552ba9357f9b2e5b446193078a8a9b96f2fa95539de44",
-      "materialize_from_binary": true,
-      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x9A00."
+      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x9A00.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0216_upper_mid_band_256",
@@ -2832,8 +3047,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "dd9f6821d7111edb21b85f87e76bcadefb276655852cf8951586b45979300e24",
-      "materialize_from_binary": true,
-      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x9B00."
+      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x9B00.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0217_upper_mid_band_256",
@@ -2845,8 +3061,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "0776ee4969ce23f189f1106eda0133d4c414c49a37188eafc74c8e6cab15a215",
-      "materialize_from_binary": true,
-      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x9C00."
+      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x9C00.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0218_upper_mid_band_256",
@@ -2858,8 +3075,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "249737cd6a44d7b5c5af3ebf97f73aeb39df2c9833171e5be75aa619984288af",
-      "materialize_from_binary": true,
-      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x9D00."
+      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x9D00.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0219_upper_mid_band_256",
@@ -2871,8 +3089,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "a3e1e44e0025918494eedf40acdd1f662a9c78fc26c9df11016fd521203885ae",
-      "materialize_from_binary": true,
-      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x9E00."
+      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x9E00.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0220_upper_mid_band_256",
@@ -2884,8 +3103,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "066dcb3a9a35265a249b1d5b5641c1dd410a20a1f4dc8cfef7d6dcd406646f19",
-      "materialize_from_binary": true,
-      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x9F00."
+      "notes": "Upper mid-file contiguous 256-byte slice at offset 0x9F00.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0221_high_mid_band_256",
@@ -2897,8 +3117,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "48094436232f89342992f32c2172acd358d16285813b1721a243a26057349d9e",
-      "materialize_from_binary": true,
-      "notes": "High mid-file contiguous 256-byte slice at offset 0xA000."
+      "notes": "High mid-file contiguous 256-byte slice at offset 0xA000.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0222_high_mid_band_256",
@@ -2910,8 +3131,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "fda017876885780e0dac1a4c02f3854bd476e35d6a54fc66bcb8db5f6a974b13",
-      "materialize_from_binary": true,
-      "notes": "High mid-file contiguous 256-byte slice at offset 0xA100."
+      "notes": "High mid-file contiguous 256-byte slice at offset 0xA100.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0223_high_mid_band_256",
@@ -2923,8 +3145,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "aa32600bec705410fe26f40eddad4a873929890f121f56d27e3233ce3b31b45f",
-      "materialize_from_binary": true,
-      "notes": "High mid-file contiguous 256-byte slice at offset 0xA200."
+      "notes": "High mid-file contiguous 256-byte slice at offset 0xA200.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0224_high_mid_band_256",
@@ -2936,8 +3159,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "e9289a8a4f3f1fe2986fe7abb6e65dd3172823c7d8a950f318a35c4b682bec36",
-      "materialize_from_binary": true,
-      "notes": "High mid-file contiguous 256-byte slice at offset 0xA300."
+      "notes": "High mid-file contiguous 256-byte slice at offset 0xA300.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0225_high_mid_band_256",
@@ -2949,8 +3173,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "ae68c854d2b50ee51cb6d7c62abd844d8b4f97caa962d51f2d3674fb941ab5f8",
-      "materialize_from_binary": true,
-      "notes": "High mid-file contiguous 256-byte slice at offset 0xA400."
+      "notes": "High mid-file contiguous 256-byte slice at offset 0xA400.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0226_high_mid_band_256",
@@ -2962,8 +3187,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "9baab80a6fae374fa9525cf013af9014b139b9cac53e63e6f0c10dd2d61f00fd",
-      "materialize_from_binary": true,
-      "notes": "High mid-file contiguous 256-byte slice at offset 0xA500."
+      "notes": "High mid-file contiguous 256-byte slice at offset 0xA500.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0227_high_mid_band_256",
@@ -2975,8 +3201,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "0a072ab45084e4096e8c2e422a8260136e8b839242db84ea42c8f87a4d7f1d22",
-      "materialize_from_binary": true,
-      "notes": "High mid-file contiguous 256-byte slice at offset 0xA600."
+      "notes": "High mid-file contiguous 256-byte slice at offset 0xA600.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0228_high_mid_band_256",
@@ -2988,8 +3215,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "908ce92452e957550177dd8fa7e94eb4a6ddc8ecfc7e5ab5aecef0848d133762",
-      "materialize_from_binary": true,
-      "notes": "High mid-file contiguous 256-byte slice at offset 0xA700."
+      "notes": "High mid-file contiguous 256-byte slice at offset 0xA700.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0229_high_mid_band_256",
@@ -3001,8 +3229,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "cfa6703ee6e7fc1995615cb140155aa03aa7bc21508e912b60bfff54e87f5ff2",
-      "materialize_from_binary": true,
-      "notes": "High mid-file contiguous 256-byte slice at offset 0xA800."
+      "notes": "High mid-file contiguous 256-byte slice at offset 0xA800.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0230_high_mid_band_256",
@@ -3014,8 +3243,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "dee95321e4cd317cc932d946de7f2f9212c44ad25d6e93cad2e3953131de956f",
-      "materialize_from_binary": true,
-      "notes": "High mid-file contiguous 256-byte slice at offset 0xA900."
+      "notes": "High mid-file contiguous 256-byte slice at offset 0xA900.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0231_high_mid_band_256",
@@ -3027,8 +3257,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "9778f23d059a005f13571ef1223de2ffd6e23f0bad54af679f30ffe286900622",
-      "materialize_from_binary": true,
-      "notes": "High mid-file contiguous 256-byte slice at offset 0xAA00."
+      "notes": "High mid-file contiguous 256-byte slice at offset 0xAA00.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0232_high_mid_band_256",
@@ -3040,8 +3271,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "567a8a0492d94946b515cb2bef8bebaac5d781bfc92ae69bd441af35609bd635",
-      "materialize_from_binary": true,
-      "notes": "High mid-file contiguous 256-byte slice at offset 0xAB00."
+      "notes": "High mid-file contiguous 256-byte slice at offset 0xAB00.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0233_high_mid_band_256",
@@ -3053,8 +3285,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "dba504a79513705f0613aa0ecdf065e0ce55e7c7b6f24f2a266c047879969d75",
-      "materialize_from_binary": true,
-      "notes": "High mid-file contiguous 256-byte slice at offset 0xAC00."
+      "notes": "High mid-file contiguous 256-byte slice at offset 0xAC00.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0234_high_mid_band_256",
@@ -3066,8 +3299,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "6f6bb44fc71cd36749553c4d111d53653eea14d5bf1de88048f7665ba8170872",
-      "materialize_from_binary": true,
-      "notes": "High mid-file contiguous 256-byte slice at offset 0xAD00."
+      "notes": "High mid-file contiguous 256-byte slice at offset 0xAD00.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0235_high_mid_band_256",
@@ -3079,8 +3313,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "57599bb92e262fdeaa5668860b7d6d6c4abed9325045998c3f99ff3e66e359b9",
-      "materialize_from_binary": true,
-      "notes": "High mid-file contiguous 256-byte slice at offset 0xAE00."
+      "notes": "High mid-file contiguous 256-byte slice at offset 0xAE00.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0236_high_mid_band_256",
@@ -3092,8 +3327,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "3dc5141c7f7ebd3109aecbf933cbbdacb66a6aa8cfa484ae61493f3b30f1c83d",
-      "materialize_from_binary": true,
-      "notes": "High mid-file contiguous 256-byte slice at offset 0xAF00."
+      "notes": "High mid-file contiguous 256-byte slice at offset 0xAF00.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0237_high_mid_band_256",
@@ -3105,8 +3341,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "faf19b1f0349f38321907e6b8d0c80e6500250548dd49cca14b89f36c9a9e457",
-      "materialize_from_binary": true,
-      "notes": "High mid-file contiguous 256-byte slice at offset 0xB000."
+      "notes": "High mid-file contiguous 256-byte slice at offset 0xB000.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0238_high_mid_band_256",
@@ -3118,8 +3355,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "96308b5572f03452b9434046221ef375c47c98057977df75c0b9a64dbff37a6d",
-      "materialize_from_binary": true,
-      "notes": "High mid-file contiguous 256-byte slice at offset 0xB100."
+      "notes": "High mid-file contiguous 256-byte slice at offset 0xB100.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0239_high_mid_band_256",
@@ -3131,8 +3369,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "d77a1c094869ccc503cb0b6abe244875b4a5639f647e210d6aa014c8adb5e4f7",
-      "materialize_from_binary": true,
-      "notes": "High mid-file contiguous 256-byte slice at offset 0xB200."
+      "notes": "High mid-file contiguous 256-byte slice at offset 0xB200.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0240_high_mid_band_256",
@@ -3144,8 +3383,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "d72364c9c71078b1488f46acf94c9321a93bbdfdee7a03cf4e813310e4056fe0",
-      "materialize_from_binary": true,
-      "notes": "High mid-file contiguous 256-byte slice at offset 0xB300."
+      "notes": "High mid-file contiguous 256-byte slice at offset 0xB300.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0241_high_mid_band_256",
@@ -3157,8 +3397,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "6bc3815704f7194995553ff2ad88d3f54a2efe4bf5b7d43de2613b9b5b7e0a14",
-      "materialize_from_binary": true,
-      "notes": "High mid-file contiguous 256-byte slice at offset 0xB400."
+      "notes": "High mid-file contiguous 256-byte slice at offset 0xB400.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0242_high_mid_band_256",
@@ -3170,8 +3411,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "ffb750d3cc7a907eab7b72fa7017dd035fd20294d913e73c1536e0c1de97397b",
-      "materialize_from_binary": true,
-      "notes": "High mid-file contiguous 256-byte slice at offset 0xB500."
+      "notes": "High mid-file contiguous 256-byte slice at offset 0xB500.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0243_high_mid_band_256",
@@ -3183,8 +3425,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "53dbe7b115b74e64c0ba9d803da457faefd6ec5642545eea3304ebead16d70ef",
-      "materialize_from_binary": true,
-      "notes": "High mid-file contiguous 256-byte slice at offset 0xB600."
+      "notes": "High mid-file contiguous 256-byte slice at offset 0xB600.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0244_high_mid_band_256",
@@ -3196,8 +3439,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "13ba466d75b2e49d477e9245ebd512bf759e4aeaa3c9daefe283a50ef09ef9e9",
-      "materialize_from_binary": true,
-      "notes": "High mid-file contiguous 256-byte slice at offset 0xB700."
+      "notes": "High mid-file contiguous 256-byte slice at offset 0xB700.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0245_high_mid_band_256",
@@ -3209,8 +3453,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "a67cc18c5bb2103b02fcc976fcd247d58fe04a12f848e764fe9d25afaecbcbd1",
-      "materialize_from_binary": true,
-      "notes": "High mid-file contiguous 256-byte slice at offset 0xB800."
+      "notes": "High mid-file contiguous 256-byte slice at offset 0xB800.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0246_high_mid_band_256",
@@ -3222,8 +3467,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "b91c81f4909430625182f33e64edb715cae5e2a10b882a71acf36a2ee9dd61d2",
-      "materialize_from_binary": true,
-      "notes": "High mid-file contiguous 256-byte slice at offset 0xB900."
+      "notes": "High mid-file contiguous 256-byte slice at offset 0xB900.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0247_high_mid_band_256",
@@ -3235,8 +3481,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "9717651d86d38a901b74129ce8d935f09f3985654d44e4926c6758b9ef03b724",
-      "materialize_from_binary": true,
-      "notes": "High mid-file contiguous 256-byte slice at offset 0xBA00."
+      "notes": "High mid-file contiguous 256-byte slice at offset 0xBA00.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0248_high_mid_band_256",
@@ -3248,8 +3495,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "67352ddab1f26fa40dad9aaa8dba6f6093b2dae7fd53640ee5a69c6ef2636a20",
-      "materialize_from_binary": true,
-      "notes": "High mid-file contiguous 256-byte slice at offset 0xBB00."
+      "notes": "High mid-file contiguous 256-byte slice at offset 0xBB00.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0249_high_mid_band_256",
@@ -3261,8 +3509,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "17a1548dd70937237658c29271053712d994dba001dc2e24a65de84af2d550de",
-      "materialize_from_binary": true,
-      "notes": "High mid-file contiguous 256-byte slice at offset 0xBC00."
+      "notes": "High mid-file contiguous 256-byte slice at offset 0xBC00.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0250_high_mid_band_256",
@@ -3274,8 +3523,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "c6f24b8935615542e51b58152b4b847e638df8d0f7b07f626ada904e51f568e0",
-      "materialize_from_binary": true,
-      "notes": "High mid-file contiguous 256-byte slice at offset 0xBD00."
+      "notes": "High mid-file contiguous 256-byte slice at offset 0xBD00.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0251_high_mid_band_256",
@@ -3287,8 +3537,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "f42e3cdc9be1bfa4dabc544df235f7526a3d2bd9326e1282ecd3288936a9d252",
-      "materialize_from_binary": true,
-      "notes": "High mid-file contiguous 256-byte slice at offset 0xBE00."
+      "notes": "High mid-file contiguous 256-byte slice at offset 0xBE00.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0252_high_mid_band_256",
@@ -3300,8 +3551,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "21e2c7aa20c90885317218ce74f7436155abe633717322cb0b83409d4b91ee11",
-      "materialize_from_binary": true,
-      "notes": "High mid-file contiguous 256-byte slice at offset 0xBF00."
+      "notes": "High mid-file contiguous 256-byte slice at offset 0xBF00.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0253_high_mid_band_256",
@@ -3313,8 +3565,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "aa9fa7db0ed733b7b9387cda80e5938928d5be3eaf496d6ad5af61a69ad9c05b",
-      "materialize_from_binary": true,
-      "notes": "High mid-file contiguous 256-byte slice at offset 0xC000."
+      "notes": "High mid-file contiguous 256-byte slice at offset 0xC000.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0254_high_mid_band_256",
@@ -3326,8 +3579,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "51284b3fe955d66e3d4c82fa531bef74591c4b9a862350b8bdaf93f637b21f89",
-      "materialize_from_binary": true,
-      "notes": "High mid-file contiguous 256-byte slice at offset 0xC100."
+      "notes": "High mid-file contiguous 256-byte slice at offset 0xC100.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0255_high_mid_band_256",
@@ -3339,8 +3593,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "8fca4fe95d8a00b3f56516dfc418787ed54abb35ee71a908d14090e67d0e715e",
-      "materialize_from_binary": true,
-      "notes": "High mid-file contiguous 256-byte slice at offset 0xC200."
+      "notes": "High mid-file contiguous 256-byte slice at offset 0xC200.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0256_high_mid_band_256",
@@ -3352,8 +3607,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "46db65a387a52234a0c2ebccd18f9a041ad590eb258b159c75c662c3c7065bf4",
-      "materialize_from_binary": true,
-      "notes": "High mid-file contiguous 256-byte slice at offset 0xC300."
+      "notes": "High mid-file contiguous 256-byte slice at offset 0xC300.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0257_high_mid_band_256",
@@ -3365,8 +3621,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "d7bfabd8e7119bf5443582063293a78257ebada365494b90498e0dcb34beadb9",
-      "materialize_from_binary": true,
-      "notes": "High mid-file contiguous 256-byte slice at offset 0xC400."
+      "notes": "High mid-file contiguous 256-byte slice at offset 0xC400.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0258_high_mid_band_256",
@@ -3378,8 +3635,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "deb835cc8247dad90c9cce7a915c6e8978cb3ad5ead9fee5a6afd00f677bba1f",
-      "materialize_from_binary": true,
-      "notes": "High mid-file contiguous 256-byte slice at offset 0xC500."
+      "notes": "High mid-file contiguous 256-byte slice at offset 0xC500.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0259_high_mid_band_256",
@@ -3391,8 +3649,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "1763b9ee36f197a567484c71068c09891d4674f3d7c245b3c2478d657f7f2354",
-      "materialize_from_binary": true,
-      "notes": "High mid-file contiguous 256-byte slice at offset 0xC600."
+      "notes": "High mid-file contiguous 256-byte slice at offset 0xC600.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0260_high_mid_band_256",
@@ -3404,8 +3663,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "66199bd7ee2ce92e6cb30dfdabc5892e7f3c1a8746a74967a475f2fbebbffdfa",
-      "materialize_from_binary": true,
-      "notes": "High mid-file contiguous 256-byte slice at offset 0xC700."
+      "notes": "High mid-file contiguous 256-byte slice at offset 0xC700.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0261_high_mid_band_256",
@@ -3417,8 +3677,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "2bf32e76665e09e44c3b09e56cd37e2e240b313e6cd3636d3243198c51e17497",
-      "materialize_from_binary": true,
-      "notes": "High mid-file contiguous 256-byte slice at offset 0xC800."
+      "notes": "High mid-file contiguous 256-byte slice at offset 0xC800.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0262_high_mid_band_256",
@@ -3430,8 +3691,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "feb9434716e7dd7dc7608f47a515097a9f7c35f9df3ce3427a3c38b7da742214",
-      "materialize_from_binary": true,
-      "notes": "High mid-file contiguous 256-byte slice at offset 0xC900."
+      "notes": "High mid-file contiguous 256-byte slice at offset 0xC900.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0263_high_mid_band_256",
@@ -3443,8 +3705,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "e00bfba0f983ad2ab7870cf86b1f5118b49da72ebfea60e45a8c7ecec4de8038",
-      "materialize_from_binary": true,
-      "notes": "High mid-file contiguous 256-byte slice at offset 0xCA00."
+      "notes": "High mid-file contiguous 256-byte slice at offset 0xCA00.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0264_high_mid_band_256",
@@ -3456,8 +3719,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "90bd8c05c3a29043781e213070d6c2c8c4a9153a3f549303d4e43250ec6b7928",
-      "materialize_from_binary": true,
-      "notes": "High mid-file contiguous 256-byte slice at offset 0xCB00."
+      "notes": "High mid-file contiguous 256-byte slice at offset 0xCB00.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0265_high_mid_band_256",
@@ -3469,8 +3733,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "6b7525acb0826746ad30059a66f28075613c99beecb1815857623b75b4b967b8",
-      "materialize_from_binary": true,
-      "notes": "High mid-file contiguous 256-byte slice at offset 0xCC00."
+      "notes": "High mid-file contiguous 256-byte slice at offset 0xCC00.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0266_high_mid_band_256",
@@ -3482,8 +3747,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "47634ac13791c433f5cb7e6163989bddb6eaba98ca2802eedf59c674464f0997",
-      "materialize_from_binary": true,
-      "notes": "High mid-file contiguous 256-byte slice at offset 0xCD00."
+      "notes": "High mid-file contiguous 256-byte slice at offset 0xCD00.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0267_high_mid_band_256",
@@ -3495,8 +3761,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "c3ab67db78929eb1c66bb412261b5cc6d6233c651c8a964119b878df3a5c0174",
-      "materialize_from_binary": true,
-      "notes": "High mid-file contiguous 256-byte slice at offset 0xCE00."
+      "notes": "High mid-file contiguous 256-byte slice at offset 0xCE00.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0268_high_mid_band_256",
@@ -3508,8 +3775,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "c68059e2caaaac0e1f1591941891aee1c7639176d3f128a3d9ed6750cd7b6bc1",
-      "materialize_from_binary": true,
-      "notes": "High mid-file contiguous 256-byte slice at offset 0xCF00."
+      "notes": "High mid-file contiguous 256-byte slice at offset 0xCF00.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0269_high_mid_band_256",
@@ -3521,8 +3789,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "ef9ba10dee5258e0382308225fa98fa953dee5342734331e78c319553dde802f",
-      "materialize_from_binary": true,
-      "notes": "High mid-file contiguous 256-byte slice at offset 0xD000."
+      "notes": "High mid-file contiguous 256-byte slice at offset 0xD000.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0270_high_mid_band_256",
@@ -3534,8 +3803,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "18a364a067057654f2855f04c79662b1568668d226b3aec6c2ecda89ba676e93",
-      "materialize_from_binary": true,
-      "notes": "High mid-file contiguous 256-byte slice at offset 0xD100."
+      "notes": "High mid-file contiguous 256-byte slice at offset 0xD100.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0271_high_mid_band_256",
@@ -3547,8 +3817,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "a00f0a66a5f9ad5d00b6cecdf3aa7413ebe84c03f9c7f412a5e9aba3f20d1bd4",
-      "materialize_from_binary": true,
-      "notes": "High mid-file contiguous 256-byte slice at offset 0xD200."
+      "notes": "High mid-file contiguous 256-byte slice at offset 0xD200.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0272_high_mid_band_256",
@@ -3560,8 +3831,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "e72c97760d2849553beb8a07bcba773e739f6964bfc259eaa7feee3490c99b39",
-      "materialize_from_binary": true,
-      "notes": "High mid-file contiguous 256-byte slice at offset 0xD300."
+      "notes": "High mid-file contiguous 256-byte slice at offset 0xD300.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0273_high_mid_band_256",
@@ -3573,8 +3845,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "9824e89d9f1f3c84eda04dc17eaef72c351399f6fe808f35b80ec0793b00659c",
-      "materialize_from_binary": true,
-      "notes": "High mid-file contiguous 256-byte slice at offset 0xD400."
+      "notes": "High mid-file contiguous 256-byte slice at offset 0xD400.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0274_high_mid_band_256",
@@ -3586,8 +3859,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "4293fd3467a4e9dffa7d04a539ac18a044bfea07644bdecb118c5c8fcd5f64af",
-      "materialize_from_binary": true,
-      "notes": "High mid-file contiguous 256-byte slice at offset 0xD500."
+      "notes": "High mid-file contiguous 256-byte slice at offset 0xD500.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0275_high_mid_band_256",
@@ -3599,8 +3873,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "c54ce0e131b4c86a76ebae33832910a9bc50c68acab4bbd99a70c9f3d145f17f",
-      "materialize_from_binary": true,
-      "notes": "High mid-file contiguous 256-byte slice at offset 0xD600."
+      "notes": "High mid-file contiguous 256-byte slice at offset 0xD600.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0276_high_mid_band_256",
@@ -3612,8 +3887,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "a87d72d5f40b5003231d93e9fee6ed67725757eeb51bfe3bc4be80493e858828",
-      "materialize_from_binary": true,
-      "notes": "High mid-file contiguous 256-byte slice at offset 0xD700."
+      "notes": "High mid-file contiguous 256-byte slice at offset 0xD700.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0277_high_mid_band_256",
@@ -3625,8 +3901,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "3c8b146ec60d59a0083c7e5a1c7e858d2050452b59109fee8faafdcb648adb6c",
-      "materialize_from_binary": true,
-      "notes": "High mid-file contiguous 256-byte slice at offset 0xD800."
+      "notes": "High mid-file contiguous 256-byte slice at offset 0xD800.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0278_high_mid_band_256",
@@ -3638,8 +3915,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "1db8300951c90fca50657cdd04dd516e1a7e31679517f12b292a043b243a6cc6",
-      "materialize_from_binary": true,
-      "notes": "High mid-file contiguous 256-byte slice at offset 0xD900."
+      "notes": "High mid-file contiguous 256-byte slice at offset 0xD900.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0279_high_mid_band_256",
@@ -3651,8 +3929,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "14c1fce6165448487e021271614ae5f77b712eff6429a9f27eba12c3604e6445",
-      "materialize_from_binary": true,
-      "notes": "High mid-file contiguous 256-byte slice at offset 0xDA00."
+      "notes": "High mid-file contiguous 256-byte slice at offset 0xDA00.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0280_high_mid_band_256",
@@ -3664,8 +3943,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "74464a60f018a3907c3d53e9a75f3b2680e05d0d8d3bd6ceb28eaba1ffe2f265",
-      "materialize_from_binary": true,
-      "notes": "High mid-file contiguous 256-byte slice at offset 0xDB00."
+      "notes": "High mid-file contiguous 256-byte slice at offset 0xDB00.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0281_high_mid_band_256",
@@ -3677,8 +3957,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "be8e1cd576bfa4f243920a61de96c6efd1a1de8e20031ecc56ee688a5c45d989",
-      "materialize_from_binary": true,
-      "notes": "High mid-file contiguous 256-byte slice at offset 0xDC00."
+      "notes": "High mid-file contiguous 256-byte slice at offset 0xDC00.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0282_high_mid_band_256",
@@ -3690,8 +3971,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "ff78cab14f819dc9186b44239f7cbc798782a301323fa72b6e6c00b6dc7bb27f",
-      "materialize_from_binary": true,
-      "notes": "High mid-file contiguous 256-byte slice at offset 0xDD00."
+      "notes": "High mid-file contiguous 256-byte slice at offset 0xDD00.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0283_high_mid_band_256",
@@ -3703,8 +3985,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "42bb9ba2640aea60d3a822e18c53258d1cfe1d3998d84b72f977cfa8d0018ae0",
-      "materialize_from_binary": true,
-      "notes": "High mid-file contiguous 256-byte slice at offset 0xDE00."
+      "notes": "High mid-file contiguous 256-byte slice at offset 0xDE00.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0284_high_mid_band_256",
@@ -3716,8 +3999,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "08d530d26fc9c80aee63145abb2fc3bafa060e5e6be84636233670e3d04d4026",
-      "materialize_from_binary": true,
-      "notes": "High mid-file contiguous 256-byte slice at offset 0xDF00."
+      "notes": "High mid-file contiguous 256-byte slice at offset 0xDF00.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0285_late_band_256",
@@ -3729,8 +4013,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "d8ac00e13367d3745bd0de9348548750695ce8ab6734b66074fdb02aa1258de5",
-      "materialize_from_binary": true,
-      "notes": "Late-file contiguous 256-byte slice at offset 0xE000."
+      "notes": "Late-file contiguous 256-byte slice at offset 0xE000.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0286_late_band_256",
@@ -3742,8 +4027,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "e9627349f85bcca8db07d9f0277bfee47448ef43457e3d15075434c63d33c6f5",
-      "materialize_from_binary": true,
-      "notes": "Late-file contiguous 256-byte slice at offset 0xE100."
+      "notes": "Late-file contiguous 256-byte slice at offset 0xE100.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0287_late_band_256",
@@ -3755,8 +4041,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "2f9eda803ddf02cc24a61963675c8e9e114225fd325caab739e038b2487f71f5",
-      "materialize_from_binary": true,
-      "notes": "Late-file contiguous 256-byte slice at offset 0xE200."
+      "notes": "Late-file contiguous 256-byte slice at offset 0xE200.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0288_late_band_256",
@@ -3768,8 +4055,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "f900792481af71ff047ce9896a61e6ac454584dc6db75bb58b746145c8bb8e3a",
-      "materialize_from_binary": true,
-      "notes": "Late-file contiguous 256-byte slice at offset 0xE300."
+      "notes": "Late-file contiguous 256-byte slice at offset 0xE300.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0289_late_band_256",
@@ -3781,8 +4069,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "18267831d76c2c5d91366b64777c135f78d7126187fd0434d200b039a4a30acf",
-      "materialize_from_binary": true,
-      "notes": "Late-file contiguous 256-byte slice at offset 0xE400."
+      "notes": "Late-file contiguous 256-byte slice at offset 0xE400.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0290_late_band_256",
@@ -3794,8 +4083,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "df83737f01dbdf5d4c23e49be7eb910857b49613c545799326b5d1a1ed06b029",
-      "materialize_from_binary": true,
-      "notes": "Late-file contiguous 256-byte slice at offset 0xE500."
+      "notes": "Late-file contiguous 256-byte slice at offset 0xE500.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0291_late_band_256",
@@ -3807,8 +4097,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "661ac7df56dd1ad02ba1753ff91d051ed393bc7ba3567257c7fe1827549a9d05",
-      "materialize_from_binary": true,
-      "notes": "Late-file contiguous 256-byte slice at offset 0xE600."
+      "notes": "Late-file contiguous 256-byte slice at offset 0xE600.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0292_late_band_256",
@@ -3820,8 +4111,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "9b47f8848c9e57140b45690af714698f327f0c7a5cf76e94a4a3f9fffb81c72a",
-      "materialize_from_binary": true,
-      "notes": "Late-file contiguous 256-byte slice at offset 0xE700."
+      "notes": "Late-file contiguous 256-byte slice at offset 0xE700.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0293_late_band_256",
@@ -3833,8 +4125,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "e1f789438d5738319d7a34f8095f41edc3fafe8b7f46a9ea9d24fa2a89314e1d",
-      "materialize_from_binary": true,
-      "notes": "Late-file contiguous 256-byte slice at offset 0xE800."
+      "notes": "Late-file contiguous 256-byte slice at offset 0xE800.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0294_late_band_256",
@@ -3846,8 +4139,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "d2fb12686cc251a191ef46c45e5acb860b1ce34170230f87c4fdb95c6acedf33",
-      "materialize_from_binary": true,
-      "notes": "Late-file contiguous 256-byte slice at offset 0xE900."
+      "notes": "Late-file contiguous 256-byte slice at offset 0xE900.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0295_late_band_256",
@@ -3859,8 +4153,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "7b3f6f8114d70a6fc2a7e64096a016cb479a1c93146513290f79d00222cfb3d2",
-      "materialize_from_binary": true,
-      "notes": "Late-file contiguous 256-byte slice at offset 0xEA00."
+      "notes": "Late-file contiguous 256-byte slice at offset 0xEA00.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0296_late_band_256",
@@ -3872,8 +4167,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "065b7ff98a1c0352b7793d433e38f270393462e9bfd9e74a0f0fbe32d23b79de",
-      "materialize_from_binary": true,
-      "notes": "Late-file contiguous 256-byte slice at offset 0xEB00."
+      "notes": "Late-file contiguous 256-byte slice at offset 0xEB00.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0297_late_band_256",
@@ -3885,8 +4181,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "43f11a42e65a92039a1948fa19349a6c6e6bbab17d1482985ff75d577f5004c4",
-      "materialize_from_binary": true,
-      "notes": "Late-file contiguous 256-byte slice at offset 0xEC00."
+      "notes": "Late-file contiguous 256-byte slice at offset 0xEC00.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0298_late_band_256",
@@ -3898,8 +4195,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "52fa46eaebb15c05463a52424911e1079d7f5af80fcf669c6a738489a47a5a38",
-      "materialize_from_binary": true,
-      "notes": "Late-file contiguous 256-byte slice at offset 0xED00."
+      "notes": "Late-file contiguous 256-byte slice at offset 0xED00.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0299_late_band_256",
@@ -3911,8 +4209,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "503746321d27b24f39fc59379a59f77d9162b0bdf806fe741c1afbd3f61e5db2",
-      "materialize_from_binary": true,
-      "notes": "Late-file contiguous 256-byte slice at offset 0xEE00."
+      "notes": "Late-file contiguous 256-byte slice at offset 0xEE00.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0300_late_band_256",
@@ -3924,8 +4223,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "5a779363a369f5465695eb7c54bc354bed7b36bb2f890d10f404ec70af92a6da",
-      "materialize_from_binary": true,
-      "notes": "Late-file contiguous 256-byte slice at offset 0xEF00."
+      "notes": "Late-file contiguous 256-byte slice at offset 0xEF00.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0301_late_band_256",
@@ -3937,8 +4237,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "6113fe87b391270e179b18dba684b9fffe94f1621bbfe0ee82012bdea6d7fea7",
-      "materialize_from_binary": true,
-      "notes": "Late-file contiguous 256-byte slice at offset 0xF000."
+      "notes": "Late-file contiguous 256-byte slice at offset 0xF000.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0302_late_band_256",
@@ -3950,8 +4251,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "196c5132e5858b1eb2911a2b3d9120a52a878606d340e7f7810396051df936a6",
-      "materialize_from_binary": true,
-      "notes": "Late-file contiguous 256-byte slice at offset 0xF100."
+      "notes": "Late-file contiguous 256-byte slice at offset 0xF100.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0303_late_band_256",
@@ -3963,8 +4265,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "1ea2e3300936b933bff2eaaa9661c4d9e8701b21e7469f2f197a97a44898cc0d",
-      "materialize_from_binary": true,
-      "notes": "Late-file contiguous 256-byte slice at offset 0xF200."
+      "notes": "Late-file contiguous 256-byte slice at offset 0xF200.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0304_late_band_256",
@@ -3976,8 +4279,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "7858284eab0d052009d1f5eb99552f8583ee0873edaf101af9984ba3a714d966",
-      "materialize_from_binary": true,
-      "notes": "Late-file contiguous 256-byte slice at offset 0xF300."
+      "notes": "Late-file contiguous 256-byte slice at offset 0xF300.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0305_late_band_256",
@@ -3989,8 +4293,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "309c5af8c8360ec806cdf1966a7d99099e8887a13dec3a827cdff333625108f4",
-      "materialize_from_binary": true,
-      "notes": "Late-file contiguous 256-byte slice at offset 0xF400."
+      "notes": "Late-file contiguous 256-byte slice at offset 0xF400.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0306_late_band_256",
@@ -4002,8 +4307,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "8c97a7dc76765b0490b5808b84dc801f1ef86d487efa52723e6ab1a81d23cbc7",
-      "materialize_from_binary": true,
-      "notes": "Late-file contiguous 256-byte slice at offset 0xF500."
+      "notes": "Late-file contiguous 256-byte slice at offset 0xF500.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0307_late_band_256",
@@ -4015,8 +4321,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "52a8e3b48eb68a25c988f07b8dded8cc128faf1a7eddbdccc4f708b67de0b5fc",
-      "materialize_from_binary": true,
-      "notes": "Late-file contiguous 256-byte slice at offset 0xF600."
+      "notes": "Late-file contiguous 256-byte slice at offset 0xF600.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0308_late_band_256",
@@ -4028,8 +4335,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "e3dd64a22b9a35f200befea32647613efdf64334a2a443d2db13914306998775",
-      "materialize_from_binary": true,
-      "notes": "Late-file contiguous 256-byte slice at offset 0xF700."
+      "notes": "Late-file contiguous 256-byte slice at offset 0xF700.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0309_late_band_256",
@@ -4041,8 +4349,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "0b9992a8efea872c0f4735cd7a48368c4f721b891801c89e2a7785b15f075587",
-      "materialize_from_binary": true,
-      "notes": "Late-file contiguous 256-byte slice at offset 0xF800."
+      "notes": "Late-file contiguous 256-byte slice at offset 0xF800.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0310_late_band_256",
@@ -4054,8 +4363,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "db95d3fb7cd268f345a99d70548d44be854023c44a4b62a213a765d6cb84a8a0",
-      "materialize_from_binary": true,
-      "notes": "Late-file contiguous 256-byte slice at offset 0xF900."
+      "notes": "Late-file contiguous 256-byte slice at offset 0xF900.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0311_late_band_256",
@@ -4067,8 +4377,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "f69ecd13286df290a073f8e5aead9394d2a2a8283262f70dcdf24a3086d46cba",
-      "materialize_from_binary": true,
-      "notes": "Late-file contiguous 256-byte slice at offset 0xFA00."
+      "notes": "Late-file contiguous 256-byte slice at offset 0xFA00.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0312_late_band_256",
@@ -4080,8 +4391,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "41feb826dedcd036099d84564541b92ffb3f338f50fa64be45781ed112765215",
-      "materialize_from_binary": true,
-      "notes": "Late-file contiguous 256-byte slice at offset 0xFB00."
+      "notes": "Late-file contiguous 256-byte slice at offset 0xFB00.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0313_late_band_256",
@@ -4093,8 +4405,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "04c65c7c585475363b34d6930800c234b0fbc19b3ae4e808dae0dc97cedbb6ca",
-      "materialize_from_binary": true,
-      "notes": "Late-file contiguous 256-byte slice at offset 0xFC00."
+      "notes": "Late-file contiguous 256-byte slice at offset 0xFC00.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0314_late_band_256",
@@ -4106,8 +4419,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "388834293f17e23c2b2aba052534855b202e0a491a11150ac2f4844d4626be77",
-      "materialize_from_binary": true,
-      "notes": "Late-file contiguous 256-byte slice at offset 0xFD00."
+      "notes": "Late-file contiguous 256-byte slice at offset 0xFD00.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0315_late_band_256",
@@ -4119,8 +4433,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "12a04af9cd9bcfad39e58465fe4decc8827e45e19f3141eab9809e9e2fee201b",
-      "materialize_from_binary": true,
-      "notes": "Late-file contiguous 256-byte slice at offset 0xFE00."
+      "notes": "Late-file contiguous 256-byte slice at offset 0xFE00.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0316_late_band_256",
@@ -4132,8 +4447,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "f6c005b539a666d1cf7d6534501e4b2df30e8d063c23035702586c0e14079087",
-      "materialize_from_binary": true,
-      "notes": "Late-file contiguous 256-byte slice at offset 0xFF00."
+      "notes": "Late-file contiguous 256-byte slice at offset 0xFF00.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0317_late_band_256",
@@ -4145,8 +4461,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "8e1874c08d28003443a69983cb45aa8254747209dfe1f917c245a6af8dc71a44",
-      "materialize_from_binary": true,
-      "notes": "Late-file contiguous 256-byte slice at offset 0x10000."
+      "notes": "Late-file contiguous 256-byte slice at offset 0x10000.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0318_late_band_256",
@@ -4158,8 +4475,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "8a366af7ac2ad865a8fb622f7ef9d43579749f405f9258f16f284b2957ee3da6",
-      "materialize_from_binary": true,
-      "notes": "Late-file contiguous 256-byte slice at offset 0x10100."
+      "notes": "Late-file contiguous 256-byte slice at offset 0x10100.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0319_late_band_256",
@@ -4171,8 +4489,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "9853f68291ef4c0e63014daa1909630c0b95a160e30b7a6b3532cc29b02b53fa",
-      "materialize_from_binary": true,
-      "notes": "Late-file contiguous 256-byte slice at offset 0x10200."
+      "notes": "Late-file contiguous 256-byte slice at offset 0x10200.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0320_late_band_256",
@@ -4184,8 +4503,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "f4fe9ab74d79db133ed01c9f37ab7620e86afa00632ca80746ff2ecbd307aba1",
-      "materialize_from_binary": true,
-      "notes": "Late-file contiguous 256-byte slice at offset 0x10300."
+      "notes": "Late-file contiguous 256-byte slice at offset 0x10300.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0321_late_band_256",
@@ -4197,8 +4517,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "8622ae37ef6379c06fe2d0e720ef520331a136633e5440794d5158ee75c99fef",
-      "materialize_from_binary": true,
-      "notes": "Late-file contiguous 256-byte slice at offset 0x10400."
+      "notes": "Late-file contiguous 256-byte slice at offset 0x10400.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0322_late_band_256",
@@ -4210,8 +4531,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "c396dc6541fa55b34e44914e6343191b3865bd3f93f6996da0d4ef11a83d3c2d",
-      "materialize_from_binary": true,
-      "notes": "Late-file contiguous 256-byte slice at offset 0x10500."
+      "notes": "Late-file contiguous 256-byte slice at offset 0x10500.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0323_late_band_256",
@@ -4223,8 +4545,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "a3cbf4fe47a92415e4fe2647b0f1d135eec6f9da3a4b77d802fafa546e49920e",
-      "materialize_from_binary": true,
-      "notes": "Late-file contiguous 256-byte slice at offset 0x10600."
+      "notes": "Late-file contiguous 256-byte slice at offset 0x10600.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0324_late_band_256",
@@ -4236,8 +4559,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "13741bfd5a3a353bd020cc2b58083995012fd672720fe75edcd69b3307f7463d",
-      "materialize_from_binary": true,
-      "notes": "Late-file contiguous 256-byte slice at offset 0x10700."
+      "notes": "Late-file contiguous 256-byte slice at offset 0x10700.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0325_late_band_256",
@@ -4249,8 +4573,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "b2c2bfc771677089677f4c4875ba13fa16d9ec507e4e6241cc5c3f16f69ff308",
-      "materialize_from_binary": true,
-      "notes": "Late-file contiguous 256-byte slice at offset 0x10800."
+      "notes": "Late-file contiguous 256-byte slice at offset 0x10800.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0326_late_band_256",
@@ -4262,8 +4587,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "eff5aaa7d9c0980af0321fb6a15114b418a2a213e072060e5f8eed524d37d185",
-      "materialize_from_binary": true,
-      "notes": "Late-file contiguous 256-byte slice at offset 0x10900."
+      "notes": "Late-file contiguous 256-byte slice at offset 0x10900.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0327_late_band_256",
@@ -4275,8 +4601,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "3fb4b086a1ed0f468b7c8e8a863522bc2f0c6b3d7071cb0dfe7cb1e1d3f4ea5a",
-      "materialize_from_binary": true,
-      "notes": "Late-file contiguous 256-byte slice at offset 0x10A00."
+      "notes": "Late-file contiguous 256-byte slice at offset 0x10A00.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0328_late_band_256",
@@ -4288,8 +4615,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "ee72299e6f75fd8f48ebae1f5619881cb455f9cec6ce95430265d87d667c353f",
-      "materialize_from_binary": true,
-      "notes": "Late-file contiguous 256-byte slice at offset 0x10B00."
+      "notes": "Late-file contiguous 256-byte slice at offset 0x10B00.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0329_late_band_256",
@@ -4301,8 +4629,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "2974d83c8da6d71fefe3fd314e7e00913582369ef4673d2b60ceea86a01d1218",
-      "materialize_from_binary": true,
-      "notes": "Late-file contiguous 256-byte slice at offset 0x10C00."
+      "notes": "Late-file contiguous 256-byte slice at offset 0x10C00.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0330_late_band_256",
@@ -4314,8 +4643,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "0bd7bcd3f33d9b8787fae4874b46a0132236436c26269af1a646bf9692958cd3",
-      "materialize_from_binary": true,
-      "notes": "Late-file contiguous 256-byte slice at offset 0x10D00."
+      "notes": "Late-file contiguous 256-byte slice at offset 0x10D00.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0331_late_band_256",
@@ -4327,8 +4657,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "8d20bba033a47597f0979c92972ae6a10c812f383c25a7f761c91e071920afa9",
-      "materialize_from_binary": true,
-      "notes": "Late-file contiguous 256-byte slice at offset 0x10E00."
+      "notes": "Late-file contiguous 256-byte slice at offset 0x10E00.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0332_late_band_256",
@@ -4340,8 +4671,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "ef00b47d72c9766253ba1f014403661152e1d9d0967ccdef2ac530c19d368a8a",
-      "materialize_from_binary": true,
-      "notes": "Late-file contiguous 256-byte slice at offset 0x10F00."
+      "notes": "Late-file contiguous 256-byte slice at offset 0x10F00.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0333_late_band_256",
@@ -4353,8 +4685,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "e0f68c598f1f9dad2a2012a1a8674b575d87be148da5127ebecd4822a4c2d9b6",
-      "materialize_from_binary": true,
-      "notes": "Late-file contiguous 256-byte slice at offset 0x11000."
+      "notes": "Late-file contiguous 256-byte slice at offset 0x11000.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0334_late_band_256",
@@ -4366,8 +4699,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "fca178b211afde20f2faac8ffb0177326586ee32a1e996a6476db8ccf2579fbc",
-      "materialize_from_binary": true,
-      "notes": "Late-file contiguous 256-byte slice at offset 0x11100."
+      "notes": "Late-file contiguous 256-byte slice at offset 0x11100.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0335_late_band_256",
@@ -4379,8 +4713,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "d85cd3072b9f92c1433a8e88f37e1e5698f161ae79fbb2557f0af4c4b24c0566",
-      "materialize_from_binary": true,
-      "notes": "Late-file contiguous 256-byte slice at offset 0x11200."
+      "notes": "Late-file contiguous 256-byte slice at offset 0x11200.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0336_late_band_256",
@@ -4392,8 +4727,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "49c3bf39bb320ad9e7947d63ef733aaf76bc0cf69f0d9eb164e15a0c860711d0",
-      "materialize_from_binary": true,
-      "notes": "Late-file contiguous 256-byte slice at offset 0x11300."
+      "notes": "Late-file contiguous 256-byte slice at offset 0x11300.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0337_late_band_256",
@@ -4405,8 +4741,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "704bb768ddc327bcc8335719a1970ea392c83675bcdf3f6f9b62c06b5549d895",
-      "materialize_from_binary": true,
-      "notes": "Late-file contiguous 256-byte slice at offset 0x11400."
+      "notes": "Late-file contiguous 256-byte slice at offset 0x11400.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0338_late_band_256",
@@ -4418,8 +4755,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "17f943be7d1d43b3dbb4e26c6de387257f453338a6f43d69b2b2cf20d2059228",
-      "materialize_from_binary": true,
-      "notes": "Late-file contiguous 256-byte slice at offset 0x11500."
+      "notes": "Late-file contiguous 256-byte slice at offset 0x11500.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0339_late_band_256",
@@ -4431,8 +4769,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "7eae254ceadd9af34f5d65c67f8dac95e045cf3c88fe500466cc4c4af0bfcdd7",
-      "materialize_from_binary": true,
-      "notes": "Late-file contiguous 256-byte slice at offset 0x11600."
+      "notes": "Late-file contiguous 256-byte slice at offset 0x11600.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0340_late_band_256",
@@ -4444,8 +4783,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "e765e8f4f4a8eb7701ee1152c22903c585d3a6202c18f513bae4dc7d4c36e5cc",
-      "materialize_from_binary": true,
-      "notes": "Late-file contiguous 256-byte slice at offset 0x11700."
+      "notes": "Late-file contiguous 256-byte slice at offset 0x11700.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0341_late_band_256",
@@ -4457,8 +4797,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "d7dcd5c689088bbb3d0078a330ea9146e330e4091dde0bf783d4671adf5ca5fa",
-      "materialize_from_binary": true,
-      "notes": "Late-file contiguous 256-byte slice at offset 0x11800."
+      "notes": "Late-file contiguous 256-byte slice at offset 0x11800.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0342_late_band_256",
@@ -4470,8 +4811,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "fee2290af22a3881cf5340bad0467e214df06dd8b55de83ff4d74e1ca548a07f",
-      "materialize_from_binary": true,
-      "notes": "Late-file contiguous 256-byte slice at offset 0x11900."
+      "notes": "Late-file contiguous 256-byte slice at offset 0x11900.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0343_late_band_256",
@@ -4483,8 +4825,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "52d5d577c8375dd4de9aeec6715d905f1b6b3565182753ad753022ee70634b8c",
-      "materialize_from_binary": true,
-      "notes": "Late-file contiguous 256-byte slice at offset 0x11A00."
+      "notes": "Late-file contiguous 256-byte slice at offset 0x11A00.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0344_late_band_256",
@@ -4496,8 +4839,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "08f727311133aaaf6cd9208b3f3ccea954df092764ea871321abda1ace3723d0",
-      "materialize_from_binary": true,
-      "notes": "Late-file contiguous 256-byte slice at offset 0x11B00."
+      "notes": "Late-file contiguous 256-byte slice at offset 0x11B00.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0345_late_band_256",
@@ -4509,8 +4853,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "71adae786448df4021d2325897dd9185464a557b09c3380c36ace2ead13b4706",
-      "materialize_from_binary": true,
-      "notes": "Late-file contiguous 256-byte slice at offset 0x11C00."
+      "notes": "Late-file contiguous 256-byte slice at offset 0x11C00.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0346_late_band_256",
@@ -4522,8 +4867,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "268978410b405c81edc0298cef2d8fdc9716f786e3ebdb0c8495e3659d2402d1",
-      "materialize_from_binary": true,
-      "notes": "Late-file contiguous 256-byte slice at offset 0x11D00."
+      "notes": "Late-file contiguous 256-byte slice at offset 0x11D00.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0347_late_band_256",
@@ -4535,8 +4881,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "cec7087e4c25e383fa5f156bf74bc319a965b39e05f2c3f16683848202a951f4",
-      "materialize_from_binary": true,
-      "notes": "Late-file contiguous 256-byte slice at offset 0x11E00."
+      "notes": "Late-file contiguous 256-byte slice at offset 0x11E00.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0348_late_band_256",
@@ -4548,8 +4895,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "8632c8d65339764cc4fe21299fad89f0715a36573d17bc38cad3284e525b5199",
-      "materialize_from_binary": true,
-      "notes": "Late-file contiguous 256-byte slice at offset 0x11F00."
+      "notes": "Late-file contiguous 256-byte slice at offset 0x11F00.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0349_final_gap_256",
@@ -4561,8 +4909,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "6eade085411345076ea60e723afd7943d800bd4a4524566b102d47f340ad43b8",
-      "materialize_from_binary": true,
-      "notes": "Final pre-entry gap slice at offset 0x12000."
+      "notes": "Final pre-entry gap slice at offset 0x12000.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0350_final_gap_256",
@@ -4574,8 +4923,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "4b6e000f36b58c2be58e1165265b569454aedfbdec1f227686f20ee3829794e7",
-      "materialize_from_binary": true,
-      "notes": "Final pre-entry gap slice at offset 0x12100."
+      "notes": "Final pre-entry gap slice at offset 0x12100.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0351_final_gap_256",
@@ -4587,8 +4937,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "c950ea4a5ad125547303a1751720cd201642d8921e9e3663f232759be99094b0",
-      "materialize_from_binary": true,
-      "notes": "Final pre-entry gap slice at offset 0x12200."
+      "notes": "Final pre-entry gap slice at offset 0x12200.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0352_final_gap_256",
@@ -4600,8 +4951,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "7edb3f66f2f63ddfe02f4c57cad4e28c990ee5ecaae186b3a8edbd7cbf8c4b76",
-      "materialize_from_binary": true,
-      "notes": "Final pre-entry gap slice at offset 0x12300."
+      "notes": "Final pre-entry gap slice at offset 0x12300.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0353_final_gap_256",
@@ -4613,8 +4965,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "da085238306f801d179a0fd5054a0c2f829e72dceda57a2ab5f5dfd8d2263f40",
-      "materialize_from_binary": true,
-      "notes": "Final pre-entry gap slice at offset 0x12400."
+      "notes": "Final pre-entry gap slice at offset 0x12400.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0354_final_gap_256",
@@ -4626,8 +4979,9 @@
       "size_bytes": 256,
       "status": "matched",
       "expected_sha256": "64490bd0f7bbf076cb9701c3a77106a025839dff74e64113bf88912bc24d1301",
-      "materialize_from_binary": true,
-      "notes": "Final pre-entry gap slice at offset 0x12500."
+      "notes": "Final pre-entry gap slice at offset 0x12500.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     },
     {
       "id": "unit_0355_final_gap_tail_254",
@@ -4639,8 +4993,9 @@
       "size_bytes": 254,
       "status": "matched",
       "expected_sha256": "5f975f2761c02deb4d2bb8a54c7ce71d0889524d5509bea8a812b7924a04df4f",
-      "materialize_from_binary": true,
-      "notes": "Final pre-entry gap slice at offset 0x12600."
+      "notes": "Final pre-entry gap slice at offset 0x12600.",
+      "source_materializer": "c_byte_array",
+      "source_state": "authored_data"
     }
   ]
 }

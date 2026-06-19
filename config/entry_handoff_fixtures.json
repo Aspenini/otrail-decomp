@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "description": "Deterministic fixtures for the lifted unit_0002 loader-to-unpacker handoff.",
+  "fixtures": [
+    {
+      "id": "entry_handoff_readable",
+      "exe_path": "Oregon_The_1990/OREGON.EXE",
+      "load_seg": "0xA000",
+      "expected_status": "ok",
+      "expected_entry_cs": "0xB26D",
+      "expected_stage0_copy_bytes": "0x0EEA",
+      "expected_stage0_segment_delta": "0x1116",
+      "expected_stage1_total_paragraphs": "0x126D",
+      "expected_unpacker_ds": "0xB116",
+      "expected_unpacker_es": "0xA000",
+      "expected_stream_src_offset": 2,
+      "expected_stream_dst_offset": 0,
+      "expected_seed_word": "0xFFFF",
+      "expected_seed_bits": "0x7FFF",
+      "expected_seed_bits_left": 15,
+      "expected_first_gate_is_literal": 1
+    }
+  ]
+}

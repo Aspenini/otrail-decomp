@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "description": "Deterministic end-to-end entry bootstrap fixtures using the real EXE image.",
+  "fixtures": [
+    {
+      "id": "entry_bootstrap_strict",
+      "exe_path": "Oregon_The_1990/OREGON.EXE",
+      "load_seg": "0xA000",
+      "mode": 0,
+      "expected_status": "ok",
+      "expected_stage0_copy_bytes": "0x0EEA",
+      "expected_stage0_segment_delta": "0x1116",
+      "expected_stage1_total_paragraphs": "0x126D",
+      "expected_relocated_cs": "0xC383",
+      "expected_unpacker_ds": "0xB116",
+      "expected_unpacker_es": "0xA000",
+      "expected_pass_schedule": "0x1000,0x026D",
+      "expected_pass_trace": "BP=126D->026D DX=B26D->A26D BX=C383->B383 CX=8000 SI=DI=FFFE;BP=026D->0000 DX=A26D->A000 BX=B383->B116 CX=1368 SI=DI=26CE",
+      "expected_src_used": 3245,
+      "expected_dst_written": 12658,
+      "expected_sha256": "230c5a49671bc90c63a1e3212dcf59532818d859f94c99de2bb24befe24f52e2"
+    },
+    {
+      "id": "entry_bootstrap_heuristic",
+      "exe_path": "Oregon_The_1990/OREGON.EXE",
+      "load_seg": "0xA000",
+      "mode": 1,
+      "expected_status": "ok",
+      "expected_stage0_copy_bytes": "0x0EEA",
+      "expected_stage0_segment_delta": "0x1116",
+      "expected_stage1_total_paragraphs": "0x126D",
+      "expected_relocated_cs": "0xC383",
+      "expected_unpacker_ds": "0xB116",
+      "expected_unpacker_es": "0xA000",
+      "expected_pass_schedule": "0x1000,0x026D",
+      "expected_pass_trace": "BP=126D->026D DX=B26D->A26D BX=C383->B383 CX=8000 SI=DI=FFFE;BP=026D->0000 DX=A26D->A000 BX=B383->B116 CX=1368 SI=DI=26CE",
+      "expected_src_used": 3245,
+      "expected_dst_written": 12658,
+      "expected_sha256": "230c5a49671bc90c63a1e3212dcf59532818d859f94c99de2bb24befe24f52e2"
+    }
+  ]
+}
