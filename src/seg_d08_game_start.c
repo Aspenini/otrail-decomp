@@ -19,8 +19,8 @@
 
 /* ------------------------------------------------------------------ globals */
 extern uint8_t  g_quit_flag;       /* 0x1520 */
-extern uint8_t  g_1552;            /* 0x1552: set to 1 at game start            */
-extern uint8_t  g_1586, g_1587;    /* 0x1586/0x1587: travel-abort sub-flags     */
+extern uint8_t  g_first_turn;       /* 0x1552: set to 1 at game start            */
+extern uint8_t  g_died, g_game_over;    /* 0x1586/0x1587: travel-abort sub-flags     */
 extern uint8_t  g_input_buf;       /* 0x141a: raw keyboard input                */
 extern uint8_t  g_active_save[SAVE_REC_SIZE];   /* 0x1588: active game record   */
 extern uint8_t  g_0bc0[SAVE_REC_SIZE];          /* 0x0bc0: scratch save record  */
@@ -77,10 +77,10 @@ extern uint8_t  g_15e3[4];
 void travel_the_trail(void)
 {
     sub_20a4_0bc1();                 /* 0x2225 */
-    g_1586 = 0;                      /* 0x222A */
-    g_1587 = 0;                      /* 0x222F */
+    g_died = 0;                      /* 0x222A */
+    g_game_over = 0;                      /* 0x222F */
     sub_1049_1e43();                 /* 0x2234 */
-    g_1552 = 1;                      /* 0x2239 */
+    g_first_turn = 1;            /* 0x2239 */
 
     prompt_continue_saved_game(/* bp */ 0);  /* 0x223F */
     if (g_quit_flag)                 /* 0x2242 */

@@ -32,7 +32,8 @@ extern uint16_t g_157a, g_157c;   /* 0x157a/0x157c: cursor row/col              
 extern uint16_t g_157e, g_1580;   /* 0x157e/0x1580: menu line position          */
 extern uint16_t g_6a0;            /* 0x06a0: screen width / attribute           */
 extern uint16_t g_684;            /* 0x0684: far ptr target for status print     */
-extern uint8_t  g_1586, g_1587;   /* 0x1586/0x1587: travel-abort sub-flags       */
+extern uint8_t  g_died;           /* 0x1586: party death / game-ending flag      */
+extern uint8_t  g_game_over;      /* 0x1587: trail finished (reached Oregon)     */
 
 /* --------------------------------------------------------------- prototypes */
 /* C runtime / library group (segment 0x20a4). */
@@ -61,10 +62,10 @@ extern void   sub_1049_1e43(void);
 extern void   sub_1049_15a0(void);
 extern void   cleanup_1049_42fb(void);
 
-extern void   travel_d08_2217(void);   /* menu 1 */
-extern void   sub_32_3f93(void);
+extern void   travel_the_trail(void);  /* menu 1: 0x0d08:0x2217 - set up game */
+extern void   travel_loop(void);       /* menu 1: 0x0032:0x3f93 - play the trail */
 extern void   sub_cdb_00df(void);
-extern void   learn_c6b_051b(void);    /* menu 2 */
+extern void   learn_about_trail(void); /* menu 2: 0x0c6b:0x051b */
 extern void   topten_c00_0433(void);   /* menu 3 */
 extern void   manage_f34_0fad(void);   /* menu 5 */
 
@@ -115,17 +116,18 @@ void main(void)                                              /* 0x010A */
 
         switch (g_menu_choice) {                             /* 0x0212 */
         case 1:                                              /* Travel the Trail */
-            travel_d08_2217();                               /* 0x021A */
-            if (g_quit_flag) {                               /* 0x021F */
-                sub_32_3f93();                               /* 0x0226 */
-                if (g_quit_flag && g_1586 == 0 && g_1587 == 0) { /* 0x0232-0x023E */
+            travel_the_trail();                              /* 0x021A: set up the game */
+            if (!g_quit_flag) {                              /* 0x0224: only if not aborted */
+                travel_loop();                               /* 0x0226: play the trail */
+                /* Quit mid-trail (Esc) without dying or finishing -> back to menu. */
+                if (g_quit_flag && g_died == 0 && g_game_over == 0) { /* 0x0230-0x023E */
                     g_quit_flag = 0;                         /* 0x0240 */
                     sub_cdb_00df();                          /* 0x0245 */
                 }
             }
             break;
         case 2:                                              /* Learn about the Trail */
-            learn_c6b_051b();                                /* 0x0252 */
+            learn_about_trail();                             /* 0x0252 */
             break;
         case 3:                                              /* See the Oregon Top Ten */
             topten_c00_0433();                               /* 0x025F */

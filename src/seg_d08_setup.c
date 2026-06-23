@@ -43,8 +43,28 @@ extern void far_sprintf(/* dst, fmt, ... */);             /* 0x20a4:0x0634 */
 extern void far_print(const char far *s);                 /* 0x20a4:0x06c1 */
 extern int  rand_1049_008c(int n);                        /* 0x1049:0x008c: random 0..n-1 */
 extern void image_load_14c6_021a(const char far *name, int a, int b); /* 0x14c6:0x021a */
+extern void image_show_14c6_0321(const char far *name, void far *dst); /* 0x14c6:0x0321 */
+extern void image_free_14c6_043c(int lo, int hi);         /* 0x14c6:0x043c */
 extern int  read_member_name_d08_032e(int slot);          /* 0x0d08:0x032e (near) */
+extern void store_intro_d08_0cff(void);                   /* 0x0d08:0x0cff (near) */
+static void store_buy_loop_d08_1938(uint16_t (*item)[3]); /* 0x0d08:0x1938 (near) */
+
+/* Store / money helpers. */
+extern void format_money_1049_2ccc(int flag, long amount, char far *out); /* 0x1049:0x2ccc */
+extern void format_1049_2c1e(/* fmt, args */);            /* 0x1049:0x2c1e */
+extern void gfx_hline_1ceb_16e9(int x1, int y1, int x2, int y2);  /* 0x1ceb:0x16e9 */
+extern void gfx_setmode_1ceb_0cda(int a, int b);          /* 0x1ceb:0x0cda */
+extern long ladd_20a4_0aee(long a, long b);               /* 0x20a4:0x0aee long add */
+extern int  lcmp_20a4_0b10(long a, long b);               /* 0x20a4:0x0b10 long compare */
+extern uint8_t  g_179a;            /* 0x179a: display-mode flag (text vs graphics) */
+/* g_15d2/g_15d4/g_15d6 (declared above) hold the player's cash, shown here as
+ * "Amount you have"; choose_profession seeds it per occupation. */
 extern void gfx_screen_init_1ceb_0b71(void);              /* 0x1ceb:0x0b71 */
+extern uint16_t g_636;              /* 0x0636: text base position for store msg   */
+
+/* Store inventory totals (DGROUP 0x15c4..0x15d1), zeroed at store entry. */
+extern uint16_t g_15c4, g_15c6, g_15c8, g_15ca, g_15cd;
+extern uint8_t  g_15cc, g_15cf, g_15d1, g_15d0;
 
 /* Party names: 5 records of PARTY_NAME_LEN bytes starting at g_active_save+1
  * (leader is record 0). DEFAULT_NAMES is a pool of 6-byte names at cs:0x5fa. */
@@ -192,3 +212,113 @@ void choose_departure_month(int arg)
     g_year = 0x738;     /* 1848 */                              /* 0x0B34 */
     g_15c0 = 1;                                                 /* 0x0B3A */
 }                                                               /* 0x0B42 ret 2 */
+
+/* ---------------------------------------------------------- 0x0d08:0x1e78
+ * Outfit at the Independence store: show supplies.pcc, run the buy loop over
+ * the supply categories, then confirm departure. Item quantities are kept in
+ * six 6-byte records; running totals live in 0x15c4..0x15d1.
+ */
+void buy_supplies(int arg)
+{
+    char prompt[8];          /* [bp-0x38] = "buy?"        */
+    uint16_t item[6][3];     /* [bp-0x2e] supply categories: 6 records, 3 words */
+    int i;
+
+    image_show_14c6_0321(S(0x1e04) /* "supplies.pcc" */, /* caller buffer */ 0); /* 0x1E98 */
+    store_intro_d08_0cff();                                 /* 0x1E9E */
+    if (g_quit_flag) return;                                /* 0x1EA1 */
+
+    strncpy_n(prompt, S(0x1e11) /* "buy?" */, 8);           /* 0x1EB9 */
+
+    for (i = 1; i <= 5; i++) {                              /* 0x1EC5..0x1EE6 */
+        item[i][0] = 0; item[i][1] = 0; item[i][2] = 0;
+    }
+    g_15c4 = 0; g_15c6 = 0; g_15c8 = 0;                     /* 0x1EE8: running total (long) */
+    g_15ca = 0; g_15cc = 0; g_15cd = 0;                     /* 0x1EFA */
+    g_15cf = 0; g_15d1 = 0; g_15d0 = 0;                     /* 0x1F09 */
+    item[0][0] = 0; item[0][1] = 0; item[0][2] = 0;         /* 0x1F18 */
+
+    store_buy_loop_d08_1938(item);                          /* 0x1F27: the store interaction */
+    image_free_14c6_043c(0, 0);                             /* 0x1F3A: free supplies.pcc */
+    if (g_quit_flag) return;                                /* 0x1F3F */
+
+    /* "Well then, you're ready to start. Good luck! ..." */
+    fill_rect(g_636, 0, 0x13f, 0xc7);                       /* 0x1F57 */
+    draw_text(S(0x1e16), 0x40, g_636 + 0xa);                /* 0x1F6C */
+    press_any_key();                                        /* 0x1F71 */
+}                                                           /* 0x1F79 ret 2 */
+
+/* ---------------------------------------------------------- 0x0d08:0x1938
+ * Matt's General Store. Draws the framed store screen and the five supply
+ * categories with running prices, shows the total bill against the player's
+ * cash, and loops letting the player buy items (1-5) or leave with SPACE.
+ *
+ * 'item' points at the caller's six 6-byte quantity/cost records (3 words each;
+ * record 0 is the running total). Cash is the long at g_15d2.  This lift covers
+ * the verified render + interaction structure; the inner per-item buy/confirm
+ * and money-deduction math is summarised rather than traced statement-by-
+ * statement.
+ *
+ * Categories (cs:0x17ef): 1. Oxen  2. Food  3. Clothing  4. Ammunition
+ *                         5. Spare parts
+ */
+static void store_buy_loop_d08_1938(uint16_t (*item)[3])
+{
+    char line[256];     /* [bp-0x108] formatted output line */
+    char money[256];    /* [bp-0x208] formatted currency     */
+    int  i;
+
+    fill_rect(g_636, 0, 0x13f, 0xc7);                       /* 0x194B: clear */
+    gfx_setmode_1ceb_0cda(1, g_179a ? 0x28 : 0x02);         /* 0x195F..0x1979 */
+    gfx_hline_1ceb_16e9(g_636, 0, 0x13f, 0x02);             /* 0x198D: top rule   */
+    gfx_hline_1ceb_16e9(g_636, 0x2b, 0x13f, 0x2d);          /* 0x19A2: mid rule   */
+    gfx_hline_1ceb_16e9(g_636, 0x62, 0x13f, 0x64);          /* 0x19B7: lower rule */
+
+    /* "Matt's General Store / Independence, Missouri" */
+    draw_text(S(0x17c0), 0x06, g_636 + 0x18);               /* 0x19CC */
+    /* "1. Oxen / 2. Food / 3. Clothing / 4. Ammunition / 5. Spare parts" */
+    draw_text(S(0x17ef), g_636 + 0x0a, g_157c);             /* 0x1A0B */
+
+    item[0][0] = item[0][1] = item[0][2] = 0;               /* 0x1A13: running total = 0 */
+
+    /* Show each category's cost and accumulate the total bill. */
+    for (i = 1; i <= 5; i++) {                              /* 0x1A2B..0x1AB4 */
+        format_money_1049_2ccc(1, *(long *)item[i], line);  /* 0x1A65 */
+        draw_text(line, g_636 + 0x96, g_157c);
+        *(long *)item[0] = ladd_20a4_0aee(*(long *)item[0], *(long *)item[i]); /* 0x1A9A */
+    }
+
+    /* Total bill vs. "Amount you have". */
+    format_money_1049_2ccc(1, *(long *)item[0], line);      /* 0x1ADF: total bill */
+    far_print(S(0x1828));                                   /* 0x1AE9 "\\" */
+    format_money_1049_2ccc(1, *(long *)&g_15d2, money);     /* 0x1B03: cash on hand */
+    far_print(money);
+    draw_text(S(0x182c) /* "Total bill: / Amount you have:" */, g_636 + 0x0a, g_157c); /* 0x1B21 */
+
+    /* Interaction loop: pick an item to buy, or SPACE to leave the store. */
+    for (;;) {
+        far_sprintf(/* line, cs:0x1851 "Which item would you like to buy?" */); /* 0x1B3D */
+        far_print(S(0x1870) /* "Press SPACE BAR to leave store" */);           /* 0x1B55 */
+        draw_text(line, 0, 0);
+
+        read_field_1049_0d95(1, 1, S(0x1891) /* "1-5" */, &g_input_buf);        /* 0x1B92 */
+        if (g_quit_flag) return;                            /* 0x1B9C */
+
+        if (g_input_buf == 0) {                             /* SPACE -> leave */
+            /* Must have oxen before leaving. */
+            if (lcmp_20a4_0b10(*(long *)item[1], 0) == 0) { /* 0x1BD7: oxen == 0 */
+                fill_rect(/* ... */ 0, 0, 0, 0);            /* 0x1BEE */
+                draw_text(S(0x1895) /* "Don't forget, you'll need oxen..." */, 0, 0); /* 0x1C03 */
+                press_any_key();
+                if (g_quit_flag) return;
+                continue;                                   /* re-prompt */
+            }
+            break;                                          /* leave store */
+        }
+
+        /* Otherwise: buy the chosen category - prompt quantity, price it
+         * ("Okay, that comes to a total of ..."), and if the player can't
+         * afford it report "... But I see that you only have ...". On success
+         * the quantity/cost records and g_15d2 cash are updated. (summarised) */
+    }
+}
