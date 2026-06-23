@@ -75,7 +75,12 @@
     "07ce:2950": {"name": "stop_to_rest", "confidence": "med", "note": "menu 6"},
     "07ce:11c3": {"name": "attempt_trade", "confidence": "med", "note": "menu 7"},
     "07ce:17eb": {"name": "talk_to_people", "confidence": "med", "note": "menu 8 at forts"},
-    "0606:1968": {"name": "hunt", "confidence": "high", "note": "menu 8 on trail: hunting minigame (segment 0x0606)"},
+    "0606:1968": {"name": "hunt", "confidence": "high", "file": "src/seg_606_hunt.c", "note": "hunting minigame: terrain/animals.pcc, shoot, meat capped at 100 carry / 2000 wagon"},
+    "0606:03bf": {"name": "hunt_setup_terrain", "confidence": "med", "note": "near; set up terrain.pcc scene"},
+    "0606:05ae": {"name": "hunt_init_animals", "confidence": "low", "note": "near; place/init animals"},
+    "0606:1480": {"name": "hunt_shoot", "confidence": "med", "note": "near; real-time aim/shoot action, returns animals shot"},
+    "1ce1:0018": {"name": "gfx_sync", "confidence": "low", "note": "graphics sync/vsync helper"},
+    "14c6:03ea": {"name": "image_blit", "confidence": "low", "note": "blit a loaded image at x"},
     "07ce:1d3c": {"name": "buy_at_fort", "confidence": "med", "note": "menu 9 at forts"},
     "1049:2d8b": {"name": "fmt_weather", "confidence": "med"},
     "1049:2db7": {"name": "fmt_health", "confidence": "med"},
@@ -133,6 +138,7 @@
     "1729": {"name": "g_at_fort", "confidence": "high", "type": "u8", "note": "at a fort/settlement: enables Talk (8) and Buy supplies (9)"},
     "1728": {"name": "g_1728", "confidence": "low", "type": "u8", "note": "end-of-turn / advance flag"},
     "177c": {"name": "g_must_trade", "confidence": "med", "type": "u8", "note": "a missing part blocks travel until traded for"},
+    "15ca": {"name": "g_food", "confidence": "high", "type": "u16", "note": "wagon food supply in pounds; max 2000, hunt carry limit 100"},
     "1589": {"name": "g_party_names", "confidence": "high", "type": "char[5][11]", "note": "party member names; record 0 = wagon leader"}
   }
 }
