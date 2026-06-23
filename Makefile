@@ -10,9 +10,9 @@ PYTHON  ?= python3
 SRC      = Oregon_The_1990/OREGON.EXE
 UNPACKED = build/OREGON_unpacked.exe
 
-.PHONY: all unpack map verify clean help
+.PHONY: all unpack map svg verify clean help
 
-all: verify map
+all: verify map svg
 
 ## unpack: decompress OREGON.EXE (LZEXE 0.91) to a plain MZ executable
 unpack: $(UNPACKED)
@@ -24,6 +24,10 @@ $(UNPACKED): tools/unlzexe.py $(SRC)
 ## map: rebuild the segment / function map from the unpacked image
 map: $(UNPACKED) tools/map_segments.py
 	$(PYTHON) tools/map_segments.py $(UNPACKED)
+
+## svg: regenerate docs/progress.svg from the map + symbol table
+svg: config/segments.json config/symbols.json tools/render_progress_svg.py
+	$(PYTHON) tools/render_progress_svg.py
 
 ## verify: re-unpack and check all structural invariants (regression gate)
 verify: tools/verify.py tools/unlzexe.py $(SRC)
