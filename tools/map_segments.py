@@ -23,7 +23,9 @@ Usage:
 """
 from __future__ import annotations
 
+import bisect
 import json
+import re
 import struct
 import sys
 from collections import defaultdict
@@ -40,10 +42,22 @@ def load(path):
     return image, relocs, dict(ip=e_ip, cs=e_cs, ss=e_ss, sp=e_sp, base=base)
 
 
+# Borland function prologue + the universal __stkcheck far call (0x20a4:0x244):
+#   55 89 E5            push bp ; mov bp,sp
+#   (B8 ll hh | 31 C0)  mov ax,frame  /  xor ax,xor   (0..5 bytes)
+#   9A 44 02 A4 20      call 0x20a4:0x244
+# Every framed application function opens with this, so it is a precise,
+# false-positive-free function detector for the parts of the program that use
+# stack frames. (Hand-written graphics/runtime routines omit it; those are
+# recovered from far-call targets instead.)
+_PROLOGUE = re.compile(rb"\x55\x89\xe5.{0,5}\x9a\x44\x02\xa4\x20", re.S)
+
+
 def build_map(image, relocs):
-    funcs = set()                       # (seg, off) far-call targets
+    far_targets = set()                 # absolute image offsets of far-call targets
     callers = defaultdict(int)          # target_seg -> number of call sites
     data_seg_refs = defaultdict(int)    # seg value -> times loaded as data/seg
+    seg_bases = set()                   # segment paragraph values that start code
     for off, seg in relocs:
         L = seg * 16 + off              # linear address of the relocated word
         if L + 1 >= len(image):
@@ -51,30 +65,47 @@ def build_map(image, relocs):
         target_seg = image[L] | (image[L + 1] << 8)
         if L >= 3 and image[L - 3] == 0x9A:        # far call
             target_off = image[L - 2] | (image[L - 1] << 8)
-            funcs.add((target_seg, target_off))
+            far_targets.add(target_seg * 16 + target_off)
             callers[target_seg] += 1
+            seg_bases.add(target_seg)
         else:
             data_seg_refs[target_seg] += 1
 
-    by_seg = defaultdict(list)
-    for s, o in funcs:
-        by_seg[s].append(o)
+    # Prologue-detected functions (catches near-called internals the far-call
+    # scan misses); union with far-call targets is the full function set.
+    prologue = set(m.start() for m in _PROLOGUE.finditer(image))
+    funcs = far_targets | prologue
+
+    # Partition the image into segments using the code-segment bases as
+    # boundaries, then assign each function entry to its containing segment.
+    bases = sorted(seg_bases)
+    bpar = [b * 16 for b in bases]
+    by_seg = defaultdict(lambda: {"funcs": 0, "framed": 0, "min": 1 << 30, "max": 0})
+    for e in funcs:
+        i = bisect.bisect_right(bpar, e) - 1
+        if i < 0:
+            continue
+        s = bases[i]
+        rec = by_seg[s]
+        rec["funcs"] += 1
+        if e in prologue:
+            rec["framed"] += 1
+        off = e - s * 16
+        rec["min"] = min(rec["min"], off)
+        rec["max"] = max(rec["max"], off)
+
     code_segments = []
-    for s in sorted(by_seg):
-        offs = sorted(by_seg[s])
-        # A genuine code segment hosts several functions and/or is called from
-        # many sites. Lone singletons are almost always a 0x9A byte inside a
-        # string/data region followed by a coincidental segment word.
-        confident = len(offs) >= 2 or callers[s] >= 3
+    for s in bases:
+        rec = by_seg[s]
+        if rec["funcs"] == 0:
+            continue
         code_segments.append(dict(
             segment=s,
-            file_para=s,
-            func_count=len(offs),
-            call_sites=callers[s],
-            entry_min=offs[0],
-            entry_max=offs[-1],
-            confident=confident,
-            entries=offs,
+            func_count=rec["funcs"],
+            framed=rec["framed"],          # functions with a stack frame
+            call_sites=callers.get(s, 0),
+            entry_min=rec["min"],
+            entry_max=rec["max"],
         ))
     data_segments = [
         dict(segment=s, data_refs=c)
@@ -109,28 +140,23 @@ def main(argv):
     lines.append(f"- entry: `CS:IP = {hdr['cs']:#06x}:{hdr['ip']:#06x}`  "
                  f"stack `SS:SP = {hdr['ss']:#06x}:{hdr['sp']:#06x}`")
     lines.append(f"- relocations: {len(relocs)}")
-    lines.append(f"- distinct far-call functions: {len(funcs)}\n")
+    lines.append(f"- functions (far-call targets + framed prologues): {len(funcs)}\n")
 
-    confident = [c for c in code_segments if c["confident"]]
-    suspect = [c for c in code_segments if not c["confident"]]
-    nfunc_conf = sum(c["func_count"] for c in confident)
-    lines.append(f"Note: far strings/CONST live in code segments here (e.g. seg "
-                 f"`0x1049` opens with a string pool), so a `0x9A` byte in data "
-                 f"can masquerade as a far call. Segments below are split by "
-                 f"confidence; the {nfunc_conf} functions in confirmed code "
-                 f"segments are the reliable set.\n")
+    lines.append("Functions = union of far-call targets and Borland stack-frame "
+                 "prologues (`55 89 E5 ... call 0x20a4:0x244`). 'framed' counts "
+                 "the prologue-detected ones; graphics/runtime segments use "
+                 "hand-written routines without that prologue.\n")
     fbase = hdr["base"]
-    lines.append("## Confirmed code segments (far-call targets)\n")
+    lines.append("## Code segments\n")
     lines.append("File off = byte offset of segment:0 in build/OREGON_unpacked.exe.\n")
-    lines.append("| segment | file off | functions | call sites | entry range |")
-    lines.append("|---------|----------|-----------|------------|-------------|")
-    for c in sorted(confident, key=lambda c: -c["func_count"]):
+    lines.append("| segment | file off | functions | framed | call sites | entry range |")
+    lines.append("|---------|----------|-----------|--------|------------|-------------|")
+    for c in sorted(code_segments, key=lambda c: -c["func_count"]):
         lines.append(
             f"| `{c['segment']:#06x}` | `{fbase + c['segment']*16:#08x}` | "
-            f"{c['func_count']} | {c['call_sites']} | "
+            f"{c['func_count']} | {c['framed']} | {c['call_sites']} | "
             f"`{c['entry_min']:#06x}`..`{c['entry_max']:#06x}` |")
-    lines.append(f"\n_{len(suspect)} low-confidence singleton targets omitted "
-                 f"(likely 0x9A-in-data false positives)._\n")
+    lines.append("")
 
     lines.append("\n## Top data/segment references (candidate data groups)\n")
     lines.append("| segment | file off | data refs |")

@@ -54,9 +54,11 @@ make help      # list targets
 - **Unpacking: done and verified.** `make verify` re-derives the unpacked image
   from scratch and checks it is byte-stable, that all 3325 relocations are valid,
   and that the entry point decodes as `main()`.
-- **Segment map: bootstrapped.** 9 confirmed code segments holding ~237
-  far-called functions are identified, plus the data group. See
-  `docs/segment_map.md`. Identified names accumulate in `config/symbols.json`.
+- **Segment map: bootstrapped.** 17 code segments holding ~378 functions are
+  identified (union of far-call targets and Borland stack-frame prologues; the
+  `framed` count separates app-logic segments from hand-written graphics/runtime
+  modules). See `docs/segment_map.md`; identified names accumulate in
+  `config/symbols.json`.
 - **Decompilation: underway.** `main()` (program entry at `0x0000:0x010A`) is
   lifted in `src/seg000_main.c` — it is the title-screen menu loop (Travel /
   Learn / Top Ten / Sound / Management / End), confirmed against the in-binary

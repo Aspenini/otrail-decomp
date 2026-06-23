@@ -12,8 +12,8 @@ from collections import Counter
 SEG = json.load(open("config/segments.json", encoding="utf-8"))
 SYM = json.load(open("config/symbols.json", encoding="utf-8"))
 
-conf = [c for c in SEG["code_segments"] if c["confident"]]
-conf.sort(key=lambda c: -c["func_count"])
+num_segments = len(SEG["code_segments"])
+conf = sorted(SEG["code_segments"], key=lambda c: -c["func_count"])[:12]
 discovered = SEG["function_count"]
 named = len(SYM["functions"])
 lifted = sum(1 for v in SYM["functions"].values() if v.get("file"))
@@ -76,7 +76,7 @@ y = hdr_h + 22
 chips = [
     (f"{img_kb:.0f} KB", "unpacked image"),
     (f"{relocs:,}", "relocations"),
-    (f"{len(conf)}", "code segments"),
+    (f"{num_segments}", "code segments"),
     (f"{discovered}", "functions found"),
 ]
 cw = (W - 2 * PAD - 3 * 12) / 4
@@ -106,7 +106,9 @@ y = progress("Functions lifted to C", lifted, discovered, GREEN, y)
 y += 8
 
 # ---- per-segment breakdown -------------------------------------------------
-out.append(text(PAD, y, "BY CODE SEGMENT", 12, SUB, FS, weight="700", spacing="1.2"))
+_hdr = "BY CODE SEGMENT" + (f"  (TOP {len(conf)} OF {num_segments})"
+                            if num_segments > len(conf) else "")
+out.append(text(PAD, y, _hdr, 12, SUB, FS, weight="700", spacing="1.2"))
 y += 18
 bar_x = PAD + 96
 bar_w = W - bar_x - 86
