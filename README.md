@@ -51,11 +51,14 @@ make help      # list targets
   and that the entry point decodes as `main()`.
 - **Segment map: bootstrapped.** 9 confirmed code segments holding ~237
   far-called functions are identified, plus the data group. See
-  `docs/segment_map.md`.
-- **Decompilation: starting.** The next work is lifting functions from the
-  unpacked image into readable C, segment by segment, beginning at the entry
-  chain. Load `build/OREGON_unpacked.exe` into Ghidra/IDA as 16-bit real mode
-  using the segment bases in the map.
+  `docs/segment_map.md`. Identified names accumulate in `config/symbols.json`.
+- **Decompilation: underway.** `main()` (program entry at `0x0000:0x010A`) is
+  lifted in `src/seg000_main.c` — it is the title-screen menu loop (Travel /
+  Learn / Top Ten / Sound / Management / End), confirmed against the in-binary
+  menu strings. Next: lift the menu-option handlers (`travel_the_trail` at
+  `0xd08:0x2217`, etc.) and the draw/input helpers in segment `0x1049`.
+  Load `build/OREGON_unpacked.exe` into Ghidra/IDA as 16-bit real mode using
+  the segment bases in the map.
 
 ## How to lift the next function
 

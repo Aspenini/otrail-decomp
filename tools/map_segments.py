@@ -37,7 +37,7 @@ def load(path):
     base = cparhdr * 16
     relocs = [struct.unpack("<HH", d[0x1C + i * 4:0x1C + i * 4 + 4]) for i in range(ncrlc)]
     image = d[base:]
-    return image, relocs, dict(ip=e_ip, cs=e_cs, ss=e_ss, sp=e_sp)
+    return image, relocs, dict(ip=e_ip, cs=e_cs, ss=e_ss, sp=e_sp, base=base)
 
 
 def build_map(image, relocs):
@@ -119,12 +119,14 @@ def main(argv):
                  f"can masquerade as a far call. Segments below are split by "
                  f"confidence; the {nfunc_conf} functions in confirmed code "
                  f"segments are the reliable set.\n")
+    fbase = hdr["base"]
     lines.append("## Confirmed code segments (far-call targets)\n")
+    lines.append("File off = byte offset of segment:0 in build/OREGON_unpacked.exe.\n")
     lines.append("| segment | file off | functions | call sites | entry range |")
     lines.append("|---------|----------|-----------|------------|-------------|")
     for c in sorted(confident, key=lambda c: -c["func_count"]):
         lines.append(
-            f"| `{c['segment']:#06x}` | `{c['segment']*16:#08x}` | "
+            f"| `{c['segment']:#06x}` | `{fbase + c['segment']*16:#08x}` | "
             f"{c['func_count']} | {c['call_sites']} | "
             f"`{c['entry_min']:#06x}`..`{c['entry_max']:#06x}` |")
     lines.append(f"\n_{len(suspect)} low-confidence singleton targets omitted "
@@ -135,7 +137,7 @@ def main(argv):
     lines.append("|---------|----------|-----------|")
     for dseg in data_segments[:12]:
         s = dseg["segment"]
-        lines.append(f"| `{s:#06x}` | `{s*16:#08x}` | {dseg['data_refs']} |")
+        lines.append(f"| `{s:#06x}` | `{fbase + s*16:#08x}` | {dseg['data_refs']} |")
     lines.append("")
     open("docs/segment_map.md", "w", encoding="utf-8").write("\n".join(lines))
 

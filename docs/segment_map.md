@@ -11,17 +11,19 @@ Note: far strings/CONST live in code segments here (e.g. seg `0x1049` opens with
 
 ## Confirmed code segments (far-call targets)
 
+File off = byte offset of segment:0 in build/OREGON_unpacked.exe.
+
 | segment | file off | functions | call sites | entry range |
 |---------|----------|-----------|------------|-------------|
-| `0x1049` | `0x010490` | 63 | 795 | `0x008c`..`0x45ce` |
-| `0x20a4` | `0x020a40` | 58 | 1586 | `0x0000`..`0x18b6` |
-| `0x182e` | `0x0182e0` | 42 | 165 | `0x0000`..`0x4294` |
-| `0x150c` | `0x0150c0` | 26 | 123 | `0x0000`..`0x301f` |
-| `0x1ceb` | `0x01ceb0` | 24 | 218 | `0x00a5`..`0x1a14` |
-| `0x07ce` | `0x007ce0` | 9 | 9 | `0x039a`..`0x412e` |
-| `0x2042` | `0x020420` | 7 | 105 | `0x0000`..`0x030c` |
-| `0x14c6` | `0x014c60` | 5 | 101 | `0x007d`..`0x043c` |
-| `0x1ce1` | `0x01ce10` | 3 | 13 | `0x0000`..`0x002b` |
+| `0x1049` | `0x0138a0` | 63 | 795 | `0x008c`..`0x45ce` |
+| `0x20a4` | `0x023e50` | 58 | 1586 | `0x0000`..`0x18b6` |
+| `0x182e` | `0x01b6f0` | 42 | 165 | `0x0000`..`0x4294` |
+| `0x150c` | `0x0184d0` | 26 | 123 | `0x0000`..`0x301f` |
+| `0x1ceb` | `0x0202c0` | 24 | 218 | `0x00a5`..`0x1a14` |
+| `0x07ce` | `0x00b0f0` | 9 | 9 | `0x039a`..`0x412e` |
+| `0x2042` | `0x023830` | 7 | 105 | `0x0000`..`0x030c` |
+| `0x14c6` | `0x018070` | 5 | 101 | `0x007d`..`0x043c` |
+| `0x1ce1` | `0x020220` | 3 | 13 | `0x0000`..`0x002b` |
 
 _8 low-confidence singleton targets omitted (likely 0x9A-in-data false positives)._
 
@@ -30,9 +32,9 @@ _8 low-confidence singleton targets omitted (likely 0x9A-in-data false positives
 
 | segment | file off | data refs |
 |---------|----------|-----------|
-| `0x2231` | `0x022310` | 124 |
-| `0x182e` | `0x0182e0` | 44 |
-| `0x150c` | `0x0150c0` | 22 |
-| `0x1ceb` | `0x01ceb0` | 9 |
-| `0x1049` | `0x010490` | 2 |
-| `0x14c6` | `0x014c60` | 1 |
+| `0x2231` | `0x025720` | 124 |
+| `0x182e` | `0x01b6f0` | 44 |
+| `0x150c` | `0x0184d0` | 22 |
+| `0x1ceb` | `0x0202c0` | 9 |
+| `0x1049` | `0x0138a0` | 2 |
+| `0x14c6` | `0x018070` | 1 |

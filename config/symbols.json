@@ -1,0 +1,37 @@
+{
+  "_comment": "Living symbol table for build/OREGON_unpacked.exe. seg:off are relative segment values as stored in the relocated image. Confidence: high=verified by strings/use, med=strong inference, low=guess. Grows as decompilation proceeds.",
+  "functions": {
+    "0000:010A": {"name": "main", "confidence": "high", "file": "src/seg000_main.c", "note": "program entry / title-screen menu loop"},
+    "20a4:0000": {"name": "cstartup", "confidence": "med", "note": "first C runtime init call from main"},
+    "20a4:00d8": {"name": "_exit", "confidence": "med", "note": "called with code in AX at program end"},
+    "20a4:0244": {"name": "__stkcheck", "confidence": "high", "note": "Borland stack-overflow check; called at every function prologue with frame size in AX"},
+    "20a4:0634": {"name": "far_sprintf", "confidence": "med", "note": "format into ss:buf from cs:fmt + args"},
+    "20a4:06c1": {"name": "far_print", "confidence": "med", "note": "print a far string"},
+    "20a4:064e": {"name": "strncpy_n", "confidence": "med", "note": "copy n bytes src->dst (dst=ds:0x1558)"},
+    "2042:0000": {"name": "init_2042", "confidence": "low"},
+    "2042:0215": {"name": "sub_2042_0215", "confidence": "low"},
+    "1ceb:1357": {"name": "init_1ceb_1357", "confidence": "low"},
+    "182e:0000": {"name": "init_182e", "confidence": "low"},
+    "150c:0000": {"name": "init_150c", "confidence": "low"},
+    "1049:1855": {"name": "draw_text", "confidence": "med", "note": "screen text rendering, called repeatedly with position args"},
+    "1049:1521": {"name": "draw_menu_line", "confidence": "med"},
+    "1049:0c12": {"name": "read_input", "confidence": "med", "note": "prompt + read keyboard into ds:0x141a"},
+    "1049:180b": {"name": "parse_choice", "confidence": "med", "note": "parse counted input string -> int"},
+    "1049:42fb": {"name": "cleanup", "confidence": "med", "note": "called once before exit"},
+    "d08:2217":  {"name": "travel_the_trail", "confidence": "high", "note": "menu option 1 - play the game"},
+    "c6b:051b":  {"name": "learn_about_trail", "confidence": "high", "note": "menu option 2"},
+    "c00:0433":  {"name": "see_top_ten", "confidence": "high", "note": "menu option 3 - high scores"},
+    "f34:0fad":  {"name": "choose_management", "confidence": "high", "note": "menu option 5"}
+  },
+  "globals": {
+    "1410": {"name": "g_sound_on", "confidence": "high", "type": "u8", "note": "sound toggle (menu option 4)"},
+    "1520": {"name": "g_quit_flag", "confidence": "med", "type": "u8"},
+    "1554": {"name": "g_menu_choice", "confidence": "high", "type": "u16", "note": "1..6 title-menu selection"},
+    "141a": {"name": "g_input_buf", "confidence": "med", "type": "u8", "note": "raw keyboard input (counted)"},
+    "1558": {"name": "g_sound_label", "confidence": "med", "type": "char[]", "note": "\"on.\"/\"off.\" scratch"},
+    "1412": {"name": "g_1412", "confidence": "low", "type": "u16"},
+    "06a0": {"name": "g_6a0", "confidence": "low", "type": "u16"},
+    "157a": {"name": "g_cursor_row", "confidence": "low", "type": "u16"},
+    "157c": {"name": "g_cursor_col", "confidence": "low", "type": "u16"}
+  }
+}
