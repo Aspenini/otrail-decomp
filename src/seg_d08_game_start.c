@@ -60,7 +60,7 @@ extern long lhelp_20a4_0aee(long a);           /* 0x20a4:0x0aee */
 extern long lhelp_20a4_0b50(void);             /* 0x20a4:0x0b50 */
 
 /* Additional game-state globals (DGROUP). */
-extern uint8_t  g_profession;      /* 0x15c1: chosen occupation (0..3, <4 = preset) */
+extern uint8_t  g_departure_month; /* 0x15c1: month chosen to leave (3=Mar..7=Jul)  */
 extern uint8_t  g_15e8, g_15e9, g_1610, g_160a;
 extern uint16_t g_15d8, g_15da, g_15dc, g_15ea, g_160b, g_160d, g_1611, g_1613, g_1615;
 extern long     g_start_fund;      /* 0x15f2 */
@@ -166,15 +166,15 @@ static void start_new_game(int arg)
     g_15ea = 0;                                  /* 0x1FE5 */
     g_1610 = 1;                                  /* 0x1FE8 */
 
-    /* Preset occupations (< 4) seed a starting fund; custom (>= 4) starts 0. */
-    if (g_profession < 4)                        /* 0x1FED */
+    /* Early departure (month < 4, i.e. March) seeds a starting value; else 0. */
+    if (g_departure_month < 4)                   /* 0x1FED */
         g_start_fund = lmul_20a4_0b00(lhelp_20a4_0b50(), 0x84);   /* 0x1FF4..0x2009 */
     else
         g_start_fund = 0;                        /* 0x2013 */
 
-    /* Final-score factor scales with occupation difficulty: (7 - profession). */
+    /* Score factor scales with how late you leave: (7 - departure_month). */
     g_score_factor = lhelp_20a4_0aee(            /* 0x2042..0x204E */
-        ldiv_20a4_0b14(lhelp_20a4_0b50(), 7 - g_profession));    /* 0x202D..0x203A */
+        ldiv_20a4_0b14(lhelp_20a4_0b50(), 7 - g_departure_month)); /* 0x202D..0x203A */
 
     for (i = 0; i < 0x11; i++) g_15f8[i] = 0;    /* 0x2052..0x2068 */
     for (i = 0; i < 4;    i++) g_15de[i] = 0;    /* 0x206A..0x2080 */

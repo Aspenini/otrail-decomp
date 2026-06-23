@@ -24,6 +24,9 @@ extern uint16_t g_157e, g_1580;     /* menu line position                       
 extern uint16_t g_69c, g_69e;       /* occupation-panel position                  */
 extern uint16_t g_684;              /* prompt far-ptr target                      */
 extern uint16_t g_15d2, g_15d4, g_15d6;  /* profession-dependent value (long)     */
+extern uint8_t  g_departure_month;  /* 0x15c1: 3=March .. 7=July                  */
+extern uint16_t g_year;             /* 0x15c2: starting year (1848 = 0x738)       */
+extern uint8_t  g_15c0;             /* 0x15c0: set to 1 once departure is chosen  */
 
 /* Text / IO helpers (segment 0x1049). */
 extern void draw_text(const char far *s, int x, int y);   /* 0x1049:0x1855 */
@@ -34,6 +37,7 @@ extern void fill_rect(int x1, int y1, int x2, int y2);    /* 0x1049:0x155e */
 extern void draw_panel_1049_1df2(int x, int y);           /* 0x1049:0x1df2 */
 extern void read_field_1049_0d95(int a, int b, const char far *charset, void far *dst); /* 0x1049:0x0d95 */
 extern int  atoi_20a4_104b(const char far *s, int far *end);  /* 0x20a4:0x104b */
+extern int  parse_choice_1049_180b(const char far *s);    /* 0x1049:0x180b */
 extern void strncpy_n(char far *d, const char far *s, int n); /* 0x20a4:0x064e */
 extern void far_sprintf(/* dst, fmt, ... */);             /* 0x20a4:0x0634 */
 extern void far_print(const char far *s);                 /* 0x20a4:0x06c1 */
@@ -148,3 +152,43 @@ void name_party(int arg)
         /* (preview line formatted/redrawn for slot m) */       /* 0x06C4.. */
     }
 }                                                               /* ret 2 */
+
+/* ---------------------------------------------------------- 0x0d08:0x0a4f
+ * Choose the departure month. Options 1-5 map to March..July (stored as
+ * g_departure_month = choice + 2); option 6 attends an advice meeting and
+ * re-prompts. Once a month is set, the calendar starts at 1848.
+ */
+void choose_departure_month(int arg)
+{
+    char buf[256];   /* [bp-0x100] */
+
+    do {
+        draw_panel_1049_1df2(g_69c, 0xb5);                      /* 0x0A66 */
+        /* "It is 1848. Your jumping off place ... which month to leave ..." */
+        draw_text(S(0x828), g_text_margin_x, 0x22);             /* 0x0A78 */
+        far_sprintf(/* buf, cs:0x8a8 "1. March\..6. Ask for advice" */); /* 0x0A90 */
+        far_print((const char far *)&g_684);                    /* 0x0A9A */
+        draw_text(buf, g_157a, g_157c);                         /* 0x0A9F: the month list */
+
+        read_field_1049_0d95(1, 1, S(0x8f8) /* "1-6" */, &g_input_buf);  /* 0x0AB4 */
+        if (g_quit_flag) return;                                /* 0x0AB9 */
+        g_choice = parse_choice_1049_180b(&g_input_buf);        /* 0x0AC7 */
+        gfx_screen_init_1ceb_0b71();                            /* 0x0ACF */
+
+        if (g_choice < 6) {                                     /* 0x0AD4: a month */
+            g_departure_month = (uint8_t)(g_choice + 2);        /* 0x0ADB: 3=Mar..7=Jul */
+        } else {                                                /* option 6: advice */
+            draw_panel_1049_1df2(g_69c, g_69e);                 /* 0x0AEE */
+            /* "You attend a public meeting ... California-Oregon fever ..." */
+            draw_text(S(0x8fc), g_text_margin_x, 0x25);         /* 0x0B00 */
+            /* "If you leave too early, there won't be any grass ..." */
+            draw_text(S(0x95d), g_157a, g_157c);                /* 0x0B12 */
+            press_any_key();                                    /* 0x0B17 */
+            if (g_quit_flag) return;                            /* 0x0B1C */
+            gfx_screen_init_1ceb_0b71();                        /* 0x0B25 */
+        }
+    } while (g_choice >= 6);                                    /* 0x0B2A: until a month */
+
+    g_year = 0x738;     /* 1848 */                              /* 0x0B34 */
+    g_15c0 = 1;                                                 /* 0x0B3A */
+}                                                               /* 0x0B42 ret 2 */
