@@ -4,6 +4,7 @@
  * Recovered from build/OREGON_unpacked.exe, code segment 0x0d08.
  *   travel_the_trail          @ 0x0d08:0x2217  (far, called from main)
  *   prompt_continue_saved_game@ 0x0d08:0x20ee  (near)
+ *   start_new_game            @ 0x0d08:0x1f7c  (near; runs the setup screens)
  *
  * Address-annotated reconstruction of Borland Turbo C output; unresolved
  * helpers keep machine names. Not yet compile-verified against the binary.

@@ -2,10 +2,11 @@
  * seg_d08_setup.c - new-game setup screens (segment 0x0d08).
  *
  * Called in order by start_new_game (see seg_d08_game_start.c):
- *   choose_profession      @ 0x0d08:0x01f2  (this file)
- *   name_party             @ 0x0d08:0x04d0  (TODO)
- *   choose_departure_month @ 0x0d08:0x0a4f  (TODO)
- *   buy_supplies           @ 0x0d08:0x1e78  (TODO)
+ *   choose_profession      @ 0x0d08:0x01f2
+ *   name_party             @ 0x0d08:0x04d0
+ *   choose_departure_month @ 0x0d08:0x0a4f
+ *   buy_supplies           @ 0x0d08:0x1e78
+ *   store_buy_loop         @ 0x0d08:0x1938  (Matt's General Store, near)
  *
  * Address-annotated reconstruction of Borland Turbo C output; not yet
  * compile-verified against the binary.

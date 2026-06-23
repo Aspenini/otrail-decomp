@@ -20,19 +20,31 @@ or decompiled directly. **Step one is always to unpack.**
 > decompilation. That scaffolding (and a homegrown, incorrect unpacker) has been
 > removed; it remains in git history. See `docs/LZEXE_unpacking.md`.
 
+## Documentation
+
+- [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) — how the game is structured:
+  the segment→module map, program flow, data model, and assets.
+- [`docs/LZEXE_unpacking.md`](docs/LZEXE_unpacking.md) — how the packed EXE is
+  reversed into the analysable image.
+- [`docs/decompiling.md`](docs/decompiling.md) — the per-function lifting
+  workflow and conventions.
+- [`docs/segment_map.md`](docs/segment_map.md) — generated segment/function map.
+
 ## Layout
 
-| Path                         | Purpose                                            |
-|------------------------------|----------------------------------------------------|
-| `Oregon_The_1990/`           | Original game files (the packed `OREGON.EXE`)      |
-| `tools/unlzexe.py`           | Correct LZEXE 0.91 unpacker (decomp + relocations) |
-| `tools/map_segments.py`      | Segment / function map from the unpacked image     |
-| `tools/verify.py`            | Structural regression gate                         |
-| `build/OREGON_unpacked.exe`  | Generated: plain relocatable MZ executable         |
-| `config/segments.json`       | Generated: machine-readable segment/function map   |
-| `docs/LZEXE_unpacking.md`    | How the packer works and how it was reversed       |
-| `docs/segment_map.md`        | Generated: human-readable segment/function map     |
-| `src/`, `logic/`             | (empty) home for lifted C as decompilation proceeds|
+| Path                            | Purpose                                            |
+|---------------------------------|----------------------------------------------------|
+| `Oregon_The_1990/`              | Original game files (the packed `OREGON.EXE`)      |
+| `tools/unlzexe.py`              | LZEXE 0.91 unpacker (decompression + relocations)  |
+| `tools/map_segments.py`         | Segment / function map from the unpacked image     |
+| `tools/render_progress_svg.py`  | Generates the README progress dashboard            |
+| `tools/verify.py`               | Structural regression gate                         |
+| `src/`                          | Lifted C, one file per segment/subsystem           |
+| `config/symbols.json`           | Living symbol table (named functions + globals)    |
+| `config/segments.json`          | Generated: machine-readable segment/function map   |
+| `build/OREGON_unpacked.exe`     | Generated: plain relocatable MZ executable         |
+| `docs/`                         | Documentation (see above) + generated artifacts    |
+| `logic/`                        | Reserved for shared lifted modules                 |
 
 ## Prerequisites
 
@@ -45,7 +57,9 @@ or decompiled directly. **Step one is always to unpack.**
 ```bash
 make unpack    # -> build/OREGON_unpacked.exe (158,496 bytes, entry 0x0000:0x010A)
 make map       # -> config/segments.json, docs/segment_map.md
+make svg       # -> docs/progress.svg (the dashboard above)
 make verify    # re-unpack and assert all structural invariants
+make all       # verify + map + svg
 make help      # list targets
 ```
 
@@ -54,26 +68,20 @@ make help      # list targets
 - **Unpacking: done and verified.** `make verify` re-derives the unpacked image
   from scratch and checks it is byte-stable, that all 3325 relocations are valid,
   and that the entry point decodes as `main()`.
-- **Segment map: bootstrapped.** 17 code segments holding ~378 functions are
+- **Segment map: complete.** 17 code segments holding ~378 functions are
   identified (union of far-call targets and Borland stack-frame prologues; the
   `framed` count separates app-logic segments from hand-written graphics/runtime
-  modules). See `docs/segment_map.md`; identified names accumulate in
-  `config/symbols.json`.
-- **Decompilation: underway.** `main()` (program entry at `0x0000:0x010A`) is
-  lifted in `src/seg000_main.c` — it is the title-screen menu loop (Travel /
-  Learn / Top Ten / Sound / Management / End), confirmed against the in-binary
-  menu strings. Next: lift the menu-option handlers (`travel_the_trail` at
-  `0xd08:0x2217`, etc.) and the draw/input helpers in segment `0x1049`.
-  Load `build/OREGON_unpacked.exe` into Ghidra/IDA as 16-bit real mode using
-  the segment bases in the map.
+  modules). See [`docs/segment_map.md`](docs/segment_map.md).
+- **Decompilation: underway.** The whole control-flow spine is lifted —
+  title menu, new-game setup (occupation / party / departure month / store),
+  the trail loop, the per-turn action dispatch, river crossing, and the hunting
+  minigame — all confirmed against the in-binary strings. Lifted source lives in
+  `src/`; see [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) for the full map and
+  the live dashboard above for coverage. Remaining depth is in the individual
+  action handlers and the graphics/runtime libraries.
 
-## How to lift the next function
+## Contributing
 
-1. Pick a function entry from `docs/segment_map.md` (start with the entry chain
-   in `main()` at `0x0000:0x010A`).
-2. Disassemble it from the unpacked image (`ndisasm -b16` at the file offset, or
-   in Ghidra/IDA).
-3. Write the recovered C under `src/`, naming it by `seg_off` or its inferred
-   role.
-4. Keep `make verify` green (it guards the unpack, the foundation everything
-   else rests on).
+To lift another function, follow [`docs/decompiling.md`](docs/decompiling.md):
+disassemble from the unpacked image, write annotated C under `src/`, record the
+names in `config/symbols.json`, then `make svg` and keep `make verify` green.
