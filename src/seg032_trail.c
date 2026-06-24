@@ -36,15 +36,16 @@ extern void draw_landmark_1049_2589(uint16_t far *data, int flag);        /* 0x1
 
 /* Trail-engine phases (segment 0x0032, near). */
 extern void trail_phase_setup_32_04d4(void);   /* 0x0032:0x04d4 */
-extern void draw_travel_status_32_03a6(void);  /* 0x0032:0x03a6 */
+extern void look_around_prompt(void);          /* 0x0032:0x03a6 - arrival "look around?" (below) */
 extern void arrive_landmark_32_0655(void);     /* 0x0032:0x0655 */
 extern void travel_turn(void);                 /* 0x0032:0x3cb3 - the per-turn menu/movement (below) */
-extern void show_ending_32_011d(void);         /* 0x0032:0x011d */
+extern void show_location_32_011d(void);       /* 0x0032:0x011d - draw the current location screen */
 
 /* End-of-game handlers (segment 0x07ce). */
 extern void death_sequence_7ce_0f37(void);     /* 0x07ce:0x0f37 */
 extern void sub_7ce_039a(void);                /* 0x07ce:0x039a */
 
+#define S0(off) ((const char far *)(off))
 #define LOC_OREGON 0x11   /* arriving at location 17 = reached Oregon, game won */
 
 /* ---------------------------------------------------------- 0x0032:0x3f93 */
@@ -69,7 +70,7 @@ void travel_loop(void)
             draw_landmark_1049_2589(&g_1742, 0);           /* 0x3FFF */
 
         trail_phase_setup_32_04d4();                       /* 0x4005 */
-        draw_travel_status_32_03a6();                      /* 0x4009: date/weather/supplies */
+        look_around_prompt();                      /* 0x4009: "you are now at <X>, look around?" */
         if (g_quit_flag) goto done;                        /* 0x400C */
 
         if (g_first_turn && g_160d > 0 && g_next_location != g_location) /* 0x402C */
@@ -93,7 +94,7 @@ done:                                                      /* 0x40BF */
     image_free_14c6_043c(0, 0);   /* travelox */           /* 0x40D0 */
 
     if (g_game_over) {                                     /* 0x40D5 */
-        show_ending_32_011d();                             /* 0x40DD */
+        show_location_32_011d();                             /* 0x40DD */
         if (g_quit_flag) return;                           /* 0x40E0 */
         sub_7ce_039a();                                    /* 0x40E9 */
     }
@@ -201,3 +202,37 @@ void travel_turn(void)
         /* else redisplay the menu (jmp 0x3CC2) */
     }
 }                                                       /* 0x3F77 ret 2 */
+
+/* ---------------------------------------------------------- 0x0032:0x03a6
+ * On arriving at a location (first turn there), ask "You are now at <X>. Would
+ * you like to look around?" and, unless the player answers N, show the location
+ * screen. g_1617 tracks whether the look-around was taken.
+ */
+extern uint8_t  g_160a;               /* 0x160a: per-location visited state */
+extern void  far_sprintf3(/* ... */); /* 0x20a4:0x0634 */
+extern void  far_print3(const char far *s); /* 0x20a4:0x06c1 */
+extern int   streq3(const char far *a, const char far *b); /* 0x20a4:0x0724 */
+extern void  read_input3(void far *dst);    /* 0x1049:0x1bb3 */
+extern void  clear_panel3(void);            /* 0x1049:0x1e64 */
+extern void  finalize3(void);               /* 0x1049:0x1ee3 */
+extern uint8_t g_input_buf2;          /* 0x141a */
+
+void look_around_prompt(void)
+{
+    g_1617 = 1;                                        /* 0x3B5: assume "look around" */
+    if (g_first_turn) {                                /* 0x3BA: only on arrival turn */
+        clear_panel3();                                /* 0x3D8 */
+        /* "You are now at <location>.  Would you like to look around? " */
+        far_sprintf3(/* buf, cs:0x371, g_location */);  /* 0x3FA */
+        far_print3(S0(0x381) /* ".  Would you like to look around? " */); /* 0x419 */
+        read_input3(&g_input_buf2);                    /* 0x476: read Y/N */
+        finalize3();                                   /* 0x47B */
+        if (g_quit_flag) return;                       /* 0x480 */
+        if (streq3(&g_input_buf2, /* cs:0x3a4 "N" */ 0))  /* 0x494 */
+            g_1617 = 0;                                /* 0x49B: declined */
+    }
+    if (g_1617)                                        /* 0x4A0 */
+        show_location_32_011d();                       /* 0x4AA: show the location screen */
+    if (g_quit_flag) return;                           /* 0x4AD */
+    g_160a = (uint8_t)g_location;                      /* 0x4B6..0x4CB: mark visited */
+}                                                      /* 0x4D1 ret 2 */
