@@ -10,7 +10,9 @@ PYTHON  ?= python3
 SRC      = Oregon_The_1990/OREGON.EXE
 UNPACKED = build/OREGON_unpacked.exe
 
-.PHONY: all unpack map svg verify clean help
+GAMEDIR  = Oregon_The_1990
+
+.PHONY: all unpack map svg verify assets clean help
 
 all: verify map svg
 
@@ -32,6 +34,12 @@ svg: config/segments.json config/symbols.json tools/render_progress_svg.py
 ## verify: re-unpack and check all structural invariants (regression gate)
 verify: tools/verify.py tools/unlzexe.py $(SRC)
 	$(PYTHON) tools/verify.py
+
+## assets: extract the game art (PCX images + PCXLIB archives) to build/pcl
+assets: port/assets/pcxlib.py port/assets/pcx.py
+	@mkdir -p build/pcl build/img
+	$(PYTHON) port/assets/pcxlib.py $(GAMEDIR)/OTMCGA.PCL build/pcl
+	$(PYTHON) port/assets/pcx.py $(GAMEDIR)/LOGO.256 build/img/logo.png
 
 ## clean: remove generated artifacts
 clean:

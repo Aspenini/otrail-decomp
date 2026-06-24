@@ -62,7 +62,7 @@ extern long lhelp_20a4_0b50(void);             /* 0x20a4:0x0b50 */
 
 /* Additional game-state globals (DGROUP). */
 extern uint8_t  g_departure_month; /* 0x15c1: month chosen to leave (3=Mar..7=Jul)  */
-extern uint8_t  g_15e8, g_15e9, g_1610, g_160a;
+extern uint8_t  g_pace, g_rations, g_1610, g_160a;
 extern uint16_t g_15d8, g_15da, g_15dc, g_15ea, g_160b, g_160d, g_1611, g_1613, g_1615;
 extern long     g_start_fund;      /* 0x15f2 */
 extern long     g_score_factor;    /* 0x15ec: derived from (7 - profession)         */
@@ -162,7 +162,7 @@ static void start_new_game(int arg)
     buy_supplies(arg);                          /* 0x1FBA */
     if (g_quit_flag) return;
 
-    g_15e8 = 0; g_15e9 = 0;                      /* 0x1FC7 */
+    g_pace = 0; g_rations = 0;                      /* 0x1FC7 */
     g_15d8 = 0; g_15da = 0; g_15dc = 0;          /* 0x1FD1 */
     g_15ea = 0;                                  /* 0x1FE5 */
     g_1610 = 1;                                  /* 0x1FE8 */

@@ -123,7 +123,7 @@ extern void stop_to_rest_7ce_2950(void);   /* 0x07ce:0x2950 */
 extern void attempt_trade_7ce_11c3(void);  /* 0x07ce:0x11c3 */
 extern void talk_to_people_7ce_17eb(void); /* 0x07ce:0x17eb */
 extern void hunt_606_1968(void);           /* 0x0606:0x1968 - hunting minigame */
-extern void apply_hunt_1049_3be4(void);    /* 0x1049:0x3be4 */
+extern void daily_update_1049_3be4(void);    /* 0x1049:0x3be4 */
 extern void buy_at_fort_7ce_1d3c(void);    /* 0x07ce:0x1d3c */
 
 extern uint8_t  g_at_fort;     /* 0x1729: at a fort/settlement (talk + buy avail)*/
@@ -188,7 +188,7 @@ void travel_turn(void)
                 talk_to_people_7ce_17eb();
             } else {
                 hunt_606_1968();                        /* 0x3F41: hunting minigame */
-                apply_hunt_1049_3be4();
+                daily_update_1049_3be4();
             }
             break;
         case 9: buy_at_fort_7ce_1d3c();     break;      /* 0x3F55 */
