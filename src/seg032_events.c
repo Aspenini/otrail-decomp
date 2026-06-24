@@ -28,8 +28,8 @@ extern uint16_t g_1730;        /* 0x1730: event/illness state */
 /* Shared event helpers. */
 extern int  rand_1049_008c(int n);          /* 0x1049:0x008c: random 0..n-1     */
 extern int  pick_member_1049_39b9(void);    /* 0x1049:0x39b9: choose a party member */
-extern void apply_illness_1049_3910(int member, int illness);  /* 0x1049:0x3910 */
-extern void member_status_1049_36de(void);  /* 0x1049:0x36de: update member status */
+extern void draw_msg_box_1049_3910(const char far *msg);  /* 0x1049:0x3910: centered message box */
+extern void member_status_1049_36de(void);  /* 0x1049:0x36de: apply illness/injury to member */
 extern void store_setup_1049_30c8(void);    /* 0x1049:0x30c8: supplies display     */
 extern void far_sprintf(/* ... */);         /* 0x20a4:0x0634 */
 extern void far_print(const char far *s);   /* 0x20a4:0x06c1 */
@@ -46,9 +46,9 @@ void event_snakebite(int member)
     /* "<member> has a snakebite." */
     far_sprintf(/* buf, member name */);                 /* 0x0F3D */
     far_print(S(0xef3) /* " has a snakebite." */);        /* 0x0F47 */
-    /* apply the injury to the chosen member and refresh status */
-    apply_illness_1049_3910(member, /* injury */ 0);      /* 0x0F7C */
-    member_status_1049_36de();                            /* 0x0F81 */
+    /* show the message and apply the injury to the chosen member */
+    draw_msg_box_1049_3910(/* msg */ 0);                  /* 0x0F7C */
+    member_status_1049_36de();                            /* 0x0F81: apply injury */
     finalize_action_1049_1ee3();                          /* 0x0F86 */
 }                                                         /* 0x0F8E ret 2 */
 
