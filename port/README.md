@@ -79,6 +79,23 @@ Enter, Esc, arrows + fire) maps to buttons or an on-screen keyboard.
    console toolchains. Each is a CMake toolchain file + input mapping; the core
    and SDL backend don't change.
 
+## Boot-critical contracts (what the PAL must reproduce)
+
+Recovered from the decomp; these are the behaviours the platform layer has to
+match for the title screen + menus to work:
+
+- **Video:** MCGA mode 13h (320×200, 256-colour indexed). `gfx_screen_init`
+  (`0x1ceb:0x0b71`) clears the frame; images are 8-bit PCX with the global
+  `PAL.256` palette. → `pal_present(framebuffer, palette)`.
+- **Text:** drawn as glyphs into the framebuffer (`draw_string`/`draw_glyph`,
+  `seg_150c_gfxtext.c`); a port may ship its own 8×8 font.
+- **Input** (`read_field`, `src/seg1049_input.c`): reads a charset-filtered line
+  into a **counted string** (`dst[0]=length`); **Enter** ends a field, **Esc**
+  sets the quit flag (Esc-twice backs out a screen), **Ctrl-S** (key `0x13`)
+  toggles sound at any time. → `pal_poll_event` + `PAL_KEY_*`.
+- **Assets/saves:** `.PCL`/`.PCX` art (see `assets/FORMATS.md`) and `.REC` data
+  files. → `pal_asset_load` / `pal_storage_*`.
+
 ## Principles
 
 - **Plain C99, no `malloc` in the core.** Game state is small and static — ideal
