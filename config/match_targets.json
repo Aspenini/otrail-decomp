@@ -1,0 +1,1753 @@
+{
+ "source": "F:\\Projects\\otrail-decomp\\build\\OREGON_unpacked.exe",
+ "function_count": 218,
+ "total_bytes": 93559,
+ "lifted_functions": 39,
+ "note": "framed (Borland stack-frame) functions only; size = bytes to the next function entry, so includes any trailing CONST data.",
+ "functions": [
+  {
+   "name": "sub_00325",
+   "offset": 805,
+   "segment": 50,
+   "size": 76,
+   "sha8": "58c68411",
+   "lifted": false
+  },
+  {
+   "name": "sub_00371",
+   "offset": 881,
+   "segment": 55,
+   "size": 204,
+   "sha8": "ccc33182",
+   "lifted": false
+  },
+  {
+   "name": "show_location",
+   "offset": 1085,
+   "segment": 67,
+   "size": 649,
+   "sha8": "f9d7500b",
+   "lifted": false
+  },
+  {
+   "name": "look_around_prompt",
+   "offset": 1734,
+   "segment": 108,
+   "size": 302,
+   "sha8": "126fa4fc",
+   "lifted": true
+  },
+  {
+   "name": "trail_phase_setup",
+   "offset": 2036,
+   "segment": 127,
+   "size": 385,
+   "sha8": "6c671a52",
+   "lifted": false
+  },
+  {
+   "name": "arrive_landmark",
+   "offset": 2421,
+   "segment": 151,
+   "size": 440,
+   "sha8": "dd19bcee",
+   "lifted": false
+  },
+  {
+   "name": "sub_00b2d",
+   "offset": 2861,
+   "segment": 178,
+   "size": 129,
+   "sha8": "402ca3bf",
+   "lifted": false
+  },
+  {
+   "name": "sub_00bae",
+   "offset": 2990,
+   "segment": 186,
+   "size": 697,
+   "sha8": "7a4c7725",
+   "lifted": false
+  },
+  {
+   "name": "sub_00e67",
+   "offset": 3687,
+   "segment": 230,
+   "size": 141,
+   "sha8": "7bcc5c6e",
+   "lifted": false
+  },
+  {
+   "name": "sub_00ef4",
+   "offset": 3828,
+   "segment": 239,
+   "size": 249,
+   "sha8": "08786f94",
+   "lifted": false
+  },
+  {
+   "name": "sub_00fed",
+   "offset": 4077,
+   "segment": 254,
+   "size": 104,
+   "sha8": "ec34ddc0",
+   "lifted": false
+  },
+  {
+   "name": "sub_01055",
+   "offset": 4181,
+   "segment": 261,
+   "size": 322,
+   "sha8": "89287fe1",
+   "lifted": false
+  },
+  {
+   "name": "sub_01197",
+   "offset": 4503,
+   "segment": 281,
+   "size": 142,
+   "sha8": "18da3ffb",
+   "lifted": false
+  },
+  {
+   "name": "event_snakebite",
+   "offset": 4645,
+   "segment": 290,
+   "size": 197,
+   "sha8": "3a0bbb82",
+   "lifted": true
+  },
+  {
+   "name": "sub_012ea",
+   "offset": 4842,
+   "segment": 302,
+   "size": 204,
+   "sha8": "c792f7bf",
+   "lifted": false
+  },
+  {
+   "name": "sub_013b6",
+   "offset": 5046,
+   "segment": 315,
+   "size": 96,
+   "sha8": "28ef24fa",
+   "lifted": false
+  },
+  {
+   "name": "sub_01416",
+   "offset": 5142,
+   "segment": 321,
+   "size": 114,
+   "sha8": "2befbd16",
+   "lifted": false
+  },
+  {
+   "name": "sub_01488",
+   "offset": 5256,
+   "segment": 328,
+   "size": 114,
+   "sha8": "b67194db",
+   "lifted": false
+  },
+  {
+   "name": "event_fire",
+   "offset": 5370,
+   "segment": 335,
+   "size": 518,
+   "sha8": "a5a3671d",
+   "lifted": true
+  },
+  {
+   "name": "sub_01700",
+   "offset": 5888,
+   "segment": 368,
+   "size": 43,
+   "sha8": "68ee9478",
+   "lifted": false
+  },
+  {
+   "name": "sub_0172b",
+   "offset": 5931,
+   "segment": 370,
+   "size": 83,
+   "sha8": "2fbf0fde",
+   "lifted": false
+  },
+  {
+   "name": "sub_0177e",
+   "offset": 6014,
+   "segment": 375,
+   "size": 111,
+   "sha8": "e3ced399",
+   "lifted": false
+  },
+  {
+   "name": "sub_017ed",
+   "offset": 6125,
+   "segment": 382,
+   "size": 580,
+   "sha8": "9645195d",
+   "lifted": false
+  },
+  {
+   "name": "event_broken_wagon",
+   "offset": 6705,
+   "segment": 419,
+   "size": 1120,
+   "sha8": "699a7183",
+   "lifted": false
+  },
+  {
+   "name": "event_broken_part",
+   "offset": 7825,
+   "segment": 489,
+   "size": 257,
+   "sha8": "8655a447",
+   "lifted": false
+  },
+  {
+   "name": "sub_01f92",
+   "offset": 8082,
+   "segment": 505,
+   "size": 109,
+   "sha8": "ffb7a265",
+   "lifted": false
+  },
+  {
+   "name": "sub_01fff",
+   "offset": 8191,
+   "segment": 511,
+   "size": 281,
+   "sha8": "40285fbc",
+   "lifted": false
+  },
+  {
+   "name": "sub_02118",
+   "offset": 8472,
+   "segment": 529,
+   "size": 590,
+   "sha8": "c365f7b6",
+   "lifted": false
+  },
+  {
+   "name": "sub_02366",
+   "offset": 9062,
+   "segment": 566,
+   "size": 353,
+   "sha8": "6e9c8a9b",
+   "lifted": false
+  },
+  {
+   "name": "sub_024c7",
+   "offset": 9415,
+   "segment": 588,
+   "size": 596,
+   "sha8": "9719a298",
+   "lifted": false
+  },
+  {
+   "name": "event_thief",
+   "offset": 10011,
+   "segment": 625,
+   "size": 642,
+   "sha8": "8e5cc53d",
+   "lifted": true
+  },
+  {
+   "name": "sub_0299d",
+   "offset": 10653,
+   "segment": 665,
+   "size": 265,
+   "sha8": "5216ec79",
+   "lifted": false
+  },
+  {
+   "name": "sub_02aa6",
+   "offset": 10918,
+   "segment": 682,
+   "size": 109,
+   "sha8": "269ae131",
+   "lifted": false
+  },
+  {
+   "name": "sub_02b13",
+   "offset": 11027,
+   "segment": 689,
+   "size": 707,
+   "sha8": "7508e9a6",
+   "lifted": false
+  },
+  {
+   "name": "draw_map_marker",
+   "offset": 11734,
+   "segment": 733,
+   "size": 492,
+   "sha8": "abe17412",
+   "lifted": false
+  },
+  {
+   "name": "save_restore_screen",
+   "offset": 12226,
+   "segment": 764,
+   "size": 116,
+   "sha8": "b5133fff",
+   "lifted": false
+  },
+  {
+   "name": "look_at_map",
+   "offset": 12342,
+   "segment": 771,
+   "size": 168,
+   "sha8": "65074a31",
+   "lifted": true
+  },
+  {
+   "name": "trail_fork",
+   "offset": 12510,
+   "segment": 781,
+   "size": 567,
+   "sha8": "191e6020",
+   "lifted": false
+  },
+  {
+   "name": "loc10_handler",
+   "offset": 13077,
+   "segment": 817,
+   "size": 490,
+   "sha8": "758f464b",
+   "lifted": false
+  },
+  {
+   "name": "sub_034ff",
+   "offset": 13567,
+   "segment": 847,
+   "size": 907,
+   "sha8": "8a8ccfaa",
+   "lifted": false
+  },
+  {
+   "name": "sub_0388a",
+   "offset": 14474,
+   "segment": 904,
+   "size": 176,
+   "sha8": "1ef91387",
+   "lifted": false
+  },
+  {
+   "name": "continue_travel",
+   "offset": 14650,
+   "segment": 915,
+   "size": 1128,
+   "sha8": "1e508087",
+   "lifted": false
+  },
+  {
+   "name": "check_supplies",
+   "offset": 15778,
+   "segment": 986,
+   "size": 230,
+   "sha8": "b53221d3",
+   "lifted": true
+  },
+  {
+   "name": "must_trade_msg",
+   "offset": 16008,
+   "segment": 1000,
+   "size": 331,
+   "sha8": "25dcefa1",
+   "lifted": false
+  },
+  {
+   "name": "travel_turn",
+   "offset": 16339,
+   "segment": 1021,
+   "size": 736,
+   "sha8": "dfd0587e",
+   "lifted": true
+  },
+  {
+   "name": "travel_loop",
+   "offset": 17075,
+   "segment": 1067,
+   "size": 365,
+   "sha8": "b7e9ead2",
+   "lifted": true
+  },
+  {
+   "name": "sub_04420",
+   "offset": 17440,
+   "segment": 1090,
+   "size": 702,
+   "sha8": "43661e84",
+   "lifted": false
+  },
+  {
+   "name": "ford_river",
+   "offset": 18142,
+   "segment": 1133,
+   "size": 983,
+   "sha8": "19ca221f",
+   "lifted": true
+  },
+  {
+   "name": "caulk_and_float",
+   "offset": 19125,
+   "segment": 1195,
+   "size": 858,
+   "sha8": "b3ae036e",
+   "lifted": false
+  },
+  {
+   "name": "take_ferry",
+   "offset": 19983,
+   "segment": 1248,
+   "size": 1085,
+   "sha8": "b8edf168",
+   "lifted": false
+  },
+  {
+   "name": "hire_indian",
+   "offset": 21068,
+   "segment": 1316,
+   "size": 612,
+   "sha8": "7dc91ae4",
+   "lifted": false
+  },
+  {
+   "name": "wait_conditions",
+   "offset": 21680,
+   "segment": 1355,
+   "size": 479,
+   "sha8": "ece4c2c7",
+   "lifted": false
+  },
+  {
+   "name": "get_more_info",
+   "offset": 22159,
+   "segment": 1384,
+   "size": 178,
+   "sha8": "758f5703",
+   "lifted": false
+  },
+  {
+   "name": "river_done",
+   "offset": 22337,
+   "segment": 1396,
+   "size": 1434,
+   "sha8": "d50318f4",
+   "lifted": false
+  },
+  {
+   "name": "cross_river",
+   "offset": 23771,
+   "segment": 1485,
+   "size": 901,
+   "sha8": "d6d20f5f",
+   "lifted": true
+  },
+  {
+   "name": "sub_06060",
+   "offset": 24672,
+   "segment": 1542,
+   "size": 305,
+   "sha8": "18cc8b63",
+   "lifted": false
+  },
+  {
+   "name": "sub_06191",
+   "offset": 24977,
+   "segment": 1561,
+   "size": 208,
+   "sha8": "fb3af523",
+   "lifted": false
+  },
+  {
+   "name": "sub_06261",
+   "offset": 25185,
+   "segment": 1574,
+   "size": 200,
+   "sha8": "23d33a69",
+   "lifted": false
+  },
+  {
+   "name": "sub_06329",
+   "offset": 25385,
+   "segment": 1586,
+   "size": 246,
+   "sha8": "be817949",
+   "lifted": false
+  },
+  {
+   "name": "hunt_setup_terrain",
+   "offset": 25631,
+   "segment": 1601,
+   "size": 141,
+   "sha8": "0488a89e",
+   "lifted": false
+  },
+  {
+   "name": "sub_064ac",
+   "offset": 25772,
+   "segment": 1610,
+   "size": 354,
+   "sha8": "4c2d15bf",
+   "lifted": false
+  },
+  {
+   "name": "hunt_init_animals",
+   "offset": 26126,
+   "segment": 1632,
+   "size": 570,
+   "sha8": "b542af9a",
+   "lifted": false
+  },
+  {
+   "name": "sub_06848",
+   "offset": 26696,
+   "segment": 1668,
+   "size": 45,
+   "sha8": "2fc107a3",
+   "lifted": false
+  },
+  {
+   "name": "sub_06875",
+   "offset": 26741,
+   "segment": 1671,
+   "size": 45,
+   "sha8": "f55b0287",
+   "lifted": false
+  },
+  {
+   "name": "sub_068a2",
+   "offset": 26786,
+   "segment": 1674,
+   "size": 63,
+   "sha8": "638e3af1",
+   "lifted": false
+  },
+  {
+   "name": "sub_068e1",
+   "offset": 26849,
+   "segment": 1678,
+   "size": 779,
+   "sha8": "515783b0",
+   "lifted": false
+  },
+  {
+   "name": "sub_06bec",
+   "offset": 27628,
+   "segment": 1726,
+   "size": 129,
+   "sha8": "5efbafd7",
+   "lifted": false
+  },
+  {
+   "name": "sub_06c6d",
+   "offset": 27757,
+   "segment": 1734,
+   "size": 193,
+   "sha8": "c6709aa0",
+   "lifted": false
+  },
+  {
+   "name": "sub_06d2e",
+   "offset": 27950,
+   "segment": 1746,
+   "size": 214,
+   "sha8": "06f72ed7",
+   "lifted": false
+  },
+  {
+   "name": "sub_06e04",
+   "offset": 28164,
+   "segment": 1760,
+   "size": 244,
+   "sha8": "73e16674",
+   "lifted": false
+  },
+  {
+   "name": "sub_06ef8",
+   "offset": 28408,
+   "segment": 1775,
+   "size": 84,
+   "sha8": "a6e1a0b7",
+   "lifted": false
+  },
+  {
+   "name": "sub_06f4c",
+   "offset": 28492,
+   "segment": 1780,
+   "size": 117,
+   "sha8": "63b82075",
+   "lifted": false
+  },
+  {
+   "name": "sub_06fc1",
+   "offset": 28609,
+   "segment": 1788,
+   "size": 337,
+   "sha8": "6a476ca7",
+   "lifted": false
+  },
+  {
+   "name": "sub_07112",
+   "offset": 28946,
+   "segment": 1809,
+   "size": 315,
+   "sha8": "d2f36a59",
+   "lifted": false
+  },
+  {
+   "name": "sub_0724d",
+   "offset": 29261,
+   "segment": 1828,
+   "size": 659,
+   "sha8": "54779d01",
+   "lifted": false
+  },
+  {
+   "name": "hunt_shoot",
+   "offset": 29920,
+   "segment": 1870,
+   "size": 1256,
+   "sha8": "1e1cdd42",
+   "lifted": false
+  },
+  {
+   "name": "hunt",
+   "offset": 31176,
+   "segment": 1948,
+   "size": 801,
+   "sha8": "282e54cb",
+   "lifted": true
+  },
+  {
+   "name": "sub_07ce9",
+   "offset": 31977,
+   "segment": 1998,
+   "size": 913,
+   "sha8": "b8e0cc0c",
+   "lifted": false
+  },
+  {
+   "name": "show_ending",
+   "offset": 32890,
+   "segment": 2055,
+   "size": 2591,
+   "sha8": "e0077f95",
+   "lifted": true
+  },
+  {
+   "name": "show_death_msg",
+   "offset": 35481,
+   "segment": 2217,
+   "size": 382,
+   "sha8": "3c2a78c6",
+   "lifted": false
+  },
+  {
+   "name": "death_sequence",
+   "offset": 35863,
+   "segment": 2241,
+   "size": 652,
+   "sha8": "f80a306d",
+   "lifted": true
+  },
+  {
+   "name": "attempt_trade",
+   "offset": 36515,
+   "segment": 2282,
+   "size": 1576,
+   "sha8": "65f8e91a",
+   "lifted": true
+  },
+  {
+   "name": "talk_to_people",
+   "offset": 38091,
+   "segment": 2380,
+   "size": 484,
+   "sha8": "6edcdc3c",
+   "lifted": true
+  },
+  {
+   "name": "sub_096af",
+   "offset": 38575,
+   "segment": 2410,
+   "size": 877,
+   "sha8": "2f19437d",
+   "lifted": false
+  },
+  {
+   "name": "buy_at_fort",
+   "offset": 39452,
+   "segment": 2465,
+   "size": 1923,
+   "sha8": "df5faf70",
+   "lifted": true
+  },
+  {
+   "name": "change_pace",
+   "offset": 41375,
+   "segment": 2585,
+   "size": 784,
+   "sha8": "cb89c84d",
+   "lifted": true
+  },
+  {
+   "name": "change_rations",
+   "offset": 42159,
+   "segment": 2634,
+   "size": 385,
+   "sha8": "c3466cce",
+   "lifted": true
+  },
+  {
+   "name": "stop_to_rest",
+   "offset": 42544,
+   "segment": 2659,
+   "size": 198,
+   "sha8": "0b8cdc6e",
+   "lifted": true
+  },
+  {
+   "name": "sub_0a6f6",
+   "offset": 42742,
+   "segment": 2671,
+   "size": 109,
+   "sha8": "c0206f26",
+   "lifted": false
+  },
+  {
+   "name": "sub_0a763",
+   "offset": 42851,
+   "segment": 2678,
+   "size": 794,
+   "sha8": "1ee56772",
+   "lifted": false
+  },
+  {
+   "name": "sub_0aa7d",
+   "offset": 43645,
+   "segment": 2727,
+   "size": 358,
+   "sha8": "f67d6895",
+   "lifted": false
+  },
+  {
+   "name": "sub_0abe3",
+   "offset": 44003,
+   "segment": 2750,
+   "size": 745,
+   "sha8": "d4647751",
+   "lifted": false
+  },
+  {
+   "name": "sub_0aecc",
+   "offset": 44748,
+   "segment": 2796,
+   "size": 270,
+   "sha8": "c0c2cf51",
+   "lifted": false
+  },
+  {
+   "name": "sub_0afda",
+   "offset": 45018,
+   "segment": 2813,
+   "size": 159,
+   "sha8": "b8ccfec9",
+   "lifted": false
+  },
+  {
+   "name": "sub_0b079",
+   "offset": 45177,
+   "segment": 2823,
+   "size": 443,
+   "sha8": "55c79c80",
+   "lifted": false
+  },
+  {
+   "name": "sub_0b234",
+   "offset": 45620,
+   "segment": 2851,
+   "size": 174,
+   "sha8": "25653f14",
+   "lifted": false
+  },
+  {
+   "name": "sub_0b2e2",
+   "offset": 45794,
+   "segment": 2862,
+   "size": 740,
+   "sha8": "da0c9076",
+   "lifted": false
+  },
+  {
+   "name": "sub_0b5c6",
+   "offset": 46534,
+   "segment": 2908,
+   "size": 571,
+   "sha8": "f367450f",
+   "lifted": false
+  },
+  {
+   "name": "sub_0b801",
+   "offset": 47105,
+   "segment": 2944,
+   "size": 616,
+   "sha8": "ae8e4324",
+   "lifted": false
+  },
+  {
+   "name": "sub_0ba69",
+   "offset": 47721,
+   "segment": 2982,
+   "size": 239,
+   "sha8": "b95f112e",
+   "lifted": false
+  },
+  {
+   "name": "sub_0bb58",
+   "offset": 47960,
+   "segment": 2997,
+   "size": 694,
+   "sha8": "49f792ed",
+   "lifted": false
+  },
+  {
+   "name": "sub_0be0e",
+   "offset": 48654,
+   "segment": 3040,
+   "size": 498,
+   "sha8": "5b8bf5a9",
+   "lifted": false
+  },
+  {
+   "name": "sub_0c000",
+   "offset": 49152,
+   "segment": 3072,
+   "size": 1075,
+   "sha8": "ba3299eb",
+   "lifted": false
+  },
+  {
+   "name": "see_top_ten",
+   "offset": 50227,
+   "segment": 3139,
+   "size": 1944,
+   "sha8": "cab39683",
+   "lifted": true
+  },
+  {
+   "name": "learn_about_trail",
+   "offset": 52171,
+   "segment": 3260,
+   "size": 708,
+   "sha8": "1e880bb7",
+   "lifted": true
+  },
+  {
+   "name": "sub_0ce8f",
+   "offset": 52879,
+   "segment": 3304,
+   "size": 995,
+   "sha8": "2ac9c29f",
+   "lifted": false
+  },
+  {
+   "name": "choose_profession",
+   "offset": 53874,
+   "segment": 3367,
+   "size": 316,
+   "sha8": "2e6c5c26",
+   "lifted": true
+  },
+  {
+   "name": "read_member_name",
+   "offset": 54190,
+   "segment": 3386,
+   "size": 418,
+   "sha8": "a1baf07a",
+   "lifted": false
+  },
+  {
+   "name": "name_party",
+   "offset": 54608,
+   "segment": 3413,
+   "size": 1407,
+   "sha8": "45a3798a",
+   "lifted": true
+  },
+  {
+   "name": "choose_departure_month",
+   "offset": 56015,
+   "segment": 3500,
+   "size": 688,
+   "sha8": "860537d4",
+   "lifted": true
+  },
+  {
+   "name": "store_intro",
+   "offset": 56703,
+   "segment": 3543,
+   "size": 401,
+   "sha8": "930c0497",
+   "lifted": false
+  },
+  {
+   "name": "sub_0df10",
+   "offset": 57104,
+   "segment": 3569,
+   "size": 203,
+   "sha8": "9bd1bc86",
+   "lifted": false
+  },
+  {
+   "name": "sub_0dfdb",
+   "offset": 57307,
+   "segment": 3581,
+   "size": 455,
+   "sha8": "6b3880b5",
+   "lifted": false
+  },
+  {
+   "name": "sub_0e1a2",
+   "offset": 57762,
+   "segment": 3610,
+   "size": 462,
+   "sha8": "4c8c7dc5",
+   "lifted": false
+  },
+  {
+   "name": "sub_0e370",
+   "offset": 58224,
+   "segment": 3639,
+   "size": 247,
+   "sha8": "93f7380c",
+   "lifted": false
+  },
+  {
+   "name": "sub_0e467",
+   "offset": 58471,
+   "segment": 3654,
+   "size": 215,
+   "sha8": "624f8ea5",
+   "lifted": false
+  },
+  {
+   "name": "sub_0e53e",
+   "offset": 58686,
+   "segment": 3667,
+   "size": 495,
+   "sha8": "585fc429",
+   "lifted": false
+  },
+  {
+   "name": "sub_0e72d",
+   "offset": 59181,
+   "segment": 3698,
+   "size": 651,
+   "sha8": "2bbfddbe",
+   "lifted": false
+  },
+  {
+   "name": "store_buy_loop",
+   "offset": 59832,
+   "segment": 3739,
+   "size": 1344,
+   "sha8": "4c0ed792",
+   "lifted": true
+  },
+  {
+   "name": "buy_supplies",
+   "offset": 61176,
+   "segment": 3823,
+   "size": 260,
+   "sha8": "8cf8884b",
+   "lifted": true
+  },
+  {
+   "name": "start_new_game",
+   "offset": 61436,
+   "segment": 3839,
+   "size": 370,
+   "sha8": "11f14f63",
+   "lifted": true
+  },
+  {
+   "name": "prompt_continue_saved_game",
+   "offset": 61806,
+   "segment": 3862,
+   "size": 297,
+   "sha8": "589b2e9f",
+   "lifted": true
+  },
+  {
+   "name": "travel_the_trail",
+   "offset": 62103,
+   "segment": 3881,
+   "size": 324,
+   "sha8": "2af749e0",
+   "lifted": true
+  },
+  {
+   "name": "erase_current_topten",
+   "offset": 62427,
+   "segment": 3901,
+   "size": 457,
+   "sha8": "178694be",
+   "lifted": false
+  },
+  {
+   "name": "erase_tombstones",
+   "offset": 62884,
+   "segment": 3930,
+   "size": 591,
+   "sha8": "624f153e",
+   "lifted": false
+  },
+  {
+   "name": "erase_saves",
+   "offset": 63475,
+   "segment": 3967,
+   "size": 569,
+   "sha8": "0c292f0a",
+   "lifted": false
+  },
+  {
+   "name": "sub_0fa2c",
+   "offset": 64044,
+   "segment": 4002,
+   "size": 660,
+   "sha8": "9cc3e990",
+   "lifted": false
+  },
+  {
+   "name": "calibrate_joystick",
+   "offset": 64704,
+   "segment": 4044,
+   "size": 980,
+   "sha8": "814b0adc",
+   "lifted": false
+  },
+  {
+   "name": "toggle_joystick",
+   "offset": 65684,
+   "segment": 4105,
+   "size": 601,
+   "sha8": "8b0fb073",
+   "lifted": false
+  },
+  {
+   "name": "choose_management",
+   "offset": 66285,
+   "segment": 4142,
+   "size": 421,
+   "sha8": "1a7501d7",
+   "lifted": true
+  },
+  {
+   "name": "sub_10492",
+   "offset": 66706,
+   "segment": 4169,
+   "size": 85,
+   "sha8": "73d6b481",
+   "lifted": false
+  },
+  {
+   "name": "strlen",
+   "offset": 66791,
+   "segment": 4174,
+   "size": 53,
+   "sha8": "6ce65f74",
+   "lifted": false
+  },
+  {
+   "name": "rand",
+   "offset": 66844,
+   "segment": 4177,
+   "size": 57,
+   "sha8": "8b70110a",
+   "lifted": false
+  },
+  {
+   "name": "sub_10555",
+   "offset": 66901,
+   "segment": 4181,
+   "size": 143,
+   "sha8": "638fa7c9",
+   "lifted": false
+  },
+  {
+   "name": "sub_105e4",
+   "offset": 67044,
+   "segment": 4190,
+   "size": 182,
+   "sha8": "1cf42083",
+   "lifted": false
+  },
+  {
+   "name": "sub_1069a",
+   "offset": 67226,
+   "segment": 4201,
+   "size": 334,
+   "sha8": "c70cdba2",
+   "lifted": false
+  },
+  {
+   "name": "sub_107e8",
+   "offset": 67560,
+   "segment": 4222,
+   "size": 318,
+   "sha8": "8e3f79d1",
+   "lifted": false
+  },
+  {
+   "name": "sub_10926",
+   "offset": 67878,
+   "segment": 4242,
+   "size": 73,
+   "sha8": "4ab328a8",
+   "lifted": false
+  },
+  {
+   "name": "sub_1096f",
+   "offset": 67951,
+   "segment": 4246,
+   "size": 1126,
+   "sha8": "4cbc04eb",
+   "lifted": false
+  },
+  {
+   "name": "sub_10dd5",
+   "offset": 69077,
+   "segment": 4317,
+   "size": 302,
+   "sha8": "1dcc5145",
+   "lifted": false
+  },
+  {
+   "name": "sub_10f03",
+   "offset": 69379,
+   "segment": 4336,
+   "size": 100,
+   "sha8": "e94e1315",
+   "lifted": false
+  },
+  {
+   "name": "sub_10f67",
+   "offset": 69479,
+   "segment": 4342,
+   "size": 119,
+   "sha8": "3030a1c4",
+   "lifted": false
+  },
+  {
+   "name": "sub_10fde",
+   "offset": 69598,
+   "segment": 4349,
+   "size": 196,
+   "sha8": "b4afee18",
+   "lifted": false
+  },
+  {
+   "name": "read_input",
+   "offset": 69794,
+   "segment": 4362,
+   "size": 387,
+   "sha8": "5f12b5c1",
+   "lifted": false
+  },
+  {
+   "name": "read_field",
+   "offset": 70181,
+   "segment": 4386,
+   "size": 130,
+   "sha8": "94ea02c1",
+   "lifted": true
+  },
+  {
+   "name": "counted_str_width",
+   "offset": 70311,
+   "segment": 4394,
+   "size": 39,
+   "sha8": "5fac10d1",
+   "lifted": false
+  },
+  {
+   "name": "sub_1049_0e3e",
+   "offset": 70350,
+   "segment": 4396,
+   "size": 34,
+   "sha8": "149ecf62",
+   "lifted": false
+  },
+  {
+   "name": "gotoxy",
+   "offset": 70384,
+   "segment": 4399,
+   "size": 28,
+   "sha8": "d69b7385",
+   "lifted": true
+  },
+  {
+   "name": "sub_1130c",
+   "offset": 70412,
+   "segment": 4400,
+   "size": 31,
+   "sha8": "00064ef0",
+   "lifted": false
+  },
+  {
+   "name": "sub_1132b",
+   "offset": 70443,
+   "segment": 4402,
+   "size": 34,
+   "sha8": "61fe0526",
+   "lifted": false
+  },
+  {
+   "name": "print_string",
+   "offset": 70477,
+   "segment": 4404,
+   "size": 88,
+   "sha8": "d45459df",
+   "lifted": true
+  },
+  {
+   "name": "sub_113a5",
+   "offset": 70565,
+   "segment": 4410,
+   "size": 123,
+   "sha8": "6f8f56c7",
+   "lifted": false
+  },
+  {
+   "name": "sub_11420",
+   "offset": 70688,
+   "segment": 4418,
+   "size": 45,
+   "sha8": "74678914",
+   "lifted": false
+  },
+  {
+   "name": "sub_1144d",
+   "offset": 70733,
+   "segment": 4420,
+   "size": 420,
+   "sha8": "13e0e67d",
+   "lifted": false
+  },
+  {
+   "name": "sub_115f1",
+   "offset": 71153,
+   "segment": 4447,
+   "size": 118,
+   "sha8": "2a1525b1",
+   "lifted": false
+  },
+  {
+   "name": "sub_11667",
+   "offset": 71271,
+   "segment": 4454,
+   "size": 259,
+   "sha8": "70d9a960",
+   "lifted": false
+  },
+  {
+   "name": "sub_1176a",
+   "offset": 71530,
+   "segment": 4470,
+   "size": 225,
+   "sha8": "d8f91a26",
+   "lifted": false
+  },
+  {
+   "name": "sub_1184b",
+   "offset": 71755,
+   "segment": 4484,
+   "size": 235,
+   "sha8": "5db4010c",
+   "lifted": false
+  },
+  {
+   "name": "sub_11936",
+   "offset": 71990,
+   "segment": 4499,
+   "size": 123,
+   "sha8": "067527f7",
+   "lifted": false
+  },
+  {
+   "name": "draw_menu_line",
+   "offset": 72113,
+   "segment": 4507,
+   "size": 61,
+   "sha8": "70675543",
+   "lifted": false
+  },
+  {
+   "name": "fill_rect",
+   "offset": 72174,
+   "segment": 4510,
+   "size": 66,
+   "sha8": "b5ca1458",
+   "lifted": false
+  },
+  {
+   "name": "press_any_key",
+   "offset": 72240,
+   "segment": 4515,
+   "size": 188,
+   "sha8": "9d5c422c",
+   "lifted": false
+  },
+  {
+   "name": "sub_11aec",
+   "offset": 72428,
+   "segment": 4526,
+   "size": 431,
+   "sha8": "9106c712",
+   "lifted": false
+  },
+  {
+   "name": "parse_choice",
+   "offset": 72859,
+   "segment": 4553,
+   "size": 74,
+   "sha8": "7568105c",
+   "lifted": false
+  },
+  {
+   "name": "draw_text",
+   "offset": 72933,
+   "segment": 4558,
+   "size": 227,
+   "sha8": "439d5b91",
+   "lifted": true
+  },
+  {
+   "name": "sub_11dc8",
+   "offset": 73160,
+   "segment": 4572,
+   "size": 516,
+   "sha8": "503c930b",
+   "lifted": false
+  },
+  {
+   "name": "draw_text_line",
+   "offset": 73676,
+   "segment": 4604,
+   "size": 119,
+   "sha8": "4e1f21de",
+   "lifted": false
+  },
+  {
+   "name": "read_input_var",
+   "offset": 73795,
+   "segment": 4612,
+   "size": 172,
+   "sha8": "cfab5adf",
+   "lifted": false
+  },
+  {
+   "name": "sub_120ef",
+   "offset": 73967,
+   "segment": 4622,
+   "size": 287,
+   "sha8": "3627c6e6",
+   "lifted": false
+  },
+  {
+   "name": "sub_1220e",
+   "offset": 74254,
+   "segment": 4640,
+   "size": 116,
+   "sha8": "7ef79afe",
+   "lifted": false
+  },
+  {
+   "name": "draw_panel",
+   "offset": 74370,
+   "segment": 4648,
+   "size": 81,
+   "sha8": "8a41cf97",
+   "lifted": false
+  },
+  {
+   "name": "clear_text_area",
+   "offset": 74451,
+   "segment": 4653,
+   "size": 33,
+   "sha8": "a079ebc2",
+   "lifted": false
+  },
+  {
+   "name": "clear_panel",
+   "offset": 74484,
+   "segment": 4655,
+   "size": 127,
+   "sha8": "bbca2b0d",
+   "lifted": false
+  },
+  {
+   "name": "finalize_action",
+   "offset": 74611,
+   "segment": 4663,
+   "size": 56,
+   "sha8": "01e8a690",
+   "lifted": false
+  },
+  {
+   "name": "sub_123ab",
+   "offset": 74667,
+   "segment": 4666,
+   "size": 105,
+   "sha8": "83e1d70f",
+   "lifted": false
+  },
+  {
+   "name": "load_save_list",
+   "offset": 74772,
+   "segment": 4673,
+   "size": 166,
+   "sha8": "4f4d80f5",
+   "lifted": false
+  },
+  {
+   "name": "save_list",
+   "offset": 74938,
+   "segment": 4683,
+   "size": 230,
+   "sha8": "f668a4aa",
+   "lifted": false
+  },
+  {
+   "name": "parse_num",
+   "offset": 75168,
+   "segment": 4698,
+   "size": 863,
+   "sha8": "fcce8ac1",
+   "lifted": false
+  },
+  {
+   "name": "sub_128ff",
+   "offset": 76031,
+   "segment": 4751,
+   "size": 149,
+   "sha8": "891e6921",
+   "lifted": false
+  },
+  {
+   "name": "sub_12994",
+   "offset": 76180,
+   "segment": 4761,
+   "size": 133,
+   "sha8": "7e1bae1f",
+   "lifted": false
+  },
+  {
+   "name": "draw_landmark",
+   "offset": 76313,
+   "segment": 4769,
+   "size": 453,
+   "sha8": "11005d20",
+   "lifted": false
+  },
+  {
+   "name": "draw_tombstone",
+   "offset": 76766,
+   "segment": 4797,
+   "size": 761,
+   "sha8": "7407313d",
+   "lifted": false
+  },
+  {
+   "name": "show_top_ten",
+   "offset": 77527,
+   "segment": 4845,
+   "size": 410,
+   "sha8": "f088dc3f",
+   "lifted": false
+  },
+  {
+   "name": "sub_13071",
+   "offset": 77937,
+   "segment": 4871,
+   "size": 61,
+   "sha8": "58e7c3fe",
+   "lifted": false
+  },
+  {
+   "name": "format_str",
+   "offset": 77998,
+   "segment": 4874,
+   "size": 174,
+   "sha8": "882d6d4f",
+   "lifted": false
+  },
+  {
+   "name": "format_money",
+   "offset": 78172,
+   "segment": 4885,
+   "size": 191,
+   "sha8": "5f51eeda",
+   "lifted": false
+  },
+  {
+   "name": "fmt_weather",
+   "offset": 78363,
+   "segment": 4897,
+   "size": 44,
+   "sha8": "577b1c0b",
+   "lifted": true
+  },
+  {
+   "name": "fmt_health",
+   "offset": 78407,
+   "segment": 4900,
+   "size": 70,
+   "sha8": "11c94d81",
+   "lifted": true
+  },
+  {
+   "name": "fmt_pace",
+   "offset": 78477,
+   "segment": 4904,
+   "size": 45,
+   "sha8": "5ddab337",
+   "lifted": true
+  },
+  {
+   "name": "fmt_rations",
+   "offset": 78522,
+   "segment": 4907,
+   "size": 45,
+   "sha8": "9f9b0d17",
+   "lifted": true
+  },
+  {
+   "name": "party_size",
+   "offset": 78567,
+   "segment": 4910,
+   "size": 69,
+   "sha8": "3646bfa6",
+   "lifted": false
+  },
+  {
+   "name": "health_roll",
+   "offset": 78636,
+   "segment": 4914,
+   "size": 57,
+   "sha8": "805b56a4",
+   "lifted": false
+  },
+  {
+   "name": "illness_pick",
+   "offset": 78693,
+   "segment": 4918,
+   "size": 88,
+   "sha8": "a0c17bc4",
+   "lifted": false
+  },
+  {
+   "name": "sub_133bd",
+   "offset": 78781,
+   "segment": 4923,
+   "size": 158,
+   "sha8": "1fc00baa",
+   "lifted": false
+  },
+  {
+   "name": "sub_1345b",
+   "offset": 78939,
+   "segment": 4933,
+   "size": 253,
+   "sha8": "bb86607a",
+   "lifted": false
+  },
+  {
+   "name": "trade_setup",
+   "offset": 79192,
+   "segment": 4949,
+   "size": 197,
+   "sha8": "3cc07286",
+   "lifted": false
+  },
+  {
+   "name": "sub_1361d",
+   "offset": 79389,
+   "segment": 4961,
+   "size": 183,
+   "sha8": "05ba4e12",
+   "lifted": false
+  },
+  {
+   "name": "sub_136d4",
+   "offset": 79572,
+   "segment": 4973,
+   "size": 225,
+   "sha8": "c14e2b41",
+   "lifted": false
+  },
+  {
+   "name": "sub_137b5",
+   "offset": 79797,
+   "segment": 4987,
+   "size": 257,
+   "sha8": "e4a734b7",
+   "lifted": false
+  },
+  {
+   "name": "sub_138b6",
+   "offset": 80054,
+   "segment": 5003,
+   "size": 361,
+   "sha8": "14c8ccff",
+   "lifted": false
+  },
+  {
+   "name": "sub_13a1f",
+   "offset": 80415,
+   "segment": 5025,
+   "size": 335,
+   "sha8": "b5062ffa",
+   "lifted": false
+  },
+  {
+   "name": "apply_member_illness",
+   "offset": 80750,
+   "segment": 5046,
+   "size": 247,
+   "sha8": "35b30429",
+   "lifted": false
+  },
+  {
+   "name": "redraw_supplies",
+   "offset": 80997,
+   "segment": 5062,
+   "size": 315,
+   "sha8": "41dad008",
+   "lifted": false
+  },
+  {
+   "name": "draw_msg_box",
+   "offset": 81312,
+   "segment": 5082,
+   "size": 169,
+   "sha8": "c659b4a3",
+   "lifted": false
+  },
+  {
+   "name": "pick_member",
+   "offset": 81481,
+   "segment": 5092,
+   "size": 130,
+   "sha8": "fa6bb5ee",
+   "lifted": false
+  },
+  {
+   "name": "sub_13ecb",
+   "offset": 81611,
+   "segment": 5100,
+   "size": 378,
+   "sha8": "b74b06e0",
+   "lifted": false
+  },
+  {
+   "name": "sub_14045",
+   "offset": 81989,
+   "segment": 5124,
+   "size": 47,
+   "sha8": "dd2e6703",
+   "lifted": false
+  },
+  {
+   "name": "daily_update",
+   "offset": 82036,
+   "segment": 5127,
+   "size": 1448,
+   "sha8": "c8e5a185",
+   "lifted": true
+  },
+  {
+   "name": "sub_1461c",
+   "offset": 83484,
+   "segment": 5217,
+   "size": 367,
+   "sha8": "9f35e4b0",
+   "lifted": false
+  },
+  {
+   "name": "cleanup",
+   "offset": 83851,
+   "segment": 5240,
+   "size": 360,
+   "sha8": "f4b23d39",
+   "lifted": false
+  },
+  {
+   "name": "sub_148f3",
+   "offset": 84211,
+   "segment": 5263,
+   "size": 363,
+   "sha8": "fcee4e0f",
+   "lifted": false
+  },
+  {
+   "name": "sub_14a5e",
+   "offset": 84574,
+   "segment": 5285,
+   "size": 514,
+   "sha8": "56174193",
+   "lifted": false
+  },
+  {
+   "name": "sub_14c60",
+   "offset": 85088,
+   "segment": 5318,
+   "size": 125,
+   "sha8": "00f9e81a",
+   "lifted": false
+  },
+  {
+   "name": "sub_14cdd",
+   "offset": 85213,
+   "segment": 5325,
+   "size": 413,
+   "sha8": "d574f2ff",
+   "lifted": false
+  },
+  {
+   "name": "image_load",
+   "offset": 85626,
+   "segment": 5351,
+   "size": 263,
+   "sha8": "3689c49d",
+   "lifted": false
+  },
+  {
+   "name": "image_show",
+   "offset": 85889,
+   "segment": 5368,
+   "size": 201,
+   "sha8": "effc78a7",
+   "lifted": false
+  },
+  {
+   "name": "image_blit",
+   "offset": 86090,
+   "segment": 5380,
+   "size": 82,
+   "sha8": "f9d3874a",
+   "lifted": false
+  },
+  {
+   "name": "image_free",
+   "offset": 86172,
+   "segment": 5385,
+   "size": 8192,
+   "sha8": "2938e530",
+   "lifted": false
+  }
+ ]
+}

@@ -185,6 +185,15 @@ def cmd_status():
     return True
 
 
+def cmd_compare():
+    """Show how close the rebuild is to byte-matching the original."""
+    if not UNPACKED.exists() and not cmd_unpack():
+        return False
+    sh([PY, "tools/match_inventory.py", str(UNPACKED)], "building the match answer-key")
+    sh([PY, "tools/match_compare.py", "--self-test"], "validating the diff harness")
+    return sh([PY, "tools/match_compare.py"], "checking byte-match progress")
+
+
 def cmd_all():
     """Run the whole decompile pipeline: unpack -> map -> verify -> dashboard."""
     return cmd_unpack() and cmd_map() and cmd_verify() and cmd_svg()
@@ -199,11 +208,12 @@ COMMANDS = {
     "build":   ("Build the playable port (recomp)", cmd_build),
     "run":     ("Run the port (make a screenshot)", cmd_run),
     "play":    ("Build AND run the port", cmd_play),
+    "compare": ("Check byte-match progress vs the original", cmd_compare),
     "status":  ("Show project status", cmd_status),
     "all":     ("Do every decompile step at once", cmd_all),
 }
 MENU_ORDER = ["unpack", "map", "verify", "assets", "svg",
-              "build", "run", "play", "status", "all"]
+              "build", "run", "play", "compare", "status", "all"]
 
 
 def menu():

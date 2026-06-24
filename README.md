@@ -28,6 +28,8 @@ or decompiled directly. **Step one is always to unpack.**
   reversed into the analysable image.
 - [`docs/decompiling.md`](docs/decompiling.md) — the per-function lifting
   workflow and conventions.
+- [`docs/matching.md`](docs/matching.md) — the plan and harness for a
+  byte-identical rebuild (the matching endgame).
 - [`docs/segment_map.md`](docs/segment_map.md) — generated segment/function map.
 
 ## Layout
