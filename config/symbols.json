@@ -82,7 +82,7 @@
     "0032:3b68": {"name": "must_trade_msg", "confidence": "high", "note": "blocked: 'You must trade for <item> to be able to continue.' (g_must_trade set)"},
     "0032:361a": {"name": "continue_travel", "confidence": "high", "note": "advance to next location: fort check, river crossing, distance 'From X it is N miles to Y.'"},
     "0442:18bb": {"name": "cross_river", "confidence": "high", "file": "src/seg_442_river.c", "note": "river crossing: show width/depth, offer ford/caulk/ferry/indian/wait/info, dispatch"},
-    "0442:02be": {"name": "ford_river", "confidence": "med", "note": "crossing method: attempt to ford"},
+    "0442:02be": {"name": "ford_river", "confidence": "high", "file": "src/seg_442_river.c", "note": "ford: random outcome by depth - success/muddy/rough/tipped over/too deep (lose supplies/oxen/people)"},
     "0442:0695": {"name": "caulk_and_float", "confidence": "med", "note": "crossing method: caulk wagon and float"},
     "0442:09ef": {"name": "take_ferry", "confidence": "med", "note": "crossing method: take a ferry"},
     "0442:0e2c": {"name": "hire_indian", "confidence": "med", "note": "crossing method: hire an Indian to help (1990 wording)"},
