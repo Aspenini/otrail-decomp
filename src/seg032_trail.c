@@ -43,7 +43,7 @@ extern void show_location_32_011d(void);       /* 0x0032:0x011d - draw the curre
 
 /* End-of-game handlers (segment 0x07ce). */
 extern void death_sequence_7ce_0f37(void);     /* 0x07ce:0x0f37 */
-extern void sub_7ce_039a(void);                /* 0x07ce:0x039a */
+extern void show_ending_7ce_039a(void);                /* 0x07ce:0x039a */
 
 #define S0(off) ((const char far *)(off))
 #define LOC_OREGON 0x11   /* arriving at location 17 = reached Oregon, game won */
@@ -96,7 +96,7 @@ done:                                                      /* 0x40BF */
     if (g_game_over) {                                     /* 0x40D5 */
         show_location_32_011d();                             /* 0x40DD */
         if (g_quit_flag) return;                           /* 0x40E0 */
-        sub_7ce_039a();                                    /* 0x40E9 */
+        show_ending_7ce_039a();                                    /* 0x40E9 */
     }
     gfx_screen_init_1ceb_0b71();                           /* 0x40EE */
 }                                                          /* 0x40F6 retf */

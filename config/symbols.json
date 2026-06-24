@@ -135,7 +135,7 @@
     "07ce:0f37": {"name": "death_sequence", "confidence": "high", "file": "src/seg_7ce_death.c", "note": "tombstone + epitaph (TOMB.REC); 'All of the people in your party have died.'"},
     "07ce:0db9": {"name": "show_death_msg", "confidence": "med", "note": "near; draw the cause-of-death message with screen save/restore"},
     "1049:274e": {"name": "draw_tombstone", "confidence": "high", "note": "draw the tombstone graphic"},
-    "07ce:039a": {"name": "sub_7ce_039a", "confidence": "low"},
+    "07ce:039a": {"name": "show_ending", "confidence": "high", "file": "src/seg_7ce_ending.c", "note": "endgame: 'made it to Oregon!', tally score (members/supplies/cash x occupation factor), Oregon Top Ten or 'not enough to qualify'"},
     "1049:15a0": {"name": "press_any_key", "confidence": "high", "note": "show prompt at bottom, save/restore screen, wait for key"},
     "1049:1e43": {"name": "clear_text_area", "confidence": "high", "note": "fill text region (x 0..319) - MCGA 320px mode"},
     "1049:155e": {"name": "fill_rect", "confidence": "med", "note": "fill rectangle x1,y1,x2,y2"},
