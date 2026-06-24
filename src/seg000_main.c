@@ -37,18 +37,18 @@ extern uint8_t  g_game_over;      /* 0x1587: trail finished (reached Oregon)    
 
 /* --------------------------------------------------------------- prototypes */
 /* C runtime / library group (segment 0x20a4). */
-extern void   cstartup_20a4_0000(void);            /* 0x20a4:0x0000 */
+extern void   c_startup(void);            /* 0x20a4:0x0000 */
 extern void   _exit_20a4_00d8(int code);           /* 0x20a4:0x00d8: terminate  */
 extern void   far_sprintf_20a4_0634(/* dst, fmt, ... */);  /* 0x20a4:0x0634 */
 extern void   far_print_20a4_06c1(const char far *s);      /* 0x20a4:0x06c1 */
 extern void   strncpy_20a4_064e(char far *dst, const char far *src, int n); /* 0x20a4:0x064e */
 
 /* Program modules. */
-extern void   init_2042_0000(void);                /* 0x2042:0x0000 */
+extern void   init_input(void);                /* 0x2042:0x0000 */
 extern void   sub_2042_0215(int a, int b);         /* 0x2042:0x0215 */
-extern void   init_1ceb_1357(void);                /* 0x1ceb:0x1357 */
-extern void   init_182e_0000(void);                /* 0x182e:0x0000 */
-extern void   init_150c_0000(void);                /* 0x150c:0x0000 */
+extern void   init_graphics(void);                /* 0x1ceb:0x1357 */
+extern void   init_graphics2(void);                /* 0x182e:0x0000 */
+extern void   init_text(void);                /* 0x150c:0x0000 */
 
 extern void   sub_1049_45ce(void);
 extern void   sub_1049_418c(void);
@@ -77,11 +77,11 @@ void main(void)                                              /* 0x010A */
 {
     char screen_buf[256];   /* sub sp,0x100 */
 
-    cstartup_20a4_0000();   /* 0x010A */
-    init_2042_0000();       /* 0x010F */
-    init_1ceb_1357();       /* 0x0114 */
-    init_182e_0000();       /* 0x0119 */
-    init_150c_0000();       /* 0x011E */
+    c_startup();   /* 0x010A */
+    init_input();       /* 0x010F */
+    init_graphics();       /* 0x0114 */
+    init_graphics2();       /* 0x0119 */
+    init_text();       /* 0x011E */
 
     sub_1049_45ce();        /* 0x012A */
     sub_1049_418c();        /* 0x012F */

@@ -79,6 +79,24 @@ Enter, Esc, arrows + fire) maps to buttons or an on-screen keyboard.
    console toolchains. Each is a CMake toolchain file + input mapping; the core
    and SDL backend don't change.
 
+## Boot sequence
+
+`main` (`0x0000:0x010A`) starts with five init calls, then enters the title
+menu. In the port these collapse into a single `pal_init()` + asset load:
+
+| Original boot step        | Addr           | Does                              | Port replacement        |
+|---------------------------|----------------|-----------------------------------|-------------------------|
+| C runtime startup         | `0x20a4:0x0`   | Borland C `_main`/heap/stdio init | the C runtime / `main`  |
+| `init_input`              | `0x2042:0x0`   | keyboard module (BIOS `int 16h`)  | `pal_init` + `pal_poll_event` |
+| `init_graphics`           | `0x1ceb:0x1357`| BGI `initgraph` → MCGA 320×200×256 | `pal_init` (320×200 surface) |
+| `init_graphics2`          | `0x182e:0x0`   | secondary graphics-module setup   | (folded in)             |
+| `init_text`               | `0x150c:0x0`   | text/font module (loads `BIT8X8.GFT`) | bundled 8×8 font     |
+
+Then: load the title art, draw the menu, read the choice. Video uses the
+**BGI drivers** (`VGA256.BGI` / `CGA.BGI`) rather than a raw `int 10h` mode set,
+so the whole graphics stack (segments `0x150c`/`0x182e`/`0x1ceb`) is the
+device layer the port replaces with the framebuffer + `pal_present`.
+
 ## Boot-critical contracts (what the PAL must reproduce)
 
 Recovered from the decomp; these are the behaviours the platform layer has to
