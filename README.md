@@ -54,13 +54,26 @@ or decompiled directly. **Step one is always to unpack.**
 
 ## Usage
 
+The easiest way — a friendly launcher (no `make` or libraries needed, just
+Python 3):
+
+```bash
+python otrail.py          # interactive menu: pick a number
+python otrail.py play     # build the port and run it
+python otrail.py all      # run every decompile step
+python otrail.py status   # how far the project has come
+python otrail.py help     # list commands
+```
+
+Or drive the individual steps with `make` (needs a POSIX shell / WSL):
+
 ```bash
 make unpack    # -> build/OREGON_unpacked.exe (158,496 bytes, entry 0x0000:0x010A)
 make map       # -> config/segments.json, docs/segment_map.md
 make svg       # -> docs/progress.svg (the dashboard above)
 make verify    # re-unpack and assert all structural invariants
+make port      # build + run the recomp
 make all       # verify + map + svg
-make help      # list targets
 ```
 
 ## Status

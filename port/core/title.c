@@ -13,6 +13,8 @@
 #include "screen.h"
 #include "../pal.h"
 
+extern void run_learn(void);   /* learn.c - menu option 2 */
+
 static int g_sound_on = 1;   /* the original's g_sound_on (0x1410) */
 
 /* Block until the player presses 1-6 or quits (Esc / window close). */
@@ -60,7 +62,11 @@ void run_title(void)
             g_sound_on = !g_sound_on;           /* like main() case 4 */
             continue;
         }
-        /* sub-screens not ported yet */
+        if (choice == 2) {                      /* Learn about the Trail */
+            run_learn();
+            continue;
+        }
+        /* remaining sub-screens not ported yet */
         scr_clear(C_BLUE);
         {
             char msg[40];

@@ -46,7 +46,7 @@ assets: port/assets/pcxlib.py port/assets/pcx.py
 ## port: build the recomp (headless 'file' backend) and render the title menu
 port: port/core/font8x8.h
 	$(CC) -std=c99 -O2 port/core/main.c port/core/pcx.c port/core/screen.c \
-	    port/core/title.c port/platform/file/pal_file.c -o build/oregon_trail
+	    port/core/title.c port/core/learn.c port/platform/file/pal_file.c -o build/oregon_trail
 	OTRAIL_GAMEDIR=$(GAMEDIR) OTRAIL_FRAME=build/port_boot.png ./build/oregon_trail
 	@echo "port booted -> build/port_boot_000.png"
 

@@ -80,16 +80,22 @@ portable C: text is rendered by [`core/screen.c`](core/screen.c) (a built-in
 8×8 font, since the original `BIT8X8.GFT` encoding is still TBD) into the
 framebuffer, and input comes through `pal_poll_event`.
 
+**Option 2, "Learn about the Trail"** ([`core/learn.c`](core/learn.c)), is fully
+ported — a six-page slideshow showing the real recovered game text (right down
+to the credits). It's the template for the remaining sub-screens: lift the
+content from `../src/`, render it via `screen`, drive it with `pal_poll_event`.
+
 Two backends: [`platform/file`](platform/file/pal_file.c) (headless → PNG,
 no deps, scriptable via `OTRAIL_KEYS` — used for the screenshots and CI) and
 [`platform/sdl`](platform/sdl/pal_sdl.c) (interactive window, all SDL targets).
-Next: port the sub-screens (Travel/Learn/Top Ten/Management) on top.
+Next: port Travel / Top Ten / Management on the same foundation.
 
 ## Roadmap
 
 1. **PAL contract** — [`pal.h`](pal.h). ✅ drafted; refine as the core lands.
 2. **SDL backend + boot** — ✅ done. Headless + SDL backends; boots the title art.
 3. **Interactive title menu** — ✅ done (`core/title.c`, `core/screen.c`).
+4. **Sub-screens** — 🟡 "Learn about the Trail" done (`core/learn.c`); rest next.
 3. **Asset pipeline** — 🟡 in progress. Image art is decoding cleanly:
    - [`assets/pcx.py`](assets/pcx.py) decodes 8-bit ZSoft **PCX** (`.256`, `.pcc`);
    - [`assets/pcxlib.py`](assets/pcxlib.py) extracts the **Genus PCXLIB** archives
