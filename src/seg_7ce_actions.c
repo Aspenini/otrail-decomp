@@ -6,8 +6,8 @@
  *   change_rations   @ 0x07ce:0x27cf  (this file)
  *   stop_to_rest     @ 0x07ce:0x2950
  *   attempt_trade    @ 0x07ce:0x11c3
- *   talk_to_people   @ 0x07ce:0x17eb
- *   buy_at_fort      @ 0x07ce:0x1d3c
+ *   talk_to_people   @ 0x07ce:0x17eb  (this file)
+ *   buy_at_fort      @ 0x07ce:0x1d3c  (this file)
  *
  * Address-annotated reconstruction of Borland Turbo C output; not yet
  * compile-verified against the binary.
@@ -220,3 +220,67 @@ void attempt_trade(void)
     redraw_supplies_1049_37d5();                            /* 0x17BD */
     advance_day_2042_029e();                                /* 0x17C6: trading costs a day */
 }                                                           /* 0x17CB retf */
+
+/* --- file I/O (Borland C stdio, segment 0x20a4) + dialog/store helpers ----- */
+extern void *fopen_20a4_15ba(const char far *name);   /* 0x20a4:0x15ba */
+extern int   fio_20a4_15e8(void);                     /* 0x20a4:0x15e8 */
+extern int   fread_rec_20a4_173b(void);               /* 0x20a4:0x173b */
+extern void  fio_close_20a4_169d(void);               /* 0x20a4:0x169d */
+extern void  fio_20a4_1669(void);                     /* 0x20a4:0x1669 */
+extern void  draw_panel(int x, int y);                /* 0x1049:0x1df2 */
+extern void  draw_into_box(void);                     /* 0x1049:0x1938 */
+extern void  trade_setup_1049_30c8(void);             /* 0x1049:0x30c8 */
+
+/* ---------------------------------------------------------- 0x07ce:0x17eb
+ * Talk to people at a fort. Reads a random dialog record from DIALOGS.REC (a
+ * speaker name + a quote) and shows  <name> tells you: "<quote>" .
+ */
+void talk_to_people(void)
+{
+    char rec[0x1a4];   /* [bp-0x1a4] dialog record (name + quote) */
+
+    if (g_quit_flag) return;                            /* 0x17FA */
+
+    fopen_20a4_15ba(S(0x17cf) /* "DIALOGS.REC" */);     /* 0x180F */
+    fio_20a4_15e8();                                    /* 0x181E: prepare */
+    /* pick & read a random dialog record into rec; rec[0x1a4 area] holds the
+     * record index/count that gates the cmp at 0x182C (1..3). */
+    fread_rec_20a4_173b();                              /* 0x186F */
+    fio_close_20a4_169d();                              /* 0x1885 / 0x1898 */
+
+    draw_panel(0, 0);                                   /* 0x18AF */
+    /* "<name> tells you:" */
+    far_sprintf(/* buf, name */);                       /* 0x18E2 */
+    far_print(S(0x17db) /* " tells you:" */);           /* 0x18EC */
+    draw_into_box();                                    /* 0x18F1 */
+    far_print(S(0x17e7) /* "\\" */);                    /* 0x18FB */
+    /* the quote, wrapped in double-quotes */
+    far_print(S(0x17e9) /* "\"" */);                    /* 0x1922 */
+    far_print(/* quote text */ 0);
+    far_print(S(0x17e9) /* "\"" */);                    /* 0x1937 */
+    draw_into_box();                                    /* 0x193C */
+    press_any_key();                                    /* 0x1946 */
+}                                                       /* 0x194E retf */
+
+/* ---------------------------------------------------------- 0x07ce:0x1d3c
+ * Buy supplies at a fort. Like the Independence store but with fort pricing;
+ * dispatches on the chosen item (oxen / food / clothing / ammunition / parts /
+ * …) to deduct cash and add the goods. Structural lift: the per-item purchase
+ * arithmetic in each switch case is summarised.
+ */
+void buy_at_fort(void)
+{
+    int item;
+
+    trade_setup_1049_30c8();                            /* 0x1D50: store setup */
+    /* item = chosen supply category; each case prices and applies the buy. */
+    item = 0; /* read from the store UI */
+    switch (item) {                                     /* 0x1D58.. big switch */
+    case 0: case 2: case 3: case 4: case 5: case 7: case 8:
+    case 0xa: case 0xb: case 0xc: case 0xd: case 0xe:
+        /* deduct cost from g_cash, add quantity to the matching supply record */
+        break;
+    default:
+        break;
+    }
+}                                                       /* 0x1E10.. retf */
