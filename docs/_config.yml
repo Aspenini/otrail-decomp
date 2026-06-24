@@ -1,0 +1,9 @@
+# GitHub Pages / Jekyll config for the docs site.
+# Deploy: repo Settings -> Pages -> Source: "Deploy from a branch", folder: /docs.
+title: OTrailDecomp
+description: Decompiling The Oregon Trail (MS-DOS, 1990) — and building a portable port.
+theme: jekyll-theme-cayman
+
+# GitHub Pages enables jekyll-relative-links by default, so links to *.md files
+# below are rewritten to their built .html pages automatically.
+show_downloads: false

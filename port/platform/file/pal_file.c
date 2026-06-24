@@ -102,25 +102,47 @@ static int write_png(const char *path, const uint8_t *idx, const uint32_t pal[25
 }
 
 /* ------------------------------------------------------------- PAL interface */
-static int s_presented = 0;
+static const char *s_keys;     /* OTRAIL_KEYS: scripted keypresses */
+static int s_keypos;
+static int s_frame;
 
 int pal_init(const char *title)
 {
     (void)title;
+    s_keys = getenv("OTRAIL_KEYS");
     return 0;
 }
 
 void pal_present(const uint8_t *indexed, const uint32_t palette[256])
 {
-    const char *path = getenv("OTRAIL_FRAME");
-    if (!path) path = "build/port_frame.png";
+    const char *base = getenv("OTRAIL_FRAME");
+    char path[512];
+    if (!base) base = "build/port_frame.png";
+    /* number the frames: foo.png -> foo_000.png, foo_001.png, ... */
+    {
+        const char *dot = strrchr(base, '.');
+        size_t stem = dot ? (size_t)(dot - base) : strlen(base);
+        snprintf(path, sizeof(path), "%.*s_%03d%s",
+                 (int)stem, base, s_frame, dot ? dot : ".png");
+    }
     write_png(path, indexed, palette);
-    fprintf(stderr, "pal_file: wrote frame to %s\n", path);
-    s_presented = 1;
+    fprintf(stderr, "pal_file: frame %d -> %s\n", s_frame, path);
+    s_frame++;
 }
 
-int pal_poll_event(PalEvent *out) { (void)out; return 0; }
-int pal_should_quit(void) { return s_presented; }   /* headless: quit after 1 frame */
+/* Feed OTRAIL_KEYS one character per poll as PAL_KEY_CHAR events. */
+int pal_poll_event(PalEvent *out)
+{
+    if (s_keys && s_keys[s_keypos]) {
+        out->key = PAL_KEY_CHAR;
+        out->ch = s_keys[s_keypos++];
+        return 1;
+    }
+    return 0;
+}
+
+/* Quit once the scripted input is exhausted (or if none was given). */
+int pal_should_quit(void) { return !s_keys || s_keys[s_keypos] == 0; }
 
 uint32_t pal_ticks_ms(void) { return 0; }
 void     pal_sleep_ms(uint32_t ms) { (void)ms; }

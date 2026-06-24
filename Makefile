@@ -43,12 +43,15 @@ assets: port/assets/pcxlib.py port/assets/pcx.py
 	$(PYTHON) port/assets/pcxlib.py $(GAMEDIR)/OTMCGA.PCL build/pcl
 	$(PYTHON) port/assets/pcx.py $(GAMEDIR)/LOGO.256 build/img/logo.png
 
-## port: build the recomp (headless 'file' backend) and render a boot frame
-port:
-	$(CC) -std=c99 -O2 port/core/main.c port/core/pcx.c \
-	    port/platform/file/pal_file.c -o build/oregon_trail
+## port: build the recomp (headless 'file' backend) and render the title menu
+port: port/core/font8x8.h
+	$(CC) -std=c99 -O2 port/core/main.c port/core/pcx.c port/core/screen.c \
+	    port/core/title.c port/platform/file/pal_file.c -o build/oregon_trail
 	OTRAIL_GAMEDIR=$(GAMEDIR) OTRAIL_FRAME=build/port_boot.png ./build/oregon_trail
-	@echo "port booted -> build/port_boot.png"
+	@echo "port booted -> build/port_boot_000.png"
+
+port/core/font8x8.h: port/assets/make_font.py
+	$(PYTHON) port/assets/make_font.py
 
 ## clean: remove generated artifacts
 clean:

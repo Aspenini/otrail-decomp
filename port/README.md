@@ -69,20 +69,27 @@ cmake -B build/port -S port && cmake --build build/port
 ./build/port/oregon_trail            # SDL window, or a PNG if headless
 ```
 
-## Status: it boots ✅
+## Status: interactive title menu ✅
 
-The first vertical slice runs: [`core/main.c`](core/main.c) calls `pal_init`,
-loads the real `LOGO.256` via `pal_asset_load`, decodes it with the portable
-[`core/pcx.c`](core/pcx.c), and presents it through the PAL — rendering MECC's
-Oregon Trail title screen in compiled, portable C. Two backends exist:
-[`platform/file`](platform/file/pal_file.c) (headless → PNG, builds anywhere)
-and [`platform/sdl`](platform/sdl/pal_sdl.c) (interactive window, all SDL
-targets). Next: port the title-menu logic from `../src/seg000_main.c` on top.
+The port boots to a **working title menu**, ported from
+[`../src/seg000_main.c`](../src/seg000_main.c): it shows the MECC `LOGO.256`
+splash, then draws the six-option menu and reads a 1-6 choice — option 4 toggles
+sound (the original's `g_sound_on`), 6 ends, others dispatch (sub-screens are
+placeholders for now). All of it is the decompiled menu logic running as
+portable C: text is rendered by [`core/screen.c`](core/screen.c) (a built-in
+8×8 font, since the original `BIT8X8.GFT` encoding is still TBD) into the
+framebuffer, and input comes through `pal_poll_event`.
+
+Two backends: [`platform/file`](platform/file/pal_file.c) (headless → PNG,
+no deps, scriptable via `OTRAIL_KEYS` — used for the screenshots and CI) and
+[`platform/sdl`](platform/sdl/pal_sdl.c) (interactive window, all SDL targets).
+Next: port the sub-screens (Travel/Learn/Top Ten/Management) on top.
 
 ## Roadmap
 
 1. **PAL contract** — [`pal.h`](pal.h). ✅ drafted; refine as the core lands.
 2. **SDL backend + boot** — ✅ done. Headless + SDL backends; boots the title art.
+3. **Interactive title menu** — ✅ done (`core/title.c`, `core/screen.c`).
 3. **Asset pipeline** — 🟡 in progress. Image art is decoding cleanly:
    - [`assets/pcx.py`](assets/pcx.py) decodes 8-bit ZSoft **PCX** (`.256`, `.pcc`);
    - [`assets/pcxlib.py`](assets/pcxlib.py) extracts the **Genus PCXLIB** archives

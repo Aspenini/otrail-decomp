@@ -9,58 +9,41 @@
  * time; for now this proves the boot path end-to-end.
  */
 #include <stdio.h>
-#include <string.h>
 
 #include "../pal.h"
 #include "pcx.h"
+#include "screen.h"
 
-static uint8_t  g_fb[PAL_SCREEN_W * PAL_SCREEN_H];
-static uint32_t g_palette[256];
-static uint8_t  g_asset[70000];   /* big enough for LOGO.256 / a 320x200 PCX */
+extern void run_title(void);   /* title.c */
 
-/* Load a PCX asset into the framebuffer + palette. Returns 0 on success. */
-static int load_pcx_screen(const char *name)
+static uint8_t g_asset[70000];
+
+/* Show the MECC title splash (LOGO.256) until a key is pressed. */
+static void splash(void)
 {
-    long n;
+    long n = pal_asset_load("LOGO.256", g_asset, sizeof(g_asset));
     int  w, h, hp;
-
-    n = pal_asset_load(name, g_asset, sizeof(g_asset));
-    if (n < 0) {
-        fprintf(stderr, "boot: cannot load asset '%s'\n", name);
-        return 1;
+    PalEvent ev;
+    if (n < 0 || pcx_decode(g_asset, (size_t)n, scr_fb(), PAL_SCREEN_W * PAL_SCREEN_H,
+                            scr_palette(), &w, &h, &hp))
+        return;                                  /* no splash, go straight to menu */
+    scr_present();
+    for (;;) {
+        if (pal_should_quit()) return;
+        if (pal_poll_event(&ev) && ev.key != PAL_KEY_NONE) return;
+        pal_sleep_ms(16);
     }
-    if (pcx_decode(g_asset, (size_t)n, g_fb, sizeof(g_fb), g_palette, &w, &h, &hp)) {
-        fprintf(stderr, "boot: '%s' is not a decodable 8-bit PCX\n", name);
-        return 1;
-    }
-    return 0;
 }
 
 int main(void)
 {
-    PalEvent ev;
-
     if (pal_init("The Oregon Trail")) {
         fprintf(stderr, "boot: pal_init failed\n");
         return 1;
     }
-
-    /* The title screen: MECC's LOGO.256 (a 320x200 PCX with its own palette). */
-    if (load_pcx_screen("LOGO.256")) {
-        pal_shutdown();
-        return 1;
-    }
-
-    /* Present and wait for a key / quit. */
-    while (!pal_should_quit()) {
-        pal_present(g_fb, g_palette);
-        while (pal_poll_event(&ev)) {
-            if (ev.key == PAL_KEY_ESCAPE || ev.key == PAL_KEY_ENTER)
-                goto done;
-        }
-        pal_sleep_ms(16);
-    }
-done:
+    splash();                                    /* MECC logo (its own palette) */
+    scr_set_ega_palette();                       /* menu uses the EGA palette */
+    run_title();                                 /* interactive title menu */
     pal_shutdown();
     return 0;
 }
