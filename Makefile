@@ -12,7 +12,9 @@ UNPACKED = build/OREGON_unpacked.exe
 
 GAMEDIR  = Oregon_The_1990
 
-.PHONY: all unpack map svg verify assets clean help
+CC       = gcc
+
+.PHONY: all unpack map svg verify assets port clean help
 
 all: verify map svg
 
@@ -40,6 +42,13 @@ assets: port/assets/pcxlib.py port/assets/pcx.py
 	@mkdir -p build/pcl build/img
 	$(PYTHON) port/assets/pcxlib.py $(GAMEDIR)/OTMCGA.PCL build/pcl
 	$(PYTHON) port/assets/pcx.py $(GAMEDIR)/LOGO.256 build/img/logo.png
+
+## port: build the recomp (headless 'file' backend) and render a boot frame
+port:
+	$(CC) -std=c99 -O2 port/core/main.c port/core/pcx.c \
+	    port/platform/file/pal_file.c -o build/oregon_trail
+	OTRAIL_GAMEDIR=$(GAMEDIR) OTRAIL_FRAME=build/port_boot.png ./build/oregon_trail
+	@echo "port booted -> build/port_boot.png"
 
 ## clean: remove generated artifacts
 clean:

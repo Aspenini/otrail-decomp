@@ -58,11 +58,31 @@ SDL provides window/texture, keyboard + gamepad + touch, audio, and timing on
 all of them. On consoles and touch devices the small input set (digits, Y/N,
 Enter, Esc, arrows + fire) maps to buttons or an on-screen keyboard.
 
+## Building & running
+
+```bash
+# headless backend (no deps): builds, boots, and renders a PNG
+make port                 # from the repo root -> build/port_boot.png
+
+# or via CMake (auto-detects SDL2; falls back to the file backend)
+cmake -B build/port -S port && cmake --build build/port
+./build/port/oregon_trail            # SDL window, or a PNG if headless
+```
+
+## Status: it boots ✅
+
+The first vertical slice runs: [`core/main.c`](core/main.c) calls `pal_init`,
+loads the real `LOGO.256` via `pal_asset_load`, decodes it with the portable
+[`core/pcx.c`](core/pcx.c), and presents it through the PAL — rendering MECC's
+Oregon Trail title screen in compiled, portable C. Two backends exist:
+[`platform/file`](platform/file/pal_file.c) (headless → PNG, builds anywhere)
+and [`platform/sdl`](platform/sdl/pal_sdl.c) (interactive window, all SDL
+targets). Next: port the title-menu logic from `../src/seg000_main.c` on top.
+
 ## Roadmap
 
 1. **PAL contract** — [`pal.h`](pal.h). ✅ drafted; refine as the core lands.
-2. **SDL backend + framebuffer test** — open a window, present a 320×200 test
-   pattern with a palette, stream `PalEvent`s. Proves the surface end-to-end.
+2. **SDL backend + boot** — ✅ done. Headless + SDL backends; boots the title art.
 3. **Asset pipeline** — 🟡 in progress. Image art is decoding cleanly:
    - [`assets/pcx.py`](assets/pcx.py) decodes 8-bit ZSoft **PCX** (`.256`, `.pcc`);
    - [`assets/pcxlib.py`](assets/pcxlib.py) extracts the **Genus PCXLIB** archives
