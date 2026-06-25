@@ -8,9 +8,11 @@ see the README "Status" section.)
 ## Setup
 
 ```bash
-make unpack    # build/OREGON_unpacked.exe  (the analysable image)
-make map       # config/segments.json + docs/segment_map.md
+xmake decomp   # unpack -> build/OREGON_unpacked.exe, map, verify, refresh the dashboard
 ```
+
+This runs the tools in `tools/` in order; you can also invoke them directly
+(`python tools/unlzexe.py …`, `python tools/map_segments.py …`).
 
 Everything below works on `build/OREGON_unpacked.exe`. Its load image starts at
 file offset `e_cparhdr * 16` (currently `0x3410`) — segment `S`, offset `O` is at
@@ -54,8 +56,8 @@ read that base from the header; don't hard-code it.)
 6. **Regenerate + check.**
 
    ```bash
-   make svg       # refresh the progress dashboard from the symbol table
-   make verify    # must stay green — it guards the unpack everything rests on
+   xmake decomp   # refresh the progress dashboard from the symbol table
+   xmake verify   # must stay green — it guards the unpack everything rests on
    ```
 
 ## Conventions

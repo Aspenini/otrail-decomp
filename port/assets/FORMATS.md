@@ -1,7 +1,7 @@
 # Game asset formats
 
 What the original game's data files are and how the converters handle them.
-Run `make assets` to extract.
+Run `xmake assets` to extract.
 
 ## PCX images — `.256`, `.pcc`  ✅ done
 

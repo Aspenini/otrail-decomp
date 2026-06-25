@@ -10,7 +10,7 @@ hyper-portable re-implementation on top.
 
 ![Decompilation progress](progress.svg)
 
-_The dashboard is generated from the live symbol table on every `make svg`._
+_The dashboard is generated from the live symbol table on every `xmake decomp`._
 
 ## What's been done
 
@@ -48,5 +48,5 @@ pipeline (PCX / PCXLIB / fonts), and the boot-critical contracts.
 
 All code, tools, lifted C, and the symbol table live in the
 [repository](https://github.com/Aspenini/otrail-decomp). The decomp side is
-reproducible from the original binary via `make` (`unpack` → `map` → `verify`);
-the port builds with CMake or `make port`.
+reproducible from the original binary via `xmake decomp`; the port builds with
+`xmake` (SDL2 fetched automatically).

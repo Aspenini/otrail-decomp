@@ -61,13 +61,17 @@ Enter, Esc, arrows + fire) maps to buttons or an on-screen keyboard.
 ## Building & running
 
 ```bash
-# headless backend (no deps): builds, boots, and renders a PNG
-make port                 # from the repo root -> build/port_boot.png
+# from the repo root — xmake fetches SDL2 automatically
+xmake                     # build -> build/oregon_trail
+xmake run oregon_trail    # SDL window, or a screenshot tour if headless
 
-# or via CMake (auto-detects SDL2; falls back to the file backend)
-cmake -B build/port -S port && cmake --build build/port
-./build/port/oregon_trail            # SDL window, or a PNG if headless
+# headless backend (no deps): writes PNG frames instead of opening a window
+xmake f --sdl=n && xmake
 ```
+
+For cross-compiling to web/console targets, the port also keeps a `CMakeLists.txt`
+(`cmake -B build/port -S port`) so you can point it at an Emscripten / devkitPro /
+NDK toolchain file; the sources don't change.
 
 ## Status: interactive title menu ✅
 
@@ -103,7 +107,7 @@ Next: port Travel / Top Ten / Management on the same foundation.
      (`OTMCGA.PCL`/`OTCGA.PCL`) — 28 images each (FAMILY, SUPPLIES, TERRAIN,
      ANIMALS, HUNTER, TRAVELOX, SCENERY, P0–P17 landmarks, …), which share the
      global **`PAL.256`** palette.
-   - Run `make assets` to dump them to `build/`. The `BIT8X8.GFT` font's
+   - Run `xmake assets` to dump them to `build/`. The `BIT8X8.GFT` font's
      container is reversed but its glyph bit-packing needs the renderer traced;
      the `.REC` data files are still TODO. See [`assets/FORMATS.md`](assets/FORMATS.md).
 4. **Port the core, top-down** — bring up `main`/the title menu first (text +
