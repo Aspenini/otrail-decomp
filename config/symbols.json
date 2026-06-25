@@ -466,7 +466,8 @@
     "0032:2dbe": {
       "name": "trail_fork",
       "confidence": "high",
-      "note": "'The trail divides here. You may: 1. head for.. 2... 3. see the map'"
+      "file": "seg032_map.c",
+      "note": "'The trail divides here' fork choice; commits dest/miles from the location record"
     },
     "0032:0f05": {
       "name": "event_snakebite",
@@ -561,8 +562,9 @@
     },
     "0032:2ab6": {
       "name": "draw_map_marker",
-      "confidence": "low",
-      "note": "mark current position on the map"
+      "confidence": "med",
+      "file": "seg032_map.c",
+      "note": "plot travelled route on the trail map + interpolate the wagon's current dot"
     },
     "07ce:24bf": {
       "name": "change_pace",
@@ -703,13 +705,15 @@
     },
     "0032:0655": {
       "name": "arrive_landmark",
-      "confidence": "low",
-      "note": "landmark arrival handler (near)"
+      "confidence": "med",
+      "file": "seg032_arrival.c",
+      "note": "between-landmarks progress message 'now N miles past X; next is Y, M away'"
     },
     "0032:011d": {
       "name": "show_location",
       "confidence": "med",
-      "note": "draw the current location screen (used at arrival look-around and at the end)"
+      "file": "seg032_arrival.c",
+      "note": "draw arrival screen for current landmark + 'look around or continue?' prompt"
     },
     "1049:2589": {
       "name": "draw_landmark",
@@ -968,10 +972,10 @@
       "note": "final-score multiplier from (7 - profession)"
     },
     "15f8": {
-      "name": "g_15f8",
-      "confidence": "low",
-      "type": "u8[17]",
-      "note": "game-state array, zeroed at start"
+      "name": "g_route",
+      "confidence": "high",
+      "type": "u8[]",
+      "note": "ordered ids of locations plotted on the trail map"
     },
     "1570": {
       "name": "g_choice",
@@ -1068,6 +1072,36 @@
       "confidence": "high",
       "type": "char[5][11]",
       "note": "party member names; record 0 = wagon leader"
+    },
+    "0896": {
+      "name": "g_locations",
+      "confidence": "high",
+      "type": "struct location[18] (0x25 each)",
+      "note": "trail location table: name[0x1c] counted, +1c field, +1d dest1,+1e dest2,+1f miles1,+20 miles2,+21 map_x u16,+23 map_y u16"
+    },
+    "160d": {
+      "name": "g_miles_past",
+      "confidence": "med",
+      "type": "u16",
+      "note": "miles travelled past the last landmark"
+    },
+    "160f": {
+      "name": "g_miles_to",
+      "confidence": "med",
+      "type": "u16",
+      "note": "miles remaining to the next landmark"
+    },
+    "1789": {
+      "name": "g_look_answer",
+      "confidence": "low",
+      "type": "u8",
+      "note": "'look around?' reply length (0 = none yet)"
+    },
+    "160a": {
+      "name": "g_route_len",
+      "confidence": "high",
+      "type": "u8",
+      "note": "number of route markers drawn on the map"
     }
   }
 }

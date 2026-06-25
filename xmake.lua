@@ -24,13 +24,10 @@ local GAME     = "Oregon_The_1990/OREGON.EXE"
 local GAMEDIR  = "Oregon_The_1990"
 local UNPACKED = "build/OREGON_unpacked.exe"
 
--- locate a python interpreter (the decomp tools need it)
-function find_python()
-    import("lib.detect.find_tool")
-    local t = find_tool("python3") or find_tool("python")
-    assert(t, "Python 3 not found - the decompilation tools require it.")
-    return t.program
-end
+-- The decomp tasks need a Python 3 interpreter; the helper lives in
+-- tools/xmake/pyhelper.lua so it can be `import`ed inside each task sandbox
+-- (top-level functions aren't visible there).
+add_moduledirs("tools/xmake")
 
 -- ----------------------------------------------------------------- the port
 option("sdl")
@@ -52,7 +49,7 @@ target("oregon_trail")
     before_build(function (target)
         import("lib.detect.find_tool")
         local t = find_tool("python3") or find_tool("python")
-        if t then os.vrunv(t.program, {"port/assets/make_font.py"}) end
+        if t then os.execv(t.program, {"port/assets/make_font.py"}) end
     end)
 
     if has_config("sdl") then
@@ -78,12 +75,12 @@ target_end()
 -- ------------------------------------------------------------- decomp tasks
 task("decomp")
     on_run(function ()
-        local py = find_python()
+        local py = import("pyhelper")()
         os.mkdir("build")
-        os.vrunv(py, {"tools/unlzexe.py", GAME, UNPACKED})
-        os.vrunv(py, {"tools/map_segments.py", UNPACKED})
-        os.vrunv(py, {"tools/verify.py"})
-        os.vrunv(py, {"tools/render_progress_svg.py"})
+        os.execv(py, {"tools/unlzexe.py", GAME, UNPACKED})
+        os.execv(py, {"tools/map_segments.py", UNPACKED})
+        os.execv(py, {"tools/verify.py"})
+        os.execv(py, {"tools/render_progress_svg.py"})
         cprint("${color.success}decompiled -> %s", UNPACKED)
     end)
     set_menu {usage = "xmake decomp",
@@ -92,7 +89,7 @@ task_end()
 
 task("verify")
     on_run(function ()
-        os.vrunv(find_python(), {"tools/verify.py"})
+        os.execv(import("pyhelper")(), {"tools/verify.py"})
     end)
     set_menu {usage = "xmake verify", description = "Re-check the unpack (regression gate)"}
 task_end()
@@ -100,7 +97,7 @@ task_end()
 task("assets")
     on_run(function ()
         os.mkdir("build/assets")
-        os.vrunv(find_python(), {"port/assets/pcxlib.py", GAMEDIR .. "/OTMCGA.PCL", "build/assets"})
+        os.execv(import("pyhelper")(), {"port/assets/pcxlib.py", GAMEDIR .. "/OTMCGA.PCL", "build/assets"})
         cprint("${color.success}art extracted -> build/assets/")
     end)
     set_menu {usage = "xmake assets", description = "Extract the game art (images)"}
@@ -108,7 +105,7 @@ task_end()
 
 task("status")
     on_run(function ()
-        os.vrunv(find_python(), {"tools/status.py"})
+        os.execv(import("pyhelper")(), {"tools/status.py"})
     end)
     set_menu {usage = "xmake status", description = "Show how far along the project is"}
 task_end()

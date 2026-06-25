@@ -82,6 +82,25 @@ Names below are the inferred ones in `config/symbols.json`.
 Saved games are stored as a list of up to **40 records** (143 bytes each);
 `prompt_continue_saved_game` loads/selects/deletes slots.
 
+**Trail location table** — `g_locations` at `0x0896`: **18 records of `0x25` (37)
+bytes**, indexed by location id `0..0x11` (Independence … the Willamette Valley):
+
+| Offset    | Field       | Meaning                                              |
+|-----------|-------------|------------------------------------------------------|
+| `+0x00`   | `name[0x1c]`| landmark name, counted string (`dst[0]` = length)    |
+| `+0x1c`   | `field_1c`  | region marker (`0x14` for loc 0–4, `0x0c` for 5–17)  |
+| `+0x1d`   | `dest1`     | next location id for menu choice 1 (the main path)   |
+| `+0x1e`   | `dest2`     | next location id for choice 2 (`0` = no fork here)   |
+| `+0x1f`   | `miles1`    | miles to `dest1`                                     |
+| `+0x20`   | `miles2`    | miles to `dest2`                                     |
+| `+0x21`   | `map_x`     | marker X on the trail map (`u16`)                    |
+| `+0x23`   | `map_y`     | marker Y on the trail map (`u16`)                    |
+
+`dest`/`miles` are choice-indexed (`record[+0x1c + choice]` / `record[+0x1e +
+choice]`). The game's only two forks fall out of `dest2 != 0`: **South Pass** (7)
+→ Green River (9, 57 mi) or Fort Bridger (8, 125 mi), and **the Blue Mountains**
+(14) → Fort Walla Walla (15) or The Dalles (16). See `src/seg032_map.c`.
+
 **Run-time game state:**
 
 | Global             | Addr     | Meaning                                          |
