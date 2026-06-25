@@ -489,8 +489,9 @@
     },
     "0032:1b71": {
       "name": "event_broken_part",
-      "confidence": "med",
-      "note": "random event: '<x> has a broken <part>'"
+      "confidence": "high",
+      "file": "seg032_events.c",
+      "note": "random event: '<member> has a broken arm/leg'; sets ailment + 30-day recovery"
     },
     "0032:23fb": {
       "name": "event_thief",
@@ -932,16 +933,16 @@
       "note": "day counter within the travel period"
     },
     "15de": {
-      "name": "g_member_status",
+      "name": "g_member_ailment",
       "confidence": "high",
       "type": "u8[5]",
-      "note": "per-member condition/illness flag (leader + 4)"
+      "note": "per-member current ailment/injury code"
     },
     "15e3": {
-      "name": "g_member_health",
+      "name": "g_member_recovery",
       "confidence": "high",
       "type": "u8[5]",
-      "note": "per-member health value (leader + 4)"
+      "note": "per-member days remaining until recovered"
     },
     "1730": {
       "name": "g_illness",

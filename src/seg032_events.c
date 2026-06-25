@@ -171,3 +171,38 @@ void event_broken_wagon(void far *ctx)
     else
         press_any_key_1049_15a0();             /* 0x1A7B: wait, then the trade prompt */
 }
+
+/* ---------------------------------------------------------- 0x0032:0x1b71
+ * A party member breaks a limb: "<member> has a broken arm." / "...leg."
+ * Records the injury on that member and starts a 30-day recovery.
+ *
+ * Per-member health arrays (DGROUP, 5 members each, indexed by member 0..4):
+ *   g_member_ailment   0x15de  current ailment/injury code
+ *   g_member_recovery  0x15e3  days remaining until recovered
+ * Member names live at g_party_names (0x1589, 5 records x 11 bytes).
+ */
+extern char    g_party_names[5][0xb];   /* 0x1589 */
+extern uint8_t g_member_ailment[5];     /* 0x15de */
+extern uint8_t g_member_recovery[5];    /* 0x15e3 */
+
+void event_broken_part(void far *ctx)
+{
+    int part;       /* [bp-0x2] 0 = arm, 1 = leg */
+    int member;     /* [bp-0x3] chosen party member */
+
+    part   = rand_1049_008c(2);            /* 0x1B84 arm or leg */
+    member = pick_member_1049_39b9();      /* 0x1B91 */
+
+    g_member_ailment[member]  = (uint8_t)part;   /* 0x1BA0 */
+    g_member_recovery[member] = 0x1e;            /* 0x1BAB 30 days */
+
+    /* "<member> has a broken <arm/leg>." */
+    far_sprintf(/* buf, g_party_names[member] */);    /* 0x1BC8 */
+    far_print(S(0x1b58) /* " has a broken " */);      /* 0x1BD2 */
+    far_print(part == 0 ? S(0x1b67) /* "arm." */
+                        : S(0x1b6c) /* "leg." */);    /* 0x1C08 / 0x1C3A */
+
+    draw_msg_box_1049_3910(/* assembled msg */ 0);    /* 0x1C5D */
+    member_status_1049_36de();                        /* 0x1C62: apply the injury */
+    finalize_action_1049_1ee3();                      /* 0x1C67 */
+}
