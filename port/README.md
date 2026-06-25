@@ -80,10 +80,11 @@ portable C: text is rendered by [`core/screen.c`](core/screen.c) (a built-in
 8×8 font, since the original `BIT8X8.GFT` encoding is still TBD) into the
 framebuffer, and input comes through `pal_poll_event`.
 
-**Option 2, "Learn about the Trail"** ([`core/learn.c`](core/learn.c)), is fully
-ported — a six-page slideshow showing the real recovered game text (right down
-to the credits). It's the template for the remaining sub-screens: lift the
-content from `../src/`, render it via `screen`, drive it with `pal_poll_event`.
+Several screens are ported: **Learn about the Trail** ([`core/learn.c`](core/learn.c),
+a six-page slideshow of the real recovered text), **See the Oregon Top Ten**
+([`core/topten.c`](core/topten.c)), and a **travel status** taste
+([`core/travel.c`](core/travel.c)). They're the template for the rest: lift the
+content from `../src/`, render via `screen`, drive with `pal_poll_event`.
 
 Two backends: [`platform/file`](platform/file/pal_file.c) (headless → PNG,
 no deps, scriptable via `OTRAIL_KEYS` — used for the screenshots and CI) and

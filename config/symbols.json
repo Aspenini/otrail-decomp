@@ -1,199 +1,1073 @@
 {
   "_comment": "Living symbol table for build/OREGON_unpacked.exe. seg:off are relative segment values as stored in the relocated image. Confidence: high=verified by strings/use, med=strong inference, low=guess. Grows as decompilation proceeds.",
   "functions": {
-    "0000:010A": {"name": "main", "confidence": "high", "file": "src/seg000_main.c", "note": "program entry / title-screen menu loop"},
-    "20a4:0000": {"name": "cstartup", "confidence": "med", "note": "first C runtime init call from main"},
-    "20a4:00d8": {"name": "_exit", "confidence": "med", "note": "called with code in AX at program end"},
-    "20a4:0244": {"name": "__stkcheck", "confidence": "high", "note": "Borland stack-overflow check; called at every function prologue with frame size in AX"},
-    "20a4:0634": {"name": "far_sprintf", "confidence": "med", "note": "format into ss:buf from cs:fmt + args"},
-    "20a4:06c1": {"name": "far_print", "confidence": "med", "note": "print a far string"},
-    "20a4:064e": {"name": "strncpy_n", "confidence": "med", "note": "copy n bytes src->dst (dst=ds:0x1558)"},
-    "2042:0000": {"name": "init_input", "confidence": "high", "note": "boot: init the keyboard/input module (int 16h); segment 0x2042"},
-    "2042:0215": {"name": "show_input_prompt", "confidence": "med", "note": "show the input cursor/prompt before a read"},
-    "1ceb:1357": {"name": "init_graphics", "confidence": "med", "note": "boot: bring up graphics via BGI driver (VGA256.BGI/CGA.BGI), int 10h"},
-    "182e:0000": {"name": "init_graphics2", "confidence": "low", "note": "boot: secondary graphics-module init"},
-    "150c:0000": {"name": "init_text", "confidence": "med", "note": "boot: init text/font module (loads BIT8X8.GFT)"},
-    "1049:1855": {"name": "draw_text", "confidence": "high", "file": "src/seg1049_text.c", "note": "render '\\'-separated multi-line string at (x,y), 9px line spacing"},
-    "1049:0e60": {"name": "gotoxy", "confidence": "high", "file": "src/seg1049_text.c", "note": "set pixel text cursor g_text_x/g_text_y"},
-    "1049:0ebd": {"name": "print_string", "confidence": "high", "file": "src/seg1049_text.c", "note": "draw string at cursor, advance X by 8px/char"},
-    "1049:0057": {"name": "strlen", "confidence": "med", "note": "used by print_string to advance cursor"},
-    "1049:0e3e": {"name": "sub_1049_0e3e", "confidence": "low"},
-    "150c:301f": {"name": "draw_string", "confidence": "high", "file": "src/seg_150c_gfxtext.c", "note": "draw counted string with alignment; width calc + per-glyph loop; font from BIT8X8.GFT"},
-    "150c:164d": {"name": "draw_glyph", "confidence": "high", "file": "src/seg_150c_gfxtext.c", "note": "draw one char: width=font+0x44 tab, bitmap=font+0x4c+font+0x48 tab; blit via vtable jmp far [drv+0x24]"},
-    "150c:019d": {"name": "font_lookup", "confidence": "med", "note": "resolve a font id to its descriptor (far ptr in dx:bx)"},
-    "150c:09f7": {"name": "font_select", "confidence": "med", "note": "current font id"},
-    "150c:0ea4": {"name": "font_data_locate", "confidence": "low", "note": "locate glyph data for a font"},
-    "150c:010a": {"name": "blit_ctx", "confidence": "low", "note": "get the active blit driver (vtable)"},
-    "150c:191e": {"name": "blit_glyph_cga", "confidence": "med", "note": "CGA glyph blitter (B800, 0x2000/0xc050 interleave): row-major, height rows x ceil(w/8) bytes, bit->fg/bg via xlat"},
-    "150c:1cde": {"name": "blit_glyph_drv1", "confidence": "low", "note": "glyph blit driver (other video mode)"},
-    "150c:1f7c": {"name": "blit_glyph_mcga", "confidence": "low", "note": "likely MCGA 320x200 glyph blitter"},
-    "150c:09ab": {"name": "gfx_150c_09ab", "confidence": "low"},
-    "20a4:06ed": {"name": "str_count_fields", "confidence": "med", "note": "count delimiter-separated fields"},
-    "20a4:0680": {"name": "str_get_field", "confidence": "med", "note": "extract nth field"},
-    "20a4:07d0": {"name": "str_del_fields", "confidence": "med", "note": "delete fields from string"},
-    "1049:1521": {"name": "draw_menu_line", "confidence": "med"},
-    "1049:180b": {"name": "parse_choice", "confidence": "med", "note": "parse counted input string -> int"},
-    "1049:42fb": {"name": "cleanup", "confidence": "med", "note": "called once before exit"},
-    "d08:2217":  {"name": "travel_the_trail", "confidence": "high", "file": "src/seg_d08_game_start.c", "note": "menu option 1 - sets up flags + fresh game state"},
-    "d08:20ee":  {"name": "prompt_continue_saved_game", "confidence": "high", "file": "src/seg_d08_game_start.c", "note": "'Would you like to continue a saved game?' - load/select/delete save slot"},
-    "d08:1f7c":  {"name": "start_new_game", "confidence": "high", "file": "src/seg_d08_game_start.c", "note": "run 4 setup screens, then init game state"},
-    "d08:01f2":  {"name": "choose_profession", "confidence": "high", "file": "src/seg_d08_setup.c", "note": "1=banker 2=carpenter 3=farmer; 4=explain trade-off; loops until valid"},
-    "1049:1df2": {"name": "draw_panel", "confidence": "med", "note": "draw occupation/info panel at (x,y)"},
-    "1049:0d95": {"name": "read_field", "confidence": "high", "file": "src/seg1049_input.c", "note": "read text field (charset-filtered, counted-string result); Ctrl-S(0x13) toggles sound, Esc=quit"},
-    "1049:0c12": {"name": "read_input", "confidence": "med", "note": "core char-reader: echo + charset filter into counted string"},
-    "1049:0e17": {"name": "counted_str_width", "confidence": "med", "note": "pixel width of a counted string (len*8)"},
-    "20a4:104b": {"name": "atoi", "confidence": "med", "note": "string to int (Borland)"},
-    "d08:04d0":  {"name": "name_party", "confidence": "high", "file": "src/seg_d08_setup.c", "note": "leader (required) + 4 members; blanks get random default; 11-byte name records at 0x1589"},
-    "d08:032e":  {"name": "read_member_name", "confidence": "med", "note": "near; read one party member name into slot"},
-    "14c6:021a": {"name": "image_load", "confidence": "high", "note": "load/display a .pcc image (family.pcc, supplies.pcc)"},
-    "1049:008c": {"name": "rand", "confidence": "med", "note": "random 0..n-1"},
-    "d08:0a4f":  {"name": "choose_departure_month", "confidence": "high", "file": "src/seg_d08_setup.c", "note": "1-5=March..July (month=choice+2); 6=advice; then sets year=1848"},
-    "d08:1e78":  {"name": "buy_supplies", "confidence": "high", "file": "src/seg_d08_setup.c", "note": "Independence store: show supplies.pcc, run buy loop, confirm departure"},
-    "d08:0cff":  {"name": "store_intro", "confidence": "med", "note": "near; store entry / display"},
-    "d08:1938":  {"name": "store_buy_loop", "confidence": "high", "file": "src/seg_d08_setup.c", "note": "Matt's General Store: 5 categories (Oxen/Food/Clothing/Ammunition/Spare parts), total bill vs cash, buy/leave loop"},
-    "1049:2ccc": {"name": "format_money", "confidence": "high", "note": "format a long as currency string"},
-    "1049:2c1e": {"name": "format_str", "confidence": "low", "note": "string format helper"},
-    "1ceb:16e9": {"name": "gfx_hline", "confidence": "med", "note": "draw horizontal rule/line"},
-    "1ceb:0cda": {"name": "gfx_setmode", "confidence": "low", "note": "set display region/mode"},
-    "20a4:0aee": {"name": "ladd", "confidence": "med", "note": "Borland 32-bit long add"},
-    "20a4:0b10": {"name": "lcmp", "confidence": "med", "note": "Borland 32-bit long compare"},
-    "14c6:0321": {"name": "image_show", "confidence": "med", "note": "load+display a .pcc into a buffer"},
-    "14c6:043c": {"name": "image_free", "confidence": "med", "note": "free a loaded image"},
-    "20a4:0b00": {"name": "lmul", "confidence": "med", "note": "Borland 32-bit long multiply"},
-    "20a4:0b14": {"name": "ldiv", "confidence": "med", "note": "Borland 32-bit long divide"},
-    "1049:1f84": {"name": "load_save_list", "confidence": "high", "note": "fill 40x143-byte saved-game list buffer"},
-    "1049:202a": {"name": "save_list", "confidence": "high", "note": "persist saved-game list buffer"},
-    "1049:1bb3": {"name": "read_input_var", "confidence": "med", "note": "read keyboard into ds:0x141a"},
-    "1049:2110": {"name": "parse_num", "confidence": "med", "note": "parse number from string"},
-    "20a4:0724": {"name": "streq", "confidence": "med", "note": "string compare, returns ZF"},
-    "20a4:025d": {"name": "memcpy_n", "confidence": "high", "note": "copy n bytes (n in stack arg, here 143)"},
-    "20a4:0bc1": {"name": "sub_20a4_0bc1", "confidence": "low", "note": "called at travel-the-trail start"},
-    "c6b:051b":  {"name": "learn_about_trail", "confidence": "high", "file": "src/seg_c6b_learn.c", "note": "menu option 2 - 8-page info slideshow incl. credits"},
-    "c00:0433":  {"name": "see_top_ten", "confidence": "high", "file": "src/seg_c00_topten.c", "note": "menu 3: framed Top Ten screen, then offers scoring explanation"},
-    "f34:0fad":  {"name": "choose_management", "confidence": "high", "file": "src/seg_f34_management.c", "note": "menu 5: view/erase Top Ten, erase tombstones/saves, joystick on/off/calibrate"},
-    "f34:009b":  {"name": "erase_current_topten", "confidence": "med", "note": "mgmt 3"},
-    "f34:0264":  {"name": "erase_tombstones", "confidence": "med", "note": "mgmt 4"},
-    "f34:04b3":  {"name": "erase_saves", "confidence": "med", "note": "mgmt 5"},
-    "f34:0d54":  {"name": "toggle_joystick", "confidence": "med", "note": "mgmt 6"},
-    "f34:0980":  {"name": "calibrate_joystick", "confidence": "med", "note": "mgmt 7"},
-    "1049:2a47": {"name": "show_top_ten", "confidence": "high", "note": "render a Top Ten list table"},
-    "0032:3f93": {"name": "travel_loop", "confidence": "high", "file": "src/seg032_trail.c", "note": "MAIN TRAIL LOOP: iterate 17 locations; status/turn/landmark/death; seg 0x0032 = trail engine"},
-    "0032:3cb3": {"name": "travel_turn", "confidence": "high", "file": "src/seg032_trail.c", "note": "per-turn status panel + action menu dispatch (Continue/Check/Map/Pace/Rations/Rest/Trade/Hunt or Talk/Buy)"},
-    "0032:3b68": {"name": "must_trade_msg", "confidence": "high", "note": "blocked: 'You must trade for <item> to be able to continue.' (g_must_trade set)"},
-    "0032:361a": {"name": "continue_travel", "confidence": "high", "note": "advance to next location: fort check, river crossing, distance 'From X it is N miles to Y.'"},
-    "0442:18bb": {"name": "cross_river", "confidence": "high", "file": "src/seg_442_river.c", "note": "river crossing: show width/depth, offer ford/caulk/ferry/indian/wait/info, dispatch"},
-    "0442:02be": {"name": "ford_river", "confidence": "high", "file": "src/seg_442_river.c", "note": "ford: random outcome by depth - success/muddy/rough/tipped over/too deep (lose supplies/oxen/people)"},
-    "0442:0695": {"name": "caulk_and_float", "confidence": "med", "note": "crossing method: caulk wagon and float"},
-    "0442:09ef": {"name": "take_ferry", "confidence": "med", "note": "crossing method: take a ferry"},
-    "0442:0e2c": {"name": "hire_indian", "confidence": "med", "note": "crossing method: hire an Indian to help (1990 wording)"},
-    "0442:1090": {"name": "wait_conditions", "confidence": "med", "note": "wait to see if river conditions improve"},
-    "0442:126f": {"name": "get_more_info", "confidence": "med", "note": "get more information about the river"},
-    "0442:1321": {"name": "river_done", "confidence": "low", "note": "post-crossing cleanup"},
-    "0032:2dbe": {"name": "trail_fork", "confidence": "high", "note": "'The trail divides here. You may: 1. head for.. 2... 3. see the map'"},
-    "0032:0f05": {"name": "event_snakebite", "confidence": "high", "file": "src/seg032_events.c", "note": "random event: '<member> has a snakebite.'"},
-    "0032:11da": {"name": "event_fire", "confidence": "high", "file": "src/seg032_events.c", "note": "random event: 'A fire in the wagon results in the loss of:'"},
-    "0032:1711": {"name": "event_broken_wagon", "confidence": "med", "note": "random event: broken wagon (must repair/replace)"},
-    "0032:1b71": {"name": "event_broken_part", "confidence": "med", "note": "random event: '<x> has a broken <part>'"},
-    "0032:23fb": {"name": "event_thief", "confidence": "high", "file": "src/seg032_events.c", "note": "random event: 'A thief comes during the night and steals'"},
-    "1049:39b9": {"name": "pick_member", "confidence": "med", "note": "choose a party member for an event"},
-    "1049:3910": {"name": "draw_msg_box", "confidence": "high", "note": "draw a horizontally-centered message box (measures text width, centers at x=160)"},
-    "1049:36de": {"name": "apply_member_illness", "confidence": "med", "note": "apply an illness/injury to a party member"},
-    "1049:3be4": {"name": "daily_update", "confidence": "high", "file": "src/seg_health.c", "note": "per-day sim: advance calendar, roll member illness, recompute party health"},
-    "1049:2e57": {"name": "party_size", "confidence": "med", "note": "number of living party members"},
-    "1049:2e9c": {"name": "health_roll", "confidence": "low", "note": "daily health/condition roll"},
-    "1049:2ed5": {"name": "illness_pick", "confidence": "low", "note": "choose an illness type"},
-    "0032:2ff5": {"name": "loc10_handler", "confidence": "low", "note": "special handling at location 0x10"},
-    "0032:3a82": {"name": "check_supplies", "confidence": "high", "file": "src/seg032_screens.c", "note": "menu 2: supplies.pcc + 5 icons + live quantities (read-only)"},
-    "0032:2d16": {"name": "look_at_map", "confidence": "high", "file": "src/seg032_screens.c", "note": "menu 3: show MAP.PCX trail map with current position marked"},
-    "182e:1e2d": {"name": "load_show_pcx", "confidence": "med", "note": "load and display a standalone .PCX (graphics module)"},
-    "0032:2ca2": {"name": "save_restore_screen", "confidence": "med", "note": "save/restore the screen behind a temporary display"},
-    "0032:2ab6": {"name": "draw_map_marker", "confidence": "low", "note": "mark current position on the map"},
-    "07ce:24bf": {"name": "change_pace", "confidence": "high", "file": "src/seg_7ce_actions.c", "note": "menu 4: pace steady/strenuous/grueling (g_pace), opt 4 explains"},
-    "07ce:27cf": {"name": "change_rations", "confidence": "high", "file": "src/seg_7ce_actions.c", "note": "menu 5: rations filling/meager/bare bones (g_rations)"},
-    "07ce:2950": {"name": "stop_to_rest", "confidence": "high", "file": "src/seg_7ce_actions.c", "note": "menu 6: rest N days (0-9), advancing the calendar each day until done or death"},
-    "2042:029e": {"name": "advance_day", "confidence": "med", "note": "advance the calendar one day (segment 0x2042 = date/time)"},
-    "07ce:11c3": {"name": "attempt_trade", "confidence": "high", "file": "src/seg_7ce_actions.c", "note": "menu 7: random emigrant trade offer ('No one wants to trade...' / 'You meet another emigrant...'); can resolve must-trade; costs a day"},
-    "1049:30c8": {"name": "trade_setup", "confidence": "low", "note": "trade screen setup"},
-    "1049:37d5": {"name": "redraw_supplies", "confidence": "med", "note": "redraw the supplies display"},
-    "1049:1e64": {"name": "clear_panel", "confidence": "low", "note": "clear a panel region"},
-    "1049:1ee3": {"name": "finalize_action", "confidence": "low", "note": "restore screen after an action"},
-    "07ce:17eb": {"name": "talk_to_people", "confidence": "high", "file": "src/seg_7ce_actions.c", "note": "menu 8 at forts: read random DIALOGS.REC record, show '<name> tells you: \"...\"'"},
-    "20a4:15ba": {"name": "fopen", "confidence": "med", "note": "Borland C stdio: open a .REC data file"},
-    "20a4:173b": {"name": "fread_rec", "confidence": "low", "note": "read a record from an open file"},
-    "0606:1968": {"name": "hunt", "confidence": "high", "file": "src/seg_606_hunt.c", "note": "hunting minigame: terrain/animals.pcc, shoot, meat capped at 100 carry / 2000 wagon"},
-    "0606:03bf": {"name": "hunt_setup_terrain", "confidence": "med", "note": "near; set up terrain.pcc scene"},
-    "0606:05ae": {"name": "hunt_init_animals", "confidence": "low", "note": "near; place/init animals"},
-    "0606:1480": {"name": "hunt_shoot", "confidence": "med", "note": "near; real-time aim/shoot action, returns animals shot"},
-    "1ce1:0018": {"name": "gfx_sync", "confidence": "low", "note": "graphics sync/vsync helper"},
-    "14c6:03ea": {"name": "image_blit", "confidence": "low", "note": "blit a loaded image at x"},
-    "07ce:1d3c": {"name": "buy_at_fort", "confidence": "high", "file": "src/seg_7ce_actions.c", "note": "menu 9 at forts: store with fort pricing, big per-item switch"},
-    "1049:2d8b": {"name": "fmt_weather", "confidence": "high", "file": "src/seg1049_status.c", "note": "name of g_weather (cold/cool/warm + rainy/snowy)"},
-    "1049:2db7": {"name": "fmt_health", "confidence": "high", "file": "src/seg1049_status.c", "note": "health long /0xc00 -> good/fair/poor/very poor (thresholds 500/400/300/200)"},
-    "1049:2dfd": {"name": "fmt_pace", "confidence": "high", "file": "src/seg1049_status.c", "note": "name of g_pace: steady/strenuous/grueling"},
-    "1049:2e2a": {"name": "fmt_rations", "confidence": "high", "file": "src/seg1049_status.c", "note": "name of g_rations: filling/meager/bare bones"},
-    "0032:04d4": {"name": "trail_phase_setup", "confidence": "low", "note": "per-turn setup (near)"},
-    "0032:03a6": {"name": "look_around_prompt", "confidence": "high", "file": "src/seg032_trail.c", "note": "arrival: 'You are now at <X>. Would you like to look around?'"},
-    "0032:0655": {"name": "arrive_landmark", "confidence": "low", "note": "landmark arrival handler (near)"},
-    "0032:011d": {"name": "show_location", "confidence": "med", "note": "draw the current location screen (used at arrival look-around and at the end)"},
-    "1049:2589": {"name": "draw_landmark", "confidence": "low", "note": "draw current location graphic"},
-    "07ce:0f37": {"name": "death_sequence", "confidence": "high", "file": "src/seg_7ce_death.c", "note": "tombstone + epitaph (TOMB.REC); 'All of the people in your party have died.'"},
-    "07ce:0db9": {"name": "show_death_msg", "confidence": "med", "note": "near; draw the cause-of-death message with screen save/restore"},
-    "1049:274e": {"name": "draw_tombstone", "confidence": "high", "note": "draw the tombstone graphic"},
-    "07ce:039a": {"name": "show_ending", "confidence": "high", "file": "src/seg_7ce_ending.c", "note": "endgame: 'made it to Oregon!', tally score (members/supplies/cash x occupation factor), Oregon Top Ten or 'not enough to qualify'"},
-    "1049:15a0": {"name": "press_any_key", "confidence": "high", "note": "show prompt at bottom, save/restore screen, wait for key"},
-    "1049:1e43": {"name": "clear_text_area", "confidence": "high", "note": "fill text region (x 0..319) - MCGA 320px mode"},
-    "1049:155e": {"name": "fill_rect", "confidence": "med", "note": "fill rectangle x1,y1,x2,y2"},
-    "1049:1b3c": {"name": "draw_text_line", "confidence": "high", "note": "draw single text line at position"},
-    "1ceb:eb8":  {"name": "save_screen_rect", "confidence": "med", "note": "save screen region, returns buffer"},
-    "1ceb:16a1": {"name": "gfx_rect", "confidence": "med", "note": "draw/fill rectangle x1,y1,x2,y2; graphics module"}
+    "0000:010A": {
+      "name": "main",
+      "confidence": "high",
+      "file": "src/seg000_main.c",
+      "note": "program entry / title-screen menu loop"
+    },
+    "20a4:0000": {
+      "name": "cstartup",
+      "confidence": "med",
+      "note": "first C runtime init call from main"
+    },
+    "20a4:00d8": {
+      "name": "_exit",
+      "confidence": "med",
+      "note": "called with code in AX at program end"
+    },
+    "20a4:0244": {
+      "name": "__stkcheck",
+      "confidence": "high",
+      "note": "Borland stack-overflow check; called at every function prologue with frame size in AX"
+    },
+    "20a4:0634": {
+      "name": "far_sprintf",
+      "confidence": "med",
+      "note": "format into ss:buf from cs:fmt + args"
+    },
+    "20a4:06c1": {
+      "name": "far_print",
+      "confidence": "med",
+      "note": "print a far string"
+    },
+    "20a4:064e": {
+      "name": "strncpy_n",
+      "confidence": "med",
+      "note": "copy n bytes src->dst (dst=ds:0x1558)"
+    },
+    "2042:0000": {
+      "name": "init_input",
+      "confidence": "high",
+      "note": "boot: init the keyboard/input module (int 16h); segment 0x2042"
+    },
+    "2042:0215": {
+      "name": "show_input_prompt",
+      "confidence": "med",
+      "note": "show the input cursor/prompt before a read"
+    },
+    "1ceb:1357": {
+      "name": "init_graphics",
+      "confidence": "med",
+      "note": "boot: bring up graphics via BGI driver (VGA256.BGI/CGA.BGI), int 10h"
+    },
+    "182e:0000": {
+      "name": "init_graphics2",
+      "confidence": "low",
+      "note": "boot: secondary graphics-module init"
+    },
+    "150c:0000": {
+      "name": "init_text",
+      "confidence": "med",
+      "note": "boot: init text/font module (loads BIT8X8.GFT)"
+    },
+    "1049:1855": {
+      "name": "draw_text",
+      "confidence": "high",
+      "file": "src/seg1049_text.c",
+      "note": "render '\\'-separated multi-line string at (x,y), 9px line spacing"
+    },
+    "1049:0e60": {
+      "name": "gotoxy",
+      "confidence": "high",
+      "file": "src/seg1049_text.c",
+      "note": "set pixel text cursor g_text_x/g_text_y"
+    },
+    "1049:0ebd": {
+      "name": "print_string",
+      "confidence": "high",
+      "file": "src/seg1049_text.c",
+      "note": "draw string at cursor, advance X by 8px/char"
+    },
+    "1049:0057": {
+      "name": "strlen",
+      "confidence": "med",
+      "note": "used by print_string to advance cursor"
+    },
+    "1049:0e3e": {
+      "name": "sub_1049_0e3e",
+      "confidence": "low"
+    },
+    "150c:301f": {
+      "name": "draw_string",
+      "confidence": "high",
+      "file": "src/seg_150c_gfxtext.c",
+      "note": "draw counted string with alignment; width calc + per-glyph loop; font from BIT8X8.GFT"
+    },
+    "150c:164d": {
+      "name": "draw_glyph",
+      "confidence": "high",
+      "file": "src/seg_150c_gfxtext.c",
+      "note": "draw one char: width=font+0x44 tab, bitmap=font+0x4c+font+0x48 tab; blit via vtable jmp far [drv+0x24]"
+    },
+    "150c:019d": {
+      "name": "font_lookup",
+      "confidence": "med",
+      "note": "resolve a font id to its descriptor (far ptr in dx:bx)"
+    },
+    "150c:09f7": {
+      "name": "font_select",
+      "confidence": "med",
+      "note": "current font id"
+    },
+    "150c:0ea4": {
+      "name": "font_data_locate",
+      "confidence": "low",
+      "note": "locate glyph data for a font"
+    },
+    "150c:010a": {
+      "name": "blit_ctx",
+      "confidence": "low",
+      "note": "get the active blit driver (vtable)"
+    },
+    "150c:191e": {
+      "name": "blit_glyph_cga",
+      "confidence": "med",
+      "note": "CGA glyph blitter (B800, 0x2000/0xc050 interleave): row-major, height rows x ceil(w/8) bytes, bit->fg/bg via xlat"
+    },
+    "150c:1cde": {
+      "name": "blit_glyph_drv1",
+      "confidence": "low",
+      "note": "glyph blit driver (other video mode)"
+    },
+    "150c:1f7c": {
+      "name": "blit_glyph_mcga",
+      "confidence": "low",
+      "note": "likely MCGA 320x200 glyph blitter"
+    },
+    "150c:09ab": {
+      "name": "gfx_150c_09ab",
+      "confidence": "low"
+    },
+    "20a4:06ed": {
+      "name": "str_count_fields",
+      "confidence": "med",
+      "note": "count delimiter-separated fields"
+    },
+    "20a4:0680": {
+      "name": "str_get_field",
+      "confidence": "med",
+      "note": "extract nth field"
+    },
+    "20a4:07d0": {
+      "name": "str_del_fields",
+      "confidence": "med",
+      "note": "delete fields from string"
+    },
+    "1049:1521": {
+      "name": "draw_menu_line",
+      "confidence": "med"
+    },
+    "1049:180b": {
+      "name": "parse_choice",
+      "confidence": "med",
+      "note": "parse counted input string -> int"
+    },
+    "1049:42fb": {
+      "name": "cleanup",
+      "confidence": "med",
+      "note": "called once before exit"
+    },
+    "d08:2217": {
+      "name": "travel_the_trail",
+      "confidence": "high",
+      "file": "src/seg_d08_game_start.c",
+      "note": "menu option 1 - sets up flags + fresh game state"
+    },
+    "d08:20ee": {
+      "name": "prompt_continue_saved_game",
+      "confidence": "high",
+      "file": "src/seg_d08_game_start.c",
+      "note": "'Would you like to continue a saved game?' - load/select/delete save slot"
+    },
+    "d08:1f7c": {
+      "name": "start_new_game",
+      "confidence": "high",
+      "file": "src/seg_d08_game_start.c",
+      "note": "run 4 setup screens, then init game state"
+    },
+    "d08:01f2": {
+      "name": "choose_profession",
+      "confidence": "high",
+      "file": "src/seg_d08_setup.c",
+      "note": "1=banker 2=carpenter 3=farmer; 4=explain trade-off; loops until valid"
+    },
+    "1049:1df2": {
+      "name": "draw_panel",
+      "confidence": "med",
+      "note": "draw occupation/info panel at (x,y)"
+    },
+    "1049:0d95": {
+      "name": "read_field",
+      "confidence": "high",
+      "file": "src/seg1049_input.c",
+      "note": "read text field (charset-filtered, counted-string result); Ctrl-S(0x13) toggles sound, Esc=quit"
+    },
+    "1049:0c12": {
+      "name": "read_input",
+      "confidence": "med",
+      "note": "core char-reader: echo + charset filter into counted string"
+    },
+    "1049:0e17": {
+      "name": "counted_str_width",
+      "confidence": "med",
+      "note": "pixel width of a counted string (len*8)"
+    },
+    "20a4:104b": {
+      "name": "atoi",
+      "confidence": "med",
+      "note": "string to int (Borland)"
+    },
+    "d08:04d0": {
+      "name": "name_party",
+      "confidence": "high",
+      "file": "src/seg_d08_setup.c",
+      "note": "leader (required) + 4 members; blanks get random default; 11-byte name records at 0x1589"
+    },
+    "d08:032e": {
+      "name": "read_member_name",
+      "confidence": "med",
+      "note": "near; read one party member name into slot"
+    },
+    "14c6:021a": {
+      "name": "image_load",
+      "confidence": "high",
+      "note": "load/display a .pcc image (family.pcc, supplies.pcc)"
+    },
+    "1049:008c": {
+      "name": "rand",
+      "confidence": "med",
+      "note": "random 0..n-1"
+    },
+    "d08:0a4f": {
+      "name": "choose_departure_month",
+      "confidence": "high",
+      "file": "src/seg_d08_setup.c",
+      "note": "1-5=March..July (month=choice+2); 6=advice; then sets year=1848"
+    },
+    "d08:1e78": {
+      "name": "buy_supplies",
+      "confidence": "high",
+      "file": "src/seg_d08_setup.c",
+      "note": "Independence store: show supplies.pcc, run buy loop, confirm departure"
+    },
+    "d08:0cff": {
+      "name": "store_intro",
+      "confidence": "med",
+      "note": "near; store entry / display"
+    },
+    "d08:1938": {
+      "name": "store_buy_loop",
+      "confidence": "high",
+      "file": "src/seg_d08_setup.c",
+      "note": "Matt's General Store: 5 categories (Oxen/Food/Clothing/Ammunition/Spare parts), total bill vs cash, buy/leave loop"
+    },
+    "1049:2ccc": {
+      "name": "format_money",
+      "confidence": "high",
+      "note": "format a long as currency string"
+    },
+    "1049:2c1e": {
+      "name": "format_str",
+      "confidence": "low",
+      "note": "string format helper"
+    },
+    "1ceb:16e9": {
+      "name": "gfx_hline",
+      "confidence": "med",
+      "note": "draw horizontal rule/line"
+    },
+    "1ceb:0cda": {
+      "name": "gfx_setmode",
+      "confidence": "low",
+      "note": "set display region/mode"
+    },
+    "20a4:0aee": {
+      "name": "ladd",
+      "confidence": "med",
+      "note": "Borland 32-bit long add"
+    },
+    "20a4:0b10": {
+      "name": "lcmp",
+      "confidence": "med",
+      "note": "Borland 32-bit long compare"
+    },
+    "14c6:0321": {
+      "name": "image_show",
+      "confidence": "med",
+      "note": "load+display a .pcc into a buffer"
+    },
+    "14c6:043c": {
+      "name": "image_free",
+      "confidence": "med",
+      "note": "free a loaded image"
+    },
+    "20a4:0b00": {
+      "name": "lmul",
+      "confidence": "med",
+      "note": "Borland 32-bit long multiply"
+    },
+    "20a4:0b14": {
+      "name": "ldiv",
+      "confidence": "med",
+      "note": "Borland 32-bit long divide"
+    },
+    "1049:1f84": {
+      "name": "load_save_list",
+      "confidence": "high",
+      "note": "fill 40x143-byte saved-game list buffer"
+    },
+    "1049:202a": {
+      "name": "save_list",
+      "confidence": "high",
+      "note": "persist saved-game list buffer"
+    },
+    "1049:1bb3": {
+      "name": "read_input_var",
+      "confidence": "med",
+      "note": "read keyboard into ds:0x141a"
+    },
+    "1049:2110": {
+      "name": "parse_num",
+      "confidence": "med",
+      "note": "parse number from string"
+    },
+    "20a4:0724": {
+      "name": "streq",
+      "confidence": "med",
+      "note": "string compare, returns ZF"
+    },
+    "20a4:025d": {
+      "name": "memcpy_n",
+      "confidence": "high",
+      "note": "copy n bytes (n in stack arg, here 143)"
+    },
+    "20a4:0bc1": {
+      "name": "sub_20a4_0bc1",
+      "confidence": "low",
+      "note": "called at travel-the-trail start"
+    },
+    "c6b:051b": {
+      "name": "learn_about_trail",
+      "confidence": "high",
+      "file": "src/seg_c6b_learn.c",
+      "note": "menu option 2 - 8-page info slideshow incl. credits"
+    },
+    "c00:0433": {
+      "name": "see_top_ten",
+      "confidence": "high",
+      "file": "src/seg_c00_topten.c",
+      "note": "menu 3: framed Top Ten screen, then offers scoring explanation"
+    },
+    "f34:0fad": {
+      "name": "choose_management",
+      "confidence": "high",
+      "file": "src/seg_f34_management.c",
+      "note": "menu 5: view/erase Top Ten, erase tombstones/saves, joystick on/off/calibrate"
+    },
+    "f34:009b": {
+      "name": "erase_current_topten",
+      "confidence": "med",
+      "note": "mgmt 3"
+    },
+    "f34:0264": {
+      "name": "erase_tombstones",
+      "confidence": "med",
+      "note": "mgmt 4"
+    },
+    "f34:04b3": {
+      "name": "erase_saves",
+      "confidence": "med",
+      "note": "mgmt 5"
+    },
+    "f34:0d54": {
+      "name": "toggle_joystick",
+      "confidence": "med",
+      "note": "mgmt 6"
+    },
+    "f34:0980": {
+      "name": "calibrate_joystick",
+      "confidence": "med",
+      "note": "mgmt 7"
+    },
+    "1049:2a47": {
+      "name": "show_top_ten",
+      "confidence": "high",
+      "note": "render a Top Ten list table"
+    },
+    "0032:3f93": {
+      "name": "travel_loop",
+      "confidence": "high",
+      "file": "src/seg032_trail.c",
+      "note": "MAIN TRAIL LOOP: iterate 17 locations; status/turn/landmark/death; seg 0x0032 = trail engine"
+    },
+    "0032:3cb3": {
+      "name": "travel_turn",
+      "confidence": "high",
+      "file": "src/seg032_trail.c",
+      "note": "per-turn status panel + action menu dispatch (Continue/Check/Map/Pace/Rations/Rest/Trade/Hunt or Talk/Buy)"
+    },
+    "0032:3b68": {
+      "name": "must_trade_msg",
+      "confidence": "high",
+      "note": "blocked: 'You must trade for <item> to be able to continue.' (g_must_trade set)"
+    },
+    "0032:361a": {
+      "name": "continue_travel",
+      "confidence": "high",
+      "file": "src/seg032_movement.c",
+      "note": "menu 1 dispatcher: at landmark -> fork/river/Dalles/arrival + \"From X it is N miles to Y\"; else draw travel view"
+    },
+    "0442:18bb": {
+      "name": "cross_river",
+      "confidence": "high",
+      "file": "src/seg_442_river.c",
+      "note": "river crossing: show width/depth, offer ford/caulk/ferry/indian/wait/info, dispatch"
+    },
+    "0442:02be": {
+      "name": "ford_river",
+      "confidence": "high",
+      "file": "src/seg_442_river.c",
+      "note": "ford: random outcome by depth - success/muddy/rough/tipped over/too deep (lose supplies/oxen/people)"
+    },
+    "0442:0695": {
+      "name": "caulk_and_float",
+      "confidence": "high",
+      "file": "src/seg_442_river.c",
+      "note": "float method: too-shallow check, then float (tip-over risk); costs a day"
+    },
+    "0442:09ef": {
+      "name": "take_ferry",
+      "confidence": "high",
+      "file": "src/seg_442_river.c",
+      "note": "$5.00 + N-day wait; safe or \"ferry broke loose from moorings\""
+    },
+    "0442:0e2c": {
+      "name": "hire_indian",
+      "confidence": "med",
+      "note": "Shoshoni guide takes wagon across in exchange for N sets of clothing"
+    },
+    "0442:1090": {
+      "name": "wait_conditions",
+      "confidence": "med",
+      "note": "wait to see if river conditions improve"
+    },
+    "0442:126f": {
+      "name": "get_more_info",
+      "confidence": "med",
+      "note": "get more information about the river"
+    },
+    "0442:1321": {
+      "name": "river_done",
+      "confidence": "low",
+      "note": "post-crossing cleanup"
+    },
+    "0032:2dbe": {
+      "name": "trail_fork",
+      "confidence": "high",
+      "note": "'The trail divides here. You may: 1. head for.. 2... 3. see the map'"
+    },
+    "0032:0f05": {
+      "name": "event_snakebite",
+      "confidence": "high",
+      "file": "src/seg032_events.c",
+      "note": "random event: '<member> has a snakebite.'"
+    },
+    "0032:11da": {
+      "name": "event_fire",
+      "confidence": "high",
+      "file": "src/seg032_events.c",
+      "note": "random event: 'A fire in the wagon results in the loss of:'"
+    },
+    "0032:1711": {
+      "name": "event_broken_wagon",
+      "confidence": "med",
+      "note": "random event: broken wagon (must repair/replace)"
+    },
+    "0032:1b71": {
+      "name": "event_broken_part",
+      "confidence": "med",
+      "note": "random event: '<x> has a broken <part>'"
+    },
+    "0032:23fb": {
+      "name": "event_thief",
+      "confidence": "high",
+      "file": "src/seg032_events.c",
+      "note": "random event: 'A thief comes during the night and steals'"
+    },
+    "1049:39b9": {
+      "name": "pick_member",
+      "confidence": "med",
+      "note": "choose a party member for an event"
+    },
+    "1049:3910": {
+      "name": "draw_msg_box",
+      "confidence": "high",
+      "note": "draw a horizontally-centered message box (measures text width, centers at x=160)"
+    },
+    "1049:36de": {
+      "name": "apply_member_illness",
+      "confidence": "med",
+      "note": "apply an illness/injury to a party member"
+    },
+    "1049:3be4": {
+      "name": "daily_update",
+      "confidence": "high",
+      "file": "src/seg_health.c",
+      "note": "per-day sim: advance calendar, roll member illness, recompute party health"
+    },
+    "1049:2e57": {
+      "name": "party_size",
+      "confidence": "med",
+      "note": "number of living party members"
+    },
+    "1049:2e9c": {
+      "name": "health_roll",
+      "confidence": "low",
+      "note": "daily health/condition roll"
+    },
+    "1049:2ed5": {
+      "name": "illness_pick",
+      "confidence": "low",
+      "note": "choose an illness type"
+    },
+    "0032:2ff5": {
+      "name": "columbia_dalles",
+      "confidence": "med",
+      "note": "location 0x10 special: Columbia River vs Barlow Road"
+    },
+    "0032:3a82": {
+      "name": "check_supplies",
+      "confidence": "high",
+      "file": "src/seg032_screens.c",
+      "note": "menu 2: supplies.pcc + 5 icons + live quantities (read-only)"
+    },
+    "0032:2d16": {
+      "name": "look_at_map",
+      "confidence": "high",
+      "file": "src/seg032_screens.c",
+      "note": "menu 3: show MAP.PCX trail map with current position marked"
+    },
+    "182e:1e2d": {
+      "name": "load_show_pcx",
+      "confidence": "med",
+      "note": "load and display a standalone .PCX (graphics module)"
+    },
+    "0032:2ca2": {
+      "name": "save_restore_screen",
+      "confidence": "med",
+      "note": "save/restore the screen behind a temporary display"
+    },
+    "0032:2ab6": {
+      "name": "draw_map_marker",
+      "confidence": "low",
+      "note": "mark current position on the map"
+    },
+    "07ce:24bf": {
+      "name": "change_pace",
+      "confidence": "high",
+      "file": "src/seg_7ce_actions.c",
+      "note": "menu 4: pace steady/strenuous/grueling (g_pace), opt 4 explains"
+    },
+    "07ce:27cf": {
+      "name": "change_rations",
+      "confidence": "high",
+      "file": "src/seg_7ce_actions.c",
+      "note": "menu 5: rations filling/meager/bare bones (g_rations)"
+    },
+    "07ce:2950": {
+      "name": "stop_to_rest",
+      "confidence": "high",
+      "file": "src/seg_7ce_actions.c",
+      "note": "menu 6: rest N days (0-9), advancing the calendar each day until done or death"
+    },
+    "2042:029e": {
+      "name": "advance_day",
+      "confidence": "med",
+      "note": "advance the calendar one day (segment 0x2042 = date/time)"
+    },
+    "07ce:11c3": {
+      "name": "attempt_trade",
+      "confidence": "high",
+      "file": "src/seg_7ce_actions.c",
+      "note": "menu 7: random emigrant trade offer ('No one wants to trade...' / 'You meet another emigrant...'); can resolve must-trade; costs a day"
+    },
+    "1049:30c8": {
+      "name": "trade_setup",
+      "confidence": "low",
+      "note": "trade screen setup"
+    },
+    "1049:37d5": {
+      "name": "redraw_supplies",
+      "confidence": "med",
+      "note": "redraw the supplies display"
+    },
+    "1049:1e64": {
+      "name": "clear_panel",
+      "confidence": "low",
+      "note": "clear a panel region"
+    },
+    "1049:1ee3": {
+      "name": "finalize_action",
+      "confidence": "low",
+      "note": "restore screen after an action"
+    },
+    "07ce:17eb": {
+      "name": "talk_to_people",
+      "confidence": "high",
+      "file": "src/seg_7ce_actions.c",
+      "note": "menu 8 at forts: read random DIALOGS.REC record, show '<name> tells you: \"...\"'"
+    },
+    "20a4:15ba": {
+      "name": "fopen",
+      "confidence": "med",
+      "note": "Borland C stdio: open a .REC data file"
+    },
+    "20a4:173b": {
+      "name": "fread_rec",
+      "confidence": "low",
+      "note": "read a record from an open file"
+    },
+    "0606:1968": {
+      "name": "hunt",
+      "confidence": "high",
+      "file": "src/seg_606_hunt.c",
+      "note": "hunting minigame: terrain/animals.pcc, shoot, meat capped at 100 carry / 2000 wagon"
+    },
+    "0606:03bf": {
+      "name": "hunt_setup_terrain",
+      "confidence": "med",
+      "note": "near; set up terrain.pcc scene"
+    },
+    "0606:05ae": {
+      "name": "hunt_init_animals",
+      "confidence": "low",
+      "note": "near; place/init animals"
+    },
+    "0606:1480": {
+      "name": "hunt_shoot",
+      "confidence": "med",
+      "note": "near; real-time aim/shoot action, returns animals shot"
+    },
+    "1ce1:0018": {
+      "name": "gfx_sync",
+      "confidence": "low",
+      "note": "graphics sync/vsync helper"
+    },
+    "14c6:03ea": {
+      "name": "image_blit",
+      "confidence": "low",
+      "note": "blit a loaded image at x"
+    },
+    "07ce:1d3c": {
+      "name": "buy_at_fort",
+      "confidence": "high",
+      "file": "src/seg_7ce_actions.c",
+      "note": "menu 9 at forts: store with fort pricing, big per-item switch"
+    },
+    "1049:2d8b": {
+      "name": "fmt_weather",
+      "confidence": "high",
+      "file": "src/seg1049_status.c",
+      "note": "name of g_weather (cold/cool/warm + rainy/snowy)"
+    },
+    "1049:2db7": {
+      "name": "fmt_health",
+      "confidence": "high",
+      "file": "src/seg1049_status.c",
+      "note": "health long /0xc00 -> good/fair/poor/very poor (thresholds 500/400/300/200)"
+    },
+    "1049:2dfd": {
+      "name": "fmt_pace",
+      "confidence": "high",
+      "file": "src/seg1049_status.c",
+      "note": "name of g_pace: steady/strenuous/grueling"
+    },
+    "1049:2e2a": {
+      "name": "fmt_rations",
+      "confidence": "high",
+      "file": "src/seg1049_status.c",
+      "note": "name of g_rations: filling/meager/bare bones"
+    },
+    "0032:04d4": {
+      "name": "trail_phase_setup",
+      "confidence": "low",
+      "note": "per-turn setup (near)"
+    },
+    "0032:03a6": {
+      "name": "look_around_prompt",
+      "confidence": "high",
+      "file": "src/seg032_trail.c",
+      "note": "arrival: 'You are now at <X>. Would you like to look around?'"
+    },
+    "0032:0655": {
+      "name": "arrive_landmark",
+      "confidence": "low",
+      "note": "landmark arrival handler (near)"
+    },
+    "0032:011d": {
+      "name": "show_location",
+      "confidence": "med",
+      "note": "draw the current location screen (used at arrival look-around and at the end)"
+    },
+    "1049:2589": {
+      "name": "draw_landmark",
+      "confidence": "low",
+      "note": "draw current location graphic"
+    },
+    "07ce:0f37": {
+      "name": "death_sequence",
+      "confidence": "high",
+      "file": "src/seg_7ce_death.c",
+      "note": "tombstone + epitaph (TOMB.REC); 'All of the people in your party have died.'"
+    },
+    "07ce:0db9": {
+      "name": "show_death_msg",
+      "confidence": "med",
+      "note": "near; draw the cause-of-death message with screen save/restore"
+    },
+    "1049:274e": {
+      "name": "draw_tombstone",
+      "confidence": "high",
+      "note": "draw the tombstone graphic"
+    },
+    "07ce:039a": {
+      "name": "show_ending",
+      "confidence": "high",
+      "file": "src/seg_7ce_ending.c",
+      "note": "endgame: 'made it to Oregon!', tally score (members/supplies/cash x occupation factor), Oregon Top Ten or 'not enough to qualify'"
+    },
+    "1049:15a0": {
+      "name": "press_any_key",
+      "confidence": "high",
+      "note": "show prompt at bottom, save/restore screen, wait for key"
+    },
+    "1049:1e43": {
+      "name": "clear_text_area",
+      "confidence": "high",
+      "note": "fill text region (x 0..319) - MCGA 320px mode"
+    },
+    "1049:155e": {
+      "name": "fill_rect",
+      "confidence": "med",
+      "note": "fill rectangle x1,y1,x2,y2"
+    },
+    "1049:1b3c": {
+      "name": "draw_text_line",
+      "confidence": "high",
+      "note": "draw single text line at position"
+    },
+    "1ceb:eb8": {
+      "name": "save_screen_rect",
+      "confidence": "med",
+      "note": "save screen region, returns buffer"
+    },
+    "1ceb:16a1": {
+      "name": "gfx_rect",
+      "confidence": "med",
+      "note": "draw/fill rectangle x1,y1,x2,y2; graphics module"
+    },
+    "0032:080d": {
+      "name": "size_up_prompt",
+      "confidence": "med",
+      "note": "'Press ENTER to size up the situation' travel-screen prompt"
+    },
+    "0032:0bd4": {
+      "name": "draw_travel_scene",
+      "confidence": "med",
+      "note": "draw the landscape/travel view for the current location"
+    },
+    "0032:356a": {
+      "name": "arrival",
+      "confidence": "low",
+      "note": "generic landmark arrival handler"
+    },
+    "0032:2046": {
+      "name": "event_find_fruit",
+      "confidence": "high",
+      "file": "src/seg032_events.c",
+      "note": "beneficial event: find wild fruit (+20 lb food, capped at 2000)"
+    }
   },
   "globals": {
-    "1410": {"name": "g_sound_on", "confidence": "high", "type": "u8", "note": "sound toggle (menu option 4)"},
-    "1411": {"name": "g_joystick_on", "confidence": "high", "type": "u8", "note": "joystick enabled (management option 6)"},
-    "1796": {"name": "g_last_key", "confidence": "high", "type": "u8", "note": "last key code read; 0x13 = Ctrl-S (sound toggle)"},
-    "1674": {"name": "g_topten_cur", "confidence": "high", "type": "struct[]", "note": "current Oregon Top Ten high-score list"},
-    "0d67": {"name": "g_illness_names", "confidence": "high", "type": "char*[]", "note": "DGROUP illness table: exhaustion/typhoid/cholera/measles/dysentery/a fever"},
-    "1520": {"name": "g_quit_flag", "confidence": "med", "type": "u8"},
-    "1554": {"name": "g_menu_choice", "confidence": "high", "type": "u16", "note": "1..6 title-menu selection"},
-    "141a": {"name": "g_input_buf", "confidence": "med", "type": "u8", "note": "raw keyboard input (counted)"},
-    "1558": {"name": "g_sound_label", "confidence": "med", "type": "char[]", "note": "\"on.\"/\"off.\" scratch"},
-    "1412": {"name": "g_1412", "confidence": "low", "type": "u16"},
-    "157a": {"name": "g_cursor_row", "confidence": "low", "type": "u16"},
-    "157c": {"name": "g_cursor_col", "confidence": "low", "type": "u16"},
-    "1588": {"name": "g_active_save", "confidence": "high", "type": "u8[143]", "note": "active saved-game record; byte 0 = profession (1=banker/2=carpenter/3=farmer)"},
-    "0bc0": {"name": "g_0bc0", "confidence": "med", "type": "u8[143]", "note": "scratch save record"},
-    "1620": {"name": "g_state_1620", "confidence": "med", "type": "u16[]", "note": "fresh-game state vector"},
-    "1792": {"name": "g_text_x", "confidence": "high", "type": "u16", "note": "text cursor X in pixels"},
-    "1794": {"name": "g_text_y", "confidence": "high", "type": "u16", "note": "text cursor Y in pixels"},
-    "06a0": {"name": "g_text_margin_x", "confidence": "med", "type": "u16", "note": "left margin x for body text"},
-    "1582": {"name": "g_text_top_y", "confidence": "med", "type": "u16", "note": "top y of text area"},
-    "1584": {"name": "g_text_bottom_y", "confidence": "low", "type": "u16", "note": "bottom y of text area"},
-    "15c1": {"name": "g_month", "confidence": "high", "type": "u8", "note": "current month 1..12 (wraps at 13 -> year++); initialised to departure month (3=Mar..7=Jul), which also drives the score factor"},
-    "15c0": {"name": "g_day", "confidence": "med", "type": "u8", "note": "day counter within the travel period"},
-    "15de": {"name": "g_member_status", "confidence": "high", "type": "u8[5]", "note": "per-member condition/illness flag (leader + 4)"},
-    "15e3": {"name": "g_member_health", "confidence": "high", "type": "u8[5]", "note": "per-member health value (leader + 4)"},
-    "1730": {"name": "g_illness", "confidence": "med", "type": "u16", "note": "current illness level (0=well; 2,3=severity tiers)"},
-    "172e": {"name": "g_weather", "confidence": "high", "type": "u16", "note": "weather index: temperature (cold/cool/warm) + precipitation (rainy/snowy/very...)"},
-    "15d8": {"name": "g_health", "confidence": "high", "type": "i32", "note": "party health value (long); /0xc00 -> good/fair/poor/very poor"},
-    "15c2": {"name": "g_year", "confidence": "high", "type": "u16", "note": "calendar year; starts at 1848 (0x738)"},
-    "15f2": {"name": "g_start_fund", "confidence": "med", "type": "i32", "note": "starting money for preset occupations"},
-    "15ec": {"name": "g_score_factor", "confidence": "med", "type": "i32", "note": "final-score multiplier from (7 - profession)"},
-    "15f8": {"name": "g_15f8", "confidence": "low", "type": "u8[17]", "note": "game-state array, zeroed at start"},
-    "1570": {"name": "g_choice", "confidence": "med", "type": "u16", "note": "scratch for last parsed numeric menu input"},
-    "15d2": {"name": "g_cash", "confidence": "med", "type": "i32", "note": "player money (long at 0x15d2); seeded by occupation, shown as 'Amount you have' in the store"},
-    "0636": {"name": "g_636", "confidence": "low", "type": "u16", "note": "store/screen text base position"},
-    "179a": {"name": "g_179a", "confidence": "low", "type": "u8", "note": "display-mode flag"},
-    "15ea": {"name": "g_location", "confidence": "high", "type": "u16", "note": "current trail location index 0..0x11; 0x11 = Oregon (end)"},
-    "1610": {"name": "g_next_location", "confidence": "med", "type": "u8", "note": "next trail location index"},
-    "1586": {"name": "g_died", "confidence": "high", "type": "u8", "note": "party death / game-ending flag"},
-    "1587": {"name": "g_game_over", "confidence": "high", "type": "u8", "note": "trail finished (reached Oregon)"},
-    "1552": {"name": "g_first_turn", "confidence": "med", "type": "u8", "note": "set at game start, cleared after first travel turn"},
-    "1729": {"name": "g_at_fort", "confidence": "high", "type": "u8", "note": "at a fort/settlement: enables Talk (8) and Buy supplies (9)"},
-    "1728": {"name": "g_1728", "confidence": "low", "type": "u8", "note": "end-of-turn / advance flag"},
-    "177c": {"name": "g_must_trade", "confidence": "med", "type": "u8", "note": "a missing part blocks travel until traded for"},
-    "15ca": {"name": "g_food", "confidence": "high", "type": "u16", "note": "wagon food supply in pounds; max 2000, hunt carry limit 100"},
-    "15e8": {"name": "g_pace", "confidence": "high", "type": "u8", "note": "travel pace: 0=steady, 1=strenuous, 2=grueling"},
-    "15e9": {"name": "g_rations", "confidence": "high", "type": "u8", "note": "food rations: 0=filling, 1=meager, 2=bare bones"},
-    "1589": {"name": "g_party_names", "confidence": "high", "type": "char[5][11]", "note": "party member names; record 0 = wagon leader"}
+    "1410": {
+      "name": "g_sound_on",
+      "confidence": "high",
+      "type": "u8",
+      "note": "sound toggle (menu option 4)"
+    },
+    "1411": {
+      "name": "g_joystick_on",
+      "confidence": "high",
+      "type": "u8",
+      "note": "joystick enabled (management option 6)"
+    },
+    "1796": {
+      "name": "g_last_key",
+      "confidence": "high",
+      "type": "u8",
+      "note": "last key code read; 0x13 = Ctrl-S (sound toggle)"
+    },
+    "1674": {
+      "name": "g_topten_cur",
+      "confidence": "high",
+      "type": "struct[]",
+      "note": "current Oregon Top Ten high-score list"
+    },
+    "0d67": {
+      "name": "g_illness_names",
+      "confidence": "high",
+      "type": "char*[]",
+      "note": "DGROUP illness table: exhaustion/typhoid/cholera/measles/dysentery/a fever"
+    },
+    "1520": {
+      "name": "g_quit_flag",
+      "confidence": "med",
+      "type": "u8"
+    },
+    "1554": {
+      "name": "g_menu_choice",
+      "confidence": "high",
+      "type": "u16",
+      "note": "1..6 title-menu selection"
+    },
+    "141a": {
+      "name": "g_input_buf",
+      "confidence": "med",
+      "type": "u8",
+      "note": "raw keyboard input (counted)"
+    },
+    "1558": {
+      "name": "g_sound_label",
+      "confidence": "med",
+      "type": "char[]",
+      "note": "\"on.\"/\"off.\" scratch"
+    },
+    "1412": {
+      "name": "g_1412",
+      "confidence": "low",
+      "type": "u16"
+    },
+    "157a": {
+      "name": "g_cursor_row",
+      "confidence": "low",
+      "type": "u16"
+    },
+    "157c": {
+      "name": "g_cursor_col",
+      "confidence": "low",
+      "type": "u16"
+    },
+    "1588": {
+      "name": "g_active_save",
+      "confidence": "high",
+      "type": "u8[143]",
+      "note": "active saved-game record; byte 0 = profession (1=banker/2=carpenter/3=farmer)"
+    },
+    "0bc0": {
+      "name": "g_0bc0",
+      "confidence": "med",
+      "type": "u8[143]",
+      "note": "scratch save record"
+    },
+    "1620": {
+      "name": "g_state_1620",
+      "confidence": "med",
+      "type": "u16[]",
+      "note": "fresh-game state vector"
+    },
+    "1792": {
+      "name": "g_text_x",
+      "confidence": "high",
+      "type": "u16",
+      "note": "text cursor X in pixels"
+    },
+    "1794": {
+      "name": "g_text_y",
+      "confidence": "high",
+      "type": "u16",
+      "note": "text cursor Y in pixels"
+    },
+    "06a0": {
+      "name": "g_text_margin_x",
+      "confidence": "med",
+      "type": "u16",
+      "note": "left margin x for body text"
+    },
+    "1582": {
+      "name": "g_text_top_y",
+      "confidence": "med",
+      "type": "u16",
+      "note": "top y of text area"
+    },
+    "1584": {
+      "name": "g_text_bottom_y",
+      "confidence": "low",
+      "type": "u16",
+      "note": "bottom y of text area"
+    },
+    "15c1": {
+      "name": "g_month",
+      "confidence": "high",
+      "type": "u8",
+      "note": "current month 1..12 (wraps at 13 -> year++); initialised to departure month (3=Mar..7=Jul), which also drives the score factor"
+    },
+    "15c0": {
+      "name": "g_day",
+      "confidence": "med",
+      "type": "u8",
+      "note": "day counter within the travel period"
+    },
+    "15de": {
+      "name": "g_member_status",
+      "confidence": "high",
+      "type": "u8[5]",
+      "note": "per-member condition/illness flag (leader + 4)"
+    },
+    "15e3": {
+      "name": "g_member_health",
+      "confidence": "high",
+      "type": "u8[5]",
+      "note": "per-member health value (leader + 4)"
+    },
+    "1730": {
+      "name": "g_illness",
+      "confidence": "med",
+      "type": "u16",
+      "note": "current illness level (0=well; 2,3=severity tiers)"
+    },
+    "172e": {
+      "name": "g_weather",
+      "confidence": "high",
+      "type": "u16",
+      "note": "weather index: temperature (cold/cool/warm) + precipitation (rainy/snowy/very...)"
+    },
+    "15d8": {
+      "name": "g_health",
+      "confidence": "high",
+      "type": "i32",
+      "note": "party health value (long); /0xc00 -> good/fair/poor/very poor"
+    },
+    "15c2": {
+      "name": "g_year",
+      "confidence": "high",
+      "type": "u16",
+      "note": "calendar year; starts at 1848 (0x738)"
+    },
+    "15f2": {
+      "name": "g_start_fund",
+      "confidence": "med",
+      "type": "i32",
+      "note": "starting money for preset occupations"
+    },
+    "15ec": {
+      "name": "g_score_factor",
+      "confidence": "med",
+      "type": "i32",
+      "note": "final-score multiplier from (7 - profession)"
+    },
+    "15f8": {
+      "name": "g_15f8",
+      "confidence": "low",
+      "type": "u8[17]",
+      "note": "game-state array, zeroed at start"
+    },
+    "1570": {
+      "name": "g_choice",
+      "confidence": "med",
+      "type": "u16",
+      "note": "scratch for last parsed numeric menu input"
+    },
+    "15d2": {
+      "name": "g_cash",
+      "confidence": "med",
+      "type": "i32",
+      "note": "player money (long at 0x15d2); seeded by occupation, shown as 'Amount you have' in the store"
+    },
+    "0636": {
+      "name": "g_636",
+      "confidence": "low",
+      "type": "u16",
+      "note": "store/screen text base position"
+    },
+    "179a": {
+      "name": "g_179a",
+      "confidence": "low",
+      "type": "u8",
+      "note": "display-mode flag"
+    },
+    "15ea": {
+      "name": "g_location",
+      "confidence": "high",
+      "type": "u16",
+      "note": "current trail location index 0..0x11; 0x11 = Oregon (end)"
+    },
+    "1610": {
+      "name": "g_next_location",
+      "confidence": "med",
+      "type": "u8",
+      "note": "next trail location index"
+    },
+    "1586": {
+      "name": "g_died",
+      "confidence": "high",
+      "type": "u8",
+      "note": "party death / game-ending flag"
+    },
+    "1587": {
+      "name": "g_game_over",
+      "confidence": "high",
+      "type": "u8",
+      "note": "trail finished (reached Oregon)"
+    },
+    "1552": {
+      "name": "g_first_turn",
+      "confidence": "med",
+      "type": "u8",
+      "note": "set at game start, cleared after first travel turn"
+    },
+    "1729": {
+      "name": "g_at_fort",
+      "confidence": "high",
+      "type": "u8",
+      "note": "at a fort/settlement: enables Talk (8) and Buy supplies (9)"
+    },
+    "1728": {
+      "name": "g_1728",
+      "confidence": "low",
+      "type": "u8",
+      "note": "end-of-turn / advance flag"
+    },
+    "177c": {
+      "name": "g_must_trade",
+      "confidence": "med",
+      "type": "u8",
+      "note": "a missing part blocks travel until traded for"
+    },
+    "15ca": {
+      "name": "g_food",
+      "confidence": "high",
+      "type": "u16",
+      "note": "wagon food supply in pounds; max 2000, hunt carry limit 100"
+    },
+    "15e8": {
+      "name": "g_pace",
+      "confidence": "high",
+      "type": "u8",
+      "note": "travel pace: 0=steady, 1=strenuous, 2=grueling"
+    },
+    "15e9": {
+      "name": "g_rations",
+      "confidence": "high",
+      "type": "u8",
+      "note": "food rations: 0=filling, 1=meager, 2=bare bones"
+    },
+    "1589": {
+      "name": "g_party_names",
+      "confidence": "high",
+      "type": "char[5][11]",
+      "note": "party member names; record 0 = wagon leader"
+    }
   }
 }

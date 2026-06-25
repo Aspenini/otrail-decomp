@@ -17,7 +17,7 @@ project(oregon_trail_port C)
 set(CMAKE_C_STANDARD 99)
 set(CMAKE_C_STANDARD_REQUIRED ON)
 
-set(CORE core/main.c core/pcx.c core/screen.c core/title.c core/learn.c)
+file(GLOB CORE CONFIGURE_DEPENDS core/*.c)
 
 set(OTRAIL_BACKEND "auto" CACHE STRING "PAL backend: auto | sdl | file")
 

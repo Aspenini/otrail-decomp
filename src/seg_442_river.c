@@ -35,9 +35,9 @@ extern void gfx_screen_init_1ceb_0b71(void);              /* 0x1ceb:0x0b71 */
 
 /* Crossing-method handlers (segment 0x0442, near). */
 static void ford_river_442_02be(void);         /* 0x0442:0x02be (below) */
-extern void caulk_and_float_442_0695(void);    /* 0x0442:0x0695 */
-extern void take_ferry_442_09ef(void);         /* 0x0442:0x09ef */
-extern void hire_indian_442_0e2c(void);        /* 0x0442:0x0e2c */
+static void caulk_and_float_442_0695(void);    /* 0x0442:0x0695 (below) */
+static void take_ferry_442_09ef(void);         /* 0x0442:0x09ef (below) */
+extern void hire_indian_442_0e2c(void);        /* 0x0442:0x0e2c: pay a Shoshoni guide in clothing */
 extern void wait_conditions_442_1090(void);    /* 0x0442:0x1090 */
 extern void get_more_info_442_126f(void);      /* 0x0442:0x126f */
 extern void river_done_442_1321(void);         /* 0x0442:0x1321 */
@@ -168,4 +168,58 @@ static void ford_river_442_02be(void)
         daily_update();
         break;
     }
+}
+
+extern void press_any_key(void);              /* 0x1049:0x15a0 */
+extern void draw_text_line(const char far *s, int x, int y); /* 0x1049:0x1b3c */
+extern int  streq(const char far *a, const char far *b);     /* 0x20a4:0x0724 */
+extern long g_cash;                           /* 0x15d2: player money */
+
+/* ---------------------------------------------------------- 0x0442:0x0695
+ * Caulk the wagon and float it across. Needs enough depth; floating risks the
+ * wagon tipping over and losing supplies. Takes a day.
+ */
+static void caulk_and_float_442_0695(void)
+{
+    if (/* river too shallow to float */ 0) {            /* 0x06B8 */
+        clear_text_area();
+        draw_text_line(S(0x60c) /* "The river is too shallow" */, 0, 0);  /* 0x06D4 */
+        draw_text_line(S(0x625) /* "to float across." */, 0, 0);          /* 0x06E6 */
+        press_any_key();
+        return;                                          /* 0x06F0 */
+    }
+    daily_update();                                      /* 0x06F6: crossing costs a day */
+    /* outcome: "You had no trouble floating the wagon across." (cs:0x636) or
+     * "The wagon tipped over while floating.  You lose:" -> lost supplies. */
+    far_print(S(0x636));                                 /* 0x070D */
+}
+
+/* ---------------------------------------------------------- 0x0442:0x09ef
+ * Take a ferry. Costs $5.00 and a wait of several days; needs deep enough water.
+ * Usually safe, but the ferry can break loose from its moorings and cost you.
+ */
+static void take_ferry_442_09ef(void)
+{
+    if (/* river too shallow for the ferry */ 0) {       /* 0x0A12 */
+        draw_text(S(0x868) /* "The ferry is not operating today because the
+                              river is too shallow." */, 0, 0);           /* 0x0A33 */
+        press_any_key();
+        return;                                          /* 0x0A47 */
+    }
+    /* "The ferry operator says that he will charge you $5.00 and that you will
+     * have to wait <N> days.  Are you willing to do this?" */
+    read_field(0, 0, /* "Y"/"N" */ 0, &g_input_buf);     /* 0x0A6B */
+    if (!streq(&g_input_buf, S(/* "Y" */ 0)))
+        return;                                          /* declined */
+
+    if (g_cash < 500 /* $5.00 */) {
+        far_print(S(0x929) /* "You do not have enough money to pay for the ferry." */);
+        return;
+    }
+    g_cash -= 500;
+    /* wait the required days, then cross */
+    /* outcome: "The ferry got your party and wagon safely across." (cs:0x95e)
+     * or "The ferry broke loose from moorings.  You lose:" (cs:0x990)
+     * or "Some trouble in crossing but nothing was lost." */
+    far_print(S(0x95e));
 }

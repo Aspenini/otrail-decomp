@@ -13,7 +13,9 @@
 #include "screen.h"
 #include "../pal.h"
 
-extern void run_learn(void);   /* learn.c - menu option 2 */
+extern void run_travel(void);  /* travel.c - menu option 1 */
+extern void run_learn(void);   /* learn.c  - menu option 2 */
+extern void run_topten(void);  /* topten.c - menu option 3 */
 
 static int g_sound_on = 1;   /* the original's g_sound_on (0x1410) */
 
@@ -58,22 +60,17 @@ void run_title(void)
         int choice = read_choice();
         if (choice == 6)
             break;
-        if (choice == 4) {
-            g_sound_on = !g_sound_on;           /* like main() case 4 */
-            continue;
-        }
-        if (choice == 2) {                      /* Learn about the Trail */
-            run_learn();
-            continue;
+        switch (choice) {
+        case 1: run_travel(); continue;         /* Travel the Trail        */
+        case 2: run_learn();  continue;         /* Learn about the Trail   */
+        case 3: run_topten(); continue;         /* See the Oregon Top Ten  */
+        case 4: g_sound_on = !g_sound_on; continue;  /* toggle sound       */
+        default: break;                         /* 5 = Management (stub)   */
         }
         /* remaining sub-screens not ported yet */
         scr_clear(C_BLUE);
-        {
-            char msg[40];
-            sprintf(msg, "OPTION %d SELECTED", choice);
-            scr_text(72, 88, msg, C_YELLOW);
-        }
-        scr_text(32, 108, "(SUB-SCREEN NOT YET PORTED)", C_WHITE);
+        scr_text(40, 88, "MANAGEMENT OPTIONS", C_YELLOW);
+        scr_text(32, 108, "(NOT YET PORTED - PRESS A KEY)", C_WHITE);
         scr_present();
         read_choice();                          /* wait, then back to menu */
     }

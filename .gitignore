@@ -21,6 +21,7 @@ build/*
 *.bin
 *.map
 *.lst
+.xmake/
 
 # Logs and temp files
 *.log

@@ -61,11 +61,16 @@ Python 3):
 
 ```bash
 python otrail.py          # interactive menu: pick a number
-python otrail.py play     # build the port and run it
-python otrail.py all      # run every decompile step
+python otrail.py decomp   # reverse-engineer the original game
+python otrail.py recomp   # build the playable port
+python otrail.py play     # build it and play (or make screenshots)
 python otrail.py status   # how far the project has come
-python otrail.py help     # list commands
+python otrail.py clean    # delete build files
 ```
+
+Builds go in `build/`: `OREGON_unpacked.exe` (the decompiled game),
+`oregon_trail` (the port), and `play/` (screenshots). With **SDL2** installed,
+`play` opens an interactive window; otherwise it writes a screenshot tour.
 
 Or drive the individual steps with `make` (needs a POSIX shell / WSL):
 

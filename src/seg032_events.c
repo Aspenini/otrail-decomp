@@ -76,3 +76,26 @@ void event_thief(void)
     /* subtract the stolen amount from the matching supply record and report it */
     (void)item;
 }
+
+/* ---------------------------------------------------------- 0x0032:0x2046
+ * Beneficial event: the party finds wild fruit, adding food to the wagon.
+ * Food is capped at FOOD_MAX (2000 lb) -- the same ceiling the hunt enforces.
+ */
+#define FOOD_MAX  0x7d0   /* 2000 lb */
+#define FRUIT_GAIN 0x14   /* +20 lb  */
+extern uint16_t g_food;                     /* 0x15ca */
+extern void image_show_14c6_0321(const char far *n, void far *h); /* 0x14c6:0x0321 */
+extern void image_free_14c6_043c(int a, int b);                   /* 0x14c6:0x043c */
+
+void event_find_fruit(void)
+{
+    if (g_food < FOOD_MAX - FRUIT_GAIN)         /* 0x2054: < 1980 */
+        g_food += FRUIT_GAIN;                   /* 0x205F: +20 lb */
+    else
+        g_food = FOOD_MAX;                      /* 0x2067: cap at 2000 */
+
+    image_show_14c6_0321(S(0x202a) /* "events.pcc" */, 0);   /* 0x20CE */
+    image_free_14c6_043c(0, 0);                              /* 0x2101 */
+    draw_msg_box_1049_3910(S(0x2035) /* "Find wild fruit." */); /* 0x210E */
+    member_status_1049_36de();                               /* 0x2113 */
+}
