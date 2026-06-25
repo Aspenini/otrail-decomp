@@ -483,8 +483,9 @@
     },
     "0032:1711": {
       "name": "event_broken_wagon",
-      "confidence": "med",
-      "note": "random event: broken wagon (must repair/replace)"
+      "confidence": "high",
+      "file": "seg032_events.c",
+      "note": "random event: wheel/axle/tongue breaks; repair or replace from spares, else must_trade"
     },
     "0032:1b71": {
       "name": "event_broken_part",
@@ -535,8 +536,9 @@
     },
     "0032:2ff5": {
       "name": "columbia_dalles",
-      "confidence": "med",
-      "note": "location 0x10 special: Columbia River vs Barlow Road"
+      "confidence": "high",
+      "file": "seg032_dalles.c",
+      "note": "The Dalles fork: float the Columbia River or pay the Barlow toll (deducts g_cash)"
     },
     "0032:3a82": {
       "name": "check_supplies",
@@ -783,15 +785,21 @@
       "note": "draw the landscape/travel view for the current location"
     },
     "0032:356a": {
-      "name": "arrival",
-      "confidence": "low",
-      "note": "generic landmark arrival handler"
+      "name": "check_oxen",
+      "confidence": "high",
+      "file": "seg032_dalles.c",
+      "note": "no-oxen travel blocker: 'You have no oxen to pull your wagon' (was mislabelled 'arrival')"
     },
     "0032:2046": {
       "name": "event_find_fruit",
       "confidence": "high",
       "file": "src/seg032_events.c",
       "note": "beneficial event: find wild fruit (+20 lb food, capped at 2000)"
+    },
+    "0032:31df": {
+      "name": "raft_columbia",
+      "confidence": "med",
+      "note": "float-down-the-Columbia rafting animation (reached when columbia_dalles picks choice 1)"
     }
   },
   "globals": {
@@ -1102,6 +1110,42 @@
       "confidence": "high",
       "type": "u8",
       "note": "number of route markers drawn on the map"
+    },
+    "15c4": {
+      "name": "g_oxen",
+      "confidence": "med",
+      "type": "long",
+      "note": "ox count; check_oxen blocks travel at 0, also feeds the Barlow toll calc"
+    },
+    "177e": {
+      "name": "g_needed_item",
+      "confidence": "med",
+      "type": "char[0xa]",
+      "note": "name of the item the party must trade for (counted string)"
+    },
+    "069e": {
+      "name": "g_panel_y",
+      "confidence": "low",
+      "type": "u16",
+      "note": "panel Y origin for draw_panel"
+    },
+    "15cf": {
+      "name": "g_spare_wheels",
+      "confidence": "high",
+      "type": "u8",
+      "note": "spare wagon wheels in inventory"
+    },
+    "15d0": {
+      "name": "g_spare_axles",
+      "confidence": "high",
+      "type": "u8",
+      "note": "spare wagon axles in inventory"
+    },
+    "15d1": {
+      "name": "g_spare_tongues",
+      "confidence": "high",
+      "type": "u8",
+      "note": "spare wagon tongues in inventory"
     }
   }
 }

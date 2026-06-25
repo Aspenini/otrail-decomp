@@ -73,27 +73,35 @@ For cross-compiling to web/console targets, the port also keeps a `CMakeLists.tx
 (`cmake -B build/port -S port`) so you can point it at an Emscripten / devkitPro /
 NDK toolchain file; the sources don't change.
 
-## Status: interactive title menu ✅
+## Status: playable trail ✅
 
-The port boots to a **working title menu**, ported from
-[`../src/seg000_main.c`](../src/seg000_main.c): it shows the MECC `LOGO.256`
-splash, then draws the six-option menu and reads a 1-6 choice — option 4 toggles
-sound (the original's `g_sound_on`), 6 ends, others dispatch (sub-screens are
-placeholders for now). All of it is the decompiled menu logic running as
-portable C: text is rendered by [`core/screen.c`](core/screen.c) (a built-in
-8×8 font, since the original `BIT8X8.GFT` encoding is still TBD) into the
-framebuffer, and input comes through `pal_poll_event`.
+The port boots to the **title menu** (from [`../src/seg000_main.c`](../src/seg000_main.c))
+and **Travel the Trail is now playable end to end.** You leave Independence,
+travel day by day, watch food and health, arrive at each of the 18 real
+landmarks, take the **South Pass** and **Blue Mountains** forks, and either reach
+the Willamette Valley or starve on the way. The whole journey is ~2000 miles;
+travelling on *filling* rations starves the party just short of Oregon, while
+*meager* rations bring them through — real strategy, balanced against the
+original distances.
 
-Several screens are ported: **Learn about the Trail** ([`core/learn.c`](core/learn.c),
-a six-page slideshow of the real recovered text), **See the Oregon Top Ten**
-([`core/topten.c`](core/topten.c)), and a **travel status** taste
-([`core/travel.c`](core/travel.c)). They're the template for the rest: lift the
-content from `../src/`, render via `screen`, drive with `pal_poll_event`.
+The trail engine is [`core/trail.c`](core/trail.c), driven by
+[`core/game.c`](core/game.c)/[`game.h`](core/game.h) — whose landmark table
+(names, distances, forks) is the decompiled location record from
+[`../src/seg032_map.c`](../src/seg032_map.c) (DGROUP `0x0896`), transcribed
+byte-for-byte from `OREGON.EXE`. The per-turn loop, arrival screens and forks
+follow [`../src/seg032_trail.c`](../src/seg032_trail.c) and
+[`../src/seg032_arrival.c`](../src/seg032_arrival.c).
+
+Also ported: **Learn about the Trail** ([`core/learn.c`](core/learn.c)) and
+**See the Oregon Top Ten** ([`core/topten.c`](core/topten.c)). All of it is
+decompiled logic as portable C: text renders through [`core/screen.c`](core/screen.c)
+(a built-in 8×8 font, since `BIT8X8.GFT`'s encoding is still TBD) and input comes
+through `pal_poll_event`.
 
 Two backends: [`platform/file`](platform/file/pal_file.c) (headless → PNG,
-no deps, scriptable via `OTRAIL_KEYS` — used for the screenshots and CI) and
+no deps, scriptable via `OTRAIL_KEYS` — used for screenshots and CI) and
 [`platform/sdl`](platform/sdl/pal_sdl.c) (interactive window, all SDL targets).
-Next: port Travel / Top Ten / Management on the same foundation.
+Next: new-game store/setup, hunting, and river crossings on the same foundation.
 
 ## Roadmap
 

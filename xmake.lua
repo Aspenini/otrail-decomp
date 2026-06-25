@@ -44,6 +44,9 @@ target("oregon_trail")
     set_kind("binary")
     set_targetdir("build")
     add_files("port/core/*.c")
+    if is_plat("windows") then
+        add_defines("_CRT_SECURE_NO_WARNINGS")   -- we use portable C stdio on purpose
+    end
 
     -- generate the built-in font header before compiling
     before_build(function (target)

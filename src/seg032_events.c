@@ -99,3 +99,75 @@ void event_find_fruit(void)
     draw_msg_box_1049_3910(S(0x2035) /* "Find wild fruit." */); /* 0x210E */
     member_status_1049_36de();                               /* 0x2113 */
 }
+
+/* ---------------------------------------------------------- 0x0032:0x1711
+ * A wagon part breaks: a random wheel, axle or tongue. The party may try to
+ * repair it; if that fails, the part is replaced from the wagon's spares, and
+ * if there is no spare, travel is blocked until the party trades for one.
+ *
+ * Spare-parts inventory (DGROUP, one byte each):
+ *   g_spare_wheels  0x15cf
+ *   g_spare_axles   0x15d0
+ *   g_spare_tongues 0x15d1
+ * Part names are counted strings in this segment: "wheel" (0x15f0), "axle"
+ * (0x15f6), "tongue" (0x15fb).
+ */
+extern uint8_t g_sound_on;      /* 0x1410 */
+extern uint8_t g_must_trade;    /* 0x177c: travel blocked until a part is traded */
+extern char    g_needed_item[]; /* 0x177e: the part to trade for (counted string) */
+extern uint8_t g_spare_wheels;  /* 0x15cf */
+extern uint8_t g_spare_axles;   /* 0x15d0 */
+extern uint8_t g_spare_tongues; /* 0x15d1 */
+extern uint8_t g_input_buf;     /* 0x141a */
+extern uint8_t g_quit_flag;     /* 0x1520 */
+extern void size_up_prompt_32_080d(int tone, void far *ctx);  /* 0x0032:0x080d */
+extern void press_any_key_1049_15a0(void);
+extern int  streq_20a4_724(const char far *a, const char far *b);  /* 0 = equal */
+
+void event_broken_wagon(void far *ctx)
+{
+    int  part;          /* [bp-0x02] 0=wheel 1=axle 2=tongue            */
+    int  repaired;      /* [bp-0x07] repair attempt succeeded            */
+    uint8_t *spare;
+
+    size_up_prompt_32_080d(/* tone g_663 */ 0, ctx);   /* 0x172F "Press ENTER to size up..." */
+    /* draw the broken-wagon scene (events art, 0xe70); animate if sound is on */
+    if (g_sound_on) {                          /* 0x175B: 8-frame break animation */
+        /* ... draw sprite frames via 0x1049:0x0fbd ... */
+    }
+
+    part = rand_1049_008c(3);                  /* 0x17A0: wheel / axle / tongue */
+    /* strncpy the matching part name into the local buffer (0x15f0/0x15f6/0x15fb) */
+
+    /* "Broken wagon <part>.  Would you like to try to repair it? [Y/N]" */
+    /* draw_msg_box + read a Y/N reply (0x1602..); Esc bails out            */
+    repaired = streq_20a4_724((const char far *)&g_input_buf, S(0x1639) /* "Y" */) == 0
+               && /* repair roll succeeded (long-compare flag, 0x18ae..0x18c7) */ 1;
+    if (g_quit_flag) return;
+
+    if (repaired) {
+        /* "You were able to repair the wagon <part>." then a time/health cost */
+        size_up_prompt_32_080d(/* tone g_662 */ 0, ctx);   /* 0x192E */
+        member_status_1049_36de();                /* 0x1931 */
+        return;
+    }
+
+    /* "You [were unable to/did not] repair the broken wagon <part>.  You must
+     * replace it with a spare." - take it from spares, or block on a trade. */
+    g_must_trade = 0;                          /* 0x19D4 */
+    spare = (part == 0) ? &g_spare_wheels
+          : (part == 1) ? &g_spare_axles
+          : &g_spare_tongues;
+    if (*spare > 0) {
+        (*spare)--;                            /* use a spare part */
+    } else {
+        /* no spare: record the needed part and block travel */
+        /* strncpy(g_needed_item, <part name 0x16c0/0x16c8/0x16d0>, 0xa) */
+        g_must_trade = 1;                      /* 0x1A06 / 0x1A37 / 0x1A68 */
+    }
+
+    if (!g_must_trade)
+        member_status_1049_36de();             /* 0x1A74: had a spare, apply cost */
+    else
+        press_any_key_1049_15a0();             /* 0x1A7B: wait, then the trade prompt */
+}

@@ -110,6 +110,8 @@ choice]`). The game's only two forks fall out of `dest2 != 0`: **South Pass** (7
 | `g_year`           | `0x15c2` | calendar year, starts 1848                        |
 | `g_cash`           | `0x15d2` | money (long); seeded by occupation                |
 | `g_food`           | `0x15ca` | wagon food in pounds; max 2000, hunt carry limit 100 |
+| `g_oxen`           | `0x15c4` | ox count (long); 0 blocks travel (`check_oxen`)   |
+| `g_spare_wheels` / `_axles` / `_tongues` | `0x15cf`/`0x15d0`/`0x15d1` | spare wagon parts; used to fix a `broken_wagon` event |
 | `g_died`           | `0x1586` | a death ended the game                            |
 | `g_game_over`      | `0x1587` | reached Oregon                                    |
 | `g_at_fort`        | `0x1729` | at a fort (enables Talk / Buy)                    |
