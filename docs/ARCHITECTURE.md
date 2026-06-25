@@ -112,6 +112,9 @@ choice]`). The game's only two forks fall out of `dest2 != 0`: **South Pass** (7
 | `g_food`           | `0x15ca` | wagon food in pounds; max 2000, hunt carry limit 100 |
 | `g_oxen`           | `0x15c4` | ox count (long); 0 blocks travel (`check_oxen`)   |
 | `g_spare_wheels` / `_axles` / `_tongues` | `0x15cf`/`0x15d0`/`0x15d1` | spare wagon parts; used to fix a `broken_wagon` event |
+| `g_member_ailment` / `g_member_recovery` | `0x15de[5]` / `0x15e3[5]` | per-member ailment code + recovery-day countdown (`daily_update`) |
+| `g_days_in_month` | `0x0889` | days per month, indexed by `g_month`; drives the calendar wrap |
+| `g_rations` / `g_pace` | `0x15e9` / `0x15e8` | rations & pace; `daily_update` eats `rations*2` scaled by health |
 | `g_died`           | `0x1586` | a death ended the game                            |
 | `g_game_over`      | `0x1587` | reached Oregon                                    |
 | `g_at_fort`        | `0x1729` | at a fort (enables Talk / Buy)                    |

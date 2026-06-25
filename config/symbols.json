@@ -417,7 +417,7 @@
       "name": "continue_travel",
       "confidence": "high",
       "file": "src/seg032_movement.c",
-      "note": "menu 1 dispatcher: at landmark -> fork/river/Dalles/arrival + \"From X it is N miles to Y\"; else draw travel view"
+      "note": "'Continue on the trail': leaving-landmark handling (fork/river/Dalles), then check_oxen + daily_update + the per-day mileage long-math"
     },
     "0442:18bb": {
       "name": "cross_river",
@@ -801,6 +801,35 @@
       "name": "raft_columbia",
       "confidence": "med",
       "note": "float-down-the-Columbia rafting animation (reached when columbia_dalles picks choice 1)"
+    },
+    "0032:1c72": {
+      "name": "roll_wagon_event",
+      "confidence": "high",
+      "file": "seg032_events.c",
+      "note": "random wagon-mishap selector: broken_wagon / ox_dies / broken_part"
+    },
+    "0032:14cd": {
+      "name": "event_ox_dies",
+      "confidence": "high",
+      "file": "seg032_events.c",
+      "note": "'One of the oxen has died/is injured'; removes an ox from the team (g_oxen)"
+    },
+    "0032:1cde": {
+      "name": "event_weather",
+      "confidence": "high",
+      "file": "seg032_events.c",
+      "note": "'Heavy fog' (mountains) / 'Hail storm' (plains), gated by g_location and g_1730"
+    },
+    "0032:1df8": {
+      "name": "event_storm",
+      "confidence": "high",
+      "file": "seg032_events.c",
+      "note": "'Severe blizzard' / 'severe thunderstorm' by g_1730 tier; animates + adds weather delay"
+    },
+    "0032:0d35": {
+      "name": "weather_effect",
+      "confidence": "low",
+      "note": "apply a weather time/loss effect (called by event_weather fog branch)"
     }
   },
   "globals": {
@@ -936,19 +965,19 @@
       "name": "g_member_ailment",
       "confidence": "high",
       "type": "u8[5]",
-      "note": "per-member current ailment/injury code"
+      "note": "per-member ailment code (0=well, 0xff=dead); daily_update counts down g_member_recovery and clears this"
     },
     "15e3": {
       "name": "g_member_recovery",
       "confidence": "high",
       "type": "u8[5]",
-      "note": "per-member days remaining until recovered"
+      "note": "per-member days until recovered; daily_update decrements, clears ailment at 0"
     },
     "1730": {
       "name": "g_illness",
       "confidence": "med",
       "type": "u16",
-      "note": "current illness level (0=well; 2,3=severity tiers)"
+      "note": "current illness level (0=well; 2,3=severity tiers); also gates weather events (fog/hail/blizzard/storm) by tier"
     },
     "172e": {
       "name": "g_weather",
@@ -970,9 +999,9 @@
     },
     "15f2": {
       "name": "g_start_fund",
-      "confidence": "med",
+      "confidence": "low",
       "type": "i32",
-      "note": "starting money for preset occupations"
+      "note": "starting funds in new-game setup (d08); BUT also read as a long for weather/mileage math in event_storm and continue_travel - the two uses conflict, true meaning unsettled"
     },
     "15ec": {
       "name": "g_score_factor",
@@ -1147,6 +1176,24 @@
       "confidence": "high",
       "type": "u8",
       "note": "spare wagon tongues in inventory"
+    },
+    "0889": {
+      "name": "g_days_in_month",
+      "confidence": "high",
+      "type": "u8[13]",
+      "note": "days in each month, indexed by g_month; drives daily_update's calendar wrap"
+    },
+    "172a": {
+      "name": "g_afflicted",
+      "confidence": "high",
+      "type": "u8",
+      "note": "count of currently-afflicted party members (set by daily_update; feeds the mileage formula)"
+    },
+    "160b": {
+      "name": "g_legs",
+      "confidence": "med",
+      "type": "u16",
+      "note": "legs/segments travelled counter (incremented on river crossings)"
     }
   }
 }

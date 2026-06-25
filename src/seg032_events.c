@@ -206,3 +206,126 @@ void event_broken_part(void far *ctx)
     member_status_1049_36de();                        /* 0x1C62: apply the injury */
     finalize_action_1049_1ee3();                      /* 0x1C67 */
 }
+
+/* ---------------------------------------------------------- 0x0032:0x14cd
+ * An ox dies or is injured: "One of the oxen has died." / "...is injured."
+ * Removes one ox from the team (long arithmetic on g_oxen, 0x15c4); the result
+ * of that arithmetic decides the "died" vs "injured" message.
+ */
+extern long g_oxen;                          /* 0x15c4 */
+extern long lsub_20a4_af4(long a, long b);
+extern int  lcmp_20a4_b10(long a, long b);   /* <0 / 0 / >0 */
+
+void event_ox_dies(void far *ctx)
+{
+    strncat_n(/* ctx msg */ 0, S(0x14a0) /* "One of the oxen " */, 0xff);  /* 0x14EE */
+
+    /* lose an ox: g_oxen is reduced (lsub/ldiv on 0x15c4); the remainder of
+     * that math selects the branch below. */
+    g_oxen = lsub_20a4_af4(g_oxen, /* one team unit */ 0x80);              /* 0x1505 */
+
+    if (/* arithmetic result == 0 -> dead (0x1536 lcmp / 0x153b jnz) */ 1)
+        far_print(S(0x14b1) /* "has died." */);                            /* 0x1556 */
+    else
+        far_print(S(0x14bb) /* "is injured." */);                          /* 0x1588 */
+
+    draw_msg_box_1049_3910(/* msg */ 0);
+    member_status_1049_36de();
+    finalize_action_1049_1ee3();
+    (void)ctx;
+}
+
+/* ---------------------------------------------------------- 0x0032:0x1c72
+ * Roll a random "wagon mishap" and dispatch one of three handlers: a broken
+ * wagon part, an ox dying/injured, or a party member breaking a limb. The
+ * branch weights come from the Borland random-long helper (0x20a4:0xb50)
+ * compared (0x20a4:0xb10) against fixed thresholds; the exact probabilities
+ * are left to those helpers rather than guessed here.
+ */
+extern long event_roll_20a4_b50(void);       /* 0x20a4:0xb50: bounded random long */
+
+void roll_wagon_event(void far *ctx)
+{
+    if (lcmp_20a4_b10(event_roll_20a4_b50(), /* weight */ 0x28f5c28f) < 0)  /* 0x1C8F */
+        event_broken_wagon(ctx);             /* 0x1711 */
+    else if (lcmp_20a4_b10(event_roll_20a4_b50(), /* weight */ 0x80) < 0)   /* 0x1CA8 */
+        event_ox_dies(ctx);                  /* 0x14CD */
+    else
+        event_broken_part(ctx);              /* 0x1B71 */
+}
+
+/*
+ * Weather events. Both are gated by the trail region (g_location) and the
+ * conditions tier g_1730 (the same state the illness model uses, here selecting
+ * which weather can occur). They draw from events.pcc and apply a delay/loss.
+ */
+extern uint16_t g_location;                  /* 0x15ea */
+extern uint16_t g_1730;                      /* conditions/severity tier        */
+extern long g_15ec, g_15f2;                  /* weather-adjusted resources (long)*/
+extern void image_show_14c6_0321(const char far *n, void far *h);
+extern void image_blit_14c6_03ea(const char far *data, int x, int y, int flag);
+extern void image_free_14c6_043c(int a, int b);
+extern void fill_rect_1049_155e(int x1, int y1, int x2, int y2);
+extern long ladd_20a4_aee(long a, long b);
+extern void weather_effect_32_0d35(int kind, char far *msg, void far *ctx); /* 0x0032:0x0d35 */
+
+/* ---------------------------------------------------------- 0x0032:0x1cde
+ * "Heavy fog" (mountain region, g_location > 0x0b) or "Hail storm" (plains,
+ * g_location < 0x0b with a high conditions tier). Fog can cost the party time
+ * (weather_effect); hail shows the scene and applies its effect.
+ */
+void event_weather(void far *ctx)
+{
+    char msg[0x1b];
+
+    if (g_location > 0x0b && g_1730 < 5) {       /* 0x1CED: Heavy fog */
+        /* strncpy(msg, "Heavy fog" 0x1cbf, 0x1b) */
+        if (lcmp_20a4_b10(event_roll_20a4_b50(), /* weight */ 0x80) > 0)  /* 0x1D1A */
+            weather_effect_32_0d35(1, msg, ctx); /* 0x1D2C: lose time in the fog */
+        else {
+            draw_msg_box_1049_3910(msg);         /* 0x1D39 */
+            member_status_1049_36de();
+            finalize_action_1049_1ee3();
+        }
+    }
+
+    if (g_location < 0x0b && g_1730 > 4) {        /* 0x1D48: Hail storm */
+        image_show_14c6_0321(S(0x1cc9) /* "events.pcc" */, ctx);     /* 0x1D64 */
+        image_blit_14c6_03ea(S(0xe98) /* hail sprite */, 0, 0x94, 0);/* 0x1D80 */
+        image_free_14c6_043c(0, 0);                                  /* 0x1D90 */
+        draw_msg_box_1049_3910(S(0x1cd4) /* "Hail storm" */);        /* 0x1D9D */
+        member_status_1049_36de();
+        finalize_action_1049_1ee3();
+        if (!g_quit_flag)
+            fill_rect_1049_155e(0, 0x94, 0xbe, 0x11);                /* 0x1DC4 */
+    }
+}
+
+/* ---------------------------------------------------------- 0x0032:0x1df8
+ * "Severe blizzard" (cold tier, g_1730 < 2) or "severe thunderstorm" (warm
+ * tier). Does nothing when g_1730 is 2 or 3. Each animates the weather
+ * (snow/rain over the trail scene) and adds a delay to a weather resource.
+ */
+void event_storm(void far *ctx)
+{
+    char head[0x1b];     /* [bp-0x1c]   "Severe "        */
+    char msg[0x102];     /* [bp-0x11e]  laid-out message */
+
+    if (g_1730 == 2 || g_1730 == 3)              /* 0x1E07 */
+        return;
+
+    image_show_14c6_0321(S(0x1dcf) /* "events.pcc" */, ctx);   /* 0x1E26 */
+    /* strncpy(head, "Severe " 0x1dda, 0x1b) */
+
+    if (g_1730 < 2) {                            /* 0x1E3E: blizzard */
+        /* msg = head + "blizzard" (0x1de2) */
+        g_15f2 = ladd_20a4_aee(g_15f2, 0x84);    /* 0x1E82: blizzard delay/loss */
+        /* draw the snow over the scene (gfx 0x1ceb + blit 0xe88) */
+    } else {                                     /* 0x1ED3: thunderstorm */
+        /* msg = head + "thunderstorm" (0x1deb) */
+        g_15ec = ladd_20a4_aee(g_15ec, 0x81);    /* 0x1F0D: storm delay/loss */
+        /* animate rain frames (blit 0xea0), with thunder tones when sound is on */
+    }
+    /* ... show the message + member_status, then restore the scene (to 0x2024) ... */
+    (void)head; (void)msg;
+}

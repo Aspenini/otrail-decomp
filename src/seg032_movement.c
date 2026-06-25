@@ -7,15 +7,24 @@
  * trail". It is a small state machine driven by g_at_landmark (0x1729):
  *
  *   - if the wagon is AT a landmark, leaving it triggers the landmark's
- *     handling (a trail fork, a river crossing, the Dalles/Columbia choice, or
- *     a generic arrival), then shows "From <here> it is <N> miles to <next>.";
- *   - otherwise it draws the travel view (the landscape scene) and the
- *     "Press ENTER to size up the situation" prompt.
+ *     handling (a trail fork, a river crossing, or the Dalles/Columbia choice);
+ *   - otherwise it draws the travel view and the "size up the situation" prompt.
  *
- * Note: the per-day mileage/food advance (miles by pace, food by rations) is
- * driven by the daily-update path (see daily_update @ 0x1049:0x3be4) and a
- * helper not yet pinned down; this function is the arrival + travel-view
- * dispatcher. Address-annotated structural reconstruction; not compile-verified.
+ * In both cases it then leaves the landmark (clears g_at_landmark), checks for
+ * oxen (check_oxen @ 0x356a), advances one simulated day (daily_update @
+ * 0x1049:0x3be4 - calendar, illness, food), and computes the day's distance.
+ *
+ * The per-day mileage is computed HERE (0x38d4..0x3958), not in a separate
+ * helper: a chain of 32-bit fixed-point operations on a travel-rate long
+ * (0x15f2, see caveat) and the afflicted-member count (g_172a, 0x172a), using
+ * constants like 0xcccccccd (1/10). The result advances g_miles_past (0x160d)
+ * and reduces g_miles_to (0x160f).
+ *
+ * Caveat: 0x15f2 is read as a long for the mileage/weather math here and in
+ * event_storm, but the new-game setup lift labels the same address
+ * g_start_fund. The two uses are inconsistent and the true meaning is unsettled.
+ *
+ * Address-annotated structural reconstruction; not compile-verified.
  */
 
 #include <stdint.h>
@@ -25,8 +34,9 @@ extern uint8_t  g_must_trade;    /* 0x177c */
 extern uint8_t  g_at_landmark;   /* 0x1729: at a landmark/settlement (fork/river/fort) */
 extern uint16_t g_location;      /* 0x15ea: current location index */
 extern uint8_t  g_179a;          /* 0x179a: display-mode flag */
-extern uint8_t  g_160f, g_160d;  /* arrival bookkeeping */
-extern uint16_t g_160b;
+extern uint8_t  g_160f, g_160d;  /* arrival bookkeeping (miles_to / miles_past) */
+extern uint16_t g_160b;          /* legs-travelled counter */
+extern uint8_t  g_died;          /* 0x1586: a death ended the game */
 
 extern void far_sprintf(/* ... */);                       /* 0x20a4:0x0634 */
 extern void far_print(const char far *s);                 /* 0x20a4:0x06c1 */
@@ -39,7 +49,8 @@ extern void gfx_screen_init_1ceb_0b71(void);              /* 0x1ceb:0x0b71 */
 extern void trail_fork_32_2dbe(void);          /* 0x0032:0x2dbe: "the trail divides here" */
 extern void cross_river_442_18bb(void);        /* 0x0442:0x18bb */
 extern void columbia_dalles_32_2ff5(void);     /* 0x0032:0x2ff5: location 0x10 special */
-extern void arrival_32_356a(void);             /* 0x0032:0x356a: generic landmark arrival */
+extern void check_oxen_32_356a(void);          /* 0x0032:0x356a: block travel if out of oxen */
+extern void daily_update_1049_3be4(void);      /* 0x1049:0x3be4: advance a day (calendar/illness/food) */
 extern void size_up_prompt_32_080d(void);      /* 0x0032:0x080d: "Press ENTER to size up the situation" */
 extern void draw_travel_scene_32_0bd4(void);   /* 0x0032:0x0bd4: draw the landscape/travel view */
 extern void sub_7ce_412e(void);                /* 0x07ce:0x412e */
@@ -79,11 +90,8 @@ void continue_travel(void)
         return;
     }
 
-    arrival_32_356a();                                   /* 0x3703: generic arrival */
-    if (g_quit_flag || g_must_trade) return;             /* 0x3706..0x3712 */
-
-    draw_travel_scene_32_0bd4();                                       /* 0x371A */
-    /* "From <current location> it is <N> miles to <next landmark>." */
+    /* Arrival display: "From <current location> it is <N> miles to <next>." */
+    draw_travel_scene_32_0bd4();                         /* 0x371A */
     far_sprintf(/* buf, cs:0x35ff "From " */);           /* 0x3743 */
     far_print(/* current location name (g_location) */ 0); /* 0x3758 */
     far_print(S(0x3605) /* " it is " */);                /* 0x3762 */
@@ -92,4 +100,17 @@ void continue_travel(void)
     far_print(/* <next landmark name> */ 0);             /* 0x378E */
     far_print(S(0x3618) /* "." */);                      /* 0x3798 */
     press_any_key();                                     /* 0x37E7 */
+
+    /* --- leave the landmark and advance the day --- (0x3882..0x3958) */
+    g_at_landmark = 0;                                   /* 0x3882 */
+    check_oxen_32_356a();                                /* 0x3888: out of oxen blocks travel */
+    if (g_must_trade || g_died || g_quit_flag) return;   /* 0x388B..0x38A5 */
+
+    daily_update_1049_3be4();                            /* 0x38B9: calendar / illness / food */
+    if (g_quit_flag) return;                             /* 0x38BE */
+
+    /* the day's distance: 32-bit fixed-point math on the travel-rate long
+     * (0x15f2) and afflicted-member count (g_172a), with 1/10 constants;
+     * advances g_miles_past and reduces g_miles_to. */
+    /* g_miles_past += miles_today; g_miles_to -= miles_today;   0x38D4..0x3958 */
 }                                                        /* 0x3A6F exit / retf */
