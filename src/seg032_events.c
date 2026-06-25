@@ -261,7 +261,8 @@ void roll_wagon_event(void far *ctx)
  */
 extern uint16_t g_location;                  /* 0x15ea */
 extern uint16_t g_1730;                      /* conditions/severity tier        */
-extern long g_15ec, g_15f2;                  /* weather-adjusted resources (long)*/
+extern long g_rain;     /* 0x15ec: rain/mud accumulator (thunderstorm adds)     */
+extern long g_snow;     /* 0x15f2: snow depth (blizzard adds; slows mileage)    */
 extern void image_show_14c6_0321(const char far *n, void far *h);
 extern void image_blit_14c6_03ea(const char far *data, int x, int y, int flag);
 extern void image_free_14c6_043c(int a, int b);
@@ -319,11 +320,11 @@ void event_storm(void far *ctx)
 
     if (g_1730 < 2) {                            /* 0x1E3E: blizzard */
         /* msg = head + "blizzard" (0x1de2) */
-        g_15f2 = ladd_20a4_aee(g_15f2, 0x84);    /* 0x1E82: blizzard delay/loss */
+        g_snow = ladd_20a4_aee(g_snow, 0x84);     /* 0x1E82: blizzard piles on snow */
         /* draw the snow over the scene (gfx 0x1ceb + blit 0xe88) */
     } else {                                     /* 0x1ED3: thunderstorm */
         /* msg = head + "thunderstorm" (0x1deb) */
-        g_15ec = ladd_20a4_aee(g_15ec, 0x81);    /* 0x1F0D: storm delay/loss */
+        g_rain = ladd_20a4_aee(g_rain, 0x81);     /* 0x1F0D: storm adds rain/mud */
         /* animate rain frames (blit 0xea0), with thunder tones when sound is on */
     }
     /* ... show the message + member_status, then restore the scene (to 0x2024) ... */

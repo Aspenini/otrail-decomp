@@ -64,7 +64,7 @@ extern long lhelp_20a4_0b50(void);             /* 0x20a4:0x0b50 */
 extern uint8_t  g_departure_month; /* 0x15c1: month chosen to leave (3=Mar..7=Jul)  */
 extern uint8_t  g_pace, g_rations, g_1610, g_160a;
 extern uint16_t g_15d8, g_15da, g_15dc, g_15ea, g_160b, g_160d, g_1611, g_1613, g_1615;
-extern long     g_start_fund;      /* 0x15f2 */
+extern long     g_snow;            /* 0x15f2: snow depth on the trail (slows travel) */
 extern long     g_score_factor;    /* 0x15ec: derived from (7 - profession)         */
 extern uint8_t  g_15f8[0x11];      /* 17-byte state array                            */
 extern uint8_t  g_15de[4];         /* 4 party-member flags                           */
@@ -167,11 +167,13 @@ static void start_new_game(int arg)
     g_15ea = 0;                                  /* 0x1FE5 */
     g_1610 = 1;                                  /* 0x1FE8 */
 
-    /* Early departure (month < 4, i.e. March) seeds a starting value; else 0. */
+    /* Snow on the trail: leaving early (month < 4, i.e. March) starts with a
+     * random amount of residual winter snow; April or later starts clear. The
+     * blizzard event adds to it and continue_travel reads it to slow mileage. */
     if (g_departure_month < 4)                   /* 0x1FED */
-        g_start_fund = lmul_20a4_0b00(lhelp_20a4_0b50(), 0x84);   /* 0x1FF4..0x2009 */
+        g_snow = lmul_20a4_0b00(lhelp_20a4_0b50(), 0x84);   /* 0x1FF4..0x2009 */
     else
-        g_start_fund = 0;                        /* 0x2013 */
+        g_snow = 0;                              /* 0x2013 */
 
     /* Score factor scales with how late you leave: (7 - departure_month). */
     g_score_factor = lhelp_20a4_0aee(            /* 0x2042..0x204E */

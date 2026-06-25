@@ -15,14 +15,10 @@
  * 0x1049:0x3be4 - calendar, illness, food), and computes the day's distance.
  *
  * The per-day mileage is computed HERE (0x38d4..0x3958), not in a separate
- * helper: a chain of 32-bit fixed-point operations on a travel-rate long
- * (0x15f2, see caveat) and the afflicted-member count (g_172a, 0x172a), using
- * constants like 0xcccccccd (1/10). The result advances g_miles_past (0x160d)
- * and reduces g_miles_to (0x160f).
- *
- * Caveat: 0x15f2 is read as a long for the mileage/weather math here and in
- * event_storm, but the new-game setup lift labels the same address
- * g_start_fund. The two uses are inconsistent and the true meaning is unsettled.
+ * helper: a chain of 32-bit fixed-point operations on the snow depth (g_snow,
+ * 0x15f2) and the afflicted-member count (g_172a, 0x172a), using constants like
+ * 0xcccccccd (1/10) - deeper snow and more sick travellers cut the day's
+ * distance. The result advances g_miles_past (0x160d) and reduces g_miles_to.
  *
  * Address-annotated structural reconstruction; not compile-verified.
  */

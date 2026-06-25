@@ -998,16 +998,16 @@
       "note": "calendar year; starts at 1848 (0x738)"
     },
     "15f2": {
-      "name": "g_start_fund",
-      "confidence": "low",
+      "name": "g_snow",
+      "confidence": "high",
       "type": "i32",
-      "note": "starting funds in new-game setup (d08); BUT also read as a long for weather/mileage math in event_storm and continue_travel - the two uses conflict, true meaning unsettled"
+      "note": "snow depth on the trail; seeded at game start by departure month (March=random, April+=0), increased by the blizzard event, read by continue_travel to slow daily mileage. (Was mislabelled g_start_fund.)"
     },
     "15ec": {
-      "name": "g_score_factor",
+      "name": "g_rain",
       "confidence": "med",
       "type": "i32",
-      "note": "final-score multiplier from (7 - profession)"
+      "note": "rain/mud accumulator; increased by the thunderstorm event"
     },
     "15f8": {
       "name": "g_route",
