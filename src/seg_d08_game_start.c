@@ -65,9 +65,9 @@ extern uint8_t  g_departure_month; /* 0x15c1: month chosen to leave (3=Mar..7=Ju
 extern uint8_t  g_pace, g_rations, g_1610, g_160a;
 extern uint16_t g_15d8, g_15da, g_15dc, g_15ea, g_160b, g_160d, g_1611, g_1613, g_1615;
 extern long     g_snow;            /* 0x15f2: snow depth on the trail (slows travel) */
-extern long     g_score_factor;    /* 0x15ec: derived from (7 - profession)         */
-extern uint8_t  g_15f8[0x11];      /* 17-byte state array                            */
-extern uint8_t  g_15de[4];         /* 4 party-member flags                           */
+extern long     g_rain;            /* 0x15ec: rain/water level (raises river danger) */
+extern uint8_t  g_route[0x11];     /* 0x15f8: trail-map route (location ids), cleared */
+extern uint8_t  g_member_ailment[4]; /* 0x15de: per-member ailment code, cleared      */
 extern uint8_t  g_15e3[4];
 
 /* CONST pool strings in this segment:
@@ -175,12 +175,15 @@ static void start_new_game(int arg)
     else
         g_snow = 0;                              /* 0x2013 */
 
-    /* Score factor scales with how late you leave: (7 - departure_month). */
-    g_score_factor = lhelp_20a4_0aee(            /* 0x2042..0x204E */
+    /* Rain seed: leaving later in the season starts wetter, random / (7 - month).
+     * The thunderstorm event adds to it and the river crossings read it as the
+     * water level. (Despite the (7 - month) shape, this is NOT the game score -
+     * show_ending tallies oxen/food/cash; see the note below.) */
+    g_rain = lhelp_20a4_0aee(                     /* 0x2042..0x204E */
         ldiv_20a4_0b14(lhelp_20a4_0b50(), 7 - g_departure_month)); /* 0x202D..0x203A */
 
-    for (i = 0; i < 0x11; i++) g_15f8[i] = 0;    /* 0x2052..0x2068 */
-    for (i = 0; i < 4;    i++) g_15de[i] = 0;    /* 0x206A..0x2080 */
+    for (i = 0; i < 0x11; i++) g_route[i] = 0;          /* 0x2052..0x2068: clear the map route */
+    for (i = 0; i < 4;    i++) g_member_ailment[i] = 0; /* 0x206A..0x2080: clear ailments */
     for (i = 0; i < 4;    i++) g_15e3[i] = 0;    /* 0x2082..0x2098 */
 
     g_160a = 0; g_160b = 0; g_160d = 0;          /* 0x209A */

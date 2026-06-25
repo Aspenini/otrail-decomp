@@ -7,11 +7,17 @@
  * the player, tallies the final score, and -- if it's high enough -- adds them
  * to the Oregon Top Ten (HISCORES.REC).
  *
- * Oregon Trail scoring: points are awarded for surviving party members, leftover
- * supplies, and cash, then multiplied by an occupation/difficulty factor (the
- * "7 - departure_month" style factor set in start_new_game; the farmer earns the
- * most, the banker the least). The exact arithmetic is 32-bit long math and is
- * summarised here.
+ * Oregon Trail scoring: points are awarded for surviving party members and for
+ * what the wagon still carries - oxen (0x15c4), food (0x15ca), clothing/ammo
+ * (0x15cc/0x15cd), spare wheels/axles/tongues (0x15cf/0x15d0/0x15d1), cash
+ * (0x15d2) - plus trail progress (0x15d8), each with fixed point values (50, 500,
+ * ...). The exact arithmetic is 32-bit long math and is summarised here.
+ *
+ * NOTE: show_ending reads none of 0x15ec or the departure month, so there is no
+ * "7 - departure_month" score multiplier - that value is g_rain (weather), not a
+ * score factor. The earlier "occupation/difficulty multiplier" note (and the
+ * g_score_factor @ 0x15ec extern) was the mislabel; corrected here. Departure
+ * timing only affects the game through weather (snow/rain), not the score.
  *
  * Address-annotated structural reconstruction; not yet compile-verified.
  */
@@ -20,7 +26,6 @@
 
 extern uint8_t  g_quit_flag;     /* 0x1520 */
 extern uint8_t  g_input_buf;     /* 0x141a */
-extern long     g_score_factor;  /* 0x15ec: occupation/difficulty multiplier */
 extern uint16_t g_15d8, g_15da, g_15dc;  /* 0x15d8: running score accumulator (long) */
 extern uint8_t  g_topten_cur[];  /* 0x1674: current Top Ten list */
 
@@ -55,9 +60,11 @@ void show_ending(void)
     /* --- score breakdown --- */
     gfx_screen_init_1ceb_0b71();                        /* 0x03E4 */
     far_sprintf(/* "Points for arriving in Oregon" cs:0x1a9 */);  /* 0x03E9.. */
-    /* For each surviving party member, for leftover supplies, and for cash,
-     * award points and multiply by g_score_factor. The running total lives in
-     * the long at g_15d8. (party_size @ 0x047C, long math @ 0x0495..) */
+    /* Award points for each surviving party member, for leftover supplies
+     * (oxen/food/clothing/spares/cash) and for trail progress (0x15d8); each
+     * category adds into the running total at g_15d8. No occupation or
+     * departure-month multiplier is applied. (party_size @ 0x047C, long math
+     * @ 0x0495..) */
     (void)party_size_1049_2e57();
     score = (long)g_15d8 | ((long)g_15da << 16);        /* accumulated points */
 

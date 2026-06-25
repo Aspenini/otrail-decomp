@@ -1005,9 +1005,9 @@
     },
     "15ec": {
       "name": "g_rain",
-      "confidence": "med",
+      "confidence": "high",
       "type": "i32",
-      "note": "rain/mud accumulator; increased by the thunderstorm event"
+      "note": "rain/water level; seeded at game start from departure month (rand/(7-month)), increased by the thunderstorm event, read by the river-crossing code (seg 0x442) as crossing danger. (Was mislabelled g_score_factor.)"
     },
     "15f8": {
       "name": "g_route",
