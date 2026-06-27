@@ -82,12 +82,30 @@ task("decomp")
         os.mkdir("build")
         os.execv(py, {"tools/unlzexe.py", GAME, UNPACKED})
         os.execv(py, {"tools/map_segments.py", UNPACKED})
+        os.execv(py, {"tools/match_inventory.py", UNPACKED})
         os.execv(py, {"tools/verify.py"})
         os.execv(py, {"tools/render_progress_svg.py"})
         cprint("${color.success}decompiled -> %s", UNPACKED)
     end)
     set_menu {usage = "xmake decomp",
               description = "Reverse-engineer the game (unpack, map, verify, dashboard)"}
+task_end()
+
+task("dosbuild")
+    on_run(function ()
+        os.execv(import("pyhelper")(), {"tools/match_build.py", "--build-only"})
+    end)
+    set_menu {usage = "xmake dosbuild",
+              description = "Compile match/ with Turbo C 2.0 under DOSBox-X (stage, build, extract)"}
+task_end()
+
+task("match")
+    on_run(function ()
+        os.mkdir("build/match")
+        os.execv(import("pyhelper")(), {"tools/match_build.py"})
+    end)
+    set_menu {usage = "xmake match",
+              description = "Build match/ under DOSBox-X and diff vs the original (% matched)"}
 task_end()
 
 task("verify")

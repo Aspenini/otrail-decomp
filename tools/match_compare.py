@@ -48,20 +48,34 @@ def compare(image, masked, off, size, compiled):
     return matched, comparable
 
 
-def main(argv):
-    self_test = "--self-test" in argv
-    image, masked = load("build/OREGON_unpacked.exe")
-    targets = json.load(open("config/match_targets.json", encoding="utf-8"))
+def compute(match_dir=os.path.join("build", "match"),
+            image_path="build/OREGON_unpacked.exe", self_test=False):
+    """Compute matching stats. Returns a dict the dashboard and CLI both use.
 
-    total = matched_total = exact = present = 0
+    Safe to call when nothing has been matched yet (or even before the image is
+    unpacked): on a missing image it falls back to the target metadata so the
+    denominator is still reported and the dashboard renders 0 / N.
+    """
+    targets = json.load(open("config/match_targets.json", encoding="utf-8"))
+    stats = {
+        "function_count": targets["function_count"],
+        "total_bytes": targets.get("total_bytes")
+                       or sum(f["size"] for f in targets["functions"]),
+        "exact": 0, "present": 0, "matched_bytes": 0, "rows": [],
+    }
+    if not os.path.exists(image_path):
+        return stats
+
+    image, masked = load(image_path)
+    total = stats["total_bytes"]
+    matched_total = exact = present = 0
     rows = []
     for f in targets["functions"]:
         off, size = f["offset"], f["size"]
-        total += size
         if self_test:
             blob = image[off:off + size]            # feed each function its own bytes
         else:
-            p = os.path.join("build", "match", f["name"] + ".bin")
+            p = os.path.join(match_dir, f["name"] + ".bin")
             if not os.path.exists(p):
                 continue
             blob = open(p, "rb").read()
@@ -71,6 +85,20 @@ def main(argv):
         if m == c:
             exact += 1
         rows.append((f["name"], m, c))
+
+    stats.update(exact=exact, present=present, matched_bytes=matched_total, rows=rows)
+    return stats
+
+
+def main(argv):
+    self_test = "--self-test" in argv
+    stats = compute(self_test=self_test)
+    total = stats["total_bytes"]
+    matched_total = stats["matched_bytes"]
+    exact = stats["exact"]
+    present = stats["present"]
+    rows = stats["rows"]
+    targets = {"function_count": stats["function_count"]}
 
     pct = 100.0 * matched_total / total if total else 0.0
     if self_test:

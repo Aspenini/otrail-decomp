@@ -10,6 +10,9 @@ __pycache__/
 # Build and generated artifacts
 build/*
 !build/.gitkeep
+!build/match/
+build/match/*
+!build/match/.gitkeep
 *.o
 *.obj
 *.a

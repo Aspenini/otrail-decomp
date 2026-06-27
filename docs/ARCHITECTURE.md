@@ -21,13 +21,13 @@ near the stack. The most-referenced data group is segment `0x2231`.
 | `0x0032` | **trail engine** (travel loop, turns)  | `src/seg032_trail.c`            |
 | `0x0442` | **river crossing**                     | `src/seg_442_river.c`           |
 | `0x0606` | **hunting minigame**                   | `src/seg_606_hunt.c`            |
-| `0x07ce` | player actions (pace/rations/rest/…)   | —                               |
-| `0x0c00` | "See the Oregon Top Ten" (high scores) | —                               |
+| `0x07ce` | player actions (pace/rations/rest/…)   | `src/seg_7ce_actions.c`, `src/seg_7ce_death.c`, `src/seg_7ce_ending.c` |
+| `0x0c00` | "See the Oregon Top Ten" (high scores) | `src/seg_c00_topten.c`          |
 | `0x0c6b` | "Learn about the Trail" slideshow      | `src/seg_c6b_learn.c`           |
 | `0x0d08` | new-game setup + store                 | `src/seg_d08_game_start.c`, `src/seg_d08_setup.c` |
 | `0x0f34` | "Choose Management Options"            | —                               |
 | `0x1049` | **shared library**: text, input, fmt, save I/O (82 fns) | `src/seg1049_text.c` |
-| `0x14c6` | image loader (`.PCC` files)            | —                               |
+| `0x14c6` | image loader (`.PCC` files)            | `src/seg_14c6_image.c`          |
 | `0x150c` | graphics module (glyph blitting)       | —                               |
 | `0x182e` | graphics module (42 fns)               | —                               |
 | `0x1ceb` | graphics module (boxes/lines, screen save/restore) | —                   |
@@ -145,8 +145,12 @@ uses `\` as its line-break character throughout.
 
 ## Where to go next
 
-Open subsystems with named-but-not-yet-lifted entry points: the player actions
-in `0x07ce` (pace/rations/rest/trade), the high-score screen (`0x0c00`), the
-management options (`0x0f34`), and the graphics/runtime libraries. The per-turn
-status formatters and the save-file I/O in `0x1049` are also good targets. See
+The control-flow spine and the per-turn action handlers are lifted: `0x07ce`
+(player actions, trade, fort store, death/tombstone), `0x0442` (river crossing,
+all eight handlers), and the `0x14c6` image front-end are complete. Open
+subsystems with named-but-not-yet-lifted entry points: the management options
+(`0x0f34`), the hunting setup/shoot helpers (`0x0606`), and the graphics/runtime
+libraries — the PCX codec (`0x182e`, `bgi_*`), the glyph/box primitives
+(`0x150c`, `0x1ceb`), and the keyboard module (`0x2042`). The per-turn status
+formatters and the save-file I/O in `0x1049` are also good targets. See
 `docs/decompiling.md` for the per-function workflow.

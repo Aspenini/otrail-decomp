@@ -233,7 +233,8 @@
     "14c6:021a": {
       "name": "image_load",
       "confidence": "high",
-      "note": "load/display a .pcc image (family.pcc, supplies.pcc)"
+      "note": "load a .PCC and blit it to the screen at (x,y)",
+      "file": "src/seg_14c6_image.c"
     },
     "1049:008c": {
       "name": "rand",
@@ -295,13 +296,15 @@
     },
     "14c6:0321": {
       "name": "image_show",
-      "confidence": "med",
-      "note": "load+display a .pcc into a buffer"
+      "confidence": "high",
+      "note": "load a .PCC into a caller buffer (w/h header), no screen output",
+      "file": "src/seg_14c6_image.c"
     },
     "14c6:043c": {
       "name": "image_free",
-      "confidence": "med",
-      "note": "free a loaded image"
+      "confidence": "high",
+      "note": "release a loaded image (close codec handle)",
+      "file": "src/seg_14c6_image.c"
     },
     "20a4:0b00": {
       "name": "lmul",
@@ -425,6 +428,11 @@
       "file": "src/seg_442_river.c",
       "note": "river crossing: show width/depth, offer ford/caulk/ferry/indian/wait/info, dispatch"
     },
+    "0442:0000": {
+      "name": "river_display",
+      "confidence": "low",
+      "note": "recompute + show river width/depth/weather; called by cross_river setup and wait_conditions"
+    },
     "0442:02be": {
       "name": "ford_river",
       "confidence": "high",
@@ -445,23 +453,27 @@
     },
     "0442:0e2c": {
       "name": "hire_indian",
-      "confidence": "med",
-      "note": "Shoshoni guide takes wagon across in exchange for N sets of clothing"
+      "confidence": "high",
+      "note": "Shoshoni guide crosses the wagon for N (rand 2-3) sets of clothing, then fords/floats",
+      "file": "src/seg_442_river.c"
     },
     "0442:1090": {
       "name": "wait_conditions",
-      "confidence": "med",
-      "note": "wait to see if river conditions improve"
+      "confidence": "high",
+      "note": "wait/camp a day: advance calendar, re-roll weather, redraw river, loop the menu",
+      "file": "src/seg_442_river.c"
     },
     "0442:126f": {
       "name": "get_more_info",
-      "confidence": "med",
-      "note": "get more information about the river"
+      "confidence": "high",
+      "note": "explain ford/caulk-float/ferry, one screen each",
+      "file": "src/seg_442_river.c"
     },
     "0442:1321": {
       "name": "river_done",
-      "confidence": "low",
-      "note": "post-crossing cleanup"
+      "confidence": "med",
+      "note": "river-crossing animation (float.pcc raft sprite) then arrival/result text",
+      "file": "src/seg_442_river.c"
     },
     "0032:2dbe": {
       "name": "trail_fork",
@@ -558,6 +570,31 @@
       "confidence": "med",
       "note": "load and display a standalone .PCX (graphics module)"
     },
+    "182e:22a0": {
+      "name": "bgi_open_image",
+      "confidence": "med",
+      "note": "open a .PCC and read its header (-1 on failure)"
+    },
+    "182e:3b6d": {
+      "name": "bgi_read_image",
+      "confidence": "med",
+      "note": "decode PCX pixels into a buffer using the active mode"
+    },
+    "182e:3c35": {
+      "name": "bgi_close_image",
+      "confidence": "med",
+      "note": "close/free a loaded image handle"
+    },
+    "182e:3e46": {
+      "name": "bgi_image_meta",
+      "confidence": "low",
+      "note": "store/return a loaded image width/height metadata"
+    },
+    "182e:3f65": {
+      "name": "bgi_blit",
+      "confidence": "med",
+      "note": "blit a decoded image rectangle to the screen"
+    },
     "0032:2ca2": {
       "name": "save_restore_screen",
       "confidence": "med",
@@ -634,6 +671,16 @@
       "confidence": "low",
       "note": "read a record from an open file"
     },
+    "20a4:0329": {
+      "name": "mem_alloc",
+      "confidence": "med",
+      "note": "malloc(size) -> far pointer"
+    },
+    "20a4:0364": {
+      "name": "mem_free",
+      "confidence": "med",
+      "note": "free(far pointer)"
+    },
     "0606:1968": {
       "name": "hunt",
       "confidence": "high",
@@ -662,8 +709,9 @@
     },
     "14c6:03ea": {
       "name": "image_blit",
-      "confidence": "low",
-      "note": "blit a loaded image at x"
+      "confidence": "high",
+      "note": "blit a previously-loaded image buffer at (x,y)",
+      "file": "src/seg_14c6_image.c"
     },
     "07ce:1d3c": {
       "name": "buy_at_fort",
@@ -731,8 +779,9 @@
     },
     "07ce:0db9": {
       "name": "show_death_msg",
-      "confidence": "med",
-      "note": "near; draw the cause-of-death message with screen save/restore"
+      "confidence": "high",
+      "note": "\"Press SPACE BAR to continue\" modal: save screen rect, draw prompt, wait space/enter, restore",
+      "file": "src/seg_7ce_death.c"
     },
     "1049:274e": {
       "name": "draw_tombstone",
@@ -765,6 +814,16 @@
       "confidence": "high",
       "note": "draw single text line at position"
     },
+    "1049:04df": {
+      "name": "read_key_in",
+      "confidence": "med",
+      "note": "read one keypress restricted to an allowed-char set"
+    },
+    "1049:13bb": {
+      "name": "report_error",
+      "confidence": "low",
+      "note": "show a fatal/asset error by code (e.g. 0x98 = image load failed)"
+    },
     "1ceb:eb8": {
       "name": "save_screen_rect",
       "confidence": "med",
@@ -774,6 +833,21 @@
       "name": "gfx_rect",
       "confidence": "med",
       "note": "draw/fill rectangle x1,y1,x2,y2; graphics module"
+    },
+    "1ceb:0eb8": {
+      "name": "gfx_rect_bytes",
+      "confidence": "med",
+      "note": "byte size needed to save a screen rectangle"
+    },
+    "1ceb:0eec": {
+      "name": "gfx_restore_rect",
+      "confidence": "med",
+      "note": "blit a saved rectangle back to the screen"
+    },
+    "1ceb:1a14": {
+      "name": "gfx_save_rect",
+      "confidence": "med",
+      "note": "copy a screen rectangle into a buffer"
     },
     "0032:080d": {
       "name": "size_up_prompt",
@@ -833,6 +907,10 @@
     }
   },
   "globals": {
+    "3d8": {
+      "name": "g_keybuf",
+      "note": "one-char scratch buffer for read_key_in (restricted key reads)"
+    },
     "1410": {
       "name": "g_sound_on",
       "confidence": "high",
@@ -1159,6 +1237,10 @@
       "type": "u16",
       "note": "panel Y origin for draw_panel"
     },
+    "15cc": {
+      "name": "g_clothing",
+      "note": "sets of clothing in inventory (store item); spent to hire a river guide"
+    },
     "15cf": {
       "name": "g_spare_wheels",
       "confidence": "high",
@@ -1194,6 +1276,14 @@
       "confidence": "med",
       "type": "u16",
       "note": "legs/segments travelled counter (incremented on river crossings)"
+    },
+    "179c": {
+      "name": "g_image_pathbuf",
+      "note": "scratch path buffer used while loading a .PCC image"
+    },
+    "189c": {
+      "name": "g_bgi_mode",
+      "note": "active graphics decode/palette mode passed to the PCX codec"
     }
   }
 }

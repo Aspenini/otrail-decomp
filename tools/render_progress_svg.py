@@ -7,10 +7,16 @@ top of the README. Re-run via `make svg`; it stays honest as the work grows.
 from __future__ import annotations
 
 import json
+import sys
 from collections import Counter
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import match_compare  # noqa: E402  (sibling tool, used for the matched-code stats)
 
 SEG = json.load(open("config/segments.json", encoding="utf-8"))
 SYM = json.load(open("config/symbols.json", encoding="utf-8"))
+MSTATS = match_compare.compute()  # 0/N until functions land in build/match/
 
 num_segments = len(SEG["code_segments"])
 conf = sorted(SEG["code_segments"], key=lambda c: -c["func_count"])[:12]
@@ -33,6 +39,7 @@ for k, v in SYM["functions"].items():
 BG, PANEL, STROKE = "#161b17", "#1e2620", "#313b32"
 TXT, SUB = "#eef1ea", "#97a394"
 GREEN, AMBER, MUTE = "#74c365", "#e0a44f", "#3a463b"
+MATCH = "#5ec8c8"   # byte-exact against the original (the matching endgame)
 FS = "font-family='Segoe UI,Helvetica,Arial,sans-serif'"
 FM = "font-family='ui-monospace,Consolas,monospace'"
 
@@ -103,6 +110,15 @@ def progress(label, val, total, color, yy):
 
 y = progress("Functions named / identified", named, discovered, AMBER, y)
 y = progress("Functions lifted to C", lifted, discovered, GREEN, y)
+y = progress("Functions matched byte-exact", MSTATS["exact"],
+             MSTATS["function_count"], MATCH, y)
+# byte-level sub-note under the matched bar (the metric matching.md defines)
+mbytes, tbytes = MSTATS["matched_bytes"], MSTATS["total_bytes"]
+mpct = 100.0 * mbytes / tbytes if tbytes else 0.0
+out.append(text(W - PAD, y - 14, f"{mbytes:,} / {tbytes:,} code bytes ({mpct:.1f}%)",
+                11, SUB, FM, anchor="end"))
+out.append(text(PAD, y - 14, "Borland Turbo C 2.0 &#183; large model &#183; DOSBox",
+                11, SUB, FS))
 y += 8
 
 # ---- per-segment breakdown -------------------------------------------------
@@ -135,13 +151,16 @@ for c in conf:
 y += 6
 
 # ---- legend / footer -------------------------------------------------------
-out.append(f"<circle cx='{PAD+5}' cy='{y}' r='5' fill='{GREEN}'/>")
-out.append(text(PAD + 16, y + 4, "lifted to C", 11, SUB, FS))
-out.append(f"<circle cx='{PAD+110}' cy='{y}' r='5' fill='{AMBER}'/>")
-out.append(text(PAD + 121, y + 4, "named", 11, SUB, FS))
-out.append(f"<circle cx='{PAD+185}' cy='{y}' r='5' fill='{MUTE}'/>")
-out.append(text(PAD + 196, y + 4, "discovered", 11, SUB, FS))
-out.append(text(W - PAD, y + 4, f"{named} named &#183; {lifted} lifted &#183; {nglob} globals",
+out.append(f"<circle cx='{PAD+5}' cy='{y}' r='5' fill='{MATCH}'/>")
+out.append(text(PAD + 16, y + 4, "matched", 11, SUB, FS))
+out.append(f"<circle cx='{PAD+95}' cy='{y}' r='5' fill='{GREEN}'/>")
+out.append(text(PAD + 106, y + 4, "lifted to C", 11, SUB, FS))
+out.append(f"<circle cx='{PAD+200}' cy='{y}' r='5' fill='{AMBER}'/>")
+out.append(text(PAD + 211, y + 4, "named", 11, SUB, FS))
+out.append(f"<circle cx='{PAD+275}' cy='{y}' r='5' fill='{MUTE}'/>")
+out.append(text(PAD + 286, y + 4, "discovered", 11, SUB, FS))
+out.append(text(W - PAD, y + 4,
+                f"{MSTATS['exact']} matched &#183; {lifted} lifted &#183; {named} named",
                 11, SUB, FM, anchor="end"))
 y += 24
 

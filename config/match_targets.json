@@ -1,8 +1,8 @@
 {
- "source": "F:\\Projects\\otrail-decomp\\build\\OREGON_unpacked.exe",
+ "source": "build/OREGON_unpacked.exe",
  "function_count": 218,
  "total_bytes": 93559,
- "lifted_functions": 39,
+ "lifted_functions": 63,
  "note": "framed (Borland stack-frame) functions only; size = bytes to the next function entry, so includes any trailing CONST data.",
  "functions": [
   {
@@ -27,7 +27,7 @@
    "segment": 67,
    "size": 649,
    "sha8": "f9d7500b",
-   "lifted": false
+   "lifted": true
   },
   {
    "name": "look_around_prompt",
@@ -51,10 +51,10 @@
    "segment": 151,
    "size": 440,
    "sha8": "dd19bcee",
-   "lifted": false
+   "lifted": true
   },
   {
-   "name": "sub_00b2d",
+   "name": "size_up_prompt",
    "offset": 2861,
    "segment": 178,
    "size": 129,
@@ -78,7 +78,7 @@
    "lifted": false
   },
   {
-   "name": "sub_00ef4",
+   "name": "draw_travel_scene",
    "offset": 3828,
    "segment": 239,
    "size": 249,
@@ -94,7 +94,7 @@
    "lifted": false
   },
   {
-   "name": "sub_01055",
+   "name": "weather_effect",
    "offset": 4181,
    "segment": 261,
    "size": 322,
@@ -182,12 +182,12 @@
    "lifted": false
   },
   {
-   "name": "sub_017ed",
+   "name": "event_ox_dies",
    "offset": 6125,
    "segment": 382,
    "size": 580,
    "sha8": "9645195d",
-   "lifted": false
+   "lifted": true
   },
   {
    "name": "event_broken_wagon",
@@ -195,7 +195,7 @@
    "segment": 419,
    "size": 1120,
    "sha8": "699a7183",
-   "lifted": false
+   "lifted": true
   },
   {
    "name": "event_broken_part",
@@ -203,15 +203,15 @@
    "segment": 489,
    "size": 257,
    "sha8": "8655a447",
-   "lifted": false
+   "lifted": true
   },
   {
-   "name": "sub_01f92",
+   "name": "roll_wagon_event",
    "offset": 8082,
    "segment": 505,
    "size": 109,
    "sha8": "ffb7a265",
-   "lifted": false
+   "lifted": true
   },
   {
    "name": "sub_01fff",
@@ -222,20 +222,20 @@
    "lifted": false
   },
   {
-   "name": "sub_02118",
+   "name": "event_storm",
    "offset": 8472,
    "segment": 529,
    "size": 590,
    "sha8": "c365f7b6",
-   "lifted": false
+   "lifted": true
   },
   {
-   "name": "sub_02366",
+   "name": "event_find_fruit",
    "offset": 9062,
    "segment": 566,
    "size": 353,
    "sha8": "6e9c8a9b",
-   "lifted": false
+   "lifted": true
   },
   {
    "name": "sub_024c7",
@@ -283,7 +283,7 @@
    "segment": 733,
    "size": 492,
    "sha8": "abe17412",
-   "lifted": false
+   "lifted": true
   },
   {
    "name": "save_restore_screen",
@@ -307,18 +307,18 @@
    "segment": 781,
    "size": 567,
    "sha8": "191e6020",
-   "lifted": false
+   "lifted": true
   },
   {
-   "name": "loc10_handler",
+   "name": "columbia_dalles",
    "offset": 13077,
    "segment": 817,
    "size": 490,
    "sha8": "758f464b",
-   "lifted": false
+   "lifted": true
   },
   {
-   "name": "sub_034ff",
+   "name": "raft_columbia",
    "offset": 13567,
    "segment": 847,
    "size": 907,
@@ -326,12 +326,12 @@
    "lifted": false
   },
   {
-   "name": "sub_0388a",
+   "name": "check_oxen",
    "offset": 14474,
    "segment": 904,
    "size": 176,
    "sha8": "1ef91387",
-   "lifted": false
+   "lifted": true
   },
   {
    "name": "continue_travel",
@@ -339,7 +339,7 @@
    "segment": 915,
    "size": 1128,
    "sha8": "1e508087",
-   "lifted": false
+   "lifted": true
   },
   {
    "name": "check_supplies",
@@ -374,7 +374,7 @@
    "lifted": true
   },
   {
-   "name": "sub_04420",
+   "name": "river_display",
    "offset": 17440,
    "segment": 1090,
    "size": 702,
@@ -395,7 +395,7 @@
    "segment": 1195,
    "size": 858,
    "sha8": "b3ae036e",
-   "lifted": false
+   "lifted": true
   },
   {
    "name": "take_ferry",
@@ -403,7 +403,7 @@
    "segment": 1248,
    "size": 1085,
    "sha8": "b8edf168",
-   "lifted": false
+   "lifted": true
   },
   {
    "name": "hire_indian",
@@ -411,7 +411,7 @@
    "segment": 1316,
    "size": 612,
    "sha8": "7dc91ae4",
-   "lifted": false
+   "lifted": true
   },
   {
    "name": "wait_conditions",
@@ -419,7 +419,7 @@
    "segment": 1355,
    "size": 479,
    "sha8": "ece4c2c7",
-   "lifted": false
+   "lifted": true
   },
   {
    "name": "get_more_info",
@@ -427,7 +427,7 @@
    "segment": 1384,
    "size": 178,
    "sha8": "758f5703",
-   "lifted": false
+   "lifted": true
   },
   {
    "name": "river_done",
@@ -435,7 +435,7 @@
    "segment": 1396,
    "size": 1434,
    "sha8": "d50318f4",
-   "lifted": false
+   "lifted": true
   },
   {
    "name": "cross_river",
@@ -643,7 +643,7 @@
    "segment": 2217,
    "size": 382,
    "sha8": "3c2a78c6",
-   "lifted": false
+   "lifted": true
   },
   {
    "name": "death_sequence",
@@ -1110,7 +1110,7 @@
    "lifted": false
   },
   {
-   "name": "sub_1096f",
+   "name": "read_key_in",
    "offset": 67951,
    "segment": 4246,
    "size": 1126,
@@ -1262,7 +1262,7 @@
    "lifted": false
   },
   {
-   "name": "sub_1184b",
+   "name": "report_error",
    "offset": 71755,
    "segment": 4484,
    "size": 235,
@@ -1723,7 +1723,7 @@
    "segment": 5351,
    "size": 263,
    "sha8": "3689c49d",
-   "lifted": false
+   "lifted": true
   },
   {
    "name": "image_show",
@@ -1731,7 +1731,7 @@
    "segment": 5368,
    "size": 201,
    "sha8": "effc78a7",
-   "lifted": false
+   "lifted": true
   },
   {
    "name": "image_blit",
@@ -1739,7 +1739,7 @@
    "segment": 5380,
    "size": 82,
    "sha8": "f9d3874a",
-   "lifted": false
+   "lifted": true
   },
   {
    "name": "image_free",
@@ -1747,7 +1747,7 @@
    "segment": 5385,
    "size": 8192,
    "sha8": "2938e530",
-   "lifted": false
+   "lifted": true
   }
  ]
 }

@@ -38,6 +38,8 @@ or decompiled directly. **Step one is always to unpack.**
 |---------------------------------|----------------------------------------------------|
 | `Oregon_The_1990/`              | Original game files (the packed `OREGON.EXE`)      |
 | `tools/unlzexe.py`              | LZEXE 0.91 unpacker (decompression + relocations)  |
+| `tools/dosrun.py`               | run a DOS command under DOSBox-X (the matching runtime) |
+| `match/` / `dos/`               | byte-matching C sources / the DOS build root       |
 | `tools/map_segments.py`         | Segment / function map from the unpacked image     |
 | `tools/render_progress_svg.py`  | Generates the README progress dashboard            |
 | `tools/verify.py`               | Structural regression gate                         |
@@ -69,7 +71,14 @@ xmake decomp           # reverse-engineer the original game (unpack, map, verify
 xmake verify           # re-check the unpack (the regression gate)
 xmake assets           # extract the game art
 xmake status           # how far the project has come
+
+xmake dosbuild         # compile match/ with Turbo C 2.0 under DOSBox-X
+xmake match            # ...then diff vs the original and print % matched
 ```
+
+The matching commands need DOSBox-X and a Turbo C 2.0 install (one-time setup in
+[`dos/README.md`](dos/README.md)); without them they print guidance and still
+report status. See [`docs/matching.md`](docs/matching.md).
 
 Builds go in `build/`: `OREGON_unpacked.exe` (the decompiled game) and
 `oregon_trail` (the port). To build the headless backend instead (no SDL, writes

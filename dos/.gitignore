@@ -1,0 +1,18 @@
+# A Turbo C 2.0 install dropped here (not redistributable).
+/TC/
+
+# Staged sources and compiler output are regenerated every build.
+/SRC/*
+/OUT/*
+!/SRC/.gitkeep
+!/OUT/.gitkeep
+
+# DOS / compiler leftovers
+*.OBJ
+*.obj
+*.EXE
+*.exe
+*.MAP
+*.map
+*.BAK
+*.bak
